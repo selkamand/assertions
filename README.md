@@ -9,7 +9,9 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.org/package=assertcli)
-
+[![Codecov test
+coverage](https://codecov.io/gh/selkamand/assertcli/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertcli?branch=main)
+[![R-CMD-check](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 Simple assertions with sensible defaults and customisable error
@@ -56,4 +58,3 @@ assert_number("A", msg = "{.strong Try again}")
 
 For advanced customisation, see [cli
 documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes)
-# assertcli
