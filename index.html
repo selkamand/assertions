@@ -67,9 +67,11 @@
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<p>All assertions start with <code>assert_</code>, so type it in and checkout autocomplete for full list of options</p>
+<p>All assertions start with <code>assert</code>, which means you just type it in and levarage autocomplete suggestions to look through all available options</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<code class="sourceCode R"><span><span class="co"># Load library</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://selkamand.github.io/assertcli/">assertcli</a></span><span class="op">)</span></span>
+<span></span>
 <span><span class="co"># Use premade assertions</span></span>
 <span><span class="fu"><a href="reference/assert_character.html">assert_character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
@@ -83,11 +85,9 @@
 <h2 id="complete-control-over-error-messages">Complete control over error messages<a class="anchor" aria-label="anchor" href="#complete-control-over-error-messages"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Evaluate code in your error message using '{}' operators</span></span>
+<code class="sourceCode R"><span><span class="co"># Evaluate code in your error message using '{}' operators</span></span>
 <span><span class="va">foo</span> <span class="op">=</span> <span class="st">"A"</span></span>
 <span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="va">foo</span>, msg <span class="op">=</span> <span class="st">"'{foo}' is not a number :(. Try again"</span><span class="op">)</span></span>
-<span></span>
 <span></span>
 <span><span class="co"># Emphasise cetain words in error using {.strong text_to_emphasise}</span></span>
 <span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="st">"A"</span>, msg <span class="op">=</span> <span class="st">"{.strong Try again}"</span><span class="op">)</span></span></code></pre></div>
