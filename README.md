@@ -1,27 +1,19 @@
----
-output: github_document
----
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
 # assertcli
 
 <!-- badges: start -->
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.org/package=assertcli)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.org/package=assertcli)
 
 <!-- badges: end -->
 
-Simple assertions with sensible defaults and customisable error messages.
+Simple assertions with sensible defaults and customisable error
+messages.
 
 ## Installation
 
@@ -34,9 +26,10 @@ remotes::install_github('assertcli')
 
 ## Quick Start
 
-All assertions start with `assert_`, so type it in and checkout autocomplete for full list of options
+All assertions start with `assert_`, so type it in and checkout
+autocomplete for full list of options
 
-```{r, eval = FALSE}
+``` r
 
 # Use premade assertions
 assert_character(c('a', 'b', 'c'))
@@ -50,7 +43,7 @@ assert_number("A", msg = "Please supply a number!") # Custom Message
 
 ## Complete control over error messages
 
-```{r, eval = FALSE}
+``` r
 
 # Evaluate code in your error message using '{}' operators
 foo = "A"
@@ -59,7 +52,7 @@ assert_number(foo, msg = "'{foo}' is not a number :(. Try again")
 
 # Emphasise cetain words in error using {.strong text_to_emphasise}
 assert_number("A", msg = "{.strong Try again}")
-
 ```
 
-For advanced customisation, see [cli documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes)
+For advanced customisation, see [cli
+documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes)
