@@ -28,10 +28,12 @@ remotes::install_github('assertcli')
 
 ## Quick Start
 
-All assertions start with `assert_`, so type it in and checkout
-autocomplete for full list of options
+All assertions start with `assert`, which means you just type it in and
+levarage autocomplete suggestions to look through all available options
 
 ``` r
+# Load library
+library(assertcli)
 
 # Use premade assertions
 assert_character(c('a', 'b', 'c'))
@@ -46,11 +48,9 @@ assert_number("A", msg = "Please supply a number!") # Custom Message
 ## Complete control over error messages
 
 ``` r
-
 # Evaluate code in your error message using '{}' operators
 foo = "A"
 assert_number(foo, msg = "'{foo}' is not a number :(. Try again")
-
 
 # Emphasise cetain words in error using {.strong text_to_emphasise}
 assert_number("A", msg = "{.strong Try again}")
