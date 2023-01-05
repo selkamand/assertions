@@ -56,3 +56,4 @@ assert_number("A", msg = "{.strong Try again}")
 
 For advanced customisation, see [cli
 documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes)
+# assertcli
