@@ -14,8 +14,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Adding Assertions
-
 Creating assertions is really quite simple. They are just R functions that take an object and return either `invisible(TRUE)` or some error using `cli::cli_abort()`.
 
 ## Assertion template
