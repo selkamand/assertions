@@ -9,3 +9,5 @@
 ^docs$
 ^pkgdown$
 inst/logo
+^doc$
+^Meta$

@@ -1,0 +1,66 @@
+---
+title: "Adding Assertions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Adding Assertions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Adding Assertions
+
+Creating assertions is really quite simple. They are just R functions that take an object and return either `invisible(TRUE)` or some error using `cli::cli_abort()`.
+
+## Assertion template
+
+To create a new assertion use the following template.
+
+```{r, eval=FALSE}
+#' Assertion function template
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if `x` does not meet the specified assertion
+#'
+#' @return invisible(TRUE) if `x` meets the assertion, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' # Add examples here
+#' }
+#'
+#' @export
+assert_{{assertion_name}} <- function(x, msg = NULL, call = rlang::caller_env()) {
+  string_argname <- deparse(substitute(x))
+  
+  # Customise the following line to specify the actual assertion
+  condition <- !{{assertion}}
+  
+  if (condition) {
+    if (is.null(msg)) {
+      # Customise this line to specify the default error message
+      msg <- "'{string_argname}' does not meet the specified assertion"
+    }
+    cli::cli_abort(msg, call = call)
+  }
+  invisible(TRUE)
+}
+```
+
+To use this template, follow these steps:
+
+1.  Replace {{assertion_name}} with the name of the assertion you are creating (e.g. is_even).
+
+2.  Replace {{assertion}} with an expression that specifies the actual assertion (e.g. x %% 2 == 0).
+
+3.  Customise the default error message to be informative and user-friendly.
+
+4.  [Optional] Add any additional arguments to the function definition and documentation, following the same format as msg.
+
+5.  Add examples using the additional arguments, if applicable.

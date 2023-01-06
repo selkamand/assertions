@@ -10,6 +10,8 @@ Description: provides simple assertions with sensible defaults and customizable 
 License: MIT + file LICENSE
 Suggests: 
     covr,
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 2
 Encoding: UTF-8
@@ -19,3 +21,4 @@ Imports:
     cli,
     rlang
 URL: https://selkamand.github.io/assertions/
+VignetteBuilder: knitr
