@@ -1,4 +1,4 @@
 url: https://selkamand.github.io/assertcli/
 template:
   bootstrap: 5
-
+  bootswatch: flatly
