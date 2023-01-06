@@ -68,18 +68,20 @@
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>All assertions start with <code>assert</code>, which means you just type it in and levarage autocomplete suggestions to look through all available options</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Load library</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://selkamand.github.io/assertcli/">assertcli</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Use premade assertions</span></span>
-<span><span class="fu"><a href="reference/assert_character.html">assert_character</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/assert_flag.html">assert_flag</a></span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Custom any error messages"</span></span>
-<span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="st">"A"</span><span class="op">)</span> <span class="co"># Default</span></span>
-<span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="st">"A"</span>, msg <span class="op">=</span> <span class="st">"Please supply a number!"</span><span class="op">)</span> <span class="co"># Custom Message</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(assertcli)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use premade assertions</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_character</span>(<span class="fu">c</span>(<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="dv">2</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_flag</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom any error messages"</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="st">"A"</span>) <span class="co"># Default</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="st">"A"</span>, <span class="at">msg =</span> <span class="st">"Please supply a number!"</span>) <span class="co"># Custom Message</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assert anything </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">assert</span>(<span class="dv">1000</span> % <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="complete-control-over-error-messages">Complete control over error messages<a class="anchor" aria-label="anchor" href="#complete-control-over-error-messages"></a>
