@@ -147,17 +147,17 @@ cli::test_that_cli("assert_numeric_vector() works", configs = "plain",  {
   expect_identical(assert_numeric_vector(numeric()), TRUE)
 
   # Aborts for non-numeric vectors
-  expect_error(assert_numeric_vector(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' is not a numeric vector! Object class: character", fixed = TRUE)
-  expect_error(assert_numeric_vector(factor(c("a", "b", "c"))), "'factor(c(\"a\", \"b\", \"c\"))' is not a numeric vector! Object class: factor", fixed = TRUE)
-  expect_error(assert_numeric_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' is not a numeric vector! Object class: list", fixed = TRUE)
-  expect_error(assert_numeric_vector(matrix(1:9, 3)), "'matrix(1:9, 3)' is not a numeric vector! Object class: matrix", fixed = TRUE)
-  expect_error(assert_numeric_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' is not a numeric vector! Object class: data.frame", fixed = TRUE)
-  expect_error(assert_numeric_vector(function(x) x), "'function(x) x' is not a numeric vector! Object class: function", fixed = TRUE)
-  expect_error(assert_numeric_vector(environment()), "'environment()' is not a numeric vector! Object class: environment", fixed = TRUE)
-  expect_error(assert_numeric_vector(c(TRUE, FALSE)), "'c(TRUE, FALSE)' is not a numeric vector! Object class: logical", fixed = TRUE)
+  expect_error(assert_numeric_vector(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' should be a numeric vector, not a character", fixed = TRUE)
+  expect_error(assert_numeric_vector(factor(c("a", "b", "c"))), "'factor(c(\"a\", \"b\", \"c\"))' should be a numeric vector, not a factor", fixed = TRUE)
+  expect_error(assert_numeric_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' should be a numeric vector, not a list", fixed = TRUE)
+  expect_error(assert_numeric_vector(matrix(1:9, 3)), "'matrix(1:9, 3)' should be a numeric vector, not a matrix", fixed = TRUE)
+  expect_error(assert_numeric_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' should be a numeric vector, not a data.frame", fixed = TRUE)
+  expect_error(assert_numeric_vector(function(x) x), "'function(x) x' should be a numeric vector, not a function", fixed = TRUE)
+  expect_error(assert_numeric_vector(environment()), "'environment()' should be a numeric vector, not a environment", fixed = TRUE)
+  expect_error(assert_numeric_vector(c(TRUE, FALSE)), "'c(TRUE, FALSE)' should be a numeric vector, not a logical", fixed = TRUE)
   # Error messages use variable name of passed arguments
   y <- c("a", "b", "c")
-  expect_error(assert_numeric_vector(y), "'y' is not a numeric vector! Object class: character", fixed = TRUE)
+  expect_error(assert_numeric_vector(y), "'y' should be a numeric vector, not a character", fixed = TRUE)
 
   # Custom error messages work
   expect_error(assert_numeric_vector(c('a', 'b', 'c'), msg = "Custom error message"), "Custom error message")
@@ -256,17 +256,17 @@ cli::test_that_cli("assert_logical_vector() works", configs = "plain", {
   expect_identical(assert_logical_vector(logical()), TRUE)
 
   # Aborts for non-logical vectors
-  expect_error(assert_logical_vector(c(1, 2, 3)), "'c(1, 2, 3)' is not a logical vector! Object class: numeric", fixed = TRUE)
-  expect_error(assert_logical_vector(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' is not a logical vector! Object class: character", fixed = TRUE)
-  expect_error(assert_logical_vector(matrix(c(TRUE, FALSE), 2, 1)), "'matrix(c(TRUE, FALSE), 2, 1)' is not a logical vector! Object class: matrix", fixed = TRUE)
-  expect_error(assert_logical_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' is not a logical vector! Object class: list", fixed = TRUE)
-  expect_error(assert_logical_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' is not a logical vector! Object class: data.frame", fixed = TRUE)
-  expect_error(assert_logical_vector(function(x) x), "'function(x) x' is not a logical vector! Object class: function", fixed = TRUE)
-  expect_error(assert_logical_vector(environment()), "'environment()' is not a logical vector! Object class: environment", fixed = TRUE)
+  expect_error(assert_logical_vector(c(1, 2, 3)), "'c(1, 2, 3)' should be a logical vector, not a numeric", fixed = TRUE)
+  expect_error(assert_logical_vector(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' should be a logical vector, not a character", fixed = TRUE)
+  expect_error(assert_logical_vector(matrix(c(TRUE, FALSE), 2, 1)), "'matrix(c(TRUE, FALSE), 2, 1)' should be a logical vector, not a matrix", fixed = TRUE)
+  expect_error(assert_logical_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' should be a logical vector, not a list", fixed = TRUE)
+  expect_error(assert_logical_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' should be a logical vector, not a data.frame", fixed = TRUE)
+  expect_error(assert_logical_vector(function(x) x), "'function(x) x' should be a logical vector, not a function", fixed = TRUE)
+  expect_error(assert_logical_vector(environment()), "'environment()' should be a logical vector, not a environment", fixed = TRUE)
 
   # Error messages use variable name of passed arguments
   y <- data.frame(a = 1:5, b = 6:10)
-  expect_error(assert_logical_vector(y), "'y' is not a logical vector! Object class: data.frame", fixed = TRUE)
+  expect_error(assert_logical_vector(y), "'y' should be a logical vector, not a data.frame", fixed = TRUE)
 
   # Custom error messages work
   expect_error(assert_logical_vector(c(1, 2, 3), msg = "Custom error message"), "Custom error message")
@@ -310,17 +310,17 @@ cli::test_that_cli("assert_character() works", configs = "plain",  {
   expect_identical(assert_character(character()), TRUE)
 
   # Aborts for non-character vectors
-  expect_error(assert_character(c(1, 2, 3)), "'c(1, 2, 3)' is not a character vector! Object class: numeric", fixed = TRUE)
-  expect_error(assert_character(factor(c("a", "b", "c"))), "'factor(c(\"a\", \"b\", \"c\"))' is not a character vector! Object class: factor", fixed = TRUE)
-  expect_error(assert_character(list(a = "1", b = "2")), "'list(a = \"1\", b = \"2\")' is not a character vector! Object class: list", fixed = TRUE)
-  expect_error(assert_character(matrix(1:9, 3)), "'matrix(1:9, 3)' is not a character vector! Object class: matrix", fixed = TRUE)
-  expect_error(assert_character(data.frame(a = "1", b = "2")), "'data.frame(a = \"1\", b = \"2\")' is not a character vector! Object class: data.frame", fixed = TRUE)
-  expect_error(assert_character(function(x) x), "'function(x) x' is not a character vector! Object class: function", fixed = TRUE)
-  expect_error(assert_character(environment()), "'environment()' is not a character vector! Object class: environment", fixed = TRUE)
+  expect_error(assert_character(c(1, 2, 3)), "'c(1, 2, 3)' should be a character vector, not a numeric", fixed = TRUE)
+  expect_error(assert_character(factor(c("a", "b", "c"))), "'factor(c(\"a\", \"b\", \"c\"))' should be a character vector, not a factor", fixed = TRUE)
+  expect_error(assert_character(list(a = "1", b = "2")), "'list(a = \"1\", b = \"2\")' should be a character vector, not a list", fixed = TRUE)
+  expect_error(assert_character(matrix(1:9, 3)), "'matrix(1:9, 3)' should be a character vector, not a matrix", fixed = TRUE)
+  expect_error(assert_character(data.frame(a = "1", b = "2")), "'data.frame(a = \"1\", b = \"2\")' should be a character vector, not a data.frame", fixed = TRUE)
+  expect_error(assert_character(function(x) x), "'function(x) x' should be a character vector, not a function", fixed = TRUE)
+  expect_error(assert_character(environment()), "'environment()' should be a character vector, not a environment", fixed = TRUE)
 
   # Error messages use variable name of passed arguments
   y <- c(1, 2, 3)
-  expect_error(assert_character(y), "'y' is not a character vector! Object class: numeric", fixed = TRUE)
+  expect_error(assert_character(y), "'y' should be a character vector, not a numeric", fixed = TRUE)
 
   # Custom error messages work
   expect_error(assert_character(factor(c("a", "b", "c")), msg = "Custom error message"), "Custom error message")
@@ -334,17 +334,17 @@ cli::test_that_cli("assert_character_vector works as expected", configs = "plain
   expect_identical(assert_character_vector(character()), TRUE)
 
   # Aborts for non-character vectors
-  expect_error(assert_character_vector(1), "'1' is not a character vector! Object class: numeric", fixed = TRUE)
-  expect_error(assert_character_vector(1:3), "'1:3' is not a character vector! Object class: integer", fixed = TRUE)
-  expect_error(assert_character_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' is not a character vector! Object class: list", fixed = TRUE)
-  expect_error(assert_character_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' is not a character vector! Object class: data.frame", fixed = TRUE)
-  expect_error(assert_character_vector(function(x) x), "'function(x) x' is not a character vector! Object class: function", fixed = TRUE)
-  expect_error(assert_character_vector(environment()), "'environment()' is not a character vector! Object class: environment", fixed = TRUE)
-  expect_error(assert_character_vector(matrix(c('a', 'b', 'c'))), "'matrix(c(\"a\", \"b\", \"c\"))' is not a character vector! Object class: matrix", fixed = TRUE)
+  expect_error(assert_character_vector(1), "'1' should be a character vector, not a numeric", fixed = TRUE)
+  expect_error(assert_character_vector(1:3), "'1:3' should be a character vector, not a integer", fixed = TRUE)
+  expect_error(assert_character_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' should be a character vector, not a list", fixed = TRUE)
+  expect_error(assert_character_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' should be a character vector, not a data.frame", fixed = TRUE)
+  expect_error(assert_character_vector(function(x) x), "'function(x) x' should be a character vector, not a function", fixed = TRUE)
+  expect_error(assert_character_vector(environment()), "'environment()' should be a character vector, not a environment", fixed = TRUE)
+  expect_error(assert_character_vector(matrix(c('a', 'b', 'c'))), "'matrix(c(\"a\", \"b\", \"c\"))' should be a character vector, not a matrix", fixed = TRUE)
 
   # Error messages use variable name of passed arguments
   y <- 1:3
-  expect_error(assert_character_vector(y), "'y' is not a character vector! Object class: integer", fixed = TRUE)
+  expect_error(assert_character_vector(y), "'y' should be a character vector, not a integer", fixed = TRUE)
 
   # Custom error messages work
   expect_error(assert_character_vector(1, msg = "Custom error message"), "Custom error message")

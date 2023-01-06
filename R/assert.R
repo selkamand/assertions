@@ -29,15 +29,3 @@ assert <- function(..., msg = NULL, call = rlang::caller_env()) {
   }
   invisible(TRUE)
 }
-
-format_as_bullets <- function(x, bullet = c('*', '>', ' ', 'x', 'v', 'i', '!')){
-  bullet <- rlang::arg_match(bullet)
-  names(x) <- rep(bullet, times = length(x))
-  return(x)
-}
-
-format_inline <- function(x, inline_tag = c('strong', 'emph', 'code', 'arg')){
-  inline_tag <- rlang::arg_match(inline_tag)
-  x <- paste0('{.', inline_tag, ' ', x, '}')
-  return(x)
-}
