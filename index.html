@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="What the package does (one paragraph).">
-<title>What the Package Does (One Line, Title Case) • assertcli</title>
+<title>What the Package Does (One Line, Title Case) • assertions</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -24,7 +24,7 @@
 
     <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
     
-    <a class="navbar-brand me-2" href="index.html">assertcli</a>
+    <a class="navbar-brand me-2" href="index.html">assertions</a>
 
     <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
 
@@ -51,49 +51,75 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="assertcli">assertcli<a class="anchor" aria-label="anchor" href="#assertcli"></a>
+<div class="page-header"><h1 id="assertions">assertions<a class="anchor" aria-label="anchor" href="#assertions"></a>
 </h1></div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <p>Simple assertions with sensible defaults and customisable error messages.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The goals with assertions are to provide</p>
+<ol style="list-style-type: decimal">
+<li><p>Convenient assertion calls (e.g. <code><a href="reference/assert_number.html">assert_number()</a></code>)</p></li>
+<li><p>A general <code>assert</code> function that asserts any possible condition/s and throws informative error messages</p></li>
+<li><p>Extremely user friendly error message defaults.</p></li>
+<li><p>Easily customisable error messages, with inline code evaluation &amp; styling powered by the <code>cli</code> package</p></li>
+</ol>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of assertcli like so</p>
+<p>You can install the development version of assertions like so</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages('remotes')</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'assertcli'</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">'assertions'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>All assertions start with <code>assert</code>, which means you just type it in and levarage autocomplete suggestions to look through all available options</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(assertcli)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(assertions)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Use premade assertions</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_character</span>(<span class="fu">c</span>(<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>))</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="dv">2</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_flag</span>(<span class="cn">TRUE</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Custom any error messages"</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="st">"A"</span>) <span class="co"># Default</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">assert_number</span>(<span class="st">"A"</span>, <span class="at">msg =</span> <span class="st">"Please supply a number!"</span>) <span class="co"># Custom Message</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Assert anything </span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">assert</span>(<span class="dv">1000</span> % <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span></code></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Assert anything </span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">assert</span>(<span class="dv">1000</span> % <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Assert multiple conditions at once (all must be true)</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">assert</span>(<span class="dv">1000</span> % <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">6</span><span class="sc">/</span><span class="dv">2</span> <span class="sc">==</span> <span class="dv">3</span>)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="complete-control-over-error-messages">Complete control over error messages<a class="anchor" aria-label="anchor" href="#complete-control-over-error-messages"></a>
+<h2 id="customizing-error-messages">Customizing Error Messages<a class="anchor" aria-label="anchor" href="#customizing-error-messages"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Evaluate code in your error message using '{}' operators</span></span>
+<code class="sourceCode R"><span><span class="co"># Customise any error messages using the `msg` argument</span></span>
+<span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="st">"A"</span>, msg <span class="op">=</span> <span class="st">"Please supply a number!"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Evaluate code in your error message using '{}' operators</span></span>
 <span><span class="va">foo</span> <span class="op">=</span> <span class="st">"A"</span></span>
 <span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="va">foo</span>, msg <span class="op">=</span> <span class="st">"'{foo}' is not a number :(. Try again"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Emphasise cetain words in error using {.strong text_to_emphasise}</span></span>
 <span><span class="fu"><a href="reference/assert_number.html">assert_number</a></span><span class="op">(</span><span class="st">"A"</span>, msg <span class="op">=</span> <span class="st">"{.strong Try again}"</span><span class="op">)</span></span></code></pre></div>
 <p>For advanced customisation, see <a href="https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes" class="external-link">cli documentation</a></p>
+</div>
+<div class="section level2">
+<h2 id="similar-packages">Similar Packages<a class="anchor" aria-label="anchor" href="#similar-packages"></a>
+</h2>
+<p>Great alternative packages for writing assertions include:</p>
+<ul>
+<li><a href="https://github.com/ropensci/assertthat" class="external-link"><code>assertthat</code></a></li>
+<li><a href="https://github.com/HenrikBengtsson/checkmate" class="external-link"><code>checkmate</code></a></li>
+<li><a href="https://github.com/assertive/assertive" class="external-link"><code>assertive</code></a></li>
+<li><a href="https://github.com/HenrikBengtsson/ensurer" class="external-link"><code>ensurer</code></a></li>
+</ul>
+<p>Each package has its own features and syntax, and users can choose the one that best fits their needs and preferences. To find the best fit, it can be helpful to try out a few options and consider the default error messages, flexibility, and included assertion capabilities.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
@@ -108,7 +134,7 @@
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li><a href="authors.html#citation">Citing assertcli</a></li>
+<li><a href="authors.html#citation">Citing assertions</a></li>
 </ul>
 </div>
 
@@ -123,9 +149,9 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=assertcli" class="external-link"><img src="https://www.r-pkg.org/badges/version/assertcli" alt="CRAN status"></a></li>
-<li><a href="https://app.codecov.io/gh/selkamand/assertcli?branch=main" class="external-link"><img src="https://codecov.io/gh/selkamand/assertcli/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=assertions" class="external-link"><img src="https://www.r-pkg.org/badges/version/assertions" alt="CRAN status"></a></li>
+<li><a href="https://app.codecov.io/gh/selkamand/assertions?branch=main" class="external-link"><img src="https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 

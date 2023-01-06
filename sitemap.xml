@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://selkamand.github.io/assertcli/404.html</loc>
+    <loc>https://selkamand.github.io/assertions/404.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/LICENSE-text.html</loc>
+    <loc>https://selkamand.github.io/assertions/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/LICENSE.html</loc>
+    <loc>https://selkamand.github.io/assertions/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/authors.html</loc>
+    <loc>https://selkamand.github.io/assertions/authors.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/index.html</loc>
+    <loc>https://selkamand.github.io/assertions/index.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_character.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_character.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_character_vector.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_character_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_dataframe.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_dataframe.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_factor.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_factor.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_flag.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_flag.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_int.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_int.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_logical.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_logical.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_logical_vector.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_logical_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_matrix.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_matrix.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_number.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_number.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_numeric.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_numeric.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_numeric_vector.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_numeric_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_string.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_string.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/assert_vector.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/assert_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertcli/reference/index.html</loc>
+    <loc>https://selkamand.github.io/assertions/reference/index.html</loc>
   </url>
 </urlset>
