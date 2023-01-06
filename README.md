@@ -12,6 +12,8 @@ status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.
 [![Codecov test
 coverage](https://codecov.io/gh/selkamand/assertcli/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertcli?branch=main)
 [![R-CMD-check](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml)
+[![Coveralls test
+coverage](https://coveralls.io/repos/github/selkamand/assertcli/badge.svg)](https://coveralls.io/r/selkamand/assertcli?branch=main)
 <!-- badges: end -->
 
 Simple assertions with sensible defaults and customisable error
