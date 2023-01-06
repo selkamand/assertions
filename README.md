@@ -38,7 +38,7 @@ You can install the development version of assertions like so
 
 ``` r
 # install.packages('remotes')
-remotes::install_github('assertions')
+remotes::install_github('selkamand/assertions')
 ```
 
 ## Quick Start

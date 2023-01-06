@@ -1,3 +1,5 @@
+
+# Dataframe ---------------------------------------------------------------
 #' Assert that the input object is a data frame
 #'
 #' @param x An object
@@ -32,6 +34,10 @@ assert_dataframe <- function(x, msg = NULL, call = rlang::caller_env()) {
 }
 
 
+
+# Matrix ------------------------------------------------------------------
+
+
 #' Assert that the input object is a matrix
 #'
 #' @param x An object
@@ -60,6 +66,8 @@ assert_matrix <- function(x, msg = NULL, call = rlang::caller_env()) {
 }
 
 
+
+# Vector ------------------------------------------------------------------
 #' Assert that the input object is a vector
 #'
 #' @param x An object
@@ -97,6 +105,9 @@ assert_vector <- function(x, msg = NULL, include_lists = FALSE, call = rlang::ca
   invisible(TRUE)
 }
 
+
+
+# Numerics ----------------------------------------------------------------
 
 #' Assert that the input object is a factor
 #'
@@ -244,6 +255,9 @@ assert_int <- function(x, msg = NULL, call = rlang::caller_env()) {
   invisible(TRUE)
 }
 
+
+# Logicals ----------------------------------------------------------------
+
 #' Assert that the input object is logical
 #'
 #' @param x An object
@@ -334,6 +348,8 @@ assert_flag <- function(x, msg = NULL, call = rlang::caller_env()) {
 }
 
 
+
+# Characters --------------------------------------------------------------
 
 #' Assert that the input object is a character vector
 #'
