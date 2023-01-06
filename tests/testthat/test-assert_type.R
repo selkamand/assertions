@@ -287,6 +287,7 @@ cli::test_that_cli("assert_flag works as expected", configs = "plain", {
   expect_error(assert_flag(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' is not a flag (Object class: data.frame)", fixed = TRUE)
   expect_error(assert_flag(function(x) x), "'function(x) x' is not a flag (Object class: function)", fixed = TRUE)
   expect_error(assert_flag(environment()), "'environment()' is not a flag (Object class: environment)", fixed = TRUE)
+  expect_error(assert_flag(c(TRUE, TRUE)), "'c(TRUE, TRUE)' is not a flag (length is 2, not 1!)", fixed=TRUE)
 
   # Error messages use variable name of passed arguments
   y <- 1:3
