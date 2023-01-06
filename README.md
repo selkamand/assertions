@@ -1,17 +1,17 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# assertcli
+# assertions
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.org/package=assertcli)
+status](https://www.r-pkg.org/badges/version/assertions)](https://CRAN.R-project.org/package=assertions)
 [![Codecov test
-coverage](https://codecov.io/gh/selkamand/assertcli/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertcli?branch=main)
-[![R-CMD-check](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml)
+coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main)
+[![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
 
 <!-- badges: end -->
 
@@ -20,7 +20,7 @@ messages.
 
 ## Overview
 
-The goals with assertcli are to provide
+The goals with assertions are to provide
 
 1.  Convenient assertion calls (e.g. `assert_number()`)
 
@@ -34,11 +34,11 @@ The goals with assertcli are to provide
 
 ## Installation
 
-You can install the development version of assertcli like so
+You can install the development version of assertions like so
 
 ``` r
 # install.packages('remotes')
-remotes::install_github('assertcli')
+remotes::install_github('assertions')
 ```
 
 ## Quick Start
@@ -48,7 +48,7 @@ levarage autocomplete suggestions to look through all available options
 
 ``` r
 # Load library
-library(assertcli)
+library(assertions)
 
 # Use premade assertions
 assert_character(c('a', 'b', 'c'))

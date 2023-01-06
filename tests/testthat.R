@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(assertcli)
+library(assertions)
 
-test_check("assertcli")
+test_check("assertions")

@@ -1,4 +1,4 @@
-Package: assertcli
+Package: assertions
 Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: 
@@ -16,4 +16,4 @@ RoxygenNote: 7.2.3
 Imports: 
     cli,
     rlang
-URL: https://selkamand.github.io/assertcli/
+URL: https://selkamand.github.io/assertions/

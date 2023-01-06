@@ -13,11 +13,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# assertcli
+# assertions
 
 <!-- badges: start -->
 
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/assertcli)](https://CRAN.R-project.org/package=assertcli) [![Codecov test coverage](https://codecov.io/gh/selkamand/assertcli/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertcli?branch=main) [![R-CMD-check](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertcli/actions/workflows/R-CMD-check.yaml)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/assertions)](https://CRAN.R-project.org/package=assertions) [![Codecov test coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main) [![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
 
 <!-- badges: end -->
 
@@ -25,7 +25,7 @@ Simple assertions with sensible defaults and customisable error messages.
 
 ## Overview
 
-The goals with assertcli are to provide
+The goals with assertions are to provide
 
 1.  Convenient assertion calls (e.g. `assert_number()`)
 
@@ -37,11 +37,11 @@ The goals with assertcli are to provide
 
 ## Installation
 
-You can install the development version of assertcli like so
+You can install the development version of assertions like so
 
 ``` r
 # install.packages('remotes')
-remotes::install_github('assertcli')
+remotes::install_github('assertions')
 ```
 
 ## Quick Start
@@ -50,7 +50,7 @@ All assertions start with `assert`, which means you just type it in and levarage
 
 ```{r, eval = FALSE}
 # Load library
-library(assertcli)
+library(assertions)
 
 # Use premade assertions
 assert_character(c('a', 'b', 'c'))
