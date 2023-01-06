@@ -43,6 +43,9 @@ assert_flag(TRUE)
 # Custom any error messages"
 assert_number("A") # Default
 assert_number("A", msg = "Please supply a number!") # Custom Message
+
+# Assert anything 
+assert(1000 % 2 == 0)
 ```
 
 ## Complete control over error messages

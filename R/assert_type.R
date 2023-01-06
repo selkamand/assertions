@@ -23,7 +23,8 @@ assert_dataframe <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.data.frame(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a data.frame! Object class: {class(x)}"
+      #"'{string_argname}' is not a data.frame! Object class: {class(x)}"
+      msg <- "'{.strong {string_argname}}' should be a {.strong data.frame}, not a {.strong {class(x)}}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -51,7 +52,7 @@ assert_matrix <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.matrix(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a matrix! Object class: {class(x)}"
+      msg <- "'{string_argname}' should be a matrix, not a {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -89,7 +90,7 @@ assert_vector <- function(x, msg = NULL, include_lists = FALSE, call = rlang::ca
   string_argname <- deparse(substitute(x))
   if (!is.vector(x) || (inherits(x, what = "list") && !include_lists)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a vector! Object class: {class(x)}"
+      msg <- "'{string_argname}' should be a vector, not a {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -118,7 +119,7 @@ assert_factor <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.factor(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a factor! Object class: {class(x)}"
+      msg <- "'{string_argname}' should be a factor, not a {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -146,7 +147,7 @@ assert_numeric <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname = deparse(substitute(x))
   if (!is.numeric(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not numeric! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not numeric! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -166,7 +167,7 @@ assert_numeric_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.numeric(x) || !is.vector(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a numeric vector! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not a numeric vector! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -198,12 +199,12 @@ assert_number <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.numeric(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a number (Object class: {class(x)})"
+      msg <- "'{string_argname}' is not a number (Object class: {class(x)})"
     }
     cli::cli_abort(msg, call = call)
   } else if (length(x) != 1) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a number (length is {length(x)}, not 1!)"
+      msg <- "'{string_argname}' is not a number (length is {length(x)}, not 1!)"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -236,7 +237,7 @@ assert_int <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.integer(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not an integer! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not an integer! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -264,7 +265,7 @@ assert_logical <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.logical(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not logical! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not logical! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -291,7 +292,7 @@ assert_logical_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.logical(x) || !is.vector(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a logical vector! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not a logical vector! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -320,12 +321,12 @@ assert_flag <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.logical(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a flag (Object class: {class(x)})"
+      msg <- "'{string_argname}' is not a flag (Object class: {class(x)})"
     }
     cli::cli_abort(msg, call = call)
   } else if (length(x) != 1) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a flag (length is {length(x)}, not 1!)"
+      msg <- "'{string_argname}' is not a flag (length is {length(x)}, not 1!)"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -355,7 +356,7 @@ assert_character <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.character(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a character vector! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not a character vector! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -381,7 +382,7 @@ assert_character_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.character(x) || !is.vector(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a character vector! Object class: {class(x)}"
+      msg <- "'{string_argname}' is not a character vector! Object class: {class(x)}"
     }
     cli::cli_abort(msg, call = call)
   }
@@ -408,12 +409,12 @@ assert_string <- function(x, msg = NULL, call = rlang::caller_env()) {
   string_argname <- deparse(substitute(x))
   if (!is.character(x)) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a string (Object class: {class(x)})"
+      msg <- "'{string_argname}' is not a string (Object class: {class(x)})"
     }
     cli::cli_abort(msg, call = call)
   } else if (length(x) != 1) {
     if (is.null(msg)) {
-      msg <- "Error: '{string_argname}' is not a string (length is {length(x)}, not 1!)"
+      msg <- "'{string_argname}' is not a string (length is {length(x)}, not 1!)"
     }
     cli::cli_abort(msg, call = call)
   }
