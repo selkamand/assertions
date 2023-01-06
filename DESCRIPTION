@@ -1,10 +1,12 @@
 Package: assertions
-Title: What the Package Does (One Line, Title Case)
+Title: Enhance the Feedback Provided by Your Assertions with Beautiful and Customizable Error Messages
 Version: 0.0.0.9000
 Authors@R: 
     person("Sam", "El-Kamand", , "selkamand@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0003-2270-8088"))
-Description: What the package does (one paragraph).
+Description: provides simple assertions with sensible defaults and customizable error messages. 
+  It offers convenient assertion call wrappers and a general assert function that can handle any condition.
+  Default error messages are friendly, and easily customized with inline code evaluation and styling powered by the [cli] package.
 License: MIT + file LICENSE
 Suggests: 
     covr,
