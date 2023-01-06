@@ -52,6 +52,9 @@
     <loc>https://selkamand.github.io/assertions/reference/assert_matrix.html</loc>
   </url>
   <url>
+    <loc>https://selkamand.github.io/assertions/reference/assert_names_include.html</loc>
+  </url>
+  <url>
     <loc>https://selkamand.github.io/assertions/reference/assert_number.html</loc>
   </url>
   <url>
@@ -65,6 +68,12 @@
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/reference/assert_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/format_as_bullets.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/format_inline.html</loc>
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/reference/index.html</loc>
