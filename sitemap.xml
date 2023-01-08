@@ -10,7 +10,7 @@
     <loc>https://selkamand.github.io/assertions/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/articles/adding_assertions.html</loc>
+    <loc>https://selkamand.github.io/assertions/articles/create_custom_assertions.html</loc>
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/articles/index.html</loc>
@@ -32,6 +32,9 @@
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/reference/assert_create.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/assert_create_advanced.html</loc>
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/reference/assert_dataframe.html</loc>
@@ -85,7 +88,28 @@
     <loc>https://selkamand.github.io/assertions/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_character_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_flag_advanced.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_logical_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_number.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_number_advanced.html</loc>
+  </url>
+  <url>
     <loc>https://selkamand.github.io/assertions/reference/is_numeric_vector.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_string.html</loc>
+  </url>
+  <url>
+    <loc>https://selkamand.github.io/assertions/reference/is_string_advanced.html</loc>
   </url>
   <url>
     <loc>https://selkamand.github.io/assertions/reference/is_vector.html</loc>

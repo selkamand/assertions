@@ -52,7 +52,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/adding_assertions.html">Adding Assertions</a>
+    <a class="dropdown-item" href="articles/create_custom_assertions.html">Create Custom Assertions</a>
   </div>
 </li>
       </ul>
@@ -86,6 +86,7 @@
 <li><p>A general <code>assert</code> function that asserts any possible condition/s and throws informative error messages</p></li>
 <li><p>Extremely user friendly error message defaults.</p></li>
 <li><p>Easily customisable error messages, with inline code evaluation &amp; styling powered by the <code>cli</code> package</p></li>
+<li><p>Simple creation of custom assertion functions with user-specified defaults</p></li>
 </ol>
 </div>
 <div class="section level2">
@@ -130,6 +131,54 @@
 <p>For advanced customisation, see <a href="https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes" class="external-link">cli documentation</a></p>
 </div>
 <div class="section level2">
+<h2 id="create-your-own-assertion-functions">Create your own assertion functions<a class="anchor" aria-label="anchor" href="#create-your-own-assertion-functions"></a>
+</h2>
+<p>Have a custom assertion you want to use repeatedly?</p>
+<p>Creating your own assertion functions is extremely eas</p>
+<p>Just use <code><a href="reference/assert_create.html">assert_create()</a></code>, you just need to supply:</p>
+<ol style="list-style-type: decimal">
+<li><p>a function that returns TRUE/FALSE when assertion should PASS/FAIL</p></li>
+<li><p>a default error message</p></li>
+</ol>
+<p>```{r. eval = FALSE}</p>
+</div>
+</div>
+<div class="section level1">
+<h1 id="create-a-function-that-asserts-input-is-lowercase">Create a function that asserts input is lowercase<a class="anchor" aria-label="anchor" href="#create-a-function-that-asserts-input-is-lowercase"></a>
+</h1>
+<p>assert_lowercase &lt;- assert_create( func = function(x) {x == tolower(x)}, # A function that returns TRUE/FALSE, depending on whether assertion should pass / fail default_error_msg = “‘{arg_name}’ must be entirely lowercase” )</p>
+</div>
+<div class="section level1">
+<h1 id="assertion-passes-if-input-is-lowercase">Assertion passes if input is lowercase<a class="anchor" aria-label="anchor" href="#assertion-passes-if-input-is-lowercase"></a>
+</h1>
+<p>assert_lowercase(“all lower case”)</p>
+</div>
+<div class="section level1">
+<h1 id="but-throws-the-expected-error-if-uppercase-characters-are-present">But throws the expected error if uppercase characters are present<a class="anchor" aria-label="anchor" href="#but-throws-the-expected-error-if-uppercase-characters-are-present"></a>
+</h1>
+<p>assert_lowercase(“NOT all lower case”) ```</p>
+<p>See <code>?assert_create()</code> for details</p>
+<div class="section level2">
+<h2 id="contributing-to-this-package">Contributing to this package<a class="anchor" aria-label="anchor" href="#contributing-to-this-package"></a>
+</h2>
+<p>2 Options</p>
+<div class="section level3">
+<h3 id="request-an-assertion">Request an assertion<a class="anchor" aria-label="anchor" href="#request-an-assertion"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Open a github issue and request away. I’m happy to implement a tonne more assertions, just let me know what you want</li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="creating-assertions-yourself">Creating assertions yourself<a class="anchor" aria-label="anchor" href="#creating-assertions-yourself"></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li><p>Create a custom <code>assert_something</code> function with a call to <code><a href="reference/assert_create.html">assert_create()</a></code> or <code><a href="reference/assert_create_advanced.html">assert_create_advanced()</a></code></p></li>
+<li><p>Create a github issue with the assertion creation code + any helper function you pass to the <code>func</code> argument (e.g. <code>is_something()</code>)</p></li>
+</ol>
+</div>
+</div>
+<div class="section level2">
 <h2 id="similar-packages">Similar Packages<a class="anchor" aria-label="anchor" href="#similar-packages"></a>
 </h2>
 <p>Great alternative packages for writing assertions include:</p>
@@ -139,9 +188,10 @@
 <li><a href="https://github.com/assertive/assertive" class="external-link"><code>assertive</code></a></li>
 <li><a href="https://github.com/HenrikBengtsson/ensurer" class="external-link"><code>ensurer</code></a></li>
 </ul>
-<p>Each package has its own features and syntax, and users can choose the one that best fits their needs and preferences. To find the best fit, it can be helpful to try out a few options and consider the default error messages, flexibility, and included assertion capabilities.</p>
+<p>Each package has its own features and syntax, and users can choose the one that best fits their needs and preferences. To find the best fit, it can be helpful to try out a few options and consider the speed, default error messages, flexibility, and included assertion capabilities.</p>
 </div>
 </div>
+
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
