@@ -94,21 +94,7 @@ Just use `assert_create()`, you just need to supply:
 
 2.  a default error message
 
-\`\`\`{r. eval = FALSE}
-
-# Create a function that asserts input is lowercase
-
-assert_lowercase \<- assert_create( func = function(x) {x ==
-tolower(x)}, default_error_msg = “‘{arg_name}’ must be entirely
-lowercase” )
-
-# Assertion passes if input is lowercase
-
-assert_lowercase(“all lower case”)
-
-# But throws the expected error if uppercase characters are present
-
-assert_lowercase(“NOT all lower case”) \`\`\`
+**How about an example?**
 
 See `?assert_create()` for details
 
