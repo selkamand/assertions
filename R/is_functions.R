@@ -35,19 +35,41 @@ is_numeric_vector <- function(x, include_lists = FALSE){
   is.numeric(x) && is_vector(x, include_lists = include_lists)
 }
 
+#' Check if an object is a single number
+#'
+#' @param x An object to check.
+#' @return A logical value indicating whether `x` is a single number.
+#' @export
 is_number <- function(x){
- is.numeric(x) && length(x) == 1
+  is.numeric(x) && length(x) == 1
 }
 
+#' Check if an object is a character vector
+#'
+#' @param x An object to check.
+#' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
+#' @return A logical value indicating whether `x` is a character vector.
+#' @export
 is_character_vector <- function(x, include_lists = FALSE){
   is.character(x) && is_vector(x, include_lists = include_lists)
 }
 
 
+#' Check if an object is a logical vector
+#'
+#' @param x An object to check.
+#' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
+#' @return A logical value indicating whether `x` is a logical vector.
+#' @export
 is_logical_vector <- function(x, include_lists = FALSE){
   is.logical(x) && is_vector(x, include_lists = include_lists)
 }
 
+#' Check if an object is a single string
+#'
+#' @param x An object to check.
+#' @return A logical value indicating whether `x` is a single string.
+#' @export
 is_string <- function(x){
   is.character(x) && length(x) == 1
 }
@@ -57,6 +79,20 @@ is_string <- function(x){
 # These functions are for feeding into assert_create_advanced
 # They take an object and instead of returning TRUE/FALSE, they return TRUE if assertion should pass,
 # and the error message to throw if assertion should fail
+
+
+#' Check if x is a number
+#'
+#' This function is designed for use with `assert_create_advanced`. It must return
+#' TRUE for the assertion to pass or a string representing the error message if the
+#' assertion should fail.
+#'
+#' @param x A value to be checked
+#'
+#' @return Returns invisible(TRUE) if x is a numeric value with length 1. Returns a string
+#' with an error message if x is not a numeric value or has a length other than 1.
+#'
+#' @export
 is_number_advanced <- function(x){
   if(!is.numeric(x))
     return("'{.strong {arg_name}}' is not a {.strong number}! (class is {.strong {class(arg_value)}}, not {.strong numeric})")
@@ -67,6 +103,19 @@ is_number_advanced <- function(x){
   return(invisible(TRUE))
 }
 
+#' Check if x is a flag
+#'
+#' This function is designed for use with `assert_create_advanced`. It must return
+#' TRUE for the assertion to pass or a string representing the error message if the
+#' assertion should fail.
+#'
+#' @param x A value to be checked
+#'
+#' @return Returns invisible(TRUE) if x is a logical value with length 1. Returns a string
+#' with an error message if x is not a logical value or has a length other than 1.
+#'
+#' @export
+
 is_flag_advanced <- function(x){
   if(!is.logical(x))
     return("'{.strong {arg_name}}' is not a {.strong flag}! (class is {.strong {class(arg_value)}}, not {.strong logical})")
@@ -76,6 +125,19 @@ is_flag_advanced <- function(x){
 
   return(invisible(TRUE))
 }
+
+#' Check if x is a string
+#'
+#' This function is designed for use with `assert_create_advanced`. It must return
+#' TRUE for the assertion to pass or a string representing the error message if the
+#' assertion should fail.
+#'
+#' @param x A value to be checked
+#'
+#' @return Returns invisible(TRUE) if x is a character value with length 1. Returns a string
+#' with an error message if x is not a character value or has a length other than 1.
+#'
+#' @export
 
 is_string_advanced <- function(x){
   if(!is.character(x))

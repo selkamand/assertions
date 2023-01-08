@@ -4,7 +4,7 @@
 \alias{assert_function}
 \title{Assert that x is a function}
 \usage{
-assert_function(x, msg = NULL, call = rlang::caller_env())
+assert_function(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

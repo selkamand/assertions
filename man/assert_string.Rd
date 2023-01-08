@@ -4,7 +4,7 @@
 \alias{assert_string}
 \title{Assert that the input object is a character string}
 \usage{
-assert_string(x, msg = NULL, call = rlang::caller_env())
+assert_string(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

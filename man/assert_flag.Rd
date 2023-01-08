@@ -4,7 +4,7 @@
 \alias{assert_flag}
 \title{Assert that the input object is a scalar logical}
 \usage{
-assert_flag(x, msg = NULL, call = rlang::caller_env())
+assert_flag(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

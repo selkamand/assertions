@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# assertions <a href="https://selkamand.github.io/assertions/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# assertions <a href="https://selkamand.github.io/assertions/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
@@ -31,6 +31,9 @@ The goals with assertions are to provide
 
 4.  Easily customisable error messages, with inline code evaluation &
     styling powered by the `cli` package
+
+5.  Simple creation of custom assertion functions with user-specified
+    defaults
 
 ## Installation
 
@@ -79,6 +82,54 @@ assert_number("A", msg = "{.strong Try again}")
 For advanced customisation, see [cli
 documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#classes)
 
+## Create your own assertion functions
+
+Have a custom assertion you want to use repeatedly?
+
+Creating your own assertion functions is extremely eas
+
+Just use `assert_create()`, you just need to supply:
+
+1.  a function that returns TRUE/FALSE when assertion should PASS/FAIL
+
+2.  a default error message
+
+\`\`\`{r. eval = FALSE}
+
+# Create a function that asserts input is lowercase
+
+assert_lowercase \<- assert_create( func = function(x) {x ==
+tolower(x)}, \# A function that returns TRUE/FALSE, depending on whether
+assertion should pass / fail default_error_msg = “‘{arg_name}’ must be
+entirely lowercase” )
+
+# Assertion passes if input is lowercase
+
+assert_lowercase(“all lower case”)
+
+# But throws the expected error if uppercase characters are present
+
+assert_lowercase(“NOT all lower case”) \`\`\`
+
+See `?assert_create()` for details
+
+## Contributing to this package
+
+2 Options
+
+### Request an assertion
+
+1.  Open a github issue and request away. I’m happy to implement a tonne
+    more assertions, just let me know what you want
+
+### Creating assertions yourself
+
+1.  Create a custom `assert_something` function with a call to
+    `assert_create()` or `assert_create_advanced()`
+
+2.  Create a github issue with the assertion creation code + any helper
+    function you pass to the `func` argument (e.g. `is_something()`)
+
 ## Similar Packages
 
 Great alternative packages for writing assertions include:
@@ -90,5 +141,5 @@ Great alternative packages for writing assertions include:
 
 Each package has its own features and syntax, and users can choose the
 one that best fits their needs and preferences. To find the best fit, it
-can be helpful to try out a few options and consider the default error
-messages, flexibility, and included assertion capabilities.
+can be helpful to try out a few options and consider the speed, default
+error messages, flexibility, and included assertion capabilities.

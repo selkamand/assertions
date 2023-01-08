@@ -4,7 +4,7 @@
 \alias{assert_character_vector}
 \title{Assert that the input object is a character vector}
 \usage{
-assert_character_vector(x, msg = NULL, call = rlang::caller_env())
+assert_character_vector(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

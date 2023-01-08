@@ -1,0 +1,64 @@
+---
+title: "Create Custom Assertions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{create_custom_assertions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(assertions)
+```
+
+## Getting Started
+
+Do you have a custom assertion that you want to use repeatedly in your code? Then create your own assertion functions with the `assert_create()` function!.
+
+Lets start by recreating the `assert_character()` assertion using `assert_create()`:
+
+```{r, eval=FA:SE}
+# Create a function that asserts input is a character value
+assert_character_2 <- assert_create(
+  func = is.character(x), # Returns TRUE/FALSE for assertion PASS/FAIL
+  default_error_msg = "'{arg_name}' must be a character value, not a {class(arg_value)}"
+  )
+
+# Assertion passes if input is a character value
+assert_character_2("abc")
+
+# But throws the expected error if input is not a character value
+assert_character_2(123)
+
+```
+
+To create a custom assertion function, you need to supply two arguments to assert_create():
+
+`func`: a **function** that take an object to assert and returns TRUE or FALSE depending on whether the assertion should **pass** or **fail**.
+
+`default_error_msg`: a **character string** providing an **error message** in case the assertion **fails**. This string can include special termss such as:
+
+1.  **{arg_name}** to refer to the name of the variable being checked
+2.  **{arg_value}** to refer to the value of the variable.
+3.  **{code_to_evaluate}** to evaluate code within the error message. Customise '*code_to_evaluate*'. e.g `{class(arg_name)}`
+4.  **{.strong bold_text}** to perform inline formatting. Customise '*bold_text*'
+
+## Advanced Assertions
+
+Sometimes you need more than one error message per assertion. In this situation, often lots of individual assertions are still usually the best choice, but that's not always the case.
+
+So you also have the option of using `{assert_create_advanced()}`.
+
+This function works in a similar way to `assert_create{}` but it takes only one argument: `func`
+
+**What does `func`** **expect?**
+
+1.  **(like `assert_create`)** Function should return TRUE when assertion passes
+2.  **(unlike `assert_create`)** Function should return a character string containing the error message text when assertion fails. This lets you implement different error messages for different ways in which the argument fails the assertion.
