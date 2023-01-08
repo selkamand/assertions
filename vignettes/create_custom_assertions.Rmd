@@ -51,13 +51,11 @@ To create a custom assertion function, you need to supply two arguments to asser
 
 ## Advanced Assertions
 
-Sometimes you need more than one error message per assertion. In this situation, often lots of individual assertions are still usually the best choice, but that's not always the case.
-
-So you also have the option of using `{assert_create_advanced()}`.
+Sometimes you need more than one error message per assertion. So you also have the option of using `{assert_create_advanced()}`.
 
 This function works in a similar way to `assert_create{}` but it takes only one argument: `func`
 
 **What does `func`** **expect?**
 
-1.  **(like `assert_create`)** Function should return TRUE when assertion passes
-2.  **(unlike `assert_create`)** Function should return a character string containing the error message text when assertion fails. This lets you implement different error messages for different ways in which the argument fails the assertion.
+1.  **(like `assert_create`)** Function must return TRUE when assertion passes
+2.  **(unlike `assert_create`)** If assertion should fail, the function must return a character string describing the error to display. You can implement different error messages for each of the ways the assertion can fail.

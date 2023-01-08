@@ -55,3 +55,8 @@ format_inline <- function(x, inline_tag = c('strong', 'emph', 'code', 'arg')){
   x <- paste0('{.', inline_tag, ' ', x, '}')
   return(x)
 }
+
+format_escape_curly <- function(x){
+  x <- gsub(x = x, pattern = "{", replacement = "{{", fixed = TRUE)
+  x <- gsub(x = x, pattern = "}", replacement = "}}", fixed = TRUE)
+}

@@ -134,4 +134,4 @@ Great alternative packages for writing assertions include:
 -   [`assertive`](https://github.com/assertive/assertive)
 -   [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
 
-Each package has its own features and syntax, and users can choose the one that best fits their needs and preferences. To find the best fit, it can be helpful to try out a few options and consider the speed, default error messages, flexibility, and included assertion capabilities.
+Each package has its own features and syntax. Choose whichever best fits your needs and preferences. To find the best fit, try out a few options and consider the speed, default error messages, flexibility, and breadth of assertions available.
