@@ -3,7 +3,7 @@
 #' @param x An object to check for the presence of a name
 #' @param names A character vector of names to check for in `x`
 #' @param msg A character string containing the error message to display if any of the `names` are not present in `x`
-#'
+#' @inheritParams assert_dataframe
 #' @return invisible(TRUE) if all `names` are present in `x`, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -24,7 +24,7 @@ assert_names_include <- function(x, names, msg = NULL, call = rlang::caller_env(
   if (length(missing_names) > 0) {
     if (is.null(msg)) {
       n_missing <- ifelse(length(missing_names) == length(names), yes = "all", no = length(missing_names))
-      msg <- c("'{.strong {string_argname}}' must include {length(names)} name{?s}, {n_missing} of which are missing:", format_as_bullets(missing_names, bullet = "x"))
+      msg <- c("'{.strong {string_argname}}' is missing {length(missing_names)} required name{?s}: ", format_as_bullets(missing_names, bullet = "x"))
     }
     cli::cli_abort(msg, call = call)
   }

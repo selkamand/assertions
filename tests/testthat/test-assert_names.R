@@ -1,20 +1,26 @@
-# Assert Names Include ---------------------------------------------------
+# Assert names include --------------------------------------------------
 cli::test_that_cli("assert_names_include() works", configs = "plain", {
 
-  # Works when all names are present
-  expect_identical(assert_names_include(mtcars, c("mpg", "cyl")), TRUE)
+  x <- list(a = 1, b = 2, c = 3)
 
-  # Aborts when any name is missing
-  expect_error(assert_names_include(mtcars, c("mpg", "cyl", "foo")), "'mtcars' must include 3 names, 1 of which are missing:\nx foo", fixed = TRUE)
+  # Passes when all names are present
+  expect_identical(assert_names_include(x, "a"), TRUE)
+  expect_identical(assert_names_include(x, c("a", "b")), TRUE)
 
-  # Aborts when all names are missing
-  expect_error(assert_names_include(mtcars, c("foo", "bar")), "'mtcars' must include 2 names, all of which are missing:\nx foo\nx bar", fixed = TRUE)
+  # Aborts when any names are missing
+  expect_error(assert_names_include(x, c("a", "b", "d")), "'x' is missing 1 required name:\nx d", fixed = TRUE)
+  expect_error(assert_names_include(x, c("a", "b", "d", "e")), "'x' is missing 2 required names:\nx d\nx e", fixed = TRUE)
 
-  # Error messages use variable name of passed arguments
-  y <- mtcars[, c("mpg", "cyl")]
-  expect_error(assert_names_include(y, c("mpg", "cyl", "foo")), "'y' must include 3 names, 1 of which are missing:\nx foo", fixed = TRUE)
+  # Aborts when input has no names
+  expect_error(assert_names_include(1:10, c("a", "b", "c", "d")), "'1:10' is missing 4 required names:\nx a\nx b\nx c\nx d", fixed = TRUE)
+
+  # Aborts when input is an object that names() won't run on
+  expect_error(assert_names_include(matrix(1:6, 2, 3), c("a", "b", "c", "d")), "'matrix(1:6, 2, 3)' is missing 4 required names:\nx a\nx b\nx c\nx d", fixed = TRUE)
 
   # Custom error messages work
-  expect_error(assert_names_include(mtcars, c("foo", "bar"), msg = "Custom error message"), "Custom error message")
+  expect_error(assert_names_include(x, c("a", "b", "d"), "Custom error message"), "Custom error message")
 
+  # Error messages use variable name of passed arguments
+  y <- list(a = 1, b = 2)
+  expect_error(assert_names_include(y, "c"), "'y' is missing 1 required name:\nx c", fixed = TRUE)
 })

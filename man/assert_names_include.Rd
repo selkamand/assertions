@@ -12,6 +12,8 @@ assert_names_include(x, names, msg = NULL, call = rlang::caller_env())
 \item{names}{A character vector of names to check for in \code{x}}
 
 \item{msg}{A character string containing the error message to display if any of the \code{names} are not present in \code{x}}
+
+\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 }
 \value{
 invisible(TRUE) if all \code{names} are present in \code{x}, otherwise aborts with the error message specified by \code{msg}
