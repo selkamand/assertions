@@ -86,7 +86,7 @@ documentation](https://cli.r-lib.org/reference/inline-markup.html?q=.strong#clas
 
 Have a custom assertion you want to use repeatedly?
 
-Creating your own assertion functions is extremely eas
+Creating your own assertion functions is extremely easy
 
 Just use `assert_create()`, you just need to supply:
 
