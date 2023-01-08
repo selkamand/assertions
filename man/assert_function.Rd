@@ -10,6 +10,10 @@ assert_function(x, msg = NULL, call = rlang::caller_env(), ...)
 \item{x}{An object}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a function}
+
+\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+
+\item{...}{Used to pass any arguments to assertion function}
 }
 \value{
 invisible(TRUE) if \code{x} is a function, otherwise aborts with the error message specified by \code{msg}

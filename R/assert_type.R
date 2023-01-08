@@ -15,6 +15,7 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a data frame
 #' @param call Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.
+#' @param ... Used to pass any arguments to assertion function
 #' @return invisible(TRUE) if `x` is a data frame, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -68,9 +69,8 @@ assert_matrix <- assert_create(
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a vector
-#' @param include_lists A logical indicating whether lists must be considered vectors (default: FALSE)
-#' @inheritParams assert_dataframe
 #' @inheritDotParams is_vector
+#' @inheritParams assert_dataframe
 #' @return invisible(TRUE) if `x` is a vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @note
@@ -343,6 +343,7 @@ assert_string <- assert_create_advanced(is_string_advanced)
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a function
+#' @inheritParams assert_dataframe
 #'
 #' @return invisible(TRUE) if `x` is a function, otherwise aborts with the error message specified by `msg`
 #'

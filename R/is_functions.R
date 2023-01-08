@@ -13,6 +13,7 @@
 #' is_vector(1:10)
 #' is_vector(list(1:10))
 #' is_vector(list(1:10), include_lists = TRUE)
+#' @export
 is_vector <- function(x, include_lists = FALSE){
   is.vector(x) && (!inherits(x, what = "list") || include_lists)
 }
@@ -31,6 +32,7 @@ is_vector <- function(x, include_lists = FALSE){
 #' is_numeric_vector(1:5) # TRUE
 #' is_numeric_vector("hello") # FALSE
 #' is_numeric_vector(list(1, 2, "a"), include_lists = TRUE) # FALSE
+#' @export
 is_numeric_vector <- function(x, include_lists = FALSE){
   is.numeric(x) && is_vector(x, include_lists = include_lists)
 }

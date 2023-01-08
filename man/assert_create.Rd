@@ -10,7 +10,7 @@ assert_create(func, default_error_msg)
 \item{func}{A function defining the assertion criteria. This function should
 return a logical value (\code{TRUE} when assertion is passed or \code{FALSE} when it fails)}
 
-\item{A}{character string providing an error message in case
+\item{default_error_msg}{A character string providing an error message in case
 the assertion fails.
 Can include the following special terms
 \enumerate{
@@ -34,7 +34,10 @@ All assertions provided with this package are created using either \code{\link[=
 \dontrun{
 # Create an assertion function that checks that a character string is all
 # lower case
-assert_character <- assert_create(is.character, "{arg} must be a character vector, not a {class(x)}")
+assert_character <- assert_create(
+  is.character,
+  "{arg_name} must be a character vector, not a {class(arg_value)}"
+)
 
 # Use the assertion function
 is_lower("hello") # Returns invisible TRUE

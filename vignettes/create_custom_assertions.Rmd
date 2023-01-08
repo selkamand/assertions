@@ -24,7 +24,7 @@ Do you have a custom assertion that you want to use repeatedly in your code? The
 
 Lets start by recreating the `assert_character()` assertion using `assert_create()`:
 
-```{r, eval=FA:SE}
+```{r, eval=FALSE}
 # Create a function that asserts input is a character value
 assert_character_2 <- assert_create(
   func = is.character(x), # Returns TRUE/FALSE for assertion PASS/FAIL

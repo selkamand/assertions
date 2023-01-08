@@ -16,10 +16,8 @@ assert_vector(x, msg = NULL, call = rlang::caller_env(), ...)
 \item{...}{
   Arguments passed on to \code{\link[=is_vector]{is_vector}}
   \describe{
-    \item{\code{}}{}
+    \item{\code{include_lists}}{A logical indicating whether lists should be considered vectors. Default is \code{FALSE}.}
   }}
-
-\item{include_lists}{A logical indicating whether lists must be considered vectors (default: FALSE)}
 }
 \value{
 invisible(TRUE) if \code{x} is a vector, otherwise aborts with the error message specified by \code{msg}

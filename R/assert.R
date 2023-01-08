@@ -40,7 +40,7 @@ assert <- function(..., msg = NULL, call = rlang::caller_env()) {
 #'
 #' @param func A function defining the assertion criteria. This function should
 #'   return a logical value (`TRUE` when assertion is passed or `FALSE` when it fails)
-#' @param  A character string providing an error message in case
+#' @param default_error_msg A character string providing an error message in case
 #' the assertion fails.
 #' Can include the following special terms
 #`
@@ -61,7 +61,10 @@ assert <- function(..., msg = NULL, call = rlang::caller_env()) {
 #' \dontrun{
 #' # Create an assertion function that checks that a character string is all
 #' # lower case
-#' assert_character <- assert_create(is.character, "{arg} must be a character vector, not a {class(x)}")
+#' assert_character <- assert_create(
+#'   is.character,
+#'   "{arg_name} must be a character vector, not a {class(arg_value)}"
+#' )
 #'
 #' # Use the assertion function
 #' is_lower("hello") # Returns invisible TRUE
@@ -114,6 +117,19 @@ assert_create <- function(func,  default_error_msg){
 }
 
 
+#' Create a custom assertion function
+#'
+#' Creates a custom assertion function that can be used to check if a supplied value meets certain criteria.
+#' The input function is required to return TRUE if the assertion should pass or a string error message if it should fail.
+#'
+#' @param func A function defining the assertion criteria.
+#' This function should return a TRUE when assertion should pass,
+#' or a character string representing an error message if it fail. E
+#' Error message strings can contain the same special keywords / formatting as described in [assert_create()]
+#'
+#' @return Returns a custom assertion function that can be used to check if a supplied value meets the defined criteria.
+#'
+#' @export
 assert_create_advanced <- function(func){
 
   function_name <- deparse(substitute(func))
