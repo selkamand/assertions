@@ -14,28 +14,27 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(assertions)
-```
-
 ## Getting Started
 
 Do you have a custom assertion that you want to use repeatedly in your code? Then create your own assertion functions with the `assert_create()` function!.
 
-Lets start by recreating the `assert_character()` assertion using `assert_create()`:
+Lets start by recreating the `assert_numeric()` assertion using `assert_create()`:
 
 ```{r, eval=FALSE}
-# Create a function that asserts input is a character value
-assert_character_2 <- assert_create(
-  func = is.character(x), # Returns TRUE/FALSE for assertion PASS/FAIL
-  default_error_msg = "'{arg_name}' must be a character value, not a {class(arg_value)}"
+# Load library
+library(assertions)
+
+# Create a function that asserts input is numeric
+assert_numeric_2 <- assert_create(
+  func = is.numeric(x), # Returns TRUE/FALSE for assertion PASS/FAIL
+  default_error_msg = "'{arg_name}' must be of type numeric, not {class(arg_value)}"
   )
 
-# Assertion passes if input is a character value
-assert_character_2("abc")
+# Assertion passes if input is numeric
+assert_numeric_2(123)
 
-# But throws the expected error if input is not a character value
-assert_character_2(123)
+# But throws the expected error if input is not numeric
+assert_numeric_2("abc")
 
 ```
 
