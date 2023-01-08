@@ -4,7 +4,7 @@
 \alias{assert_logical}
 \title{Assert that the input object is logical}
 \usage{
-assert_logical(x, msg = NULL, call = rlang::caller_env())
+assert_logical(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

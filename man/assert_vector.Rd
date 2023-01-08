@@ -4,16 +4,22 @@
 \alias{assert_vector}
 \title{Assert that the input object is a vector}
 \usage{
-assert_vector(x, msg = NULL, include_lists = FALSE, call = rlang::caller_env())
+assert_vector(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a vector}
 
-\item{include_lists}{A logical indicating whether lists must be considered vectors (default: FALSE)}
-
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+
+\item{...}{
+  Arguments passed on to \code{\link[=is_vector]{is_vector}}
+  \describe{
+    \item{\code{}}{}
+  }}
+
+\item{include_lists}{A logical indicating whether lists must be considered vectors (default: FALSE)}
 }
 \value{
 invisible(TRUE) if \code{x} is a vector, otherwise aborts with the error message specified by \code{msg}

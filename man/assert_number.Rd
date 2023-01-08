@@ -4,7 +4,7 @@
 \alias{assert_number}
 \title{Assert that the input object is a number}
 \usage{
-assert_number(x, msg = NULL, call = rlang::caller_env())
+assert_number(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

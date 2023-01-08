@@ -4,7 +4,7 @@
 \alias{assert_matrix}
 \title{Assert that the input object is a matrix}
 \usage{
-assert_matrix(x, msg = NULL, call = rlang::caller_env())
+assert_matrix(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

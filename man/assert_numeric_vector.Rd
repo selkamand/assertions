@@ -4,7 +4,7 @@
 \alias{assert_numeric_vector}
 \title{Assert that the input object is a numeric vector}
 \usage{
-assert_numeric_vector(x, msg = NULL, call = rlang::caller_env())
+assert_numeric_vector(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}
@@ -12,6 +12,12 @@ assert_numeric_vector(x, msg = NULL, call = rlang::caller_env())
 \item{msg}{A character string containing the error message to display if \code{x} is not a numeric vector}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+
+\item{...}{
+  Arguments passed on to \code{\link[=is_numeric_vector]{is_numeric_vector}}
+  \describe{
+    \item{\code{include_lists}}{A logical value indicating whether lists containing only numeric elements should be considered numeric vectors.}
+  }}
 }
 \value{
 invisible(TRUE) if \code{x} is a numeric vector, otherwise aborts with the error message specified by \code{msg}

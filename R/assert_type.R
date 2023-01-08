@@ -1,6 +1,16 @@
 
+# Utils -------------------------------------------------------------------
+msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
+  a <- ifelse(a, "a ", "")
+  a <- ifelse(an, "an ", a)
+
+  paste0("'{.strong {arg_name}}' must be ",a,"{.strong ",expected_type,"}, not a {.strong {class(arg_value)}}")
+}
+
 # Dataframe ---------------------------------------------------------------
 #' Assert that the input object is a data frame
+#'
+#' @include is_functions.R
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a data frame
@@ -21,18 +31,10 @@
 #' assert_dataframe(1:10, msg = "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_dataframe <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.data.frame(x)) {
-    if (is.null(msg)) {
-      #"'{.strong {string_argname}}' must be a data.frame, not a {class(x)}"
-      msg <- "'{.strong {string_argname}}' must be a {.strong data.frame}, not a {.strong {class(x)}}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
-
+assert_dataframe <- assert_create(
+  func = is.data.frame,
+  default_error_msg = msg_helper_assert_type("data.frame")
+)
 
 
 # Matrix ------------------------------------------------------------------
@@ -54,16 +56,10 @@ assert_dataframe <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' assert_matrix(1:10, "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_matrix <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.matrix(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a matrix, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_matrix <- assert_create(
+  func = is.matrix,
+  default_error_msg = msg_helper_assert_type("matrix")
+)
 
 
 
@@ -74,7 +70,7 @@ assert_matrix <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' @param msg A character string containing the error message to display if `x` is not a vector
 #' @param include_lists A logical indicating whether lists must be considered vectors (default: FALSE)
 #' @inheritParams assert_dataframe
-#'
+#' @inheritDotParams is_vector
 #' @return invisible(TRUE) if `x` is a vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @note
@@ -94,21 +90,24 @@ assert_matrix <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_vector <- function(x, msg = NULL, include_lists = FALSE, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.vector(x) || (inherits(x, what = "list") && !include_lists)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a vector, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"))
 
 
+# assert_vector <- function(x, msg = NULL, include_lists = FALSE, call = rlang::caller_env()) {
+#   string_argname <- deparse(substitute(x))
+#   if (!is_vector(x) || (inherits(x, what = "list") && !include_lists)) {
+#     if (is.null(msg)) {
+#       msg = "'{.strong {string_argname}}' must be a vector, not a {class(x)}"
+#     }
+#     cli::cli_abort(msg, call = call)
+#   }
+#   invisible(TRUE)
+# }
 
 # Numerics ----------------------------------------------------------------
 
+
+## factor -----------------------------------------------------------
 #' Assert that the input object is a factor
 #'
 #' @param x An object
@@ -126,22 +125,15 @@ assert_vector <- function(x, msg = NULL, include_lists = FALSE, call = rlang::ca
 #' }
 #'
 #' @export
-assert_factor <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.factor(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a factor, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_type("factor"))
 
+## numeric -----------------------------------------------------------
 #' Assert that the input object is numeric
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not numeric
 #' @inheritParams assert_dataframe
+#'
 #' @return invisible(TRUE) if `x` is numeric, otherwise aborts with the error message specified by `msg`
 #'
 #'
@@ -154,39 +146,22 @@ assert_factor <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_numeric <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname = deparse(substitute(x))
-  if (!is.numeric(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not numeric! Object class: {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_assert_type("numeric", a = FALSE))
 
+## numeric vector -----------------------------------------------------------
 #' Assert that the input object is a numeric vector
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a numeric vector
 #' @inheritParams assert_dataframe
+#' @inheritDotParams is_numeric_vector
 #' @return invisible(TRUE) if `x` is a numeric vector, otherwise aborts with the error message specified by `msg`
 #'
 #'
 #' @export
-assert_numeric_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.numeric(x) || !is.vector(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a numeric vector, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = msg_helper_assert_type("numeric vector"))
 
-
-
+## number -----------------------------------------------------------
 #' Assert that the input object is a number
 #'
 #' A number is a length 1 numeric vector.
@@ -206,21 +181,9 @@ assert_numeric_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' assert_number(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_number <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.numeric(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a number (Object class: {class(x)})"
-    }
-    cli::cli_abort(msg, call = call)
-  } else if (length(x) != 1) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a number (length is {length(x)}, not 1!)"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+#assert_number <- assert_create(is_number, "{.strong {arg_name}}' must be a {.strong number} (a length one numeric vector), not a length {length(arg_value)} {class(arg_value)}")
+assert_number <- assert_create_advanced(is_number_advanced)
+
 
 #' Assert that the input object is an integer
 #'
@@ -244,20 +207,12 @@ assert_number <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' assert_int(1.5, msg = "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_int <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.integer(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not an integer! Object class: {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = TRUE))
 
 
 # Logicals ----------------------------------------------------------------
 
+## logical -----------------------------------------------------------
 #' Assert that the input object is logical
 #'
 #' @param x An object
@@ -275,24 +230,16 @@ assert_int <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_logical <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.logical(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not logical! Object class: {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a = FALSE))
 
 
+## logical vector -----------------------------------------------------------
 #' Assert that the input object is an atomic logical vector
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not an atomic logical vector
 #' @inheritParams assert_dataframe
-#'
+#' @inheritDotParams is_logical_vector
 #' @return invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the error message specified by msg
 #'
 #' @examples
@@ -302,17 +249,10 @@ assert_logical <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' assert_logical_vector(c(1, 0, 1), "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_logical_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.logical(x) || !is.vector(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a logical vector, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type("logical vector"))
 
+
+## flag -----------------------------------------------------------
 #' Assert that the input object is a scalar logical
 #'
 #' Assert that the input object is a flag (a logical of length 1: `TRUE` or `FALSE`)
@@ -331,26 +271,13 @@ assert_logical_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_flag <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.logical(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a flag (Object class: {class(x)})"
-    }
-    cli::cli_abort(msg, call = call)
-  } else if (length(x) != 1) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a flag (length is {length(x)}, not 1!)"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_flag <- assert_create_advanced(is_flag_advanced)
 
 
 
 # Characters --------------------------------------------------------------
 
+## character -----------------------------------------------------------
 #' Assert that the input object is a character vector
 #'
 #' @param x An object
@@ -368,17 +295,9 @@ assert_flag <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_character <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.character(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a character vector, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_character <- assert_create(is.character, msg_helper_assert_type("character"))
 
+## character vector -----------------------------------------------------------
 #' Assert that the input object is a character vector
 #'
 #' @param x An object
@@ -394,17 +313,10 @@ assert_character <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_character_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.character(x) || !is.vector(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' must be a character vector, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+#'
+assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_type("character vector"))
 
+## string -----------------------------------------------------------
 #' Assert that the input object is a character string
 #'
 #' @param x An object
@@ -421,24 +333,12 @@ assert_character_vector <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' assert_string(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
 #' @export
-assert_string <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  if (!is.character(x)) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a string (Object class: {class(x)})"
-    }
-    cli::cli_abort(msg, call = call)
-  } else if (length(x) != 1) {
-    if (is.null(msg)) {
-      msg <- "'{.strong {string_argname}}' is not a string (length is {length(x)}, not 1!)"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_string <- assert_create_advanced(is_string_advanced)
 
 
 # Functions ---------------------------------------------------------------
+
+## function ----------------------------------------------------------------
 #' Assert that x is a function
 #'
 #' @param x An object
@@ -458,20 +358,4 @@ assert_string <- function(x, msg = NULL, call = rlang::caller_env()) {
 #' }
 #'
 #' @export
-assert_function <- function(x, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-
-  # Specify the actual assertion: x is a function
-  condition <- !is.function(x)
-
-  if (condition) {
-    if (is.null(msg)) {
-      # Specify the default error message
-      msg <- "'{.strong {string_argname}}' must be a function, not a {class(x)}"
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
-
-
+assert_function <- assert_create(is.function, msg_helper_assert_type(expected_type = "function"))

@@ -4,7 +4,7 @@
 \alias{assert_dataframe}
 \title{Assert that the input object is a data frame}
 \usage{
-assert_dataframe(x, msg = NULL, call = rlang::caller_env())
+assert_dataframe(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

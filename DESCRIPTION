@@ -22,3 +22,10 @@ Imports:
     rlang
 URL: https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
+Collate: 
+    'assert.R'
+    'assert_functions.R'
+    'assert_names.R'
+    'is_functions.R'
+    'assert_type.R'
+    'utils.R'

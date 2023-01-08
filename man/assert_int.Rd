@@ -4,7 +4,7 @@
 \alias{assert_int}
 \title{Assert that the input object is an integer}
 \usage{
-assert_int(x, msg = NULL, call = rlang::caller_env())
+assert_int(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

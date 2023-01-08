@@ -4,7 +4,7 @@
 \alias{assert_numeric}
 \title{Assert that the input object is numeric}
 \usage{
-assert_numeric(x, msg = NULL, call = rlang::caller_env())
+assert_numeric(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

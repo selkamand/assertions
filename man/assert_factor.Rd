@@ -4,7 +4,7 @@
 \alias{assert_factor}
 \title{Assert that the input object is a factor}
 \usage{
-assert_factor(x, msg = NULL, call = rlang::caller_env())
+assert_factor(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}

@@ -3,6 +3,7 @@
 export(assert)
 export(assert_character)
 export(assert_character_vector)
+export(assert_create)
 export(assert_dataframe)
 export(assert_factor)
 export(assert_flag)

@@ -4,7 +4,7 @@
 \alias{assert_logical_vector}
 \title{Assert that the input object is an atomic logical vector}
 \usage{
-assert_logical_vector(x, msg = NULL, call = rlang::caller_env())
+assert_logical_vector(x, msg = NULL, call = rlang::caller_env(), ...)
 }
 \arguments{
 \item{x}{An object}
