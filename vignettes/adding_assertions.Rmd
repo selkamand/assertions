@@ -62,3 +62,71 @@ To use this template, follow these steps:
 4.  [Optional] Add any additional arguments to the function definition and documentation, following the same format as msg.
 
 5.  Add examples using the additional arguments, if applicable.
+
+6.  Add unit tests (using template below)
+
+
+## Unit testing template
+
+Use the following template to add unit tests.
+
+To use this template 
+
+1. Change `assert_custom` to the name of your custom assertion
+
+2. Change `valid_input` to an expression your assertion considers valid
+
+3. Change `invalid_input` to an expression your assertion considers invalid
+
+4. Change `"expected_error_message"` to your expected error message
+
+5. Change `"expected_error_message_referring_to_variable_name"` to your expected error message, which should include actual name of the variable passed, not just the value of said varaible. 
+In this case it should include `invalid_input_variable` (e.g. `"''invalid_input_variable' should be 'x' not 'y'"`)
+
+6. Add any extra unit tests that would help improve robustness.
+
+
+```{r, eval = FALSE}
+cli::test_that_cli({{test_name}}, configs = "plain", {
+  
+  # Test that the function works as expected for valid input
+  expect_identical(assert_custom(valid_input), expected = TRUE)
+
+  # Test that the function aborts with the expected error message for invalid input
+  expect_error(assert_custom(invalid_input)}, "expected_error_message", fixed = TRUE)
+
+   # Error messages use variable name of passed arguments
+  invalid_input_variable <- invalid_input
+  expect_error(assert_custom(invalid_input_variable), "expected_error_message_referring_to_variable_name")
+  
+  # Test that custom error messages work
+  expect_error(assert_custom(invalid_input, msg = 'Custom error message'), "Custom error message")
+})
+```
+
+
+A practical example:
+
+Say we create a simple assertion function called `assert_true()` that asserts whatever is passed is TRUE
+
+(in practice we have the `assert()` function that does exactly this)
+
+```{r, eval = FALSE}
+cli::test_that_cli("assert_true() works as expected", configs = "plain", {
+  
+  # Test that the function works as expected for TRUE values
+  expect_identical(assert_true(TRUE), TRUE)
+
+  # Test that the function aborts with an error message for FALSE values
+  expect_error(assert_true(FALSE), "'FALSE' is not TRUE", fixed = TRUE)
+
+  # Test that error messages use variable name of passed arguments
+  x <- FALSE
+  expect_error(assert_true(x), "'x' is not TRUE")
+  
+  # Test that custom error messages work
+  expect_error(assert_true(FALSE, msg = "Custom error message"), "Custom error message")
+})
+
+```
+

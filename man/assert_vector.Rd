@@ -11,7 +11,7 @@ assert_vector(x, msg = NULL, include_lists = FALSE, call = rlang::caller_env())
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a vector}
 
-\item{include_lists}{A logical indicating whether lists should be considered vectors (default: FALSE)}
+\item{include_lists}{A logical indicating whether lists must be considered vectors (default: FALSE)}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 }
