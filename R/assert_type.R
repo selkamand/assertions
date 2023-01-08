@@ -31,6 +31,9 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 #'
 #' assert_dataframe(1:10, msg = "Custom error message") # Throws custom error
 #' }
+#'
+#'
+#' @concept assert_type
 #' @export
 assert_dataframe <- assert_create(
   func = is.data.frame,
@@ -56,6 +59,8 @@ assert_dataframe <- assert_create(
 #' assert_matrix(c(1, 2, 3)) # Throws default error
 #' assert_matrix(1:10, "Custom error message") # Throws custom error
 #' }
+#'
+#' @concept assert_type
 #' @export
 assert_matrix <- assert_create(
   func = is.matrix,
@@ -89,6 +94,8 @@ assert_matrix <- assert_create(
 #' assert_vector(factor(c(1, 2, 3)), "Custom error message") # Throws custom error message
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"))
 
@@ -124,6 +131,8 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 #' assert_factor(1:3, "Custom error message") # Throws custom error
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_type("factor"))
 
@@ -145,6 +154,8 @@ assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_
 #' assert_numeric(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_assert_type("numeric", a = FALSE))
 
@@ -158,6 +169,8 @@ assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_asser
 #' @return invisible(TRUE) if `x` is a numeric vector, otherwise aborts with the error message specified by `msg`
 #'
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = msg_helper_assert_type("numeric vector"))
 
@@ -180,6 +193,9 @@ assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = ms
 #' assert_number("a") # Throws default error
 #' assert_number(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
+#'
+#'
+#' @concept assert_type
 #' @export
 #assert_number <- assert_create(is_number, "{.strong {arg_name}}' must be a {.strong number} (a length one numeric vector), not a length {length(arg_value)} {class(arg_value)}")
 assert_number <- assert_create_advanced(is_number_advanced)
@@ -206,6 +222,9 @@ assert_number <- assert_create_advanced(is_number_advanced)
 #' assert_int("a") # Throws default error
 #' assert_int(1.5, msg = "Custom error message") # Throws custom error
 #' }
+#'
+#'
+#' @concept assert_type
 #' @export
 assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = TRUE))
 
@@ -229,6 +248,9 @@ assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = T
 #' assert_logical(1:3, "Custom error message") # Throws custom error
 #' }
 #'
+#'
+#'
+#' @concept assert_type
 #' @export
 assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a = FALSE))
 
@@ -248,6 +270,9 @@ assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a 
 #' assert_logical_vector("a") # Throws default error
 #' assert_logical_vector(c(1, 0, 1), "Custom error message") # Throws custom error
 #' }
+#'
+#'
+#' @concept assert_type
 #' @export
 assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type("logical vector"))
 
@@ -270,6 +295,8 @@ assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type
 #' assert_flag(1, "Custom error message") # Throws custom error
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_flag <- assert_create_advanced(is_flag_advanced)
 
@@ -294,6 +321,8 @@ assert_flag <- assert_create_advanced(is_flag_advanced)
 #' assert_character(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_character <- assert_create(is.character, msg_helper_assert_type("character"))
 
@@ -312,8 +341,9 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 #' assert_character_vector(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
 #'
-#' @export
 #'
+#' @concept assert_type
+#' @export
 assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_type("character vector"))
 
 ## string -----------------------------------------------------------
@@ -332,6 +362,9 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 #' assert_string(1:3) # Throws default error
 #' assert_string(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' }
+#'
+#'
+#' @concept assert_type
 #' @export
 assert_string <- assert_create_advanced(is_string_advanced)
 
@@ -358,5 +391,7 @@ assert_string <- assert_create_advanced(is_string_advanced)
 #' assert_function(x)  # stops execution and prints an error message
 #' }
 #'
+#'
+#' @concept assert_type
 #' @export
 assert_function <- assert_create(is.function, msg_helper_assert_type(expected_type = "function"))

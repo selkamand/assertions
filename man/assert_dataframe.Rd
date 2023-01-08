@@ -34,4 +34,7 @@ assert_dataframe(factor(c(1, 2, 3))) # Throws default error
 
 assert_dataframe(1:10, msg = "Custom error message") # Throws custom error
 }
+
+
 }
+\concept{assert_type}

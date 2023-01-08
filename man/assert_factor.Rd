@@ -29,4 +29,6 @@ assert_factor(factor(c("a", "b", "c")), "Custom error message") # Passes
 assert_factor(1:3, "Custom error message") # Throws custom error
 }
 
+
 }
+\concept{assert_type}

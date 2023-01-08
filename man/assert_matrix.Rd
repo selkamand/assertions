@@ -28,4 +28,6 @@ assert_matrix(matrix(1:9, 3, 3)) # Passes
 assert_matrix(c(1, 2, 3)) # Throws default error
 assert_matrix(1:10, "Custom error message") # Throws custom error
 }
+
 }
+\concept{assert_type}

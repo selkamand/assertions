@@ -28,4 +28,7 @@ assert_string(c("a", "b", "c")) # Throws default error
 assert_string(1:3) # Throws default error
 assert_string(c("a", 1, "b"), "Custom error message") # Throws custom error
 }
+
+
 }
+\concept{assert_type}

@@ -21,4 +21,6 @@ This function checks if an object is a vector, with the option to exclude lists 
 is_vector(1:10)
 is_vector(list(1:10))
 is_vector(list(1:10), include_lists = TRUE)
+
 }
+\concept{is_type}

@@ -24,4 +24,6 @@ is_numeric_vector(list(1, 2, 3), include_lists = TRUE) # TRUE
 is_numeric_vector(1:5) # TRUE
 is_numeric_vector("hello") # FALSE
 is_numeric_vector(list(1, 2, "a"), include_lists = TRUE) # FALSE
+
 }
+\concept{is_type}

@@ -29,4 +29,7 @@ assert_number(c(2, 3)) # Throws default error
 assert_number("a") # Throws default error
 assert_number(c("a", 1, "b"), "Custom error message") # Throws custom error
 }
+
+
 }
+\concept{assert_type}

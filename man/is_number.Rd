@@ -15,3 +15,4 @@ A logical value indicating whether \code{x} is a single number.
 \description{
 Check if an object is a single number
 }
+\concept{is_type}

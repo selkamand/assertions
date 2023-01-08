@@ -43,4 +43,6 @@ assert_character <- assert_create(
 is_lower("hello") # Returns invisible TRUE
 is_lower("Hello") # Aborts the function with the error message
 }
+
 }
+\concept{assert_create}

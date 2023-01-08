@@ -41,4 +41,6 @@ assert_vector(c("a", 1, "b"), "Custom error message") # Throws custom error mess
 assert_vector(factor(c(1, 2, 3)), "Custom error message") # Throws custom error message
 }
 
+
 }
+\concept{assert_type}

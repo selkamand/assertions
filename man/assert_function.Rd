@@ -32,4 +32,6 @@ x <- "not a function"
 assert_function(x)  # stops execution and prints an error message
 }
 
+
 }
+\concept{assert_type}

@@ -25,3 +25,4 @@ invisible(TRUE) if \code{x} is a numeric vector, otherwise aborts with the error
 \description{
 Assert that the input object is a numeric vector
 }
+\concept{assert_type}

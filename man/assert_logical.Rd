@@ -29,4 +29,7 @@ assert_logical(c("a", "b")) # Throws default error
 assert_logical(1:3, "Custom error message") # Throws custom error
 }
 
+
+
 }
+\concept{assert_type}

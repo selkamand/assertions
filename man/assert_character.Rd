@@ -29,4 +29,6 @@ assert_character(1:3) # Throws default error
 assert_character(c("a", 1, "b"), "Custom error message") # Throws custom error
 }
 
+
 }
+\concept{assert_type}

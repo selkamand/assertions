@@ -34,4 +34,7 @@ assert_int(c(1, 2, 3)) # Passes
 assert_int("a") # Throws default error
 assert_int(1.5, msg = "Custom error message") # Throws custom error
 }
+
+
 }
+\concept{assert_type}

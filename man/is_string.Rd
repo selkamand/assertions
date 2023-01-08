@@ -15,3 +15,4 @@ A logical value indicating whether \code{x} is a single string.
 \description{
 Check if an object is a single string
 }
+\concept{is_type}

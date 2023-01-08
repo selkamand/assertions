@@ -13,6 +13,9 @@
 #' is_vector(1:10)
 #' is_vector(list(1:10))
 #' is_vector(list(1:10), include_lists = TRUE)
+#'
+#' @concept is_type
+#'
 #' @export
 is_vector <- function(x, include_lists = FALSE){
   is.vector(x) && (!inherits(x, what = "list") || include_lists)
@@ -32,6 +35,9 @@ is_vector <- function(x, include_lists = FALSE){
 #' is_numeric_vector(1:5) # TRUE
 #' is_numeric_vector("hello") # FALSE
 #' is_numeric_vector(list(1, 2, "a"), include_lists = TRUE) # FALSE
+#'
+#' @concept is_type
+#'
 #' @export
 is_numeric_vector <- function(x, include_lists = FALSE){
   is.numeric(x) && is_vector(x, include_lists = include_lists)
@@ -41,6 +47,9 @@ is_numeric_vector <- function(x, include_lists = FALSE){
 #'
 #' @param x An object to check.
 #' @return A logical value indicating whether `x` is a single number.
+#'
+#' @concept is_type
+#'
 #' @export
 is_number <- function(x){
   is.numeric(x) && length(x) == 1
@@ -51,6 +60,8 @@ is_number <- function(x){
 #' @param x An object to check.
 #' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
 #' @return A logical value indicating whether `x` is a character vector.
+#'
+#' @concept is_type
 #' @export
 is_character_vector <- function(x, include_lists = FALSE){
   is.character(x) && is_vector(x, include_lists = include_lists)
@@ -62,6 +73,8 @@ is_character_vector <- function(x, include_lists = FALSE){
 #' @param x An object to check.
 #' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
 #' @return A logical value indicating whether `x` is a logical vector.
+#'
+#' @concept is_type
 #' @export
 is_logical_vector <- function(x, include_lists = FALSE){
   is.logical(x) && is_vector(x, include_lists = include_lists)
@@ -71,6 +84,8 @@ is_logical_vector <- function(x, include_lists = FALSE){
 #'
 #' @param x An object to check.
 #' @return A logical value indicating whether `x` is a single string.
+#'
+#' @concept is_type
 #' @export
 is_string <- function(x){
   is.character(x) && length(x) == 1
@@ -95,6 +110,7 @@ is_string <- function(x){
 #' with an error message if x is not a numeric value or has a length other than 1.
 #'
 #' @export
+#' @concept advanced
 is_number_advanced <- function(x){
   if(!is.numeric(x))
     return("'{.strong {arg_name}}' is not a {.strong number}! (class is {.strong {class(arg_value)}}, not {.strong numeric})")
@@ -116,8 +132,9 @@ is_number_advanced <- function(x){
 #' @return Returns invisible(TRUE) if x is a logical value with length 1. Returns a string
 #' with an error message if x is not a logical value or has a length other than 1.
 #'
+#'
+#' @concept advanced
 #' @export
-
 is_flag_advanced <- function(x){
   if(!is.logical(x))
     return("'{.strong {arg_name}}' is not a {.strong flag}! (class is {.strong {class(arg_value)}}, not {.strong logical})")
@@ -139,8 +156,8 @@ is_flag_advanced <- function(x){
 #' @return Returns invisible(TRUE) if x is a character value with length 1. Returns a string
 #' with an error message if x is not a character value or has a length other than 1.
 #'
+#' @concept advanced
 #' @export
-
 is_string_advanced <- function(x){
   if(!is.character(x))
     return("'{.strong {arg_name}}' is not a {.strong string}! (class is {.strong {class(arg_value)}}, not {.strong character})")

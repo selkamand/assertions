@@ -31,4 +31,7 @@ assert_logical_vector(c(TRUE, TRUE, TRUE)) # Passes
 assert_logical_vector("a") # Throws default error
 assert_logical_vector(c(1, 0, 1), "Custom error message") # Throws custom error
 }
+
+
 }
+\concept{assert_type}

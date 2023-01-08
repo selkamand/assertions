@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert.R
 \name{assert_create_advanced}
 \alias{assert_create_advanced}
-\title{Create a custom assertion function}
+\title{Create an advanced assertion function}
 \usage{
 assert_create_advanced(func)
 }
@@ -19,3 +19,4 @@ Returns a custom assertion function that can be used to check if a supplied valu
 Creates a custom assertion function that can be used to check if a supplied value meets certain criteria.
 The input function is required to return TRUE if the assertion should pass or a string error message if it should fail.
 }
+\concept{assert_create}

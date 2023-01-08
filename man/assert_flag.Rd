@@ -29,4 +29,6 @@ assert_flag(c(TRUE, FALSE)) # Throws default error
 assert_flag(1, "Custom error message") # Throws custom error
 }
 
+
 }
+\concept{assert_type}

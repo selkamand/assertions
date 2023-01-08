@@ -17,3 +17,4 @@ A logical value indicating whether \code{x} is a logical vector.
 \description{
 Check if an object is a logical vector
 }
+\concept{is_type}

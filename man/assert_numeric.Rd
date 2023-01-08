@@ -29,4 +29,6 @@ assert_numeric(c("a", "b", "c")) # Throws default error
 assert_numeric(c("a", 1, "b"), "Custom error message") # Throws custom error
 }
 
+
 }
+\concept{assert_type}

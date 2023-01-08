@@ -13,6 +13,8 @@
 #' assert(2 == 1, 3 == 3) # Throws default error
 #' assert(2 == 1, 3 == 3, msg = "Custom error message") # Throws custom error
 #' }
+#'
+#' @concept assert_create
 #' @export
 assert <- function(..., msg = NULL, call = rlang::caller_env()) {
   all_expressions_list <- eval(substitute(alist(...)))
@@ -70,6 +72,8 @@ assert <- function(..., msg = NULL, call = rlang::caller_env()) {
 #' is_lower("hello") # Returns invisible TRUE
 #' is_lower("Hello") # Aborts the function with the error message
 #'}
+#'
+#' @concept assert_create
 #' @export
 assert_create <- function(func,  default_error_msg){
 
@@ -117,7 +121,7 @@ assert_create <- function(func,  default_error_msg){
 }
 
 
-#' Create a custom assertion function
+#' Create an advanced assertion function
 #'
 #' Creates a custom assertion function that can be used to check if a supplied value meets certain criteria.
 #' The input function is required to return TRUE if the assertion should pass or a string error message if it should fail.
@@ -129,6 +133,8 @@ assert_create <- function(func,  default_error_msg){
 #'
 #' @return Returns a custom assertion function that can be used to check if a supplied value meets the defined criteria.
 #'
+#'
+#' @concept assert_create
 #' @export
 assert_create_advanced <- function(func){
 

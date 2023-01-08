@@ -17,3 +17,4 @@ A logical value indicating whether \code{x} is a character vector.
 \description{
 Check if an object is a character vector
 }
+\concept{is_type}
