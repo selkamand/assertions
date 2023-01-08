@@ -96,7 +96,7 @@ Just use `assert_create()`, you just need to supply:
 
 **How about an example?**
 
-```{r eval=FALSE, include=FALSE}
+```{r, eval = FALSE}
 # Create a function that asserts input is lowercase 
 assert_lowercase <- assert_create(
   func = function(x) {x == tolower(x)}, 
