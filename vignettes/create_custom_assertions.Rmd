@@ -51,11 +51,33 @@ To create a custom assertion function, you need to supply two arguments to asser
 
 ## Advanced Assertions
 
-Sometimes you need more than one error message per assertion. So you also have the option of using `{assert_create_advanced()}`.
+**Problem:**
 
-This function works in a similar way to `assert_create{}` but it takes only one argument: `func`
+Sometimes it is necessary to perform several assertions on a single object, and return error messages specific to the mode of failure. In these cases, it can be useful to chain together a series of different assertions on the object.
 
-**What does `func`** **expect?**
+**Solution:**
 
-1.  **(like `assert_create`)** Function must return TRUE when assertion passes
-2.  **(unlike `assert_create`)** If assertion should fail, the function must return a character string describing the error to display. You can implement different error messages for each of the ways the assertion can fail.
+The `assert_create_chain()` function allows you to combine multiple assertion functions created with `assert_create()` into a single assertion. Each of the wrapped assertions are evaluated in the order they are supplied, and if any of the assertions fail, the appropriate error message is returned.
+
+**Example**
+
+Here's an example of how to use `assert_create_chain()` to create an assertion function that asserts input is a string by individually asserting that
+
+1.  Input is a 'character' type
+
+2.  Input length is 1
+
+```{r, eval=FALSE}
+assert_string <- assert_create_chain(
+  assert_create(is.character, '{arg_name} must be a character, not {class(arg_value)}'),
+  assert_create(function(s){ length(s)==1 }, '{arg_name} must be length 1, not {arg_value}')
+)
+
+# Assert String
+assert_string("String")
+
+assert_string(3)
+# Output: Error: '3' must be a character
+```
+
+
