@@ -24,9 +24,12 @@ URL: https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
 Collate: 
     'assert.R'
+    'assert_functions.R'
     'utils.R'
     'assert_create.R'
-    'assert_functions.R'
-    'assert_names.R'
+    'assert_dataframe.R'
     'is_functions.R'
+    'assert_names.R'
     'assert_type.R'
+    'has.R'
+    'set_operations.R'

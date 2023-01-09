@@ -4,20 +4,24 @@
 \alias{assert_logical_vector}
 \title{Assert that the input object is an atomic logical vector}
 \usage{
-assert_logical_vector(x, msg = NULL, call = rlang::caller_env(), ...)
+assert_logical_vector(
+  x,
+  include_lists = FALSE,
+  msg = NULL,
+  call = rlang::caller_env(),
+  arg_name = NULL
+)
 }
 \arguments{
 \item{x}{An object}
+
+\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{msg}{A character string containing the error message to display if x is not an atomic logical vector}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
-\item{...}{
-  Arguments passed on to \code{\link[=is_logical_vector]{is_logical_vector}}
-  \describe{
-    \item{\code{include_lists}}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
-  }}
+\item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
 invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the error message specified by msg

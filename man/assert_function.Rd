@@ -4,7 +4,7 @@
 \alias{assert_function}
 \title{Assert that x is a function}
 \usage{
-assert_function(x, msg = NULL, call = rlang::caller_env(), ...)
+assert_function(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
 \arguments{
 \item{x}{An object}
@@ -13,7 +13,7 @@ assert_function(x, msg = NULL, call = rlang::caller_env(), ...)
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
-\item{...}{Used to pass any arguments to assertion function}
+\item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
 invisible(TRUE) if \code{x} is a function, otherwise aborts with the error message specified by \code{msg}

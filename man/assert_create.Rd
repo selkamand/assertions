@@ -28,7 +28,7 @@ An assertion function.
 \description{
 This function creates an assertion function that can be used to check the
 validity of an input.
-All assertions provided with this package are created using either \code{\link[=assert_create]{assert_create()}} or \code{\link[=assert_create_advanced]{assert_create_advanced()}}
+All assertions provided with this package are created using either \code{\link[=assert_create]{assert_create()}} or \code{\link[=assert_create_chain]{assert_create_chain()}}
 }
 \examples{
 \dontrun{

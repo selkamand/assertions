@@ -2,7 +2,7 @@
 #'
 #' @param ... a list of conditions to check
 #' @param msg A character string containing the error message to display if any of the conditions are not met. The string can include the placeholder {failed_expressions} to insert a list of the failed expressions. The string can also include {?s} and {?is/are} to insert the correct pluralization for the list of failed expressions.
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if all conditions are met, otherwise aborts with the error message specified by msg
 #'

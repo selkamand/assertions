@@ -68,6 +68,10 @@ is_character_vector <- function(x, include_lists = FALSE){
 }
 
 
+is_scalar <- function(x){
+ length(x) == 1
+}
+
 #' Check if an object is a logical vector
 #'
 #' @param x An object to check.
@@ -89,6 +93,24 @@ is_logical_vector <- function(x, include_lists = FALSE){
 #' @export
 is_string <- function(x){
   is.character(x) && length(x) == 1
+}
+
+
+#' Check if a value is a logical flag
+#'
+#' This function checks if a value is a logical scalar (i.e., a single logical value).
+#'
+#' @param x A value to check.
+#' @return A logical scalar indicating whether `x` is a logical flag.
+#' @examples
+#' is_flag(TRUE)
+#' is_flag(FALSE)
+#' is_flag(c(TRUE, FALSE))
+#' @export
+#' @concept is_type
+#'
+is_flag <- function(x){
+  is.logical(x) && length(x) == 1
 }
 
 
@@ -167,3 +189,8 @@ is_string_advanced <- function(x){
 
   return(invisible(TRUE))
 }
+
+
+
+
+

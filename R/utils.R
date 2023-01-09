@@ -1,4 +1,16 @@
 
+#' Title
+#'
+#' @param call Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.
+#' @param arg_name Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).
+#' @param ... Used to pass any arguments to assertion function
+#'
+#'
+common_roxygen_params <- function(call, arg_name, ...){
+
+}
+
+
 # Cli formatting helpers --------------------------------------------------
 
 #' Preprocess character vectors for cli::cli_abort()

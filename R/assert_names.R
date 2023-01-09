@@ -1,11 +1,31 @@
+
+
+
+#' Check if a named object has all specified names
+#'
+#' This function returns a logical value indicating whether the object `x` has all the names specified in `names`.
+#'
+#' @param x a named object
+#' @param names A character vector of names to check for in `x`.
+#' @return A logical value indicating whether `x` has all the names specified in `names`.
+#' @examples
+#' assertions:::has_all_names(list(a = 1, b = 2), c("a", "b"))  # returns TRUE
+#' assertions:::has_all_names(list(a = 1, b = 2), c("a", "c"))  # returns FALSE
+has_all_names <- function(x, names){
+  is_subset(names, names(x))
+}
+
+
+
 #' Assert that the input object includes a specified name
 #'
-#' @param x An object to check for the presence of a name
+#' @param x An object to check for the presence of specific names
 #' @param names A character vector of names to check for in `x`
 #' @param msg A character string containing the error message to display if any of the `names` are not present in `x`
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
+#' @inheritParams has_all_names
 #' @return invisible(TRUE) if all `names` are present in `x`, otherwise aborts with the error message specified by `msg`
-#'
+#' @include is_functions.R
 #' @examples
 #' \dontrun{
 #' x <- list(a = 1, b = 2, c = 3)
@@ -18,15 +38,8 @@
 #' }
 #'
 #' @export
-assert_names_include <- function(x, names, msg = NULL, call = rlang::caller_env()) {
-  string_argname <- deparse(substitute(x))
-  missing_names <- setdiff(names, names(x))
-  if (length(missing_names) > 0) {
-    if (is.null(msg)) {
-      n_missing <- ifelse(length(missing_names) == length(names), yes = "all", no = length(missing_names))
-      msg <- c("'{.strong {string_argname}}' is missing {length(missing_names)} required name{?s}: ", format_as_bullets(missing_names, bullet = "x"))
-    }
-    cli::cli_abort(msg, call = call)
-  }
-  invisible(TRUE)
-}
+assert_names_include <- assert_create(
+  has_all_names,
+  "'{.strong {arg_name}}' is missing {.strong {setopts_count_exlusive_to_first(names, names(arg_value))}} required name{?s}:
+  {.strong `{setopts_exlusive_to_first(names, names(arg_value))}`}"
+)

@@ -4,16 +4,24 @@
 \alias{assert_names_include}
 \title{Assert that the input object includes a specified name}
 \usage{
-assert_names_include(x, names, msg = NULL, call = rlang::caller_env())
+assert_names_include(
+  x,
+  names,
+  msg = NULL,
+  call = rlang::caller_env(),
+  arg_name = NULL
+)
 }
 \arguments{
-\item{x}{An object to check for the presence of a name}
+\item{x}{An object to check for the presence of specific names}
 
 \item{names}{A character vector of names to check for in \code{x}}
 
 \item{msg}{A character string containing the error message to display if any of the \code{names} are not present in \code{x}}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+
+\item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
 invisible(TRUE) if all \code{names} are present in \code{x}, otherwise aborts with the error message specified by \code{msg}

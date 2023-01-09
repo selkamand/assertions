@@ -14,8 +14,8 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a data frame
-#' @param call Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.
-#' @param ... Used to pass any arguments to assertion function
+#' @inheritParams common_roxygen_params
+#'
 #' @return invisible(TRUE) if `x` is a data frame, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -48,7 +48,7 @@ assert_dataframe <- assert_create(
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a matrix
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is a matrix, otherwise aborts with the error message specified by `msg`
 #'
@@ -74,8 +74,8 @@ assert_matrix <- assert_create(
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a vector
-#' @inheritDotParams is_vector
-#' @inheritParams assert_dataframe
+#' @inheritParams is_vector
+#' @inheritParams common_roxygen_params
 #' @return invisible(TRUE) if `x` is a vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @note
@@ -119,7 +119,7 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a factor
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is a factor, otherwise aborts with the error message specified by `msg`
 #'
@@ -141,7 +141,7 @@ assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not numeric
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is numeric, otherwise aborts with the error message specified by `msg`
 #'
@@ -164,8 +164,8 @@ assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_asser
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a numeric vector
-#' @inheritParams assert_dataframe
-#' @inheritDotParams is_numeric_vector
+#' @inheritParams common_roxygen_params
+#' @inheritParams  is_numeric_vector
 #' @return invisible(TRUE) if `x` is a numeric vector, otherwise aborts with the error message specified by `msg`
 #'
 #'
@@ -182,7 +182,7 @@ assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = ms
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not a number
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if x is a number, otherwise aborts with the error message specified by msg
 #'
@@ -197,15 +197,17 @@ assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = ms
 #'
 #' @concept assert_type
 #' @export
-#assert_number <- assert_create(is_number, "{.strong {arg_name}}' must be a {.strong number} (a length one numeric vector), not a length {length(arg_value)} {class(arg_value)}")
-assert_number <- assert_create_advanced(is_number_advanced)
+assert_number <- assert_create_chain(
+  assert_create(is.numeric, "'{.strong {arg_name}}' is not a number! (class is {.strong {class(arg_value)}}, not numeric)"),
+  assert_create(is_scalar, "'{.strong {arg_name}}' is not a number! (length is {.strong {length(arg_value)}}, not 1)")
+)
 
 
 #' Assert that the input object is an integer
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not an integer
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is an integer, otherwise aborts with the error message specified by `msg`
 #'
@@ -236,7 +238,7 @@ assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = T
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not logical
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is logical, otherwise aborts with the error message specified by `msg`
 #'
@@ -260,8 +262,8 @@ assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a 
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not an atomic logical vector
-#' @inheritParams assert_dataframe
-#' @inheritDotParams is_logical_vector
+#' @inheritParams common_roxygen_params
+#' @inheritParams is_logical_vector
 #' @return invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the error message specified by msg
 #'
 #' @examples
@@ -284,7 +286,7 @@ assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a scalar logical
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #' @return invisible(TRUE) if `x` is a scalar logical, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -298,8 +300,10 @@ assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type
 #'
 #' @concept assert_type
 #' @export
-assert_flag <- assert_create_advanced(is_flag_advanced)
-
+assert_flag <- assert_create_chain(
+  assert_create(is.logical, "'{.strong {arg_name}}' is not a flag! (class is {.strong {class(arg_value)}}, not logical)"),
+  assert_create(is_scalar, "'{.strong {arg_name}}' is not a flag! (length is {.strong {length(arg_value)}}, not 1)")
+)
 
 
 # Characters --------------------------------------------------------------
@@ -309,7 +313,7 @@ assert_flag <- assert_create_advanced(is_flag_advanced)
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a character vector
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is a character vector, otherwise aborts with the error message specified by `msg`
 #'
@@ -331,7 +335,8 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a character vector
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
+#' @inheritParams is_character_vector
 #' @return invisible(TRUE) if `x` is a character vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -351,7 +356,7 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not a character vector
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg
 #'
@@ -366,7 +371,10 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 #'
 #' @concept assert_type
 #' @export
-assert_string <- assert_create_advanced(is_string_advanced)
+assert_string <- assert_create_chain(
+  assert_create(is.character, "'{.strong {arg_name}}' is not a string! (class is {.strong {class(arg_value)}}, not character)"),
+  assert_create(is_scalar, "'{.strong {arg_name}}' is not a string! (length is {.strong {length(arg_value)}}, not 1)")
+  )
 
 
 # Functions ---------------------------------------------------------------
@@ -376,7 +384,7 @@ assert_string <- assert_create_advanced(is_string_advanced)
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a function
-#' @inheritParams assert_dataframe
+#' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is a function, otherwise aborts with the error message specified by `msg`
 #'
@@ -395,3 +403,4 @@ assert_string <- assert_create_advanced(is_string_advanced)
 #' @concept assert_type
 #' @export
 assert_function <- assert_create(is.function, msg_helper_assert_type(expected_type = "function"))
+#

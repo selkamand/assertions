@@ -4,16 +4,24 @@
 \alias{assert_character_vector}
 \title{Assert that the input object is a character vector}
 \usage{
-assert_character_vector(x, msg = NULL, call = rlang::caller_env(), ...)
+assert_character_vector(
+  x,
+  include_lists = FALSE,
+  msg = NULL,
+  call = rlang::caller_env(),
+  arg_name = NULL
+)
 }
 \arguments{
 \item{x}{An object}
+
+\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a character vector}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
-\item{...}{Used to pass any arguments to assertion function}
+\item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
 invisible(TRUE) if \code{x} is a character vector, otherwise aborts with the error message specified by \code{msg}
