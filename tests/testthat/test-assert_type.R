@@ -379,7 +379,7 @@ cli::test_that_cli("assert_string() works", configs = "plain", {
 
 
 # Assert list ---------------------------------------------------------
-test_that("assert_list() works", {
+cli::test_that_cli("assert_list() works", configs = "plain", {
 
   # Works for lists
   expect_true(assert_list(list(1, 2, 3)))

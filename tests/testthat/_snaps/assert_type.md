@@ -1,4 +1,4 @@
-# assert_list() works
+# assert_list() works [plain]
 
     Code
       assert_list(1)
