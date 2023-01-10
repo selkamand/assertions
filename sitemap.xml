@@ -1,117 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://selkamand.github.io/assertions/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/LICENSE-text.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/LICENSE.html</loc>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/articles/create_custom_assertions.html</loc>
+    <loc>/articles/create_custom_assertions.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/articles/index.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/authors.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/index.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert.html</loc>
+    <loc>/reference/assert.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_character.html</loc>
+    <loc>/reference/assert_character.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_character_vector.html</loc>
+    <loc>/reference/assert_character_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_create.html</loc>
+    <loc>/reference/assert_create.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_create_advanced.html</loc>
+    <loc>/reference/assert_create_chain.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_dataframe.html</loc>
+    <loc>/reference/assert_dataframe.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_factor.html</loc>
+    <loc>/reference/assert_factor.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_flag.html</loc>
+    <loc>/reference/assert_flag.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_function.html</loc>
+    <loc>/reference/assert_function.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_int.html</loc>
+    <loc>/reference/assert_has_no_duplicates.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_logical.html</loc>
+    <loc>/reference/assert_has_no_missing_values.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_logical_vector.html</loc>
+    <loc>/reference/assert_int.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_matrix.html</loc>
+    <loc>/reference/assert_list.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_names_include.html</loc>
+    <loc>/reference/assert_logical.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_number.html</loc>
+    <loc>/reference/assert_logical_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_numeric.html</loc>
+    <loc>/reference/assert_matrix.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_numeric_vector.html</loc>
+    <loc>/reference/assert_names_include.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_string.html</loc>
+    <loc>/reference/assert_number.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/assert_vector.html</loc>
+    <loc>/reference/assert_numeric.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/format_as_bullets.html</loc>
+    <loc>/reference/assert_numeric_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/format_inline.html</loc>
+    <loc>/reference/assert_string.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/index.html</loc>
+    <loc>/reference/assert_vector.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_character_vector.html</loc>
+    <loc>/reference/common_roxygen_params.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_flag_advanced.html</loc>
+    <loc>/reference/format_as_bullets.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_logical_vector.html</loc>
+    <loc>/reference/format_inline.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_number.html</loc>
+    <loc>/reference/has_all_names.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_number_advanced.html</loc>
+    <loc>/reference/has_duplicates.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_numeric_vector.html</loc>
+    <loc>/reference/has_missing_values.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_string.html</loc>
+    <loc>/reference/has_no_duplicates.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_string_advanced.html</loc>
+    <loc>/reference/has_no_missing_values.html</loc>
   </url>
   <url>
-    <loc>https://selkamand.github.io/assertions/reference/is_vector.html</loc>
+    <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_character_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_flag.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_flag_advanced.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_list.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_logical_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_number.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_number_advanced.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_numeric_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_string.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_string_advanced.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_subset.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_superset.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/setopts_are_equal.html</loc>
+  </url>
+  <url>
+    <loc>/reference/setopts_common_elements.html</loc>
+  </url>
+  <url>
+    <loc>/reference/setopts_count_exlusive_to_first.html</loc>
+  </url>
+  <url>
+    <loc>/reference/setopts_exlusive_to_first.html</loc>
+  </url>
+  <url>
+    <loc>/reference/util_count_duplicates.html</loc>
+  </url>
+  <url>
+    <loc>/reference/util_count_missing.html</loc>
+  </url>
+  <url>
+    <loc>/reference/util_get_duplicated_values.html</loc>
   </url>
 </urlset>
