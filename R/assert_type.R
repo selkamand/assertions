@@ -5,6 +5,7 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
   a <- ifelse(an, "an ", a)
 
   paste0("'{.strong {arg_name}}' must be ",a,"{.strong ",expected_type,"}, not a {.strong {class(arg_value)}}")
+
 }
 
 # Dataframe ---------------------------------------------------------------
@@ -403,4 +404,31 @@ assert_string <- assert_create_chain(
 #' @concept assert_type
 #' @export
 assert_function <- assert_create(is.function, msg_helper_assert_type(expected_type = "function"))
-#
+
+
+
+# Lists -------------------------------------------------------------------
+
+#' Assert that x is a list
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if `x` is not a list
+#' @inheritParams common_roxygen_params
+#' @inheritParams is_list
+#' @return invisible(TRUE) if `x` is a list, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' # Assert that a variable is a list
+#' x <- list(1, 2, 3)
+#' assert_list(x)  # does nothing
+#'
+#' # Assert that a variable is not a list
+#' x <- "not a list"
+#' assert_list(x)  # stops execution and prints an error message
+#' }
+#'
+#' @concept assert_type
+#' @export
+assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "list"))
+

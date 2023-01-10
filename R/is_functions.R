@@ -113,6 +113,26 @@ is_flag <- function(x){
   is.logical(x) && length(x) == 1
 }
 
+#' Check if a value is a list
+#'
+#' This function checks if a value is a list.
+#' By default, definition of a 'list' excludes data.frames in spite of them technically being lists.
+#' This behaviour can be changed by setting `include_dataframes = TRUE`
+#'
+#' @param x A value to check.
+#' @param include_dataframes A logical indicating whether lists should be considered vectors. Default is `FALSE`.
+#' @return A logical scalar indicating whether `x` is a list.
+#' @examples
+#' is_list(list(1, 2)) # TRUE
+#' is_list(c(1, 2, 3)) # FALSE
+#' is_list(data.frame()) # FALSE
+#' is_list(data.frame(), include_dataframes = TRUE) # TRUE
+#' @export
+#' @concept is_type
+#'
+is_list <- function(x, include_dataframes = FALSE){
+  is.list(x) && (!is.data.frame(x) || include_dataframes)
+}
 
 # assert_create_advanced functions -----------------------------------------
 # These functions are for feeding into assert_create_advanced

@@ -377,3 +377,27 @@ cli::test_that_cli("assert_string() works", configs = "plain", {
   expect_error(assert_string(1:10, msg = "Custom error message"), "Custom error message")
 })
 
+
+# Assert list ---------------------------------------------------------
+test_that("assert_list() works", {
+
+  # Works for lists
+  expect_true(assert_list(list(1, 2, 3)))
+  expect_true(assert_list(list()))
+
+  # Aborts for non-list objects
+  expect_snapshot(assert_list(1), error = TRUE)
+  expect_snapshot(assert_list(1.5), error = TRUE)
+  expect_snapshot(assert_list('abc'), error = TRUE)
+  expect_snapshot(assert_list(c(1, 2, 3)), error= TRUE)
+  expect_snapshot(assert_list(mtcars), error= TRUE)
+  expect_snapshot(assert_list(factor(c(1, 2, 3))), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  y <- c(1, 2, 3)
+  expect_error(assert_list(y), "'y'", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_list(1, msg = "Custom error message"), "Custom error message")
+})
+

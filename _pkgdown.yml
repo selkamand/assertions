@@ -1,30 +1,4 @@
-url: https://selkamand.github.io/assertions
+url: ~
 template:
   bootstrap: 5
-
-reference:
-- title: Assert Type
-  desc:  Throw error if variable is not the specified type
-- contents:
-  - has_concept("assert_type")
-- title: Is Type
-  desc:  Returns TRUE if variable is the specified type, otherwise FALSE
-- contents:
-  - has_concept("is_type")
-- title: Assert Names
-  desc: Assertions that check name properties
-- contents:
-  - starts_with("assert_names")
-- title: Create Assertions
-  desc:  Can't find a premade assertion thats covers your use-case? These functions allow you to assert ANYTHING!
-- contents:
-  - has_concept("assert_create")
-- title: Error formatting
-  desc: Functions that format strings and affect how they look once displayed as error messages
-- contents:
-  - starts_with("format")
-- title: Advanced
-  desc: Functions that return TRUE if assertion should pass and strings containing error messages if assertion should fail. Compatible with `assert_create_advanced()`
-- contents:`
-  - has_concept("advanced")
 
