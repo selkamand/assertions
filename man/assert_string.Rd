@@ -4,7 +4,7 @@
 \alias{assert_string}
 \title{Assert that the input object is a character string}
 \usage{
-assert_string(x, msg = NULL, call = rlang::caller_env(), ...)
+assert_string(x, msg = NULL, call = rlang::caller_env())
 }
 \arguments{
 \item{x}{An object}
@@ -12,8 +12,6 @@ assert_string(x, msg = NULL, call = rlang::caller_env(), ...)
 \item{msg}{A character string containing the error message to display if x is not a character vector}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
-
-\item{...}{Used to pass any arguments to assertion function}
 }
 \value{
 invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg

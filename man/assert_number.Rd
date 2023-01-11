@@ -4,7 +4,7 @@
 \alias{assert_number}
 \title{Assert that the input object is a number}
 \usage{
-assert_number(x, msg = NULL, call = rlang::caller_env(), ...)
+assert_number(x, msg = NULL, call = rlang::caller_env())
 }
 \arguments{
 \item{x}{An object}
@@ -12,8 +12,6 @@ assert_number(x, msg = NULL, call = rlang::caller_env(), ...)
 \item{msg}{A character string containing the error message to display if x is not a number}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
-
-\item{...}{Used to pass any arguments to assertion function}
 }
 \value{
 invisible(TRUE) if x is a number, otherwise aborts with the error message specified by msg

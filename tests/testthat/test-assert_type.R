@@ -167,6 +167,9 @@ cli::test_that_cli("assert_numeric_vector() works", configs = "plain",  {
 # Assert Number -----------------------------------------------------------
 
 cli::test_that_cli("assert_number() works", configs = "plain",  {
+  # Error messages use variable name of passed arguments
+  y <- c(1, 2, 3)
+  expect_error(assert_number(y), "'y' is not a number! (length is 3, not 1)", fixed = TRUE)
   # Works for numeric scalars
   expect_identical(assert_number(3), TRUE)
   expect_identical(assert_number(-5.5), TRUE)
@@ -181,9 +184,6 @@ cli::test_that_cli("assert_number() works", configs = "plain",  {
   expect_error(assert_number(function(x) x), "'function(x) x' is not a number! (class is function, not numeric)", fixed = TRUE)
   expect_error(assert_number(environment()), "'environment()' is not a number! (class is environment, not numeric)", fixed = TRUE)
 
-  # Error messages use variable name of passed arguments
-  y <- c(1, 2, 3)
-  expect_error(assert_number(y), "'y' is not a number! (length is 3, not 1)", fixed = TRUE)
 
   # Custom error messages work
   expect_error(assert_number(1:5, msg = "Custom error message"), "Custom error message")
@@ -369,6 +369,7 @@ cli::test_that_cli("assert_string() works", configs = "plain", {
 
   # Error messages use variable name of passed arguments
   y <- c(1, 2, 3)
+
   expect_error(assert_string(y), "'y' is not a string! (class is numeric, not character)", fixed = TRUE)
   z <- c("a", "b")
   expect_error(assert_string(z), "'z' is not a string! (length is 2, not 1)", fixed = TRUE)

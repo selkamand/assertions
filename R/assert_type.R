@@ -11,8 +11,8 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 # Dataframe ---------------------------------------------------------------
 #' Assert that the input object is a data frame
 #'
+#' @include assert_create.R
 #' @include is_functions.R
-#'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a data frame
 #' @inheritParams common_roxygen_params

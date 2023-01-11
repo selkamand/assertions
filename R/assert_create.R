@@ -131,6 +131,96 @@ assert_create <- function(func, default_error_msg){
   return(assertion_function)
 }
 
+# assert_create_debug<- function(func, default_error_msg){
+#
+#   # Check arguments
+#   function_name <- paste0(deparse(substitute(func)), collapse = "")
+#
+#
+#   # Ensure func is a valid function
+#   if(!is.function(func)){
+#     cli::cli_abort("`{function_name}` must be a function, not a {class(func)}")
+#   }
+#
+#   # Ensure func has at least 1 argument
+#   if(func_arg_count(func) == 0){
+#     cli::cli_abort("`{function_name}` must have at least 1 paramater to be used in `assert_create`")
+#   }
+#
+#   # Ensure default_error_msg is a string
+#   if(!is_string(default_error_msg)){
+#     default_error_msg_deparsed <- deparse(substitute(default_error_msg))
+#     cli::cli_abort("{default_error_msg_deparsed} must be a string (length 1 character vector). Class: {class(default_error_msg)}; Length: {length(default_error_msg)}")
+#   }
+#
+#   # Get arguments of user supplied function
+#   args <- func_args_as_pairlist(func)
+#   args[1] <- NULL
+#
+#   # Assert that function has no arguments named 'x', 'msg' or 'call', 'arg_name', since we need to add our own
+#   if(any(c('x','msg', 'call', 'arg_name') %in% names(args))){
+#     cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'x', 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
+#   }
+#
+#   # Change argument 1 to 'x' and add 'msg'  call arguments 2 & 3
+#   args <- append(args, as.pairlist(alist(x = )), after = 0)
+#   args <- append(args, as.pairlist(alist(msg = NULL, call = rlang::caller_env(), arg_name = NULL)),after = Inf)
+#
+#
+#   # Create body of assertion function
+#   body = quote({
+#     # Setup some variables ( these will be useful later)
+#     if(is.null(arg_name))
+#       arg_name <- deparse(substitute(x))
+#     else if(!is_string(arg_name))
+#       cli::cli_abort("{.strong arg_name} must be a string, not a {class(arg_name)}")
+#
+#     arg_value <- x
+#
+#     # Get the list of arguments with values explicitly supplied in function call
+#     explicit_args <- as.list(match.call())[-1]
+#     browser()
+#     # Assert all arguments without defaults are explicitly supplied in the function call
+#     arg_has_default <- !unlist(as.list(formals()) == substitute())
+#     args_without_defaults <- names(arg_has_default)[arg_has_default == FALSE]
+#     args_missing <- args_without_defaults[!args_without_defaults %in% names(explicit_args)]
+#     if(length(args_missing) > 0){
+#       cli::cli_abort("{args_missing} are required, with no default")
+#     }
+#
+#
+#     # Create list of arguments - value pairs to be called with func (using do.call)
+#     # Lets just supply x in position 1 (unnamed), then pass whatevers supplied by arg_has_default with its original names
+#     names(explicit_args)[1] <- "" # unname first argument
+#
+#     # Also filter out msg & call arguments the user supplied func won't understand these
+#     explicit_args_for_func <- explicit_args[!names(explicit_args) %in% c("msg", "call", "arg_name")]
+#
+#
+#     # Info
+#     #cli::cli_alert_info("Calling `func` using the argument values: {paste0(names(explicit_args_for_func), ' = ', explicit_args_for_func)}")
+#
+#     # Call supplied function
+#     condition <- do.call(func, args = explicit_args_for_func, envir = parent.frame())
+#
+#     if(!is.logical(condition) || length(condition) != 1) # Change to is.flag once this method is created
+#       cli::cli_abort("Assertion Function `{.strong {function_name}}` must return TRUE / FALSE. Instead returned: `{condition}`")
+#
+#     if(is.null(msg))
+#       msg <- default_error_msg
+#
+#     if(!condition)
+#       cli::cli_abort(msg, call = call)
+#     else
+#       return(invisible(TRUE))
+#   })
+#
+#   # Create assertion_function
+#   assertion_function <- rlang::new_function(args, body, env = rlang::env(func = func))
+#
+#   return(assertion_function)
+# }
+
 #' @title Create Chains of Assertions
 #'
 #' @description
@@ -175,25 +265,65 @@ assert_create_chain <- function(...){
   # Check functions all have the required arguments (x, msg & call)
   if(!all(vapply(dot_args, function(f){ all(c('x', 'msg', 'call', 'arg_name') %in% func_arg_names(f)) }, FUN.VALUE = logical(1)))){
     cli::cli_abort(
-    c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",
-    "",
-    assert_create_chain_example
-    ))
+      c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",
+        "",
+        assert_create_chain_example
+      ))
   }
 
+  # Save assertion functons in a list
   assertion_functions <- dot_args
 
+  # Get arguments of each assertion function
+  param_pairlist_nested <- lapply(assertion_functions, func_args_as_pairlist)
+  param_pairlist_flat <- unlist(param_pairlist_nested, recursive = FALSE)
+  param_pairlist <- param_pairlist_flat[!duplicated(names(param_pairlist_flat))]
+  #unique_params <- unlist(unique(arglist))
+
   # Return a wrapper function that calls each of the functions
-  chained_assertion_function <- function(x, msg = NULL, call = rlang::caller_env(),...) {
+  chained_assertion_function <- rlang::new_function(
+    args = param_pairlist,
+    body = quote({
 
-    arg_name_upperlevel <- deparse(substitute(x))
 
-    for (f in assertion_functions) {
-      do.call(f, list(x = x, msg = msg, call = call, arg_name = arg_name_upperlevel, ...))
-    }
-    return(invisible(TRUE))
-  }
+      arg_name_upperlevel <- deparse(substitute(x))
 
+      explicit_args <- as.list(match.call())[-1]
+      explicit_args <- lapply(explicit_args, function(a) {
+        if(is.symbol(a))
+          eval.parent(a, n = 3)
+        else return(a)
+      })
+
+      # Assert all arguments without defaults are explicitly supplied in the function call
+      arg_has_default <- !unlist(as.list(formals()) == substitute())
+      args_without_defaults <- names(arg_has_default)[arg_has_default == FALSE]
+      args_missing <- args_without_defaults[!args_without_defaults %in% names(explicit_args)]
+      if(length(args_missing) > 0){
+        cli::cli_abort("{args_missing} are required, with no default")
+      }
+
+
+      # If user doesn't override `explicit_args`, set to variable name
+      # This lets downstream functions use the correct variable name as {arg_name}
+      if(!"arg_name" %in% names(explicit_args)){
+        explicit_args <- append(explicit_args, list(arg_name = arg_name_upperlevel), after = Inf)
+      }
+
+      # Do a simliar thing with call, since if you just let the assertions use the default call, it will be the assertion functions parent env, not the caller
+      if(! "call" %in% names(explicit_args)){
+        explicit_args <- append(explicit_args, list(call = call), after = Inf)
+      }
+
+      for (f in assertion_functions) {
+        # filter explicit_args for only the functions args that 'f' understands.
+        args_relevant_to_function_f <- explicit_args[names(explicit_args) %in% func_arg_names(f)]
+        do.call(f, args_relevant_to_function_f)
+      }
+      return(invisible(TRUE))
+      }),
+    env = rlang::env(assertion_functions = assertion_functions)
+  )
   return(chained_assertion_function)
 }
 
