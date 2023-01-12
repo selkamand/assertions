@@ -49,6 +49,9 @@
     <loc>/reference/assert_function.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_greater_than.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_has_no_duplicates.html</loc>
   </url>
   <url>
@@ -122,6 +125,12 @@
   </url>
   <url>
     <loc>/reference/is_flag_advanced.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_greater_than.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_greater_than_or_equal_to.html</loc>
   </url>
   <url>
     <loc>/reference/is_list.html</loc>
