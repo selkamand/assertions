@@ -52,6 +52,9 @@
     <loc>/reference/assert_greater_than.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_greater_than_or_equal_to.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_has_no_duplicates.html</loc>
   </url>
   <url>
