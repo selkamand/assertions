@@ -278,6 +278,13 @@ assert_create_chain <- function(...){
   param_pairlist_nested <- lapply(assertion_functions, func_args_as_pairlist)
   param_pairlist_flat <- unlist(param_pairlist_nested, recursive = FALSE)
   param_pairlist <- param_pairlist_flat[!duplicated(names(param_pairlist_flat))]
+
+  # reorder arguments so that arguments to functions take precedence
+  args_to_put_at_end <- c("msg", "call", "arg_name")
+  param_pairlist <- c(param_pairlist[!(names(param_pairlist) %in% args_to_put_at_end)], param_pairlist[names(param_pairlist) %in% args_to_put_at_end])
+
+
+
   #unique_params <- unlist(unique(arglist))
 
   # Return a wrapper function that calls each of the functions

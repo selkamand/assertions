@@ -23,10 +23,13 @@
 #'
 #' @concept assert_comparison
 #' @export
-
-assert_greater_than <- assert_create(
-  func = is_greater_than,
-  default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
+assert_greater_than <-
+  assert_create_chain(
+    assert_numeric,
+    assert_create(
+      is_greater_than,
+      default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
+      )
 )
 
 #' Assert that the input object is greater than or equal to a specified minimum value
@@ -44,5 +47,15 @@ assert_greater_than <- assert_create(
 #' @examples
 #' \dontrun{
 #' assert_greater_than_or_equal_to(3, 2) # Passes
-#' assert_greater_than_or_equal_to(3, 2, all_must_satisfy = TRUE) # Passes
-#' assert_greater_than_or_equal_to
+#' assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
+#' assert_greater_than_or_equal_to(2, 3) # Throws error
+#' }
+#' @export
+assert_greater_than_or_equal_to <-
+  assert_create_chain(
+    assert_numeric,
+    assert_create(
+      is_greater_than_or_equal_to,
+      default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
+    )
+  )
