@@ -23,13 +23,12 @@
 #'
 #' @concept assert_comparison
 #' @export
-assert_greater_than <-
-  assert_create_chain(
-    assert_numeric,
-    assert_create(
-      is_greater_than,
-      default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
-      )
+assert_greater_than <- assert_create_chain(
+  assert_numeric,
+  assert_create(
+    is_greater_than,
+    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
+    )
 )
 
 #' Assert that the input object is greater than or equal to a specified minimum value
@@ -51,11 +50,31 @@ assert_greater_than <-
 #' assert_greater_than_or_equal_to(2, 3) # Throws error
 #' }
 #' @export
-assert_greater_than_or_equal_to <-
-  assert_create_chain(
-    assert_numeric,
-    assert_create(
-      is_greater_than_or_equal_to,
-      default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
-    )
+assert_greater_than_or_equal_to <- assert_create_chain(
+  assert_numeric,
+  assert_create(
+    is_greater_than_or_equal_to,
+    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
   )
+)
+
+#' Assert that the input object is identical to a specified value
+#'
+#' @include assert_create.R
+#' @include is_functions.R
+#' @param x An object to check
+#' @param y The value to compare against
+#' @param msg A character string containing the error message to display if `x` is not identical to the specified value
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is identical to the specified value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' assert_identical(3, 3) # Passes
+#' assert_identical(c(3, 3, 3), 3, all_must_satisfy = TRUE) # Passes
+#' assert_identical(2, 3) # Throws error
+#' }
+#' @export
+assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {arg_name}} must be identical to {.strong {deparse(substitute(y))}}")
+

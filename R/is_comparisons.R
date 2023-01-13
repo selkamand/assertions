@@ -1,5 +1,50 @@
 # Comparisons -------------------------------------------------------------
 
+# Engine
+compare <- function(x, equal_to = NULL, minimum = NULL, maximum = NULL, comparison_inclusive = TRUE, all_must_satisfy = TRUE){
+
+  # Check at least one comparison criterion is supplied
+  if(is.null(minimum) && is.null(maximum) && is.null(equal_to))
+    stop("Must supply at least one threshold: either 'equal_to', `minimum` or maximum")
+
+  # Assert no missing values
+  assert_has_no_missing_values(x, arg_name = deparse(substitute(x, env = parent.frame())))
+
+  # Preset some vals
+  passes_min_threshold = TRUE
+  passes_max_threshold = TRUE
+  passes_equivalence = TRUE
+
+
+  # Is Greater Than
+  if(!is.null(minimum)){
+    if(comparison_inclusive) passes_min_threshold <- x >= minimum
+    else passes_min_threshold <- x > minimum
+    passes_min_threshold <- if(all_must_satisfy) all(passes_min_threshold) else any(passes_min_threshold)
+  }
+
+
+  # Is Less Than
+  if(!is.null(maximum)) {
+    if(comparison_inclusive) passes_max_threshold <- x <= maximum
+    else passes_max_threshold <- x < maximum
+
+    passes_max_threshold <- if(all_must_satisfy) all(passes_max_threshold) else any(passes_max_threshold)
+  }
+
+  # Is Equal To
+  if(!is.null(equal_to)){
+    passes_equivalence <- x == equal_to
+    passes_equivalence <- if(all_must_satisfy) all(passes_equivalence) else any(passes_equivalence)
+  }
+
+  # Passes thresholds
+  passes_all_thresholds <- passes_min_threshold && passes_max_threshold && passes_equivalence
+
+  return(passes_all_thresholds)
+}
+
+
 #' Check if a numeric vector is greater than a specified minimum value
 #'
 #' This function checks if a numeric vector is greater than a specified minimum value. It can also optionally check if all elements of the vector must be greater than the minimum value or if only one element is sufficient
@@ -16,19 +61,7 @@
 #' is_greater_than(c(2,3,1), 3) # FALSE
 #' @export
 is_greater_than <- function(x, minimum, all_must_satisfy = TRUE){
-
-  # Assert no missing values
-  assert_has_no_missing_values(x, arg_name = deparse(substitute(x)))
-
-  # Comparison
-  res <- x > minimum
-
-  # Deal with vectors
-  if(all_must_satisfy) {
-    return(all(res))
-  }
-  else
-    return(any(res))
+  compare(x = x, minimum = minimum, all_must_satisfy = all_must_satisfy, comparison_inclusive = FALSE)
 }
 
 #' Check if a numeric vector is greater than or equal to a specified minimum value
@@ -46,14 +79,17 @@ is_greater_than <- function(x, minimum, all_must_satisfy = TRUE){
 #' is_greater_than_or_equal_to(c(2,3,1), 3) # FALSE
 #' @export
 is_greater_than_or_equal_to <- function(x, minimum, all_must_satisfy = TRUE){
-
-  # Assert no missing values
-  assert_has_no_missing_values(x, arg_name = deparse(substitute(x)))
-
-  res <- x >= minimum
-  if(all_must_satisfy) {
-    return(all(res))
-  }
-  else
-    return(any(res))
+  compare(x = x, minimum = minimum, all_must_satisfy = all_must_satisfy, comparison_inclusive = TRUE)
 }
+
+
+#' Check if two objects are identical
+#'
+#' @param x first object to compare
+#' @param y second object to compare
+#' @return logical value indicating whether or not the objects are identical
+#' @export
+is_identical <- function(x, y){
+  identical(x = x, y = y)
+}
+

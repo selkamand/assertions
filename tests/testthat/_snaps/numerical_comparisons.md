@@ -117,3 +117,38 @@
     Error <rlang_error>
       ''c(4, NA)' must have no missing values! Found 1
 
+# assert_identical() works [plain]
+
+    Code
+      assert_identical(c(3, 3, 3), 3)
+    Error <rlang_error>
+      c(3, 3, 3) must be identical to 3
+
+---
+
+    Code
+      assert_identical(3, 4)
+    Error <rlang_error>
+      3 must be identical to 4
+
+---
+
+    Code
+      assert_identical(c(1, 2, 3), 3)
+    Error <rlang_error>
+      c(1, 2, 3) must be identical to 3
+
+---
+
+    Code
+      assert_identical(list(1, 2, 3), list(1, 2, 4))
+    Error <rlang_error>
+      list(1, 2, 3) must be identical to list(1, 2, 4)
+
+---
+
+    Code
+      assert_identical(c(a = 3), c(b = 3))
+    Error <rlang_error>
+      c(a = 3) must be identical to c(b = 3)
+

@@ -12,8 +12,6 @@ is_greater_than(x, minimum, all_must_satisfy = TRUE)
 \item{minimum}{The minimum value to compare against}
 
 \item{all_must_satisfy}{A logical value indicating whether all elements of the vector must be greater than the minimum value or if only one element is sufficient. Default is TRUE}
-
-\item{na_allowed}{should NAs be allowed. If \code{na_allowed = TRUE}, all NAs will be treated as Inf. Othwerise will return \code{FALSE} if any NAs are present}
 }
 \value{
 A logical value indicating whether all elements of the numeric vector x are greater than the specified minimum value
