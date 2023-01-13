@@ -103,3 +103,17 @@
     Error <rlang_error>
       'NULL' must be numeric, not a NULL
 
+---
+
+    Code
+      assert_greater_than_or_equal_to(NA, 3)
+    Error <rlang_error>
+      'NA' must be numeric, not a logical
+
+---
+
+    Code
+      assert_greater_than_or_equal_to(c(4, NA), 3)
+    Error <rlang_error>
+      ''c(4, NA)' must have no missing values! Found 1
+

@@ -71,7 +71,7 @@ assert_create <- function(func, default_error_msg){
     cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'x', 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
   }
 
-  # Change argument 1 to 'x' and add 'msg'  call arguments 2 & 3
+  # Change argument 1 to 'x' and add 'msg', 'call' and 'arg_name' arguments at the end
   args <- append(args, as.pairlist(alist(x = )), after = 0)
   args <- append(args, as.pairlist(alist(msg = NULL, call = rlang::caller_env(), arg_name = NULL)),after = Inf)
 

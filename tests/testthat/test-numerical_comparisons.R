@@ -62,6 +62,8 @@ cli::test_that_cli("assert_greater_than_or_equal_to() works", config = "plain", 
   expect_snapshot(assert_greater_than_or_equal_to(factor(c(1, 2, 3)), 2), error = TRUE)
   expect_snapshot(assert_greater_than_or_equal_to(TRUE, 2), error = TRUE)
   expect_snapshot(assert_greater_than(NULL, 2), error = TRUE)
+  expect_snapshot(assert_greater_than_or_equal_to(NA, 3), error = TRUE)
+  expect_snapshot(assert_greater_than_or_equal_to(c(4, NA), 3), error = TRUE)
 
 })
 

@@ -6,7 +6,6 @@
 #'
 #' @param x a numeric vector to check
 #' @param minimum The minimum value to compare against
-#' @param na_allowed should NAs be allowed. If `na_allowed = TRUE`, all NAs will be treated as Inf. Othwerise will return `FALSE` if any NAs are present
 #' @param all_must_satisfy A logical value indicating whether all elements of the vector must be greater than the minimum value or if only one element is sufficient. Default is TRUE
 #'
 #' @return A logical value indicating whether all elements of the numeric vector x are greater than the specified minimum value
@@ -19,7 +18,7 @@
 is_greater_than <- function(x, minimum, all_must_satisfy = TRUE){
 
   # Assert no missing values
-  assert_has_no_missing_values(x)
+  assert_has_no_missing_values(x, arg_name = deparse(substitute(x)))
 
   # Comparison
   res <- x > minimum
@@ -49,7 +48,7 @@ is_greater_than <- function(x, minimum, all_must_satisfy = TRUE){
 is_greater_than_or_equal_to <- function(x, minimum, all_must_satisfy = TRUE){
 
   # Assert no missing values
-  assert_has_no_missing_values(x)
+  assert_has_no_missing_values(x, arg_name = deparse(substitute(x)))
 
   res <- x >= minimum
   if(all_must_satisfy) {
