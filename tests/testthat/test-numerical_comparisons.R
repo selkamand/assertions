@@ -90,6 +90,9 @@ cli::test_that_cli("assert_identical() works", config = "plain", {
   expect_snapshot(assert_identical(c(1, 2, 3), 3), error = TRUE)
   expect_snapshot(assert_identical(list(1, 2, 3), list(1, 2, 4)), error = TRUE)
 
+  # Throws error when comparing function call to raw value
+  expect_snapshot(assert_identical(x = length(1:3), y = 3), error = TRUE)
+
   # Throws errors when names are not identical
   expect_snapshot(assert_identical(c("a" = 3), c("b" = 3)), error = TRUE)
 
@@ -100,6 +103,47 @@ cli::test_that_cli("assert_identical() works", config = "plain", {
   x <- 3
   y <- 4
   expect_error(assert_identical(x, y), "x.*y")
+
+})
+
+
+cli::test_that_cli("assert_equal() works", config = "plain", {
+
+  # Passes
+  expect_true(assert_equal(3, 3))
+  expect_true(assert_equal("hello", "hello"))
+  expect_true(assert_equal(list(1, 2, 3), list(1, 2, 3)))
+  expect_true(assert_equal(2, 2))
+  expect_true(assert_equal(2.5, 2.5))
+  expect_true(assert_equal('abc', 'abc'))
+  expect_true(assert_equal(list(1, 2, 3), list(1, 2, 3)))
+  expect_true(assert_equal(c(1, 2, 3), c(1, 2, 3)))
+  expect_true(assert_equal(factor(c(1, 2, 3)), factor(c(1, 2, 3))))
+  expect_true(assert_equal(TRUE, TRUE))
+  expect_true(assert_equal(NULL, NULL))
+  expect_true(assert_equal(NA, NA))
+  expect_true(assert_equal(c(4, NA), c(4, NA)))
+
+  #Passes even when comparing function call to exact match of returned value
+  expect_true(assert_equal(x = length(1:3), y = 3))
+
+  # Throws default errors when false
+  expect_snapshot(assert_equal(c(3, 3, 3), 3), error = TRUE)
+  expect_snapshot(assert_equal(3, 4), error = TRUE)
+  expect_snapshot(assert_equal(c(1, 2, 3), 3), error = TRUE)
+  expect_snapshot(assert_equal(list(1, 2, 3), list(1, 2, 4)), error = TRUE)
+
+  # Throws errors when names are not identical, only when check_names = TRUE
+  expect_snapshot(assert_equal(c("a" = 3), c("b" = 3), check_names = TRUE), error = TRUE)
+  expect_true(assert_equal(c("a" = 3), c("b" = 3), check_names = FALSE))
+
+  # Throws custom error
+  expect_error(assert_equal(3, 4, msg = "custom error message"), "custom error message")
+
+  # Error message uses variable name of passed arguments
+  x <- 3
+  y <- 4
+  expect_error(assert_equal(x, y), "x.*y")
 
 })
 

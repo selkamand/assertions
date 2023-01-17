@@ -26,7 +26,7 @@ Assert that the input object is identical to a specified value
 \examples{
 \dontrun{
 assert_identical(3, 3) # Passes
-assert_identical(c(3, 3, 3), 3, all_must_satisfy = TRUE) # Passes
+assert_identical(c(3, 3, 3), 3) # Throws error
 assert_identical(2, 3) # Throws error
 }
 }

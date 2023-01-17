@@ -92,3 +92,28 @@ is_greater_than_or_equal_to <- function(x, minimum, all_must_satisfy = TRUE){
 is_identical <- function(x, y){
   identical(x = x, y = y)
 }
+
+#' Check equality of two objects
+#'
+#' Is `x` equal to `y`. powered by the [all.equal()] function.
+#'
+#' @param x first object to compare
+#' @param y second object to compare
+#' @param tolerance Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric ≥ 0).
+#' @param check_names should the names(.) of target and current should be compare (flag)
+#' @param check_environment should the environments of functions should be compared?
+#' You may need to set check.environment=FALSE in unexpected cases, such as when comparing two nls() fits. (flag)
+#' @param check_tzone should  "tzone" attributes be compared. Important for comparing POSIXt objects. (flag)
+#' @return TRUE if x is equal to y
+#' @export
+#'
+#' @examples
+#' is_equal(1, 1) #TRUE
+#' is_equal(c(1, 2), 1) #FALSE
+#'
+#' is_equal(c("A", "B"), c("A", "B")) #TRUE
+#' is_equal("A", "B") #FALSE
+#'
+is_equal <- function(x, y, tolerance = sqrt(.Machine$double.eps), check_names = TRUE, check_environment = TRUE, check_tzone = TRUE){
+  isTRUE(all.equal(x, y, check.names = check_names, check.environment = check_environment, check.tzone = check_tzone))
+}

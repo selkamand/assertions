@@ -148,7 +148,49 @@
 ---
 
     Code
+      assert_identical(x = length(1:3), y = 3)
+    Error <rlang_error>
+      length(1:3) must be identical to 3
+
+---
+
+    Code
       assert_identical(c(a = 3), c(b = 3))
     Error <rlang_error>
       c(a = 3) must be identical to c(b = 3)
+
+# assert_equal() works [plain]
+
+    Code
+      assert_equal(c(3, 3, 3), 3)
+    Error <rlang_error>
+      c(3, 3, 3) must be equal to 3
+
+---
+
+    Code
+      assert_equal(3, 4)
+    Error <rlang_error>
+      3 must be equal to 4
+
+---
+
+    Code
+      assert_equal(c(1, 2, 3), 3)
+    Error <rlang_error>
+      c(1, 2, 3) must be equal to 3
+
+---
+
+    Code
+      assert_equal(list(1, 2, 3), list(1, 2, 4))
+    Error <rlang_error>
+      list(1, 2, 3) must be equal to list(1, 2, 4)
+
+---
+
+    Code
+      assert_equal(c(a = 3), c(b = 3), check_names = TRUE)
+    Error <rlang_error>
+      c(a = 3) must be equal to c(b = 3)
 
