@@ -71,6 +71,23 @@
 <dd><p>The value to compare against</p></dd>
 
 
+<dt>tolerance</dt>
+<dd><p>Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric ≥ 0).</p></dd>
+
+
+<dt>check_names</dt>
+<dd><p>should the names(.) of target and current should be compare (flag)</p></dd>
+
+
+<dt>check_environment</dt>
+<dd><p>should the environments of functions should be compared?
+You may need to set check.environment=FALSE in unexpected cases, such as when comparing two nls() fits. (flag)</p></dd>
+
+
+<dt>check_tzone</dt>
+<dd><p>should  "tzone" attributes be compared. Important for comparing POSIXt objects. (flag)</p></dd>
+
+
 <dt>msg</dt>
 <dd><p>A character string containing the error message to display if <code>x</code> is not equal to <code>y</code></p></dd>
 
