@@ -92,4 +92,3 @@ is_greater_than_or_equal_to <- function(x, minimum, all_must_satisfy = TRUE){
 is_identical <- function(x, y){
   identical(x = x, y = y)
 }
-

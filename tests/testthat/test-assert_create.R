@@ -1,3 +1,5 @@
+# Test Creation of Simple Assertion Chains  -----------------------------------------------------
+
 cli::test_that_cli(configs = "plain", "assert_create() returns an assertion function", {
   assert_create_output <- assert_create(is.numeric, "Error: Argument must be numeric")
   expect_true(is.function(assert_create_output))
@@ -7,6 +9,7 @@ cli::test_that_cli(configs = "plain", "assertion function returns invisible TRUE
   assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
   expect_true(assert_is_numeric(2))
 })
+
 
 cli::test_that_cli(configs = "plain", "assertion function aborts with default error message if condition is not met", {
   assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
@@ -23,7 +26,7 @@ cli::test_that_cli(configs = "plain", "assert_create() aborts if func is not a f
 })
 
 cli::test_that_cli(configs = "plain", "assert_create() aborts if func has 0 arguments", {
-  expect_error(assert_create(function(){}), "`function() {}` must have at least 1 paramater to be used in `assert_create`", fixed=TRUE)
+expect_error(assert_create(function(){}), "`function() {}` must have at least 1 paramater to be used in `assert_create`", fixed=TRUE)
 })
 
 cli::test_that_cli(configs = "plain", "assert_create() aborts if default_error_msg is not a string", {
@@ -33,4 +36,16 @@ cli::test_that_cli(configs = "plain", "assert_create() aborts if default_error_m
 cli::test_that_cli(configs = "plain", "assertion function aborts if func does not return a logical scalar", {
   assert_is_numeric <- assert_create(function(x) x, "Error: Argument must be numeric")
   expect_error(assert_is_numeric(2), "Assertion Function `function(x) x` must return TRUE / FALSE. Instead returned: `2`", fixed=TRUE)
+})
+
+
+# Test Creation of Assertion Chains  -----------------------------------------------------
+cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions part and not get confused if they contain variable names", {
+  #assert_is_character <- assert_create(is.character, "Error: {arg_name} must be a character")
+  assert_chain<- assert_create_chain(
+    assert_create(is.character, "{arg_name} must be a character"),
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  )
+  y = c(1, 2)
+  expect_error(assert_chain(length(y)), regexp = "length(y) must be a character", fixed = TRUE)
 })

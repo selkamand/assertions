@@ -77,4 +77,3 @@ assert_greater_than_or_equal_to <- assert_create_chain(
 #' }
 #' @export
 assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {arg_name}} must be identical to {.strong {deparse(substitute(y))}}")
-
