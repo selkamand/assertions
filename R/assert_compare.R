@@ -1,7 +1,9 @@
 #' Assert that the input object is greater than a specified minimum value
 #'
 #' @include assert_create.R
+#' @include assert_type.R
 #' @include is_functions.R
+#' @include is_comparisons.R
 #' @param x An object to check
 #' @param minimum The minimum value to compare against
 #' @param all_must_satisfy A logical value indicating whether all elements of the vector must be greater than the minimum value or if only one element is sufficient.
@@ -33,8 +35,6 @@ assert_greater_than <- assert_create_chain(
 
 #' Assert that the input object is greater than or equal to a specified minimum value
 #'
-#' @include assert_create.R
-#' @include is_functions.R
 #' @param x An object to check
 #' @param minimum The minimum value to compare against
 #' @param all_must_satisfy A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient.
@@ -60,8 +60,6 @@ assert_greater_than_or_equal_to <- assert_create_chain(
 
 #' Assert that the input object is identical to a specified value
 #'
-#' @include assert_create.R
-#' @include is_functions.R
 #' @param x An object to check
 #' @param y The value to compare against
 #' @param msg A character string containing the error message to display if `x` is not identical to the specified value
