@@ -85,7 +85,7 @@ assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {a
 #' @param y The value to compare against
 #' @param msg A character string containing the error message to display if `x` is not equal to `y`
 #' @inheritParams common_roxygen_params
-#'
+#' @inheritParams is_equal
 #' @return invisible(TRUE) if `x` is equal to the specified value, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
