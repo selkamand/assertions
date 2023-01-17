@@ -40,6 +40,9 @@
     <loc>/reference/assert_dataframe.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_equal.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_factor.html</loc>
   </url>
   <url>
@@ -125,6 +128,9 @@
   </url>
   <url>
     <loc>/reference/is_character_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_equal.html</loc>
   </url>
   <url>
     <loc>/reference/is_flag.html</loc>
