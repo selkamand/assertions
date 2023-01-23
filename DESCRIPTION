@@ -32,6 +32,7 @@ Collate:
     'assert_type.R'
     'assert_compare.R'
     'assert_dataframe.R'
+    'assert_files.R'
     'assert_names.R'
     'has.R'
     'set_operations.R'

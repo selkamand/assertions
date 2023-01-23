@@ -142,7 +142,6 @@ assert_create <- function(func, default_error_msg){
 #'
 #' @return A single assertion function that calls each of the input functions in the order they are supplied.
 #'
-#' @export
 #'
 #' @examples
 #' # Create an assertion function that checks for both positive integers and even values
@@ -159,6 +158,7 @@ assert_create <- function(func, default_error_msg){
 #' assert_string(3)
 #' # Output: Error: '3' must be a character
 #' }
+#' @export
 assert_create_chain <- function(...){
 
   # Get list of arguments
