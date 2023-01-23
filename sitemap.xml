@@ -40,10 +40,16 @@
     <loc>/reference/assert_dataframe.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_directory.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_equal.html</loc>
   </url>
   <url>
     <loc>/reference/assert_factor.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_file_exists.html</loc>
   </url>
   <url>
     <loc>/reference/assert_flag.html</loc>
