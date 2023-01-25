@@ -52,6 +52,12 @@
     <loc>/reference/assert_file_exists.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_file_extension.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_file_permissions.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_flag.html</loc>
   </url>
   <url>
@@ -121,6 +127,9 @@
     <loc>/reference/has_duplicates.html</loc>
   </url>
   <url>
+    <loc>/reference/has_extension.html</loc>
+  </url>
+  <url>
     <loc>/reference/has_missing_values.html</loc>
   </url>
   <url>
@@ -128,6 +137,9 @@
   </url>
   <url>
     <loc>/reference/has_no_missing_values.html</loc>
+  </url>
+  <url>
+    <loc>/reference/has_permission.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
