@@ -33,6 +33,43 @@ is_dir <- function(filepaths){
    all(dir.exists(filepaths))
 }
 
+get_file_extensions <- function(filenames) {
+  filenames <- basename(filenames)
+
+  vapply(filenames, function(x) {
+    extension <- sub("^.*\\.", "", x)
+    if (extension == x) extension <- ""
+    extension
+  }, character(1))
+}
+
+#' Title
+#'
+#' @param x object to test
+#' @param extensions valid extensions (character vector). Do not include the '.', e.g. supply `extensions = 'txt'` not `extensions = '.txt'`
+#' @param compression should compression extension ‘.gz’, ‘.bz2’ or ‘.xz’ be removed first?
+#'
+#' @return TRUE if all x have valid extensions as supplied by `extensions` (flag)
+#' @export
+#'
+has_extension <- function(x, extensions, compression = FALSE){
+  if(compression){
+    x = sub(x = x,"\\.(gz|bz2|xz)$","")
+  }
+
+  observed_ext <- get_file_extensions(x)
+  all(observed_ext %in% extensions)
+}
+
+files_missing_extension <- function(x, extensions, compression = FALSE){
+  if(compression){
+    x = sub(x = x,"\\.(gz|bz2|xz)$","")
+  }
+
+  observed_ext <- get_file_extensions(x)
+  x[!observed_ext %in% extensions]
+}
+
 # Files ---------------------------------------------------------------
 #' Assert a file exists
 #'
@@ -110,4 +147,34 @@ assert_directory <- assert_create_chain(
 assert_file_permissions <- assert_create_chain(
   assert_file_exists,
   assert_create(has_permission, default_error_msg = "File {.file {arg_value}} does not have permission {permission}")
+)
+
+
+#' Assert file extensions
+#'
+#' Assert that all files supplied have one of the selected extensions
+#'
+#' @include assert_create.R
+#' @include is_functions.R
+#'
+#' @param x An object
+#' @param msg A character string containing the error message if file `x` does not have the specified extensions
+#' @inheritParams common_roxygen_params
+#' @inheritParams has_extension
+#'
+#' @return invisible(TRUE) if `x` has any of the specified extensions, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' assert_file_extension("foo.txt", extensions = "txt") # Passes
+#' assert_file_permissions("file.txt", extensions = "csv") # Throws Error
+#' }
+#'
+#' @concept assert_file
+#'
+#' @export
+assert_file_extension <- assert_create(
+  has_extension, "{.strong {arg_name}} {?have/has} an invalid extension (required extension/s: {.strong {extensions}}).
+  The following file{?s} ha{?s/ve} unexpected extensions:
+  [{files_missing_extension(arg_value, extensions, compression)}]"
 )
