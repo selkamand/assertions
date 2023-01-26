@@ -5,9 +5,11 @@
 #' All assertions provided with this package are created using either [assert_create()] or [assert_create_chain()]
 #'
 #' @param func A function defining the assertion criteria. This function should
-#'   return a logical value (`TRUE` when assertion is passed or `FALSE` when it fails)
+#'   return a logical value (`TRUE` when assertion is passed or `FALSE` when it fails).
+#'   Alternatively, instead of returning FALSE, you can return a string which will act as the error message.
+#'   In this latter case, you don't need to supply a `default_error_msg`
 #' @param default_error_msg A character string providing an error message in case
-#' the assertion fails.
+#' the assertion fails. Must be supplied if function `func` returns `FALSE` when assertion fails (as opposed to a string)
 #' Can include the following special terms
 #`
 #' 1. `{arg_name}` to refer to the name of the variable supplied to the assertion.
@@ -40,7 +42,7 @@
 #' @include assert_functions.R
 #' @concept assert_create
 #' @export
-assert_create <- function(func, default_error_msg){
+assert_create <- function(func, default_error_msg = NULL){
 
   # Check arguments
   function_name <- paste0(deparse(substitute(func)), collapse = "")
@@ -57,7 +59,7 @@ assert_create <- function(func, default_error_msg){
   }
 
   # Ensure default_error_msg is a string
-  if(!is_string(default_error_msg)){
+  if(!is.null(default_error_msg) & !is_string(default_error_msg)){
     default_error_msg_deparsed <- deparse(substitute(default_error_msg))
     cli::cli_abort("{default_error_msg_deparsed} must be a string (length 1 character vector). Class: {class(default_error_msg)}; Length: {length(default_error_msg)}")
   }
@@ -113,13 +115,23 @@ assert_create <- function(func, default_error_msg){
     # Call supplied function
     condition <- do.call(func, args = explicit_args_for_func, envir = parent.frame())
 
-    if(!is.logical(condition) || length(condition) != 1) # Change to is.flag once this method is created
-      cli::cli_abort("Assertion Function `{.strong {function_name}}` must return TRUE / FALSE. Instead returned: `{condition}`")
+    if(!(is.logical(condition) || is.character(condition)) || length(condition) != 1) # Change to is.flag once this method is created
+      cli::cli_abort("Assertion Function `{.strong {function_name}}` must return TRUE if assertion passes and FALSE or a String if assertion should fail. Instead returned: `{condition}`")
 
-    if(is.null(msg))
+    if(isFALSE(condition) & is.null(default_error_msg))
+      cli::cli_abort("Assertion Function `{.strong {function_name}}` returned FALSE, indicating assertion should fail, however no {.arg default_error_msg} was supplied! Please add a {.arg default_error_msg} to your assert_create call, or change function to return a string describing the error instead of `FALSE`")
+
+    # If user doesn't supply an error message, set msg to the default
+    if(is.null(msg)){
+
+     if(isFALSE(condition))
       msg <- default_error_msg
 
-    if(!condition)
+     else if(is.character(condition))
+      msg <- condition
+    }
+
+    if(is.character(condition) || !condition )
       cli::cli_abort(msg, call = call)
     else
       return(invisible(TRUE))

@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Getting Started
 
-Do you have a custom assertion that you want to use repeatedly in your code? Then create your own assertion functions with the `assert_create()` function!.
+Do you have a custom assertion that you want to use repeatedly in your code? Then create your own assertion functions with the `assert_create()` function!
 
 Lets start by recreating the `assert_numeric()` assertion using `assert_create()`:
 
@@ -80,4 +80,54 @@ assert_string(3)
 # Output: Error: '3' must be a character
 ```
 
+
+## More Advanced Assertions
+
+**Problem:**
+
+We often need error messages to vary significantly based on the input. 
+
+**Solution**
+
+In such cases, it is more convenient to define the error messages in the function you pass to `func`. 
+How does this work?
+
+In our call to `assert_create`, instead of defining a `default_error_msg`, we can design `func` to return a string when the assertion should fail. This string will become the error message. By returning different strings upon different failure conditions, we can produce very diverse error messages very easily.
+
+**Example**
+
+Here's a recreation of the example above, using a `func` that supplies strings to indicate assertion failure
+
+```{r, eval=FALSE}
+# Define Function
+is_a_string <- function(object){
+ if(!is.character(object))
+   return("{arg_name} must be a character, not class({arg_value})")
+  
+  if(length(object) != 1){
+    return("{arg_name} must be length 1, not {length(object)}")
+  }
+  
+  return(TRUE)
+}
+
+# Create Assertion
+assert_is_string <- assert_create(
+ is_a_string
+)
+
+# Test assertion works
+assert_is_string("String")
+
+assert_is_string(3)
+# 3 must be a character, not numeric
+
+assert_is_string(c("A", "B"))
+```
+
+**Additional Notes**
+
+Note that in your error strings can use the special terms such as `{arg_name}`, but you will NOT have access to the first argument using its original name (e.g. `{object}`, in the example above). This is because assert_create changes this first arguments name.
+
+Values of all other arguments can be referred to in string using `{name_of_nonfirst_argument}`
 
