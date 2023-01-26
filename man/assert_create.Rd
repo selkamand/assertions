@@ -4,14 +4,16 @@
 \alias{assert_create}
 \title{Create an assertion function}
 \usage{
-assert_create(func, default_error_msg)
+assert_create(func, default_error_msg = NULL)
 }
 \arguments{
 \item{func}{A function defining the assertion criteria. This function should
-return a logical value (\code{TRUE} when assertion is passed or \code{FALSE} when it fails)}
+return a logical value (\code{TRUE} when assertion is passed or \code{FALSE} when it fails).
+Alternatively, instead of returning FALSE, you can return a string which will act as the error message.
+In this latter case, you don't need to supply a \code{default_error_msg}}
 
 \item{default_error_msg}{A character string providing an error message in case
-the assertion fails.
+the assertion fails. Must be supplied if function \code{func} returns \code{FALSE} when assertion fails (as opposed to a string)
 Can include the following special terms
 \enumerate{
 \item \code{{arg_name}} to refer to the name of the variable supplied to the assertion.
