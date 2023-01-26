@@ -54,19 +54,21 @@ All assertions provided with this package are created using either <code>assert_
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_create</span><span class="op">(</span><span class="va">func</span>, <span class="va">default_error_msg</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_create</span><span class="op">(</span><span class="va">func</span>, default_error_msg <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>func</dt>
 <dd><p>A function defining the assertion criteria. This function should
-return a logical value (<code>TRUE</code> when assertion is passed or <code>FALSE</code> when it fails)</p></dd>
+return a logical value (<code>TRUE</code> when assertion is passed or <code>FALSE</code> when it fails).
+Alternatively, instead of returning FALSE, you can return a string which will act as the error message.
+In this latter case, you don't need to supply a <code>default_error_msg</code></p></dd>
 
 
 <dt>default_error_msg</dt>
 <dd><p>A character string providing an error message in case
-the assertion fails.
+the assertion fails. Must be supplied if function <code>func</code> returns <code>FALSE</code> when assertion fails (as opposed to a string)
 Can include the following special terms</p><ol><li><p><code>{arg_name}</code> to refer to the name of the variable supplied to the assertion.</p></li>
 <li><p><code>{arg_value}</code> to refer to the value of the variable supplied to the assertion</p></li>
 <li><p><code>{code_to_evaluate}</code> to evaluate the code within the error message.
