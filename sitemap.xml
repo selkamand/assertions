@@ -46,6 +46,9 @@
     <loc>/reference/assert_equal.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_excludes.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_factor.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>/reference/assert_identical.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_includes.html</loc>
   </url>
   <url>
     <loc>/reference/assert_int.html</loc>
@@ -115,6 +121,9 @@
     <loc>/reference/common_roxygen_params.html</loc>
   </url>
   <url>
+    <loc>/reference/excludes_advanced.html</loc>
+  </url>
+  <url>
     <loc>/reference/format_as_bullets.html</loc>
   </url>
   <url>
@@ -140,6 +149,12 @@
   </url>
   <url>
     <loc>/reference/has_permission.html</loc>
+  </url>
+  <url>
+    <loc>/reference/includes.html</loc>
+  </url>
+  <url>
+    <loc>/reference/includes_advanced.html</loc>
   </url>
   <url>
     <loc>/reference/index.html</loc>
@@ -179,6 +194,9 @@
   </url>
   <url>
     <loc>/reference/is_numeric_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_same_type.html</loc>
   </url>
   <url>
     <loc>/reference/is_string.html</loc>
