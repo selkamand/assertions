@@ -117,3 +117,18 @@ is_identical <- function(x, y){
 is_equal <- function(x, y, tolerance = sqrt(.Machine$double.eps), check_names = TRUE, check_environment = TRUE, check_tzone = TRUE){
   isTRUE(all.equal(x, y, check.names = check_names, check.environment = check_environment, check.tzone = check_tzone))
 }
+
+
+#' Check equality of type
+#'
+#' Is type of `x` the same as `y` (according to typof)
+#'
+#' @param x first object to compare
+#' @param y second object to compare
+#'
+#' @return TRUE if x and y are of the same type, otherwise FALSE
+#' @export
+#'
+is_same_type <- function(x, y){
+  typeof(x) == typeof(y)
+}

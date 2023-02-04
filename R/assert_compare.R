@@ -96,3 +96,24 @@ assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {a
 #' }
 #' @export
 assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}} must be equal to {.strong {deparse(substitute(y))}}")
+
+
+
+# #' Assert that the input have the same type are equal
+# #'
+# #' Assert `x` is the same type as `y`. powered by the [is_same_type()] function.
+# #'
+# #' @param x First object to compare
+# #' @param y Second object to compare
+# #' @param msg A character string containing the error message to display if `x` is not the same type as `y`
+# #' @inheritParams common_roxygen_params
+# #' @inheritParams is_same_type
+# #' @return invisible(TRUE) if `x` is equal to the specified value, otherwise aborts with the error message specified by `msg`
+# #'
+# #' @examples
+# #' \dontrun{
+# #' assert_type_identical(c(3, 3, 3), 19) # Passes
+# #' assert_type_identical(c(3, 3, 3), "bob") # Throws error
+# #' }
+# #' @export
+#assert_type_identical <- assert_create(is_same_type, "{.strong {arg_name}} ({.strong {typeof(arg_value)}}) must be the same {aname(x)} type as {aname(y)} ({typeof(y)})")
