@@ -19,6 +19,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     cli,
+    glue,
     rlang
 URL: https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
@@ -33,6 +34,7 @@ Collate:
     'assert_compare.R'
     'assert_dataframe.R'
     'assert_files.R'
+    'set_operations.R'
+    'assert_includes.R'
     'assert_names.R'
     'has.R'
-    'set_operations.R'

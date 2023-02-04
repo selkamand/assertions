@@ -89,6 +89,10 @@ assert_create <- function(func, default_error_msg = NULL){
 
     arg_value <- x
 
+    # Create useful functions
+    #.name <- function(obj) { browser(); deparse(substitute(obj, env)) }
+
+
     # Get the list of arguments with values explicitly supplied in function call
     explicit_args <- as.list(match.call())[-1]
 
@@ -99,7 +103,6 @@ assert_create <- function(func, default_error_msg = NULL){
     if(length(args_missing) > 0){
       cli::cli_abort("{args_missing} are required, with no default")
     }
-
 
     # Create list of arguments - value pairs to be called with func (using do.call)
     # Lets just supply x in position 1 (unnamed), then pass whatevers supplied by arg_has_default with its original names

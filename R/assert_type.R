@@ -431,4 +431,3 @@ assert_function <- assert_create(is.function, msg_helper_assert_type(expected_ty
 #' @concept assert_type
 #' @export
 assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "list"))
-
