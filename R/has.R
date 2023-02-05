@@ -127,7 +127,7 @@ util_get_duplicated_values <- function(x){
 #' @export
 assert_has_no_missing_values <- assert_create(
   has_no_missing_values,
-  default_error_msg = "''{.strong {arg_name}}' must have {.strong no missing values}! Found {.strong {util_count_missing(arg_value)}}"
+  default_error_msg = "'{.strong {arg_name}}' must have {.strong no missing values}! Found {.strong {util_count_missing(arg_value)}}"
 )
 
 
