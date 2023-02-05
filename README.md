@@ -12,6 +12,10 @@ status](https://www.r-pkg.org/badges/version/assertions)](https://CRAN.R-project
 [![Codecov test
 coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main)
 [![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
+[![](https://img.shields.io/github/languages/code-size/selkamand/assertions.svg)](https://github.com/selkamand/assertions)
+[![](https://img.shields.io/github/last-commit/selkamand/assertions.svg)](https://github.com/selkamand/assertions/commits/main)
+[![Closed
+issues](https://img.shields.io/github/issues-closed/selkamand/assertions.svg)](https://github.com/selkamand/assertions/issues?q=is%3Aissue+is%3Aclosed)
 
 <!-- badges: end -->
 
@@ -133,10 +137,10 @@ Two options
 
 Great alternative packages for writing assertions include:
 
-- [`assertthat`](https://github.com/ropensci/assertthat)
-- [`checkmate`](https://github.com/HenrikBengtsson/checkmate)
-- [`assertive`](https://github.com/assertive/assertive)
-- [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
+-   [`assertthat`](https://github.com/ropensci/assertthat)
+-   [`checkmate`](https://github.com/HenrikBengtsson/checkmate)
+-   [`assertive`](https://github.com/assertive/assertive)
+-   [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
 
 Each package has its own features and syntax. Choose whichever best fits
 your needs and preferences. To find the best fit, try out a few options

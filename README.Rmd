@@ -18,6 +18,9 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental) [![CRAN status](https://www.r-pkg.org/badges/version/assertions)](https://CRAN.R-project.org/package=assertions) [![Codecov test coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main) [![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
+[![](https://img.shields.io/github/languages/code-size/selkamand/assertions.svg)](https://github.com/selkamand/assertions)
+[![](https://img.shields.io/github/last-commit/selkamand/assertions.svg)](https://github.com/selkamand/assertions/commits/main)
+[![Closed issues](https://img.shields.io/github/issues-closed/selkamand/assertions.svg)](https://github.com/selkamand/assertions/issues?q=is%3Aissue+is%3Aclosed)
 
 <!-- badges: end -->
 

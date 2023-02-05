@@ -115,7 +115,7 @@
     Code
       assert_greater_than_or_equal_to(c(4, NA), 3)
     Error <rlang_error>
-      ''c(4, NA)' must have no missing values! Found 1
+      'c(4, NA)' must have no missing values! Found 1
 
 # assert_identical() works [plain]
 
