@@ -102,6 +102,25 @@ util_get_duplicated_values <- function(x){
   unique(x[duplicated(x)])
 }
 
+
+#' Check object is some class
+#'
+#' This function checks whether object is a specific class
+#'
+#' @param x A value to check.
+#' @param class checks if `x` belongs to `class`. If multiple values of `class` are supplied, returns whether `x` belongs to any of them (character)
+#' @return A logical scalar indicating `x` belongs to `class`
+#' @examples
+#' has_class(1, "numeric") # TRUE
+#' has_class(1, "character") # FALSE
+#' @export
+#' @concept is_type
+#'
+has_class <- function(x, class){
+  return(inherits(x, what = class))
+}
+
+
 # Assertions --------------------------------------------------------------
 #' Assert that the input vector has no missing values
 #'
@@ -129,6 +148,7 @@ assert_has_no_missing_values <- assert_create(
   has_no_missing_values,
   default_error_msg = "'{.strong {arg_name}}' must have {.strong no missing values}! Found {.strong {util_count_missing(arg_value)}}"
 )
+
 
 
 
@@ -160,3 +180,25 @@ assert_has_no_duplicates <- assert_create(
 )
 
 
+#' Assert object belongs to class
+#'
+#' This function asserts that the input object belongs to `class`
+#'
+#' @param x An input object
+#' @param msg A character string containing the error message to display if `x` does not belong to `class`
+#' @inheritParams common_roxygen_params
+#' @inheritParams has_class
+#' @return invisible(TRUE) if `x` belongs to `class`, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' assert_has_class(1, "numeric")  # Passes
+#' assert_has_class(1, "character")  # Throws default error
+#' }
+#'
+#' @concept assert_has
+#' @export
+assert_class <- assert_create(
+  has_class,
+  "'{.strong {arg_name}}' must belong to class {.strong '{class}'}, not {.strong {class(arg_value)}}"
+)
