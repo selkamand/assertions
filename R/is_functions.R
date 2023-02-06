@@ -134,6 +134,26 @@ is_list <- function(x, include_dataframes = FALSE){
   is.list(x) && (!is.data.frame(x) || include_dataframes)
 }
 
+#' Check if a value is reactive
+#'
+#' This function checks if a value is reactive
+#'
+#' @param x A value to check.
+#' @return A logical scalar indicating whether `x` is a list.
+#' @examples
+#' \dontrun{
+#' is_reactive(shiny::reactive(1)) # TRUE
+#' is_reactive(1) # FALSE
+#' }
+#' @export
+#' @concept is_type
+#'
+is_reactive <- function(x){
+  rlang::check_installed("shiny")
+  shiny::is.reactive(x)
+}
+
+# Advanced ----------------------------------------------------------------
 # assert_create_advanced functions -----------------------------------------
 # These functions are for feeding into assert_create_advanced
 # They take an object and instead of returning TRUE/FALSE, they return TRUE if assertion should pass,
@@ -209,5 +229,3 @@ is_string_advanced <- function(x){
 
   return(invisible(TRUE))
 }
-
-

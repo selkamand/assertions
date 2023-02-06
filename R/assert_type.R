@@ -431,3 +431,26 @@ assert_function <- assert_create(is.function, msg_helper_assert_type(expected_ty
 #' @concept assert_type
 #' @export
 assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "list"))
+
+#' Assert that x is reactive
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if `x` is not reactive
+#' @inheritParams common_roxygen_params
+#' @inheritParams is_list
+#' @return invisible(TRUE) if `x` is a reactive, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' \dontrun{
+#' # Assert that a variable is reactive
+#' x <- shiny::reactive(1)
+#' assert_reactive(x)  # does nothing
+#'
+#' # Assert that a variable is not a list
+#' x <- 1
+#' assert_reactive(x)  # stops execution and prints an error message
+#' }
+#'
+#' @concept assert_type
+#' @export
+assert_reactive <- assert_create(func = is_reactive, default_error_msg = msg_helper_assert_type(expected_type = "reactive"))

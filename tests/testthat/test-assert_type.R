@@ -402,3 +402,27 @@ cli::test_that_cli("assert_list() works", configs = "plain", {
   expect_error(assert_list(1, msg = "Custom error message"), "Custom error message")
 })
 
+
+# Assert Reactive ---------------------------------------------------------
+cli::test_that_cli("assert_reactive() works", configs = "plain", {
+
+  # Works for reactive objects
+  expect_true(assert_reactive(shiny::reactive({ 1 + 1 })))
+  expect_true(assert_reactive(shiny::reactiveVal(1)))
+
+  # Aborts for non-reactive objects
+  expect_snapshot(assert_reactive(1), error = TRUE)
+  expect_snapshot(assert_reactive(1.5), error = TRUE)
+  expect_snapshot(assert_reactive('abc'), error = TRUE)
+  expect_snapshot(assert_reactive(c(1, 2, 3)), error = TRUE)
+  expect_snapshot(assert_reactive(mtcars), error = TRUE)
+  expect_snapshot(assert_reactive(factor(c(1, 2, 3))), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  x <- 1
+  expect_error(assert_reactive(x), "'x'", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_reactive(1, msg = "Custom error message"), "Custom error message")
+})
+
