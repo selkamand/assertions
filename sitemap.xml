@@ -112,6 +112,9 @@
     <loc>/reference/assert_numeric_vector.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_reactive.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_string.html</loc>
   </url>
   <url>
@@ -194,6 +197,9 @@
   </url>
   <url>
     <loc>/reference/is_numeric_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_reactive.html</loc>
   </url>
   <url>
     <loc>/reference/is_same_type.html</loc>
