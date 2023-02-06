@@ -17,3 +17,34 @@ cli::test_that_cli("assert_has_no_duplicates() works", configs = "plain", {
   # Custom error messages work
   expect_error(assert_has_no_duplicates(c(1, 2, 2, 3), msg = "Custom error message"), "Custom error message", fixed=TRUE)
 })
+
+cli::test_that_cli("assert_class() works", configs = "plain", {
+
+  # Works for correct classes
+  expect_true(assert_class(1, class = "numeric"))
+  expect_true(assert_class("abc", class = "character"))
+  expect_true(assert_class(mtcars, class = "data.frame"))
+
+  # Works if checking for multiple valid classes
+  expect_true(assert_class(1, class = c("character", "numeric")))
+
+  # Works for all classes for multi-class objects
+  a <- 1
+  class(a) <- c("class1", "class2")
+  expect_true(assert_class(a, class = "class1"))
+  expect_true(assert_class(a, class = "class2"))
+
+  # Aborts for incorrect classes
+  expect_snapshot(assert_class(1, class = "character"), error = TRUE)
+  expect_snapshot(assert_class("abc", class = "numeric"), error = TRUE)
+  expect_snapshot(assert_class(mtcars, class = "list"), error = TRUE)
+
+
+  # Error messages use variable name of passed arguments
+  x <- 1
+  expect_error(assert_class(x, class = "character"), "'x'", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_class(1, class = "character", msg = "Custom error message"), "Custom error message")
+})
+

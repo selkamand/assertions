@@ -26,6 +26,7 @@ URL: https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
 Collate: 
     'assert.R'
+    'assert_class.R'
     'is_comparisons.R'
     'is_functions.R'
     'assert_functions.R'
