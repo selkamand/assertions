@@ -28,6 +28,17 @@ cli::test_that_cli(configs = "plain", "user supplied  custom error message has a
   expect_error(assert_is_numeric(age, "{name}'s age must be a number, not a {class(age)}"), "billy's age must be a number, not a character", fixed=TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "user supplied  custom error message has special keywords", {
+
+  assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
+  name = "billy"
+  age = "26"
+  expect_error(assert_is_numeric(age, "{arg_name} must be a number, not a {class(arg_value)}"), "age must be a number, not a character", fixed=TRUE)
+})
+
+
+
+
 cli::test_that_cli(configs = "plain", "assert_create() aborts if func is not a function", {
   expect_error(assert_create("not a function", "Error message"), "`\"not a function\"` must be a function, not a character", fixed=TRUE)
 })
@@ -101,4 +112,27 @@ cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions
   )
   y = c(1, 2)
   expect_error(assert_chain(length(y)), regexp = "length(y) must be a character", fixed = TRUE)
+})
+
+
+cli::test_that_cli(configs = "plain", "assert_create_chain:  user supplied  custom error message has access to the environment in which it was called", {
+  assert_chain<- assert_create_chain(
+    assert_create(is.numeric, "{arg_name} must be numeric"),
+    assert_create(is.character, "{arg_name} must be a character")
+  )
+
+  name = "billy"
+  age = "26"
+  expect_error(assert_chain(age, msg = "{name}'s age must be a number, not a {class(age)}"), "billy's age must be a number, not a character", fixed=TRUE)
+})
+
+cli::test_that_cli(configs = "plain", "assert_create_chain: user supplied  custom error message has special keywords", {
+
+  assert_chain<- assert_create_chain(
+    assert_create(is.numeric, "{arg_name} must be numeric"),
+    assert_create(is.character, "{arg_name} must be a character")
+  )
+  name = "billy"
+  age = "26"
+  expect_error(assert_chain(age, "{arg_name} must be a number, not a {class(arg_value)}"), "age must be a number, not a character", fixed=TRUE)
 })

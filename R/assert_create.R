@@ -135,7 +135,10 @@ assert_create <- function(func, default_error_msg = NULL){
     }
     else { # If user does supply a default error message
       msg_evaluation_environment <- rlang::caller_env(n = 1) # Evaluate it in caller environment
-      # Might need to consider adding  arg_name, arv_value, etc. to this environment
+      # Add special keywords to environment:
+      # arg_name, arv_value
+      assign("arg_name", value = arg_name, envir = msg_evaluation_environment)
+      assign("arg_value", value = arg_value, envir = msg_evaluation_environment)
     }
 
     # If assertion fails, abort with error statement
