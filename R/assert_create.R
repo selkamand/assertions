@@ -126,16 +126,21 @@ assert_create <- function(func, default_error_msg = NULL){
 
     # If user doesn't supply an error message, set msg to the default
     if(is.null(msg)){
-
+      msg_evaluation_environment <- rlang::current_env() # Evaluate error message in current envrionment
      if(isFALSE(condition))
       msg <- default_error_msg
 
      else if(is.character(condition))
       msg <- condition
     }
+    else { # If user does supply a default error message
+      msg_evaluation_environment <- rlang::caller_env(n = 1) # Evaluate it in caller environment
+      # Might need to consider adding  arg_name, arv_value, etc. to this environment
+    }
 
+    # If assertion fails, abort with error statement
     if(is.character(condition) || !condition )
-      cli::cli_abort(msg, call = call)
+      cli::cli_abort(msg, call = call, .envir = msg_evaluation_environment)
     else
       return(invisible(TRUE))
   })

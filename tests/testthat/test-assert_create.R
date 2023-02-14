@@ -21,6 +21,13 @@ cli::test_that_cli(configs = "plain", "assertion function aborts with custom err
   expect_error(assert_is_numeric("a", "Custom error message"), "Custom error message", fixed=TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "user supplied  custom error message has access to the environment in which it was called", {
+  assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
+  name = "billy"
+  age = "26"
+  expect_error(assert_is_numeric(age, "{name}'s age must be a number, not a {class(age)}"), "billy's age must be a number, not a character", fixed=TRUE)
+})
+
 cli::test_that_cli(configs = "plain", "assert_create() aborts if func is not a function", {
   expect_error(assert_create("not a function", "Error message"), "`\"not a function\"` must be a function, not a character", fixed=TRUE)
 })
