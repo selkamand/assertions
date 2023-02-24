@@ -14,3 +14,14 @@ cli::test_that_cli("assert() works", configs = "plain", {
   y <- 2
   expect_error(assert(x == y, y < 1, 5 > 1), "The following assertions failed:\nx `x == y`\nx `y < 1`", fixed = TRUE)
 })
+
+
+cli::test_that_cli(configs = "plain", "assert(): user supplied custom error messages have access to the environment of its parent function", {
+
+  foo <- function(){
+    name = "billy"
+    assert(FALSE, msg = "{name} was always going to fail")
+
+  }
+  expect_error(foo(), "billy was always going to fail", fixed=TRUE)
+})
