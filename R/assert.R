@@ -27,7 +27,7 @@ assert <- function(..., msg = NULL, call = rlang::caller_env()) {
     if (is.null(msg)) {
       msg <- c("The following assertions failed:", format_as_bullets(format_inline(failed_expressions, 'code'), "x"))
     }
-    cli::cli_abort(msg, call = call)
+    cli::cli_abort(msg, call = call, .envir = call)
   }
   invisible(TRUE)
 }

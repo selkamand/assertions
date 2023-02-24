@@ -28,6 +28,15 @@ cli::test_that_cli(configs = "plain", "user supplied  custom error message has a
   expect_error(assert_is_numeric(age, "{name}'s age must be a number, not a {class(age)}"), "billy's age must be a number, not a character", fixed=TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "user supplied  custom error message has access to the environment in which it was called (when run within a function)", {
+  assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
+  foo <- function(){
+    name = "billy"
+    assert_is_numeric("A", msg = "{name} was always going to fail")
+  }
+  expect_error(foo(), "billy was always going to fail")
+})
+
 cli::test_that_cli(configs = "plain", "user supplied  custom error message has special keywords", {
 
   assert_is_numeric <- assert_create(is.numeric, "Error: Argument must be numeric")
