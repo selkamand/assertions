@@ -4,12 +4,14 @@
 \alias{common_roxygen_params}
 \title{Title}
 \usage{
-common_roxygen_params(call, arg_name, ...)
+common_roxygen_params(call, arg_name, msg, ...)
 }
 \arguments{
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
+
+\item{msg}{The error message thrown if the assertion fails (string)}
 
 \item{...}{Used to pass any arguments to assertion function}
 }
