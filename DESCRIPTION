@@ -39,5 +39,6 @@ Collate:
     'set_operations.R'
     'assert_includes.R'
     'assert_names.R'
+    'assert_numerical.R'
     'assert_set.R'
     'has.R'
