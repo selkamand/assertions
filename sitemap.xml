@@ -76,12 +76,6 @@
     <loc>/reference/assert_greater_than_or_equal_to.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_has_no_duplicates.html</loc>
-  </url>
-  <url>
-    <loc>/reference/assert_has_no_missing_values.html</loc>
-  </url>
-  <url>
     <loc>/reference/assert_identical.html</loc>
   </url>
   <url>
@@ -104,6 +98,12 @@
   </url>
   <url>
     <loc>/reference/assert_names_include.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_no_duplicates.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_no_missing.html</loc>
   </url>
   <url>
     <loc>/reference/assert_number.html</loc>
