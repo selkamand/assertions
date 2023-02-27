@@ -12,6 +12,7 @@
 #' assert_subset(1:3, 1:5) # Passes
 #' assert_subset(c("A", "B", "C"), c("A", "B")) # Throws error since "C" is not present in first vector
 #' }
+#' @export
 assert_subset <- assert_create(
   func = is_subset,
   default_error_msg = c(
