@@ -131,20 +131,20 @@ has_class <- function(x, class){
 #' @param msg A character string containing the error message to display if `x` has missing values.
 #' @inheritParams common_roxygen_params
 #'
-#' @return invisible(TRUE) if `x` has no missing values, otherwise aborts with the error message specified by `msg`
+#' @return invisible(TRUE) if `x` has no missing values (NA), otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
 #' \dontrun{
-#' assert_has_no_missing_values(c(1, 2, 3))  # Passes
-#' assert_has_no_missing_values(c(1, NA, 2))  # Throws default error
+#' assert_no_missing(c(1, 2, 3))  # Passes
+#' assert_no_missing(c(1, NA, 2))  # Throws default error
 #'
-#' assert_has_no_missing_values(c(1, 2, 3), msg = "Custom error message")  # Passes
-#' assert_has_no_missing_values(c(1, NA, 2), msg = "Custom error message")  # Throws custom error
+#' assert_no_missing(c(1, 2, 3), msg = "Custom error message")  # Passes
+#' assert_no_missing(c(1, NA, 2), msg = "Custom error message")  # Throws custom error
 #' }
 #'
 #' @concept assert_has
 #' @export
-assert_has_no_missing_values <- assert_create(
+assert_no_missing <- assert_create(
   has_no_missing_values,
   default_error_msg = "'{.strong {arg_name}}' must have {.strong no missing values}! Found {.strong {util_count_missing(arg_value)}}"
 )
@@ -154,8 +154,7 @@ assert_has_no_missing_values <- assert_create(
 
 #' Assert that the input vector has no duplicates
 #'
-#' This function asserts that the input vector has no duplicated elements and aborts
-#' with an error message if it does
+#' Assert the input vector has no duplicated elements
 #'
 #' @param x A vector.
 #' @param msg A character string containing the error message to display if `x` has duplicates.
@@ -165,16 +164,16 @@ assert_has_no_missing_values <- assert_create(
 #'
 #' @examples
 #' \dontrun{
-#' assert_has_no_duplicates(c(1, 2, 3))  # Passes
-#' assert_has_no_duplicates(c(1, 2, 2))  # Throws default error
+#' assert_no_duplicates(c(1, 2, 3))  # Passes
+#' assert_no_duplicates(c(1, 2, 2))  # Throws default error
 #'
-#' assert_has_no_duplicates(c(1, 2, 3), msg = "Custom error message")  # Passes
-#' assert_has_no_duplicates(c(1, 2, 2), msg = "Custom error message")  # Throws custom error
+#' assert_no_duplicates(c(1, 2, 3), msg = "Custom error message")  # Passes
+#' assert_no_duplicates(c(1, 2, 2), msg = "Custom error message")  # Throws custom error
 #' }
 #'
 #' @concept assert_has
 #' @export
-assert_has_no_duplicates <- assert_create(
+assert_no_duplicates <- assert_create(
   has_no_duplicates,
    "'{.strong {arg_name}}' must have {.strong no duplicates}! Found {.strong {util_count_duplicates(arg_value)}} duplicated value{?s}: {.emph {util_get_duplicated_values(arg_value)}}"
 )

@@ -8,7 +8,7 @@ compare <- function(x, equal_to = NULL, minimum = NULL, maximum = NULL, comparis
     stop("Must supply at least one threshold: either 'equal_to', `minimum` or maximum")
 
   # Assert no missing values
-  assert_has_no_missing_values(x, arg_name = deparse(substitute(x, env = parent.frame())))
+  assert_no_missing(x, arg_name = deparse(substitute(x, env = parent.frame())))
 
   # Preset some vals
   passes_min_threshold = TRUE
