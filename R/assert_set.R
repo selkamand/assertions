@@ -4,6 +4,8 @@
 #'
 #' @param x A vector to check
 #' @param y the acceptible values that x can take
+#' @inheritParams common_roxygen_params
+#'
 #' @return Returns invisible(TRUE) if `x` is a subset of `y`, otherwise throws an error
 #' @examples
 #' \dontrun{

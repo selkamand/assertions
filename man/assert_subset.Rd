@@ -10,6 +10,12 @@ assert_subset(x, y, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 \item{x}{A vector to check}
 
 \item{y}{the acceptible values that x can take}
+
+\item{msg}{The error message thrown if the assertion fails (string)}
+
+\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+
+\item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
 Returns invisible(TRUE) if \code{x} is a subset of \code{y}, otherwise throws an error
