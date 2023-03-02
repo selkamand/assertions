@@ -378,6 +378,27 @@ cli::test_that_cli("assert_string() works", configs = "plain", {
   expect_error(assert_string(1:10, msg = "Custom error message"), "Custom error message")
 })
 
+cli::test_that_cli("assert_non_empty_string() works", config = "plain", {
+  # Works for objects that are nonempty strings
+  expect_true(assert_non_empty_string("hello"))
+  expect_true(assert_non_empty_string("123"))
+
+  # Aborts for objects that are empty strings
+  expect_snapshot(assert_non_empty_string(""), error = TRUE)
+
+  # Aborts for objects that are not strings
+  expect_snapshot(assert_non_empty_string(123), error = TRUE)
+  expect_snapshot(assert_non_empty_string(c(1, 2, 3)), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  x <- ""
+  expect_error(assert_non_empty_string(x), "^'x'", fixed = FALSE)
+
+  # Custom error messages work
+  expect_error(assert_non_empty_string("", msg = "Custom error message"), "Custom error message")
+})
+
+
 
 # Assert List ---------------------------------------------------------
 cli::test_that_cli("assert_list() works", configs = "plain", {

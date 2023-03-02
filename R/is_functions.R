@@ -95,7 +95,6 @@ is_string <- function(x){
   is.character(x) && length(x) == 1
 }
 
-
 #' Check if a value is a logical flag
 #'
 #' This function checks if a value is a logical scalar (i.e., a single logical value).
@@ -212,7 +211,7 @@ is_flag_advanced <- function(x){
 
 #' Check if x is a string
 #'
-#' This function is designed for use with `assert_create_advanced`. It must return
+#' This function is designed for use with `assert_create`. It returns
 #' TRUE for the assertion to pass or a string representing the error message if the
 #' assertion should fail.
 #'
@@ -222,7 +221,6 @@ is_flag_advanced <- function(x){
 #' with an error message if x is not a character value or has a length other than 1.
 #'
 #' @concept advanced
-#' @export
 is_string_advanced <- function(x){
   if(!is.character(x))
     return("'{.strong {arg_name}}' is not a {.strong string}! (class is {.strong {class(arg_value)}}, not {.strong character})")
@@ -232,3 +230,33 @@ is_string_advanced <- function(x){
 
   return(invisible(TRUE))
 }
+
+
+#' Check if x is a nonempty string
+#'
+#' This function is designed for use with `assert_create`. It returns
+#' TRUE for the assertion to pass or a string representing the error message if the
+#' assertion should fail.
+#'
+#'
+#'
+#' @param x A value to be checked
+#'
+#' @return Returns invisible(TRUE) if x is a character value with length 1 and at least 1 character in string. Returns a string
+#' with an error message if x is not a character value or has a length other than 1.
+#'
+#' @concept advanced
+is_non_empty_string_advanced <- function(x){
+  is_string_res <-  is_string_advanced(x)
+
+  if(is.character(is_string_res))
+    return(is_string_res)
+  else if(nchar(x) == 0)
+    return("'{.strong {arg_name}}' is an {.strong empty} string!")
+
+  return(invisible(TRUE))
+}
+
+
+
+

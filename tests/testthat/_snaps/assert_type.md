@@ -1,3 +1,24 @@
+# assert_non_empty_string() works [plain]
+
+    Code
+      assert_non_empty_string("")
+    Error <rlang_error>
+      '""' is an empty string!
+
+---
+
+    Code
+      assert_non_empty_string(123)
+    Error <rlang_error>
+      '123' is not a string! (class is numeric, not character)
+
+---
+
+    Code
+      assert_non_empty_string(c(1, 2, 3))
+    Error <rlang_error>
+      'c(1, 2, 3)' is not a string! (class is numeric, not character)
+
 # assert_list() works [plain]
 
     Code

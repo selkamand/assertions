@@ -356,10 +356,10 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 #' Assert that the input object is a character string
 #'
 #' @param x An object
-#' @param msg A character string containing the error message to display if x is not a character vector
+#' @param msg A character string containing the error message to display if x is not a string
 #' @inheritParams common_roxygen_params
 #'
-#' @return invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg
+#' @return invisible(TRUE) if x is a string, otherwise aborts with the error message specified by msg
 #'
 #' @examples
 #' \dontrun{
@@ -375,6 +375,29 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 assert_string <- assert_create_chain(
   assert_create(is.character, "'{.strong {arg_name}}' is not a string! (class is {.strong {class(arg_value)}}, not character)"),
   assert_create(is_scalar, "'{.strong {arg_name}}' is not a string! (length is {.strong {length(arg_value)}}, not 1)")
+  )
+
+#' Assert that the input object is a  non empty character string
+#'
+#' Asserts that x is a string, and nonempty (i.e. not equal to '')
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if x is not a
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg
+#'
+#' @examples
+#' \dontrun{
+#' assert_non_empty_string("a") # Passes
+#' assert_non_empty_string("") # Fails
+#' }
+#'
+#'
+#' @concept assert_type
+#' @export
+assert_non_empty_string <- assert_create(
+    func = is_non_empty_string_advanced
   )
 
 
