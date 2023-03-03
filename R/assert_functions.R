@@ -28,7 +28,9 @@ function_expects_n_arguments_advanced <- function(fun, n, dots = c("throw_error"
 
 # Assertions --------------------------------------------------------------
 
-#' Assert that the input object is a data frame
+#' Assert function expects n arguments
+#'
+#' Assert a function expects n arguments, with user control over how variable arguments (...) are counted (default throws error)
 #'
 #' @include assert_create.R
 #' @include utils.R

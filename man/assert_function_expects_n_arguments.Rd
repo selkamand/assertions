@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_functions.R
 \name{assert_function_expects_n_arguments}
 \alias{assert_function_expects_n_arguments}
-\title{Assert that the input object is a data frame}
+\title{Assert function expects n arguments}
 \usage{
 assert_function_expects_n_arguments(
   x,
@@ -27,5 +27,5 @@ assert_function_expects_n_arguments(
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \description{
-Assert that the input object is a data frame
+Assert a function expects n arguments, with user control over how variable arguments (...) are counted (default throws error)
 }
