@@ -39,7 +39,6 @@
 #' is_lower("Hello") # Aborts the function with the error message
 #'}
 #' @include utils.R
-#' @include assert_functions.R
 #' @concept assert_create
 #' @export
 assert_create <- function(func, default_error_msg = NULL){
@@ -55,7 +54,11 @@ assert_create <- function(func, default_error_msg = NULL){
 
   # Ensure func has at least 1 argument
   if(func_arg_count(func) == 0){
-    cli::cli_abort("`{function_name}` must have at least 1 paramater to be used in `assert_create`")
+    if (func_supports_variable_arguments(func))
+      additional_note = " (Note '...' does NOT count as an argument)"
+    else additional_note = ""
+
+    cli::cli_abort("`{function_name}` must have at least 1 paramater to be used in `assert_create`{additional_note}")
   }
 
   # Ensure default_error_msg is a string
