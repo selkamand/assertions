@@ -39,7 +39,6 @@
 #' is_lower("Hello") # Aborts the function with the error message
 #'}
 #' @include utils.R
-#' @include assert_functions.R
 #' @concept assert_create
 #' @export
 assert_create <- function(func, default_error_msg = NULL){
