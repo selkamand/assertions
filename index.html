@@ -170,7 +170,7 @@
 <h3 id="creating-assertions-yourself">Creating assertions yourself<a class="anchor" aria-label="anchor" href="#creating-assertions-yourself"></a>
 </h3>
 <ol style="list-style-type: decimal">
-<li><p>Create a custom <code>assert_something</code> function with a call to <code><a href="reference/assert_create.html">assert_create()</a></code> or <code>assert_create_advanced()</code></p></li>
+<li><p>Create a custom <code>assert_something</code> function with a call to <code><a href="reference/assert_create.html">assert_create()</a></code> or <code><a href="reference/assert_create_chain.html">assert_create_chain()</a></code></p></li>
 <li><p>Create a github issue with the assertion creation code + any helper function you pass to the <code>func</code> argument (e.g. <code>is_something()</code>)</p></li>
 </ol>
 </div>
@@ -185,7 +185,7 @@
 <li><a href="https://github.com/assertive/assertive" class="external-link"><code>assertive</code></a></li>
 <li><a href="https://github.com/HenrikBengtsson/ensurer" class="external-link"><code>ensurer</code></a></li>
 </ul>
-<p>Each package has its own features and syntax. Choose whichever best fits your needs and preferences. To find the best fit, try out a few options and consider the speed, default error messages, flexibility, and breadth of assertions available.</p>
+<p>Each package has its own features and syntax. So hopefully there is one that suits your needs and preferences. I’m a big fan of <code>checkmate</code> for its speed, <code>assertive</code> for its huge library of ready-made assertion functions, and <code>assertthat</code> for its error message customization.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

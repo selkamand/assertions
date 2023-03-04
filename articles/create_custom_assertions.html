@@ -91,7 +91,7 @@ using <code><a href="../reference/assert_create.html">assert_create()</a></code>
 <span></span>
 <span><span class="co"># Create a function that asserts input is numeric</span></span>
 <span><span class="va">assert_numeric_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/assert_create.html">assert_create</a></span><span class="op">(</span></span>
-<span>  func <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">is.numeric</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="co"># Returns TRUE/FALSE for assertion PASS/FAIL</span></span>
+<span>  func <span class="op">=</span> <span class="va">is.numeric</span>, <span class="co"># Returns TRUE/FALSE for assertion PASS/FAIL</span></span>
 <span>  default_error_msg <span class="op">=</span> <span class="st">"'{arg_name}' must be of type numeric, not {class(arg_value)}"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
