@@ -19,7 +19,7 @@ Combine multiple assertion functions created by \code{assert_create()} into a si
 # Create an assertion function that checks for both positive integers and even values
 assert_string <- assert_create_chain(
   assert_create(is.character, '{{arg_name}} must be a character'),
-  assert_create(function(s){{ length(s)==1 }}, '{{arg_name}} must be length 1')
+  assert_create(function(x){{ length(x)==1 }}, '{{arg_name}} must be length 1')
   )
 
 # Use the assertion function to check a valid value

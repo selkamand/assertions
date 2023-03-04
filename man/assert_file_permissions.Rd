@@ -6,6 +6,7 @@
 \usage{
 assert_file_permissions(
   x,
+  filepaths,
   permission = c("write", "execute", "read"),
   msg = NULL,
   call = rlang::caller_env(),
@@ -14,6 +15,8 @@ assert_file_permissions(
 }
 \arguments{
 \item{x}{An object}
+
+\item{filepaths}{A character vector of file paths to check}
 
 \item{permission}{A character string of permission to check for. One of c('write', 'execute', 'read')}
 
