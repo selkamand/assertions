@@ -128,7 +128,7 @@ Two options
 ### Creating assertions yourself
 
 1.  Create a custom `assert_something` function with a call to
-    `assert_create()` or `assert_create_advanced()`
+    `assert_create()` or `assert_create_chain()`
 
 2.  Create a github issue with the assertion creation code + any helper
     function you pass to the `func` argument (e.g. `is_something()`)
@@ -137,12 +137,12 @@ Two options
 
 Great alternative packages for writing assertions include:
 
--   [`assertthat`](https://github.com/ropensci/assertthat)
--   [`checkmate`](https://github.com/HenrikBengtsson/checkmate)
--   [`assertive`](https://github.com/assertive/assertive)
--   [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
+- [`assertthat`](https://github.com/ropensci/assertthat)
+- [`checkmate`](https://github.com/HenrikBengtsson/checkmate)
+- [`assertive`](https://github.com/assertive/assertive)
+- [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
 
-Each package has its own features and syntax. Choose whichever best fits
-your needs and preferences. To find the best fit, try out a few options
-and consider the speed, default error messages, flexibility, and breadth
-of assertions available.
+Each package has its own features and syntax. So hopefully there is one
+that suits your needs and preferences. I’m a big fan of `checkmate` for
+its speed, `assertive` for its huge library of ready-made assertion
+functions, and `assertthat` for its error message customization.
