@@ -69,15 +69,14 @@ assert_create <- function(func, default_error_msg = NULL){
 
   # Get arguments of user supplied function
   args <- func_args_as_pairlist(func)
-  args[1] <- NULL
 
-  # Assert that function has no arguments named 'x', 'msg' or 'call', 'arg_name', since we need to add our own
-  if(any(c('x','msg', 'call', 'arg_name') %in% names(args))){
-    cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'x', 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
+  # Assert that function has no arguments named 'msg' or 'call', 'arg_name', since we need to add our own
+  if(any(c('msg', 'call', 'arg_name') %in% names(args))){
+    cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
   }
 
-  # Change argument 1 to 'x' and add 'msg', 'call' and 'arg_name' arguments at the end
-  args <- append(args, as.pairlist(alist(x = )), after = 0)
+  # Change add 'msg', 'call' and 'arg_name' arguments at the end
+  #args <- append(args, as.pairlist(alist(x = )), after = 0)
   args <- append(args, as.pairlist(alist(msg = NULL, call = rlang::caller_env(), arg_name = NULL)),after = Inf)
 
 
@@ -86,11 +85,12 @@ assert_create <- function(func, default_error_msg = NULL){
 
     # Setup some variables ( these will be useful later)
     if(is.null(arg_name))
-      arg_name <- deparse(substitute(x))
+      arg_name <- deparse(match.call()[[2]])
     else if(!is_string(arg_name))
      cli::cli_abort("{.strong arg_name} must be a string, not a {class(arg_name)}")
 
-    arg_value <- x
+    # Create arg_value val
+    arg_value <- eval(match.call()[[2]], envir = call)
 
     # Create useful functions
     #.name <- function(obj) { browser(); deparse(substitute(obj, env)) }
@@ -173,7 +173,7 @@ assert_create <- function(func, default_error_msg = NULL){
 #' # Create an assertion function that checks for both positive integers and even values
 #' assert_string <- assert_create_chain(
 #'   assert_create(is.character, '{{arg_name}} must be a character'),
-#'   assert_create(function(s){{ length(s)==1 }}, '{{arg_name}} must be length 1')
+#'   assert_create(function(x){{ length(x)==1 }}, '{{arg_name}} must be length 1')
 #'   )
 #'
 #' # Use the assertion function to check a valid value
@@ -201,7 +201,16 @@ assert_create_chain <- function(...){
   }
 
   # Check functions all have the required arguments (x, msg & call)
-  if(!all(vapply(dot_args, function(f){ all(c('x', 'msg', 'call', 'arg_name') %in% func_arg_names(f)) }, FUN.VALUE = logical(1)))){
+  if(!all(vapply(dot_args, function(f){ all(c('msg', 'call', 'arg_name') %in% func_arg_names(f)) }, FUN.VALUE = logical(1)))){
+    cli::cli_abort(
+      c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",
+        "",
+        assert_create_chain_example()
+      ))
+  }
+
+  # Check functions have at least 4 args (some_obj_to_test and officially required functions: msg, call, arg_name)
+  if(!all(vapply(dot_args, function(f){ func_arg_count(f) >= 4 }, FUN.VALUE = logical(1)))){
     cli::cli_abort(
       c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",
         "",

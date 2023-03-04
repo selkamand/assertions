@@ -7,17 +7,17 @@
 
 
 # Advanced Functions ------------------------------------------------------
-function_expects_n_arguments_advanced <- function(fun, n, dots = c("throw_error","count_as_0", "count_as_1", "count_as_inf")){
+function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","count_as_0", "count_as_1", "count_as_inf")){
   dots <- rlang::arg_match(dots)
 
-  if(!is.function(fun))
+  if(!is.function(x))
     return("{.strong '{arg_name}'} must be a function, not a {class(arg_value)}")
 
-  if(func_supports_variable_arguments(fun) && dots == "throw_error")
+  if(func_supports_variable_arguments(x) && dots == "throw_error")
     return("{.strong '{arg_name}'} must not contain ... arguments")
 
 
-  number_of_parameters <- func_arg_count(fun, dots = dots)
+  number_of_parameters <- func_arg_count(x, dots = dots)
 
   if(number_of_parameters != n)
     return(paste0("{.strong '{arg_name}'} must expect exactly {.strong {n}} argument{?s}, not {.strong ", number_of_parameters, "}"))
@@ -34,13 +34,13 @@ function_expects_n_arguments_advanced <- function(fun, n, dots = c("throw_error"
 #'
 #' @include assert_create.R
 #' @include utils.R
-#' @param x An object
+#' @param x a function to check has exactly N arguments
 #' @param n number of arguments that must be expected by function to pass assertion (integer)
 #' @param dots how to deal with '...' dots (a.k.a variable arguments). Should we count as 0, 1 or infinite arguments. Or, do we just throw an error when we see '...' (default)
 #' @inheritParams common_roxygen_params
 #'
 #' @export
-assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced) #TODO fiure out why can't find assert_create
+assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced)
 
 
 

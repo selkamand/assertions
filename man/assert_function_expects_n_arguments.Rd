@@ -14,7 +14,7 @@ assert_function_expects_n_arguments(
 )
 }
 \arguments{
-\item{x}{An object}
+\item{x}{a function to check has exactly N arguments}
 
 \item{n}{number of arguments that must be expected by function to pass assertion (integer)}
 

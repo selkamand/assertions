@@ -29,8 +29,8 @@ has_permission <- function(filepaths, permission = c('write', 'execute', 'read')
   else return(FALSE)
 }
 
-is_dir <- function(filepaths){
-   all(dir.exists(filepaths))
+is_dir <- function(x){
+   all(dir.exists(x))
 }
 
 get_file_extensions <- function(filenames) {
