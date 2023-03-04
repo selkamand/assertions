@@ -26,7 +26,7 @@ library(assertions)
 
 # Create a function that asserts input is numeric
 assert_numeric_2 <- assert_create(
-  func = is.numeric(x), # Returns TRUE/FALSE for assertion PASS/FAIL
+  func = is.numeric, # Returns TRUE/FALSE for assertion PASS/FAIL
   default_error_msg = "'{arg_name}' must be of type numeric, not {class(arg_value)}"
   )
 
