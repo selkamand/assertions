@@ -48,3 +48,22 @@ cli::test_that_cli("assert_class() works", configs = "plain", {
   expect_error(assert_class(1, class = "character", msg = "Custom error message"), "Custom error message")
 })
 
+
+cli::test_that_cli("assert_no_missing() works", config = "plain", {
+
+  # Works for vectors with no missing values
+  expect_true(assert_no_missing(c(1, 2, 3)))
+  expect_true(assert_no_missing(c("a", "b", "c")))
+
+  # Aborts for vectors with missing values
+  expect_snapshot(assert_no_missing(c(1, 2, NA)), error = TRUE)
+  expect_snapshot(assert_no_missing(c("a", NA, "c")), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  my_vector <- c(1, 2, NA)
+  expect_error(assert_no_missing(my_vector), "^'my_vector'", fixed = FALSE)
+
+  # Custom error messages work
+  expect_error(assert_no_missing(c("a", NA, "c"), msg = "Custom error message"), "Custom error message")
+})
+
