@@ -447,3 +447,25 @@ cli::test_that_cli("assert_reactive() works", configs = "plain", {
   expect_error(assert_reactive(1, msg = "Custom error message"), "Custom error message")
 })
 
+cli::test_that_cli("assert_function() works", config = "plain", {
+
+  # Works for functions
+  my_func <- function(x) x + 1
+  expect_true(assert_function(my_func))
+
+  # Works for anonymous function
+  expect_true(assert_function(function(x){}))
+
+  # Aborts for non-functions
+  expect_snapshot(assert_function(1), error = TRUE)
+  expect_snapshot(assert_function("abc"), error = TRUE)
+  expect_snapshot(assert_function(c(1, 2, 3)), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  my_func2 <- "string"
+  expect_error(assert_function(my_func2), "^'my_func2'", fixed = FALSE)
+
+  # Custom error messages work
+  expect_error(assert_function(1, msg = "Custom error message"), "Custom error message")
+})
+
