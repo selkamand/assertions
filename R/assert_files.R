@@ -33,6 +33,11 @@ is_dir <- function(x){
    all(dir.exists(x))
 }
 
+is_file <- function(x){
+  all(file.exists(x) & !dir.exists(x))
+}
+
+
 get_file_extensions <- function(filenames) {
   filenames <- basename(filenames)
 
@@ -93,7 +98,8 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @export
 assert_file_exists <- assert_create_chain(
   assert_character,
-  assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}")
+  assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}"),
+  assert_create(func = is_file, default_error_msg = "{x[dir.exists(x)]} {?is a/are} {.strong director{?y/ies}}, not {?a/} {.strong file{?s}}")
   )
 
 #' Assert all files are directories
