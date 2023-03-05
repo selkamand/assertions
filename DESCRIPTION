@@ -41,4 +41,5 @@ Collate:
     'assert_names.R'
     'assert_numerical.R'
     'assert_set.R'
+    'coverage_testing.R'
     'has.R'
