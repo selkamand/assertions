@@ -136,6 +136,15 @@
     <loc>/reference/assert_whole_number.html</loc>
   </url>
   <url>
+    <loc>/reference/assertion_names.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assertion_tests.html</loc>
+  </url>
+  <url>
+    <loc>/reference/check_all_assertions_are_tested_enough.html</loc>
+  </url>
+  <url>
     <loc>/reference/common_roxygen_params.html</loc>
   </url>
   <url>
