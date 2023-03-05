@@ -4,14 +4,14 @@
 \alias{assertion_names}
 \title{List assertion names}
 \usage{
-assertion_names()
+assertion_names(exclude_create_and_chain = TRUE)
+}
+\arguments{
+\item{exclude_create_and_chain}{exclude assert_create and assert_create_chain (flag)}
 }
 \value{
 unique set of assertion names (character)
 }
 \description{
 List all assertion names
-}
-\examples{
-assertion_names()
 }
