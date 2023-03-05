@@ -159,7 +159,7 @@ assert_file_permissions <- assert_create_chain(
 
 #' Assert file extensions
 #'
-#' Assert that all files supplied have one of the selected extensions
+#' Assert that all filepaths supplied have one of the selected extensions. Does not require file to actually exist.
 #'
 #' @include assert_create.R
 #' @include is_functions.R
@@ -180,8 +180,10 @@ assert_file_permissions <- assert_create_chain(
 #' @concept assert_file
 #'
 #' @export
-assert_file_extension <- assert_create(
-  has_extension, "{.strong {arg_name}} {?have/has} an invalid extension (required extension/s: {.strong {extensions}}).
+assert_file_extension <- assert_create_chain(
+  assert_character,
+  assert_create(has_extension, "'{.strong {arg_name}}' {?have/has} an invalid extension (required extension/s: {.strong {extensions}}).
   The following file{?s} ha{?s/ve} unexpected extensions:
   [{files_missing_extension(arg_value, extensions, compression)}]"
+  )
 )

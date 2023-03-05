@@ -49,4 +49,28 @@ test_that("assert_directory_exists() works", {
   expect_error(assert_directory_exists(c(file1, file2)), "are files, not directories")
 })
 
+test_that("assert_file_extension() works", {
+
+  # Passes when file has extensions
+  expect_true(assert_file_extension("file.ext", extensions = "ext"))
+  expect_true(assert_file_extension("file.ext.gz", extensions = "ext", compression = TRUE))
+  expect_true(assert_file_extension("bob.billy.ext", extensions = "ext"))
+  expect_true(assert_file_extension(c("file.ext.gz", "file.ext"), extensions = "ext", compression = TRUE))
+
+  # Passes when files all have one of the valid extension
+  expect_true(assert_file_extension(c("file.fns", "billy.fasta", "bob.fa", "billy.fa"), extensions = c("fasta", "fa", "fns")))
+
+  # Throws error when dir doesn't exist
+  expect_snapshot(assert_file_extension("file.ext", extensions = "bob"), error = TRUE)
+  expect_snapshot(assert_file_extension("file.ADSAWD", extensions = "ext", compression = TRUE), error = TRUE)
+  expect_snapshot(assert_file_extension("bob.blablaext", extensions = "ext"), error = TRUE)
+
+  # Error messages use variable name of passed arguments
+  x <- "file.ext"
+  expect_error(assert_file_extension(x, "bobby"), "^'x'", fixed = FALSE)
+
+  # Throws error when path is non-character
+  expect_snapshot(assert_file_extension(c(TRUE), extensions = "ext"), error = TRUE)
+
+})
 
