@@ -122,9 +122,10 @@ assert_file_exists <- assert_create_chain(
 #'
 #' @concept assert_file
 #' @export
-assert_directory <- assert_create_chain(
+assert_directory_exists <- assert_create_chain(
+  assert_character,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find director{?y/ies}: {.file {arg_value[!file.exists(arg_value)]}}"),
-  assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} file{?s} not a director{?y/ies}")
+  assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} {.strong file{?s}}, not{? a/} {.strong director{?y/ies}}")
   )
 
 #' Assert file permissions
