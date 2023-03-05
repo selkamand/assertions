@@ -53,7 +53,7 @@ assertion_names <- function(exclude_create_and_chain =TRUE){
 #'
 assertion_tests <- function(){
   #message("Warning: assertion_tests only finds tests where `expect_` and `assert_` are on the same line")
-  path_r_directory <- system.file("tests/testthat", package = "assertions")
+  path_r_directory <- testthat::test_path()
   path_scripts=dir(path_r_directory, full.names = TRUE, pattern = ".R$")
 
 
@@ -69,6 +69,7 @@ assertion_tests <- function(){
     ]
 
   tested_assertion = sub(x=expect_lines, ".*(assert_[a-zA-Z0-9_]+()).*", "\\1")
+
 
   df_assertion_test_counts <- as.data.frame(table(tested_assertion))
   names(df_assertion_test_counts) <- c("assertion", "tests")
