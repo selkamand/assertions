@@ -26,6 +26,13 @@
     Error <rlang_error>
       '100' must be a character, not a numeric
 
+# assert_file_permissions() works
+
+    Code
+      assert_file_permissions(c(TRUE), permission = "write")
+    Error <rlang_error>
+      'c(TRUE)' must be a character, not a logical
+
 # assert_file_extension() works
 
     Code

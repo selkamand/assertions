@@ -4,10 +4,10 @@
 \alias{has_permission}
 \title{Check file permissions}
 \usage{
-has_permission(filepaths, permission = c("write", "execute", "read"))
+has_permission(x, permission = c("write", "execute", "read"))
 }
 \arguments{
-\item{filepaths}{A character vector of file paths to check}
+\item{x}{A character vector of file paths to check}
 
 \item{permission}{A character string of permission to check for. One of c('write', 'execute', 'read')}
 }

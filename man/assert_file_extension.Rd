@@ -30,7 +30,7 @@ assert_file_extension(
 invisible(TRUE) if \code{x} has any of the specified extensions, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that all files supplied have one of the selected extensions
+Assert that all filepaths supplied have one of the selected extensions. Does not require file to actually exist.
 }
 \examples{
 \dontrun{

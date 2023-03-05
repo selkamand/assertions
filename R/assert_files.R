@@ -9,7 +9,7 @@ all_files_exist <- function(x){
 #'
 #' Check if the specified filepaths have the specified permissions
 #'
-#' @param filepaths A character vector of file paths to check
+#' @param x A character vector of file paths to check
 #' @param permission A character string of permission to check for. One of c('write', 'execute', 'read')
 #'
 #' @return A logical value indicating whether all files have the specified permissions
@@ -19,14 +19,23 @@ all_files_exist <- function(x){
 #' \dontrun{
 #' has_permission(c("file1.txt", "file2.txt"), permission = "rw")
 #' }
-has_permission <- function(filepaths, permission = c('write', 'execute', 'read')){
+has_permission <- function(x, permission = c('write', 'execute', 'read')){
   permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
   permission <- rlang::arg_match(permission)
   mode <- permission_to_mode[match(permission, names(permission_to_mode))]
 
-  exit_code <- file.access(names = filepaths, mode)
+  exit_code <- file.access(names = x, mode)
   if (all(exit_code == 0)) return(TRUE)
   else return(FALSE)
+}
+
+has_permission_vec <- function(x, permission = c('write', 'execute', 'read')){
+  permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
+  permission <- rlang::arg_match(permission)
+  mode <- permission_to_mode[match(permission, names(permission_to_mode))]
+
+  exit_code <- file.access(names = x, mode)
+  return(exit_code == 0)
 }
 
 is_dir <- function(x){
@@ -153,7 +162,7 @@ assert_directory_exists <- assert_create_chain(
 #' @export
 assert_file_permissions <- assert_create_chain(
   assert_file_exists,
-  assert_create(has_permission, default_error_msg = "File {.file {arg_value}} does not have permission {permission}")
+  assert_create(has_permission, default_error_msg = "{cli::qty(arg_value[!has_permission_vec(arg_value, permission=permission)])}File{?s} {.file {arg_value[!has_permission_vec(arg_value, permission=permission)]}} do{?es/} not have permission: {.strong {permission}}")
 )
 
 
