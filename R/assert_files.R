@@ -9,7 +9,7 @@ all_files_exist <- function(x){
 #'
 #' Check if the specified filepaths have the specified permissions
 #'
-#' @param filepaths A character vector of file paths to check
+#' @param x A character vector of file paths to check
 #' @param permission A character string of permission to check for. One of c('write', 'execute', 'read')
 #'
 #' @return A logical value indicating whether all files have the specified permissions
@@ -19,19 +19,33 @@ all_files_exist <- function(x){
 #' \dontrun{
 #' has_permission(c("file1.txt", "file2.txt"), permission = "rw")
 #' }
-has_permission <- function(filepaths, permission = c('write', 'execute', 'read')){
+has_permission <- function(x, permission = c('write', 'execute', 'read')){
   permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
   permission <- rlang::arg_match(permission)
   mode <- permission_to_mode[match(permission, names(permission_to_mode))]
 
-  exit_code <- file.access(names = filepaths, mode)
+  exit_code <- file.access(names = x, mode)
   if (all(exit_code == 0)) return(TRUE)
   else return(FALSE)
+}
+
+has_permission_vec <- function(x, permission = c('write', 'execute', 'read')){
+  permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
+  permission <- rlang::arg_match(permission)
+  mode <- permission_to_mode[match(permission, names(permission_to_mode))]
+
+  exit_code <- file.access(names = x, mode)
+  return(exit_code == 0)
 }
 
 is_dir <- function(x){
    all(dir.exists(x))
 }
+
+is_file <- function(x){
+  all(file.exists(x) & !dir.exists(x))
+}
+
 
 get_file_extensions <- function(filenames) {
   filenames <- basename(filenames)
@@ -93,7 +107,8 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @export
 assert_file_exists <- assert_create_chain(
   assert_character,
-  assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}")
+  assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}"),
+  assert_create(func = is_file, default_error_msg = "{x[dir.exists(x)]} {?is a/are} {.strong director{?y/ies}}, not {?a/} {.strong file{?s}}")
   )
 
 #' Assert all files are directories
@@ -116,9 +131,10 @@ assert_file_exists <- assert_create_chain(
 #'
 #' @concept assert_file
 #' @export
-assert_directory <- assert_create_chain(
+assert_directory_exists <- assert_create_chain(
+  assert_character,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find director{?y/ies}: {.file {arg_value[!file.exists(arg_value)]}}"),
-  assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} file{?s} not a director{?y/ies}")
+  assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} {.strong file{?s}}, not{? a/} {.strong director{?y/ies}}")
   )
 
 #' Assert file permissions
@@ -146,13 +162,13 @@ assert_directory <- assert_create_chain(
 #' @export
 assert_file_permissions <- assert_create_chain(
   assert_file_exists,
-  assert_create(has_permission, default_error_msg = "File {.file {arg_value}} does not have permission {permission}")
+  assert_create(has_permission, default_error_msg = "{cli::qty(arg_value[!has_permission_vec(arg_value, permission=permission)])}File{?s} {.file {arg_value[!has_permission_vec(arg_value, permission=permission)]}} do{?es/} not have permission: {.strong {permission}}")
 )
 
 
 #' Assert file extensions
 #'
-#' Assert that all files supplied have one of the selected extensions
+#' Assert that all filepaths supplied have one of the selected extensions. Does not require file to actually exist.
 #'
 #' @include assert_create.R
 #' @include is_functions.R
@@ -173,8 +189,10 @@ assert_file_permissions <- assert_create_chain(
 #' @concept assert_file
 #'
 #' @export
-assert_file_extension <- assert_create(
-  has_extension, "{.strong {arg_name}} {?have/has} an invalid extension (required extension/s: {.strong {extensions}}).
+assert_file_extension <- assert_create_chain(
+  assert_character,
+  assert_create(has_extension, "'{.strong {arg_name}}' {?have/has} an invalid extension (required extension/s: {.strong {extensions}}).
   The following file{?s} ha{?s/ve} unexpected extensions:
   [{files_missing_extension(arg_value, extensions, compression)}]"
+  )
 )

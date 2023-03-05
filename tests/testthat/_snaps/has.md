@@ -19,3 +19,17 @@
     Error <rlang_error>
       'mtcars' must belong to class 'list', not data.frame
 
+# assert_no_missing() works [plain]
+
+    Code
+      assert_no_missing(c(1, 2, NA))
+    Error <rlang_error>
+      'c(1, 2, NA)' must have no missing values! Found 1
+
+---
+
+    Code
+      assert_no_missing(c("a", NA, "c"))
+    Error <rlang_error>
+      'c("a", NA, "c")' must have no missing values! Found 1
+

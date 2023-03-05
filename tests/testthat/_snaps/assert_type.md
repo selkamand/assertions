@@ -103,3 +103,24 @@
     Error <rlang_error>
       'factor(c(1, 2, 3))' must be a reactive, not a factor
 
+# assert_function() works [plain]
+
+    Code
+      assert_function(1)
+    Error <rlang_error>
+      '1' must be a function, not a numeric
+
+---
+
+    Code
+      assert_function("abc")
+    Error <rlang_error>
+      '"abc"' must be a function, not a character
+
+---
+
+    Code
+      assert_function(c(1, 2, 3))
+    Error <rlang_error>
+      'c(1, 2, 3)' must be a function, not a numeric
+
