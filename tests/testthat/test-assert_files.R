@@ -84,7 +84,7 @@ test_that("assert_file_permissions() works", {
       file_with_read_permission
       ),
     permission = "execute"),
-    "^Files [a-zA-Z0-9\\/_']+ and [a-zA-Z0-9\\/_']+ do not have permission: execute"
+    "^Files [:a-zA-Z0-9\\/_']+ and [:a-zA-Z0-9\\/_']+ do not have permission: execute"
   )
 
   # Throws error when path is non-character
