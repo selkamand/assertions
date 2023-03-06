@@ -52,6 +52,8 @@ test_that("assert_directory_exists() works", {
 test_that("assert_file_permissions() works", {
 
 
+  testthat::skip_on_os(os = "windows") # Have to skip these tests on windows since Sys.chmod doesn't work on windows
+
   file_with_write_permission <- withr::local_tempfile()
   write("file contents", file_with_write_permission)
   Sys.chmod(file_with_write_permission, mode = "200")
@@ -84,7 +86,7 @@ test_that("assert_file_permissions() works", {
       file_with_read_permission
       ),
     permission = "execute"),
-    "^Files [a-zA-Z0-9\\/_']+ and [a-zA-Z0-9\\/_']+ do not have permission: execute"
+    "^Files [\\:a-zA-Z0-9\\/_~']+ and [\\:a-zA-Z0-9\\/_~']+ do not have permission: execute"
   )
 
   # Throws error when path is non-character
