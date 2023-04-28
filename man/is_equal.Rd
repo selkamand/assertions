@@ -18,7 +18,7 @@ is_equal(
 
 \item{y}{second object to compare}
 
-\item{tolerance}{Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric ≥ 0).}
+\item{tolerance}{Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric >= 0).}
 
 \item{check_names}{should the names(.) of target and current should be compare (flag)}
 

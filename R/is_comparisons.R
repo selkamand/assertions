@@ -99,7 +99,7 @@ is_identical <- function(x, y){
 #'
 #' @param x first object to compare
 #' @param y second object to compare
-#' @param tolerance Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric ≥ 0).
+#' @param tolerance Differences smaller than tolerance are not reported. The default value is close to 1.5e-8 (numeric >= 0).
 #' @param check_names should the names(.) of target and current should be compare (flag)
 #' @param check_environment should the environments of functions should be compared?
 #' You may need to set check.environment=FALSE in unexpected cases, such as when comparing two nls() fits. (flag)
