@@ -16,6 +16,6 @@
 assert_subset <- assert_create(
   func = is_subset,
   default_error_msg = c(
-    x= "'{.strong {arg_name}}' {cli::qty(length(setopts_exlusive_to_first(arg_value, y)))} contain{?s} {?an/} invalid value{?s}: {.strong {setopts_exlusive_to_first(arg_value, y)}}. Valid values include: {.strong {unique(y)}}"
+    x = "'{.strong {arg_name}}' {cli::qty(length(setopts_exlusive_to_first(arg_value, y)))} contain{?s} {?an/} invalid value{?s}: {.strong {setopts_exlusive_to_first(arg_value, y)}}. Valid values include: {unique(y)}"
     )
   )
