@@ -15,6 +15,8 @@ assert_all_files_exist(
 \arguments{
 \item{x}{Paths to files (character)}
 
+\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
+
 \item{msg}{A character string containing the error message if any files in \code{x} is does not exist}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}

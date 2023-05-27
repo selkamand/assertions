@@ -94,7 +94,7 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @param x Paths to files (character)
 #' @param msg A character string containing the error message if any files in `x` is does not exist
 #' @inheritParams common_roxygen_params
-#'
+#' @inheritParams assert_character_vector
 #' @return invisible(TRUE) if file `x` exists, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
