@@ -25,6 +25,15 @@
     <loc>/reference/assert.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_all_directories_exist.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_all_files_exist.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_all_files_have_extension.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_character.html</loc>
   </url>
   <url>
@@ -58,7 +67,7 @@
     <loc>/reference/assert_file_exists.html</loc>
   </url>
   <url>
-    <loc>/reference/assert_file_extension.html</loc>
+    <loc>/reference/assert_file_has_extension.html</loc>
   </url>
   <url>
     <loc>/reference/assert_file_permissions.html</loc>
