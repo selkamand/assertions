@@ -6,6 +6,7 @@
 \usage{
 assert_file_permissions(
   x,
+  include_lists = FALSE,
   permission = c("write", "execute", "read"),
   msg = NULL,
   call = rlang::caller_env(),
