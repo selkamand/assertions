@@ -6,6 +6,7 @@
 \usage{
 assert_file_permissions(
   x,
+  include_lists = FALSE,
   permission = c("write", "execute", "read"),
   msg = NULL,
   call = rlang::caller_env(),
@@ -14,6 +15,8 @@ assert_file_permissions(
 }
 \arguments{
 \item{x}{An object}
+
+\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{permission}{A character string of permission to check for. One of c('write', 'execute', 'read')}
 
