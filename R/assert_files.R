@@ -201,35 +201,6 @@ assert_directory_exists <- assert_create_chain(
   assert_all_directories_exist
 )
 
-#' Assert file permissions
-#'
-#' Assert that all files supplied have the selected read/write/execute permissions
-#'
-#' @include assert_create.R
-#' @include is_functions.R
-#'
-#' @param x An object
-#' @param msg A character string containing the error message if file `x` does not have the specified permissions
-#' @inheritParams common_roxygen_params
-#' @inheritParams has_permission
-#' @inheritParams assert_file_exists
-#' @return invisible(TRUE) if `x` exists and has the specified permissions, otherwise aborts with the error message specified by `msg`
-#'
-#' @examples
-#' try({
-#' assert_file_permissions("file.txt", permissions = "read")
-#' assert_file_permissions("file.txt", permissions = "write") # Throws Error
-#' })
-#'
-#' @concept assert_file
-#'
-#' @export
-assert_file_permissions <- assert_create_chain(
-  assert_file_exists,
-  assert_create(has_permission, default_error_msg = "{cli::qty(arg_value[!has_permission_vec(arg_value, permission=permission)])}File{?s} {.file {arg_value[!has_permission_vec(arg_value, permission=permission)]}} do{?es/} not have permission: {.strong {permission}}")
-)
-
-
 #' Assert file extensions
 #'
 #' Assert that all filepaths supplied have one of the selected extensions. Does not require file to actually exist.

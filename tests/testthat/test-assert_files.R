@@ -101,55 +101,6 @@ test_that("assert_all_directories_exist() works", {
   expect_error(assert_all_directories_exist(c(file1, file2)), regexp = ".*? and .*? are files, not directories")
 })
 
-test_that("assert_file_permissions() works", {
-
-
-  testthat::skip_on_os(os = "windows") # Have to skip these tests on windows since Sys.chmod doesn't work on windows
-
-  file_with_write_permission <- withr::local_tempfile()
-  write("file contents", file_with_write_permission)
-  Sys.chmod(file_with_write_permission, mode = "200")
-
-
-  file_with_read_permission <- withr::local_tempfile()
-  write("file contents", file_with_read_permission)
-  Sys.chmod(file_with_read_permission, mode = "400")
-
-  file_with_execute_permission <- withr::local_tempfile()
-  write("file contents", file_with_execute_permission)
-  Sys.chmod(file_with_execute_permission, mode = "100")
-
-  # Passes when file has permission
-  expect_true(assert_file_permissions(file_with_write_permission, permission = "write"))
-  expect_true(assert_file_permissions(file_with_execute_permission, permission = "execute"))
-  expect_true(assert_file_permissions(file_with_read_permission, permission = "read"))
-
-  # Throws error if vector of files is passed
-  expect_snapshot(assert_file_permissions(c(file_with_write_permission, file_with_write_permission), permission = "write"), error = TRUE)
-
-  # # Throws error when file doesn't have the required permission (Can't be snapshots due to tempfile name randomisation)
-  expect_error(assert_file_permissions(file_with_write_permission, permission = "execute"), "does not have permission: execute")
-  expect_error(assert_file_permissions(file_with_write_permission, permission = "read"), "does not have permission: read")
-  expect_error(assert_file_permissions(file_with_execute_permission, permission = "write"), "does not have permission: write")
-  expect_snapshot(assert_file_permissions(
-    c(
-      file_with_execute_permission,
-      file_with_write_permission,
-      file_with_read_permission
-      ),
-    permission = "execute"),error = TRUE
-  )
-
-  # Throws error when path is non-character
-  expect_snapshot(assert_file_permissions(c(TRUE), permission = "write"), error = TRUE)
-
-
-  # Change permissions back to write so files can be deleted
-  Sys.chmod(file_with_write_permission, mode = "200")
-  Sys.chmod(file_with_execute_permission, mode = "200")
-  Sys.chmod(file_with_read_permission, mode = "200")
-})
-
 
 test_that("assert_file_has_extension() works", {
 
