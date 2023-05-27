@@ -27,10 +27,10 @@ invisible(TRUE) if x is a character vector, otherwise aborts with the error mess
 Asserts that x is a string, and nonempty (i.e. not equal to '')
 }
 \examples{
-\dontrun{
+try({
 assert_non_empty_string("a") # Passes
 assert_non_empty_string("") # Fails
-}
+})
 
 
 }

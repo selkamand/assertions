@@ -27,13 +27,13 @@ invisible(TRUE) if \code{x} has no duplicates, otherwise aborts with the error m
 Assert the input vector has no duplicated elements
 }
 \examples{
-\dontrun{
+try({
 assert_no_duplicates(c(1, 2, 3))  # Passes
 assert_no_duplicates(c(1, 2, 2))  # Throws default error
 
 assert_no_duplicates(c(1, 2, 3), msg = "Custom error message")  # Passes
 assert_no_duplicates(c(1, 2, 2), msg = "Custom error message")  # Throws custom error
-}
+})
 
 }
 \concept{assert_has}

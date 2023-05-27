@@ -22,12 +22,12 @@ invisible(TRUE) if \code{x} is logical, otherwise aborts with the error message 
 Assert that the input object is logical
 }
 \examples{
-\dontrun{
+try({
 assert_logical(TRUE) # Passes
 assert_logical(c(TRUE, FALSE, TRUE)) # Passes
 assert_logical(c("a", "b")) # Throws default error
 assert_logical(1:3, "Custom error message") # Throws custom error
-}
+})
 
 
 

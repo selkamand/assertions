@@ -22,10 +22,10 @@ invisible(TRUE) if file \code{x} exists, otherwise aborts with the error message
 Assert that all files exist
 }
 \examples{
-\dontrun{
+try({
 assert_file_exists(system.file("package = assertions"))
 assert_file_exists("foo") # Throws Error
-}
+})
 
 }
 \concept{assert_file}

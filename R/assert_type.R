@@ -20,7 +20,7 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 #' @return invisible(TRUE) if `x` is a data frame, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_dataframe(mtcars) # Passes
 #' assert_dataframe(data.frame()) # Passes
 #'
@@ -31,7 +31,7 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 #' assert_dataframe(factor(c(1, 2, 3))) # Throws default error
 #'
 #' assert_dataframe(1:10, msg = "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -54,12 +54,12 @@ assert_dataframe <- assert_create(
 #' @return invisible(TRUE) if `x` is a matrix, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_matrix(matrix(1:9, 3)) # Passes
 #' assert_matrix(matrix(1:9, 3, 3)) # Passes
 #' assert_matrix(c(1, 2, 3)) # Throws default error
 #' assert_matrix(1:10, "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #' @concept assert_type
 #' @export
@@ -83,7 +83,7 @@ assert_matrix <- assert_create(
 #' By default, lists are not considered vectors (i.e. `include_lists = FALSE`) to align with what end-users will expect, in spite of these objects technically being vectors.
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_vector(c(1, 2, 3)) # Passes
 #' assert_vector(matrix(1:6, 2, 3)) # Throws default error message
 #' assert_vector(1:3) # Passes
@@ -93,7 +93,7 @@ assert_matrix <- assert_create(
 #'
 #' assert_vector(c("a", 1, "b"), "Custom error message") # Throws custom error message
 #' assert_vector(factor(c(1, 2, 3)), "Custom error message") # Throws custom error message
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -125,12 +125,12 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 #' @return invisible(TRUE) if `x` is a factor, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_factor(factor(c("a", "b", "c"))) # Passes
 #' assert_factor(c("a", "b", "c")) # Throws default error
 #' assert_factor(factor(c("a", "b", "c")), "Custom error message") # Passes
 #' assert_factor(1:3, "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -148,12 +148,12 @@ assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_
 #'
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_numeric(1:3) # Passes
 #' assert_numeric(1.5:5.5) # Passes
 #' assert_numeric(c("a", "b", "c")) # Throws default error
 #' assert_numeric(c("a", 1, "b"), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -188,12 +188,12 @@ assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = ms
 #' @return invisible(TRUE) if x is a number, otherwise aborts with the error message specified by msg
 #'
 #' @examples
-#' \dontrun{
 #' assert_number(2) # Passes
+#' try({
 #' assert_number(c(2, 3)) # Throws default error
 #' assert_number("a") # Throws default error
 #' assert_number(c("a", 1, "b"), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -218,13 +218,13 @@ assert_number <- assert_create_chain(
 #' This function checks that `x` specifically belong to the integer class.
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_int(1) # Passes
 #' assert_int(1:10) # Passes
 #' assert_int(c(1, 2, 3)) # Passes
 #' assert_int("a") # Throws default error
 #' assert_int(1.5, msg = "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -244,12 +244,12 @@ assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = T
 #' @return invisible(TRUE) if `x` is logical, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_logical(TRUE) # Passes
 #' assert_logical(c(TRUE, FALSE, TRUE)) # Passes
 #' assert_logical(c("a", "b")) # Throws default error
 #' assert_logical(1:3, "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #'
@@ -268,11 +268,11 @@ assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a 
 #' @return invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the error message specified by msg
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_logical_vector(c(TRUE, TRUE, TRUE)) # Passes
 #' assert_logical_vector("a") # Throws default error
 #' assert_logical_vector(c(1, 0, 1), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -291,12 +291,12 @@ assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type
 #' @return invisible(TRUE) if `x` is a scalar logical, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_flag(TRUE) # Passes
 #' assert_flag(FALSE) # Passes
 #' assert_flag(c(TRUE, FALSE)) # Throws default error
 #' assert_flag(1, "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -319,12 +319,12 @@ assert_flag <- assert_create_chain(
 #' @return invisible(TRUE) if `x` is a character vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_character("a") # Passes
 #' assert_character(c("a", "b", "c")) # Passes
 #' assert_character(1:3) # Throws default error
 #' assert_character(c("a", 1, "b"), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -341,11 +341,11 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 #' @return invisible(TRUE) if `x` is a character vector, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_character_vector(c("a", "b", "c")) # Passes
 #' assert_character_vector(c("a", 1, "b")) # Throws default error
 #' assert_character_vector(c("a", 1, "b"), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -362,12 +362,12 @@ assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_
 #' @return invisible(TRUE) if x is a string, otherwise aborts with the error message specified by msg
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_string("a") # Passes
 #' assert_string(c("a", "b", "c")) # Throws default error
 #' assert_string(1:3) # Throws default error
 #' assert_string(c("a", 1, "b"), "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -388,10 +388,10 @@ assert_string <- assert_create_chain(
 #' @return invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_non_empty_string("a") # Passes
 #' assert_non_empty_string("") # Fails
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -413,7 +413,7 @@ assert_non_empty_string <- assert_create(
 #' @return invisible(TRUE) if `x` is a function, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' # Assert that a variable is a function
 #' x <- function(a, b) { a + b }
 #' assert_function(x)  # does nothing
@@ -421,7 +421,7 @@ assert_non_empty_string <- assert_create(
 #' # Assert that a variable is not a function
 #' x <- "not a function"
 #' assert_function(x)  # stops execution and prints an error message
-#' }
+#' })
 #'
 #'
 #' @concept assert_type
@@ -441,7 +441,7 @@ assert_function <- assert_create(is.function, msg_helper_assert_type(expected_ty
 #' @return invisible(TRUE) if `x` is a list, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' # Assert that a variable is a list
 #' x <- list(1, 2, 3)
 #' assert_list(x)  # does nothing
@@ -449,7 +449,7 @@ assert_function <- assert_create(is.function, msg_helper_assert_type(expected_ty
 #' # Assert that a variable is not a list
 #' x <- "not a list"
 #' assert_list(x)  # stops execution and prints an error message
-#' }
+#' })
 #'
 #' @concept assert_type
 #' @export
@@ -464,7 +464,7 @@ assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "li
 #' @return invisible(TRUE) if `x` is a reactive, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' # Assert that a variable is reactive
 #' x <- shiny::reactive(1)
 #' assert_reactive(x)  # does nothing
@@ -472,7 +472,7 @@ assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "li
 #' # Assert that a variable is not a list
 #' x <- 1
 #' assert_reactive(x)  # stops execution and prints an error message
-#' }
+#' })
 #'
 #' @concept assert_type
 #' @export

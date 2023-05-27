@@ -30,7 +30,7 @@ invisible(TRUE) if \code{x} is a list, otherwise aborts with the error message s
 Assert that x is a list
 }
 \examples{
-\dontrun{
+try({
 # Assert that a variable is a list
 x <- list(1, 2, 3)
 assert_list(x)  # does nothing
@@ -38,7 +38,7 @@ assert_list(x)  # does nothing
 # Assert that a variable is not a list
 x <- "not a list"
 assert_list(x)  # stops execution and prints an error message
-}
+})
 
 }
 \concept{assert_type}

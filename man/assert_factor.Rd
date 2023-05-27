@@ -22,12 +22,12 @@ invisible(TRUE) if \code{x} is a factor, otherwise aborts with the error message
 Assert that the input object is a factor
 }
 \examples{
-\dontrun{
+try({
 assert_factor(factor(c("a", "b", "c"))) # Passes
 assert_factor(c("a", "b", "c")) # Throws default error
 assert_factor(factor(c("a", "b", "c")), "Custom error message") # Passes
 assert_factor(1:3, "Custom error message") # Throws custom error
-}
+})
 
 
 }

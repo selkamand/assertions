@@ -22,12 +22,12 @@ invisible(TRUE) if \code{x} is a scalar logical, otherwise aborts with the error
 Assert that the input object is a flag (a logical of length 1: \code{TRUE} or \code{FALSE})
 }
 \examples{
-\dontrun{
+try({
 assert_flag(TRUE) # Passes
 assert_flag(FALSE) # Passes
 assert_flag(c(TRUE, FALSE)) # Throws default error
 assert_flag(1, "Custom error message") # Throws custom error
-}
+})
 
 
 }

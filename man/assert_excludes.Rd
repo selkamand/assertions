@@ -30,10 +30,10 @@ invisible(TRUE) if \code{x} includes any \code{illegal} elements, otherwise abor
 Assert x does not include illegal elements
 }
 \examples{
-\dontrun{
+try({
 assert_directory(system.file("package = assertions"))
 assert_directory("foo") # Throws Error
-}
+})
 
 }
 \concept{assert_includes}

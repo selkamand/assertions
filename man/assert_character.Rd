@@ -22,12 +22,12 @@ invisible(TRUE) if \code{x} is a character vector, otherwise aborts with the err
 Assert that the input object is a character vector
 }
 \examples{
-\dontrun{
+try({
 assert_character("a") # Passes
 assert_character(c("a", "b", "c")) # Passes
 assert_character(1:3) # Throws default error
 assert_character(c("a", 1, "b"), "Custom error message") # Throws custom error
-}
+})
 
 
 }

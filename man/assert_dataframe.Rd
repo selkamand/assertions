@@ -22,7 +22,7 @@ invisible(TRUE) if \code{x} is a data frame, otherwise aborts with the error mes
 Assert that the input object is a data frame
 }
 \examples{
-\dontrun{
+try({
 assert_dataframe(mtcars) # Passes
 assert_dataframe(data.frame()) # Passes
 
@@ -33,7 +33,7 @@ assert_dataframe(list(a = 1, b = 2)) # Throws default error
 assert_dataframe(factor(c(1, 2, 3))) # Throws default error
 
 assert_dataframe(1:10, msg = "Custom error message") # Throws custom error
-}
+})
 
 
 }

@@ -1,4 +1,3 @@
-
 # Notes -------------------------------------------------------------------
 
 # assert_function is in assert_type.
@@ -41,6 +40,3 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
 #'
 #' @export
 assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced)
-
-
-

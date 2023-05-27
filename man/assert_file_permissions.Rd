@@ -30,10 +30,10 @@ invisible(TRUE) if \code{x} exists and has the specified permissions, otherwise 
 Assert that all files supplied have the selected read/write/execute permissions
 }
 \examples{
-\dontrun{
+try({
 assert_file_permissions("file.txt", permissions = "read")
 assert_file_permissions("file.txt", permissions = "write") # Throws Error
-}
+})
 
 }
 \concept{assert_file}

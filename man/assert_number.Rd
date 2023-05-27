@@ -23,12 +23,12 @@ A number is a length 1 numeric vector.
 Numbers can be either integers or doubles.
 }
 \examples{
-\dontrun{
 assert_number(2) # Passes
+try({
 assert_number(c(2, 3)) # Throws default error
 assert_number("a") # Throws default error
 assert_number(c("a", 1, "b"), "Custom error message") # Throws custom error
-}
+})
 
 
 }

@@ -1,4 +1,3 @@
-
 # Functions ---------------------------------------------------------------
 
 all_files_exist <- function(x){
@@ -16,9 +15,9 @@ all_files_exist <- function(x){
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' has_permission(c("file1.txt", "file2.txt"), permission = "rw")
-#' }
+#' })
 has_permission <- function(x, permission = c('write', 'execute', 'read')){
   permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
   permission <- rlang::arg_match(permission)
@@ -39,7 +38,7 @@ has_permission_vec <- function(x, permission = c('write', 'execute', 'read')){
 }
 
 is_dir <- function(x){
-   all(dir.exists(x))
+  all(dir.exists(x))
 }
 
 is_file <- function(x){
@@ -98,10 +97,10 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @return invisible(TRUE) if file `x` exists, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_file_exists(system.file("package = assertions"))
 #' assert_file_exists("foo") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_file
 #' @export
@@ -109,7 +108,7 @@ assert_file_exists <- assert_create_chain(
   assert_character,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}"),
   assert_create(func = is_file, default_error_msg = "{x[dir.exists(x)]} {?is a/are} {.strong director{?y/ies}}, not {?a/} {.strong file{?s}}")
-  )
+)
 
 #' Assert all files are directories
 #'
@@ -124,10 +123,10 @@ assert_file_exists <- assert_create_chain(
 #' @return invisible(TRUE) if `x` is exists and is a directory, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_directory(system.file("package = assertions"))
 #' assert_directory("foo") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_file
 #' @export
@@ -135,7 +134,7 @@ assert_directory_exists <- assert_create_chain(
   assert_character,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find director{?y/ies}: {.file {arg_value[!file.exists(arg_value)]}}"),
   assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} {.strong file{?s}}, not{? a/} {.strong director{?y/ies}}")
-  )
+)
 
 #' Assert file permissions
 #'
@@ -152,10 +151,10 @@ assert_directory_exists <- assert_create_chain(
 #' @return invisible(TRUE) if `x` exists and has the specified permissions, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_file_permissions("file.txt", permissions = "read")
 #' assert_file_permissions("file.txt", permissions = "write") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_file
 #'
@@ -181,10 +180,10 @@ assert_file_permissions <- assert_create_chain(
 #' @return invisible(TRUE) if `x` has any of the specified extensions, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_file_extension("foo.txt", extensions = "txt") # Passes
 #' assert_file_permissions("file.txt", extensions = "csv") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_file
 #'

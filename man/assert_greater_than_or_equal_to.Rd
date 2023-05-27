@@ -33,9 +33,9 @@ invisible(TRUE) if \code{x} is greater than or equal to the specified minimum va
 Assert that the input object is greater than or equal to a specified minimum value
 }
 \examples{
-\dontrun{
+try({
 assert_greater_than_or_equal_to(3, 2) # Passes
 assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
 assert_greater_than_or_equal_to(2, 3) # Throws error
-}
+})
 }

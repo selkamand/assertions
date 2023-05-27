@@ -33,7 +33,7 @@ invisible(TRUE) if \code{x} is greater than the specified minimum value, otherwi
 Assert that the input object is greater than a specified minimum value
 }
 \examples{
-\dontrun{
+try({
 assert_greater_than(3, 2) # Passes
 assert_greater_than(3, 2, all_must_satisfy = TRUE) # Passes
 assert_greater_than(c(2,3,4), 1) # Passes
@@ -41,7 +41,7 @@ assert_greater_than(c(2,3,4), 2) # Passes
 assert_greater_than(c(2,3,4), 3, all_must_satisfy=FALSE) # Passes
 assert_greater_than(c(2,3,1), 3) # Throws default error
 assert_greater_than(c(2,3,1), 3, msg = "custom error message") # Throws custom error
-}
+})
 
 }
 \concept{assert_comparison}

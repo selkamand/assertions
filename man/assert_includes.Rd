@@ -30,10 +30,10 @@ invisible(TRUE) if \code{x} includes all \code{required} elements, otherwise abo
 Assert x includes required elements
 }
 \examples{
-\dontrun{
+try({
 assert_directory(system.file("package = assertions"))
 assert_directory("foo") # Throws Error
-}
+})
 
 }
 \concept{assert_includes}

@@ -24,10 +24,10 @@ invisible(TRUE) if \code{x} belongs to \code{class}, otherwise aborts with the e
 This function asserts that the input object belongs to \code{class}
 }
 \examples{
-\dontrun{
+try({
 assert_has_class(1, "numeric")  # Passes
 assert_has_class(1, "character")  # Throws default error
-}
+})
 
 }
 \concept{assert_has}

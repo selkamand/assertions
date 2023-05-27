@@ -26,8 +26,7 @@
 #' @return An assertion function.
 #'
 #' @examples
-#' \dontrun{
-#' # Create an assertion function that checks that a character string is all
+#' #' # Create an assertion function that checks that a character string is all
 #' # lower case
 #' assert_character <- assert_create(
 #'   is.character,
@@ -35,9 +34,10 @@
 #' )
 #'
 #' # Use the assertion function
+#' try({
 #' is_lower("hello") # Returns invisible TRUE
 #' is_lower("Hello") # Aborts the function with the error message
-#'}
+#'})
 #' @include utils.R
 #' @concept assert_create
 #' @export
@@ -180,10 +180,10 @@ assert_create <- function(func, default_error_msg = NULL){
 #' assert_string("String")
 #'
 #' # Use the assertion function to check an invalid value
-#' \dontrun{
+#' try({
 #' assert_string(3)
 #' # Output: Error: '3' must be a character
-#' }
+#' })
 #' @export
 assert_create_chain <- function(...){
 

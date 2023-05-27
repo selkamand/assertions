@@ -22,12 +22,12 @@ invisible(TRUE) if x is a string, otherwise aborts with the error message specif
 Assert that the input object is a character string
 }
 \examples{
-\dontrun{
+try({
 assert_string("a") # Passes
 assert_string(c("a", "b", "c")) # Throws default error
 assert_string(1:3) # Throws default error
 assert_string(c("a", 1, "b"), "Custom error message") # Throws custom error
-}
+})
 
 
 }

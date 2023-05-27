@@ -12,16 +12,16 @@
 #' @return invisible(TRUE) if `x` includes all `required` elements, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_directory(system.file("package = assertions"))
 #' assert_directory("foo") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_includes
 #' @export
 assert_includes <- assert_create(
   includes_advanced
-  )
+)
 
 #' Assert object does not include any illegal values
 #'
@@ -37,15 +37,13 @@ assert_includes <- assert_create(
 #' @return invisible(TRUE) if `x` includes any `illegal` elements, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_directory(system.file("package = assertions"))
 #' assert_directory("foo") # Throws Error
-#' }
+#' })
 #'
 #' @concept assert_includes
 #' @export
 assert_excludes <- assert_create(
   excludes_advanced
 )
-
-

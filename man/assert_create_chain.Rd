@@ -26,8 +26,8 @@ assert_string <- assert_create_chain(
 assert_string("String")
 
 # Use the assertion function to check an invalid value
-\dontrun{
+try({
 assert_string(3)
 # Output: Error: '3' must be a character
-}
+})
 }

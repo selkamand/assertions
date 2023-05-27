@@ -33,7 +33,7 @@ Assert that the input object is a vector
 By default, lists are not considered vectors (i.e. \code{include_lists = FALSE}) to align with what end-users will expect, in spite of these objects technically being vectors.
 }
 \examples{
-\dontrun{
+try({
 assert_vector(c(1, 2, 3)) # Passes
 assert_vector(matrix(1:6, 2, 3)) # Throws default error message
 assert_vector(1:3) # Passes
@@ -43,7 +43,7 @@ assert_vector(list(1, 2, 3), include_lists = TRUE) # Passes
 
 assert_vector(c("a", 1, "b"), "Custom error message") # Throws custom error message
 assert_vector(factor(c(1, 2, 3)), "Custom error message") # Throws custom error message
-}
+})
 
 
 }

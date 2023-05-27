@@ -18,7 +18,7 @@ A logical value indicating whether all files have the specified permissions
 Check if the specified filepaths have the specified permissions
 }
 \examples{
-\dontrun{
+try({
 has_permission(c("file1.txt", "file2.txt"), permission = "rw")
-}
+})
 }

@@ -1,4 +1,3 @@
-
 # Has Functions -----------------------------------------------------------
 
 #' Check if a vector has duplicates
@@ -134,13 +133,13 @@ has_class <- function(x, class){
 #' @return invisible(TRUE) if `x` has no missing values (NA), otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_no_missing(c(1, 2, 3))  # Passes
 #' assert_no_missing(c(1, NA, 2))  # Throws default error
 #'
 #' assert_no_missing(c(1, 2, 3), msg = "Custom error message")  # Passes
 #' assert_no_missing(c(1, NA, 2), msg = "Custom error message")  # Throws custom error
-#' }
+#' })
 #'
 #' @concept assert_has
 #' @export
@@ -163,19 +162,19 @@ assert_no_missing <- assert_create(
 #' @return invisible(TRUE) if `x` has no duplicates, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_no_duplicates(c(1, 2, 3))  # Passes
 #' assert_no_duplicates(c(1, 2, 2))  # Throws default error
 #'
 #' assert_no_duplicates(c(1, 2, 3), msg = "Custom error message")  # Passes
 #' assert_no_duplicates(c(1, 2, 2), msg = "Custom error message")  # Throws custom error
-#' }
+#' })
 #'
 #' @concept assert_has
 #' @export
 assert_no_duplicates <- assert_create(
   has_no_duplicates,
-   "'{.strong {arg_name}}' must have {.strong no duplicates}! Found {.strong {util_count_duplicates(arg_value)}} duplicated value{?s}: {.emph {util_get_duplicated_values(arg_value)}}"
+  "'{.strong {arg_name}}' must have {.strong no duplicates}! Found {.strong {util_count_duplicates(arg_value)}} duplicated value{?s}: {.emph {util_get_duplicated_values(arg_value)}}"
 )
 
 
@@ -190,10 +189,10 @@ assert_no_duplicates <- assert_create(
 #' @return invisible(TRUE) if `x` belongs to `class`, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_has_class(1, "numeric")  # Passes
 #' assert_has_class(1, "character")  # Throws default error
-#' }
+#' })
 #'
 #' @concept assert_has
 #' @export
