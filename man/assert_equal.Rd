@@ -43,9 +43,9 @@ invisible(TRUE) if \code{x} is equal to the specified value, otherwise aborts wi
 Is \code{x} equal to \code{y}. powered by the \code{\link[=all.equal]{all.equal()}} function.
 }
 \examples{
-\dontrun{
+try({
 assert_equal(3, 3) # Passes
 assert_equal(c(3, 3, 3), 3, ) # Fails
 assert_equal(2, 3) # Throws error
-}
+})
 }

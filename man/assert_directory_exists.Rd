@@ -27,10 +27,10 @@ invisible(TRUE) if \code{x} is exists and is a directory, otherwise aborts with 
 Assert that all files supllied are actually directories
 }
 \examples{
-\dontrun{
+try({
 assert_directory(system.file("package = assertions"))
 assert_directory("foo") # Throws Error
-}
+})
 
 }
 \concept{assert_file}

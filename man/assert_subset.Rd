@@ -24,8 +24,8 @@ Returns invisible(TRUE) if \code{x} is a subset of \code{y}, otherwise throws an
 This function checks that \code{x} is a subset of \code{y}
 }
 \examples{
-\dontrun{
+try({
 assert_subset(1:3, 1:5) # Passes
 assert_subset(c("A", "B", "C"), c("A", "B")) # Throws error since "C" is not present in first vector
-}
+})
 }

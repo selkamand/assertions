@@ -30,7 +30,7 @@ invisible(TRUE) if all \code{names} are present in \code{x}, otherwise aborts wi
 Assert that the input object includes a specified name
 }
 \examples{
-\dontrun{
+try({
 x <- list(a = 1, b = 2, c = 3)
 
 assert_includes_name(x, "a") # Passes
@@ -38,6 +38,6 @@ assert_includes_name(x, c("a", "b")) # Passes
 assert_includes_name(x, c("a", "b", "d")) # Throws default error message
 
 assert_includes_name(x, c("a", "b", "d"), "Custom error message") # Throws custom error message
-}
+})
 
 }

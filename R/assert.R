@@ -7,12 +7,12 @@
 #' @return invisible(TRUE) if all conditions are met, otherwise aborts with the error message specified by msg
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert(1 == 1) # Passes
 #' assert(2 == 2, 3 == 3) # Passes
 #' assert(2 == 1, 3 == 3) # Throws default error
 #' assert(2 == 1, 3 == 3, msg = "Custom error message") # Throws custom error
-#' }
+#' })
 #'
 #' @concept assert_create
 #' @export

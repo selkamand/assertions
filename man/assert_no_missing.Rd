@@ -23,13 +23,13 @@ This function asserts that the input vector has no missing values (\code{NA}) an
 with an error message if it does.
 }
 \examples{
-\dontrun{
+try({
 assert_no_missing(c(1, 2, 3))  # Passes
 assert_no_missing(c(1, NA, 2))  # Throws default error
 
 assert_no_missing(c(1, 2, 3), msg = "Custom error message")  # Passes
 assert_no_missing(c(1, NA, 2), msg = "Custom error message")  # Throws custom error
-}
+})
 
 }
 \concept{assert_has}

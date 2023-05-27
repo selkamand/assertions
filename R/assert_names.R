@@ -1,6 +1,3 @@
-
-
-
 #' Check if a named object has all specified names
 #'
 #' This function returns a logical value indicating whether the object `x` has all the names specified in `names`.
@@ -27,7 +24,7 @@ has_all_names <- function(x, names){
 #' @return invisible(TRUE) if all `names` are present in `x`, otherwise aborts with the error message specified by `msg`
 #' @include is_functions.R
 #' @examples
-#' \dontrun{
+#' try({
 #' x <- list(a = 1, b = 2, c = 3)
 #'
 #' assert_includes_name(x, "a") # Passes
@@ -35,7 +32,7 @@ has_all_names <- function(x, names){
 #' assert_includes_name(x, c("a", "b", "d")) # Throws default error message
 #'
 #' assert_includes_name(x, c("a", "b", "d"), "Custom error message") # Throws custom error message
-#' }
+#' })
 #'
 #' @export
 assert_names_include <- assert_create(

@@ -24,9 +24,9 @@ invisible(TRUE) if \code{x} is identical to the specified value, otherwise abort
 Assert that the input object is identical to a specified value
 }
 \examples{
-\dontrun{
+try({
 assert_identical(3, 3) # Passes
 assert_identical(c(3, 3, 3), 3) # Throws error
 assert_identical(2, 3) # Throws error
-}
+})
 }

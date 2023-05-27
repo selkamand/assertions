@@ -1,5 +1,5 @@
 
-#' Title
+#' Common Paramater Descriptions
 #'
 #' @param call Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.
 #' @param arg_name Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).

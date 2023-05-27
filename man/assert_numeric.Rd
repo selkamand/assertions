@@ -22,12 +22,12 @@ invisible(TRUE) if \code{x} is numeric, otherwise aborts with the error message 
 Assert that the input object is numeric
 }
 \examples{
-\dontrun{
+try({
 assert_numeric(1:3) # Passes
 assert_numeric(1.5:5.5) # Passes
 assert_numeric(c("a", "b", "c")) # Throws default error
 assert_numeric(c("a", 1, "b"), "Custom error message") # Throws custom error
-}
+})
 
 
 }

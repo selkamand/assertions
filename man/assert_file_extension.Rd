@@ -33,10 +33,10 @@ invisible(TRUE) if \code{x} has any of the specified extensions, otherwise abort
 Assert that all filepaths supplied have one of the selected extensions. Does not require file to actually exist.
 }
 \examples{
-\dontrun{
+try({
 assert_file_extension("foo.txt", extensions = "txt") # Passes
 assert_file_permissions("file.txt", extensions = "csv") # Throws Error
-}
+})
 
 }
 \concept{assert_file}

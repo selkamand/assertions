@@ -27,13 +27,13 @@ Both integers and doubles (numbers with decimals) are considered numeric.
 This function checks that \code{x} specifically belong to the integer class.
 }
 \examples{
-\dontrun{
+try({
 assert_int(1) # Passes
 assert_int(1:10) # Passes
 assert_int(c(1, 2, 3)) # Passes
 assert_int("a") # Throws default error
 assert_int(1.5, msg = "Custom error message") # Throws custom error
-}
+})
 
 
 }

@@ -13,7 +13,7 @@
 #' @return invisible(TRUE) if `x` is greater than the specified minimum value, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_greater_than(3, 2) # Passes
 #' assert_greater_than(3, 2, all_must_satisfy = TRUE) # Passes
 #' assert_greater_than(c(2,3,4), 1) # Passes
@@ -21,7 +21,7 @@
 #' assert_greater_than(c(2,3,4), 3, all_must_satisfy=FALSE) # Passes
 #' assert_greater_than(c(2,3,1), 3) # Throws default error
 #' assert_greater_than(c(2,3,1), 3, msg = "custom error message") # Throws custom error
-#' }
+#' })
 #'
 #' @concept assert_comparison
 #' @export
@@ -30,7 +30,7 @@ assert_greater_than <- assert_create_chain(
   assert_create(
     is_greater_than,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
-    )
+  )
 )
 
 #' Assert that the input object is greater than or equal to a specified minimum value
@@ -44,11 +44,11 @@ assert_greater_than <- assert_create_chain(
 #' @return invisible(TRUE) if `x` is greater than or equal to the specified minimum value, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_greater_than_or_equal_to(3, 2) # Passes
 #' assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
 #' assert_greater_than_or_equal_to(2, 3) # Throws error
-#' }
+#' })
 #' @export
 assert_greater_than_or_equal_to <- assert_create_chain(
   assert_numeric,
@@ -68,11 +68,11 @@ assert_greater_than_or_equal_to <- assert_create_chain(
 #' @return invisible(TRUE) if `x` is identical to the specified value, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_identical(3, 3) # Passes
 #' assert_identical(c(3, 3, 3), 3) # Throws error
 #' assert_identical(2, 3) # Throws error
-#' }
+#' })
 #' @export
 assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {arg_name}} must be identical to {.strong {deparse(substitute(y))}}")
 
@@ -89,11 +89,11 @@ assert_identical <- assert_create(is_identical, default_error_msg = "{.strong {a
 #' @return invisible(TRUE) if `x` is equal to the specified value, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
-#' \dontrun{
+#' try({
 #' assert_equal(3, 3) # Passes
 #' assert_equal(c(3, 3, 3), 3, ) # Fails
 #' assert_equal(2, 3) # Throws error
-#' }
+#' })
 #' @export
 assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}} must be equal to {.strong {deparse(substitute(y))}}")
 
@@ -111,9 +111,9 @@ assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}
 # #' @return invisible(TRUE) if `x` is equal to the specified value, otherwise aborts with the error message specified by `msg`
 # #'
 # #' @examples
-# #' \dontrun{
+# #' try({
 # #' assert_type_identical(c(3, 3, 3), 19) # Passes
 # #' assert_type_identical(c(3, 3, 3), "bob") # Throws error
-# #' }
+# #' })
 # #' @export
 #assert_type_identical <- assert_create(is_same_type, "{.strong {arg_name}} ({.strong {typeof(arg_value)}}) must be the same {aname(x)} type as {aname(y)} ({typeof(y)})")

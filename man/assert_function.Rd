@@ -22,7 +22,7 @@ invisible(TRUE) if \code{x} is a function, otherwise aborts with the error messa
 Assert that x is a function
 }
 \examples{
-\dontrun{
+try({
 # Assert that a variable is a function
 x <- function(a, b) { a + b }
 assert_function(x)  # does nothing
@@ -30,7 +30,7 @@ assert_function(x)  # does nothing
 # Assert that a variable is not a function
 x <- "not a function"
 assert_function(x)  # stops execution and prints an error message
-}
+})
 
 
 }

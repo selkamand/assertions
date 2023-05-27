@@ -30,11 +30,11 @@ invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the erro
 Assert that the input object is an atomic logical vector
 }
 \examples{
-\dontrun{
+try({
 assert_logical_vector(c(TRUE, TRUE, TRUE)) # Passes
 assert_logical_vector("a") # Throws default error
 assert_logical_vector(c(1, 0, 1), "Custom error message") # Throws custom error
-}
+})
 
 
 }

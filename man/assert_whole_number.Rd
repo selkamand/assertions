@@ -22,10 +22,10 @@ invisible(TRUE) if \code{x} is a whole number, otherwise aborts with the error m
 Check if \code{x} is a whole number (no decimal)
 }
 \examples{
-\dontrun{
+try({
 assert_whole_number(24) # Passes
 assert_whole_number(2.5) # Throws error
-}
+})
 
 }
 \concept{assert_numerical}

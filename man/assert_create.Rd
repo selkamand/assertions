@@ -33,8 +33,7 @@ validity of an input.
 All assertions provided with this package are created using either \code{\link[=assert_create]{assert_create()}} or \code{\link[=assert_create_chain]{assert_create_chain()}}
 }
 \examples{
-\dontrun{
-# Create an assertion function that checks that a character string is all
+#' # Create an assertion function that checks that a character string is all
 # lower case
 assert_character <- assert_create(
   is.character,
@@ -42,8 +41,9 @@ assert_character <- assert_create(
 )
 
 # Use the assertion function
+try({
 is_lower("hello") # Returns invisible TRUE
 is_lower("Hello") # Aborts the function with the error message
-}
+})
 }
 \concept{assert_create}

@@ -22,7 +22,7 @@ invisible(TRUE) if \code{x} is a reactive, otherwise aborts with the error messa
 Assert that x is reactive
 }
 \examples{
-\dontrun{
+try({
 # Assert that a variable is reactive
 x <- shiny::reactive(1)
 assert_reactive(x)  # does nothing
@@ -30,7 +30,7 @@ assert_reactive(x)  # does nothing
 # Assert that a variable is not a list
 x <- 1
 assert_reactive(x)  # stops execution and prints an error message
-}
+})
 
 }
 \concept{assert_type}

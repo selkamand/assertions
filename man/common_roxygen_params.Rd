@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{common_roxygen_params}
 \alias{common_roxygen_params}
-\title{Title}
+\title{Common Paramater Descriptions}
 \usage{
 common_roxygen_params(call, arg_name, msg, ...)
 }
@@ -16,5 +16,5 @@ common_roxygen_params(call, arg_name, msg, ...)
 \item{...}{Used to pass any arguments to assertion function}
 }
 \description{
-Title
+Common Paramater Descriptions
 }

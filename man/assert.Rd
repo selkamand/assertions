@@ -20,12 +20,12 @@ invisible(TRUE) if all conditions are met, otherwise aborts with the error messa
 Assert that conditions are met
 }
 \examples{
-\dontrun{
+try({
 assert(1 == 1) # Passes
 assert(2 == 2, 3 == 3) # Passes
 assert(2 == 1, 3 == 3) # Throws default error
 assert(2 == 1, 3 == 3, msg = "Custom error message") # Throws custom error
-}
+})
 
 }
 \concept{assert_create}
