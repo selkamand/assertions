@@ -89,29 +89,6 @@
     Error <rlang_error>
       '100' must be a character, not a numeric
 
-# assert_file_permissions() works
-
-    Code
-      assert_file_permissions(c(file_with_write_permission,
-        file_with_write_permission), permission = "write")
-    Error <rlang_error>
-      'c(file_with_write_permission, file_with_write_permission)' is not a string! (length is 2, not 1)
-
----
-
-    Code
-      assert_file_permissions(c(file_with_execute_permission,
-        file_with_write_permission, file_with_read_permission), permission = "execute")
-    Error <rlang_error>
-      'c(file_with_execute_permission, file_with_write_permission, file_with_read_permission)' is not a string! (length is 3, not 1)
-
----
-
-    Code
-      assert_file_permissions(c(TRUE), permission = "write")
-    Error <rlang_error>
-      'c(TRUE)' is not a string! (class is logical, not character)
-
 # assert_file_has_extension() works
 
     Code

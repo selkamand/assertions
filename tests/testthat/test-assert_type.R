@@ -69,10 +69,8 @@ cli::test_that_cli("assert_vector() works", configs = "plain",  {
   y <- data.frame(a = 1:5, b = 6:10)
   expect_error(assert_vector(y), "'y' must be a vector, not a data.frame", fixed = TRUE)
 
-  # Works for lists if include_lists = TRUE
-  expect_identical(assert_vector(list(a = 1, b = 2), include_lists = TRUE), TRUE)
 
-  # Aborts for lists if include_lists = FALSE
+  # Aborts for lists
   expect_error(assert_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' must be a vector, not a list", fixed = TRUE)
 
   #Custom error messages work

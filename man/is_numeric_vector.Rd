@@ -4,26 +4,23 @@
 \alias{is_numeric_vector}
 \title{Check if an object is a numeric vector}
 \usage{
-is_numeric_vector(x, include_lists = FALSE)
+is_numeric_vector(x)
 }
 \arguments{
 \item{x}{An object to check.}
-
-\item{include_lists}{A logical value indicating whether lists containing only numeric elements should be considered numeric vectors.}
 }
 \value{
 A logical value indicating whether \code{x} is a numeric vector.
 }
 \description{
-This function checks if an object is a numeric vector in R. It can also optionally check if lists containing only numeric elements should be considered numeric vectors.
+This function checks if an object is a numeric vector in R.
 }
 \examples{
 is_numeric_vector(c(1, 2, 3)) # TRUE
 is_numeric_vector(list(1, 2, 3)) # FALSE
-is_numeric_vector(list(1, 2, 3), include_lists = TRUE) # TRUE
 is_numeric_vector(1:5) # TRUE
 is_numeric_vector("hello") # FALSE
-is_numeric_vector(list(1, 2, "a"), include_lists = TRUE) # FALSE
+is_numeric_vector(list(1, 2, "a")) # FALSE
 
 }
 \concept{is_type}

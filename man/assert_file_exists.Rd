@@ -4,18 +4,10 @@
 \alias{assert_file_exists}
 \title{Assert a file exists}
 \usage{
-assert_file_exists(
-  x,
-  include_lists = FALSE,
-  msg = NULL,
-  call = rlang::caller_env(),
-  arg_name = NULL
-)
+assert_file_exists(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
 \arguments{
 \item{x}{Path to a file (string)}
-
-\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{msg}{A character string containing the error message if file \code{x} is does not exist}
 

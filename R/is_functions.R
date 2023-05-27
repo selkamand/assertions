@@ -1,46 +1,41 @@
 
 # Basic Typing -------------------------------------------------------------------
 
-#' Check if an object is a vector, optionally excluding lists
-#'
-#' This function checks if an object is a vector, with the option to exclude lists from being considered vectors.
+#' Check if an object is a vector
+#' This function checks if an object is a vector
 #'
 #' @param x An object to check
-#' @param include_lists A logical indicating whether lists should be considered vectors. Default is `FALSE`.
-#' @return A logical indicating whether `x` is a vector (optionally excluding lists)
+#' @return A logical indicating whether `x` is a vector
 #'
 #' @examples
 #' is_vector(1:10)
-#' is_vector(list(1:10))
-#' is_vector(list(1:10), include_lists = TRUE)
+#' is_vector(list(1:10)) # Fails
 #'
 #' @concept is_type
 #'
 #' @export
-is_vector <- function(x, include_lists = FALSE){
-  is.vector(x) && (!inherits(x, what = "list") || include_lists)
+is_vector <- function(x){
+  is.vector(x) && (!inherits(x, what = "list"))
 }
 
 #' Check if an object is a numeric vector
 #'
-#' This function checks if an object is a numeric vector in R. It can also optionally check if lists containing only numeric elements should be considered numeric vectors.
+#' This function checks if an object is a numeric vector in R.
 #'
 #' @param x An object to check.
-#' @param include_lists A logical value indicating whether lists containing only numeric elements should be considered numeric vectors.
 #' @return A logical value indicating whether `x` is a numeric vector.
 #' @examples
 #' is_numeric_vector(c(1, 2, 3)) # TRUE
 #' is_numeric_vector(list(1, 2, 3)) # FALSE
-#' is_numeric_vector(list(1, 2, 3), include_lists = TRUE) # TRUE
 #' is_numeric_vector(1:5) # TRUE
 #' is_numeric_vector("hello") # FALSE
-#' is_numeric_vector(list(1, 2, "a"), include_lists = TRUE) # FALSE
+#' is_numeric_vector(list(1, 2, "a")) # FALSE
 #'
 #' @concept is_type
 #'
 #' @export
-is_numeric_vector <- function(x, include_lists = FALSE){
-  is.numeric(x) && is_vector(x, include_lists = include_lists)
+is_numeric_vector <- function(x){
+  is.numeric(x) && is_vector(x)
 }
 
 #' Check if an object is a single number
@@ -58,13 +53,12 @@ is_number <- function(x){
 #' Check if an object is a character vector
 #'
 #' @param x An object to check.
-#' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
 #' @return A logical value indicating whether `x` is a character vector.
 #'
 #' @concept is_type
 #' @export
-is_character_vector <- function(x, include_lists = FALSE){
-  is.character(x) && is_vector(x, include_lists = include_lists)
+is_character_vector <- function(x){
+  is.character(x) && is_vector(x)
 }
 
 
@@ -75,13 +69,12 @@ is_scalar <- function(x){
 #' Check if an object is a logical vector
 #'
 #' @param x An object to check.
-#' @param include_lists A logical value indicating whether to include lists in the check. Defaults to `FALSE`.
 #' @return A logical value indicating whether `x` is a logical vector.
 #'
 #' @concept is_type
 #' @export
-is_logical_vector <- function(x, include_lists = FALSE){
-  is.logical(x) && is_vector(x, include_lists = include_lists)
+is_logical_vector <- function(x){
+  is.logical(x) && is_vector(x)
 }
 
 #' Check if an object is a single string
@@ -119,7 +112,7 @@ is_flag <- function(x){
 #' This behaviour can be changed by setting `include_dataframes = TRUE`
 #'
 #' @param x A value to check.
-#' @param include_dataframes A logical indicating whether lists should be considered vectors. Default is `FALSE`.
+#' @param include_dataframes A logical indicating whether data_frames should be considered vectors. Default is `FALSE`.
 #' @return A logical scalar indicating whether `x` is a list.
 #' @examples
 #' is_list(list(1, 2)) # TRUE

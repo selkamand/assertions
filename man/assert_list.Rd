@@ -15,7 +15,7 @@ assert_list(
 \arguments{
 \item{x}{An object}
 
-\item{include_dataframes}{A logical indicating whether lists should be considered vectors. Default is \code{FALSE}.}
+\item{include_dataframes}{A logical indicating whether data_frames should be considered vectors. Default is \code{FALSE}.}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a list}
 
