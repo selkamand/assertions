@@ -16,6 +16,8 @@ assert_file_permissions(
 \arguments{
 \item{x}{An object}
 
+\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
+
 \item{permission}{A character string of permission to check for. One of c('write', 'execute', 'read')}
 
 \item{msg}{A character string containing the error message if file \code{x} does not have the specified permissions}

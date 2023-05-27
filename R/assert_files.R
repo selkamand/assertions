@@ -124,7 +124,7 @@ assert_all_files_exist <- assert_create_chain(
 #' @param x Path to a file (string)
 #' @param msg A character string containing the error message if file `x` is does not exist
 #' @inheritParams common_roxygen_params
-#'
+#' @inheritParams assert_all_files_exist
 #' @return invisible(TRUE) if file `x` exists, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -157,6 +157,7 @@ assert_file_exists <- assert_create_chain(
 #' @param x Paths to directories (character)
 #' @param msg A character string containing the error message if file `x` is does not exist
 #' @inheritParams common_roxygen_params
+#' @inheritParams assert_character
 #'
 #' @return invisible(TRUE) if `x` is exists and is a directory, otherwise aborts with the error message specified by `msg`
 #'
@@ -184,7 +185,7 @@ assert_all_directories_exist <- assert_create_chain(
 #' @param x Path to a directory (string)
 #' @param msg A character string containing the error message if file `x` is does not exist
 #' @inheritParams common_roxygen_params
-#'
+#' @inheritParams assert_all_directories_exist
 #' @return invisible(TRUE) if `x` is exists and is a directory, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -211,7 +212,7 @@ assert_directory_exists <- assert_create_chain(
 #' @param msg A character string containing the error message if file `x` does not have the specified permissions
 #' @inheritParams common_roxygen_params
 #' @inheritParams has_permission
-#'
+#' @inheritParams assert_file_exists
 #' @return invisible(TRUE) if `x` exists and has the specified permissions, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -241,7 +242,7 @@ assert_file_permissions <- assert_create_chain(
 #' @param msg A character string containing the error message if file `x` does not have the specified extensions
 #' @inheritParams common_roxygen_params
 #' @inheritParams has_extension
-#'
+#' @inheritParams assert_character
 #' @return invisible(TRUE) if `x` has any of the specified extensions, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
@@ -273,7 +274,7 @@ assert_all_files_have_extension <- assert_create_chain(
 #' @param msg A character string containing the error message if file `x` does not have the specified extensions
 #' @inheritParams common_roxygen_params
 #' @inheritParams has_extension
-#'
+#' @inheritParams assert_all_files_have_extension
 #' @return invisible(TRUE) if `x` has any of the specified extensions, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
