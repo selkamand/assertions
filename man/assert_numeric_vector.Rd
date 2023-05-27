@@ -6,7 +6,6 @@
 \usage{
 assert_numeric_vector(
   x,
-  include_lists = FALSE,
   msg = NULL,
   call = rlang::caller_env(),
   arg_name = NULL
@@ -14,8 +13,6 @@ assert_numeric_vector(
 }
 \arguments{
 \item{x}{An object}
-
-\item{include_lists}{A logical value indicating whether lists containing only numeric elements should be considered numeric vectors.}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a numeric vector}
 

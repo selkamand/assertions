@@ -9,7 +9,7 @@ is_list(x, include_dataframes = FALSE)
 \arguments{
 \item{x}{A value to check.}
 
-\item{include_dataframes}{A logical indicating whether lists should be considered vectors. Default is \code{FALSE}.}
+\item{include_dataframes}{A logical indicating whether data_frames should be considered vectors. Default is \code{FALSE}.}
 }
 \value{
 A logical scalar indicating whether \code{x} is a list.

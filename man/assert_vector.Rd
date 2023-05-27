@@ -4,18 +4,10 @@
 \alias{assert_vector}
 \title{Assert that the input object is a vector}
 \usage{
-assert_vector(
-  x,
-  include_lists = FALSE,
-  msg = NULL,
-  call = rlang::caller_env(),
-  arg_name = NULL
-)
+assert_vector(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
 \arguments{
 \item{x}{An object}
-
-\item{include_lists}{A logical indicating whether lists should be considered vectors. Default is \code{FALSE}.}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not a vector}
 

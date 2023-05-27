@@ -4,12 +4,10 @@
 \alias{is_logical_vector}
 \title{Check if an object is a logical vector}
 \usage{
-is_logical_vector(x, include_lists = FALSE)
+is_logical_vector(x)
 }
 \arguments{
 \item{x}{An object to check.}
-
-\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 }
 \value{
 A logical value indicating whether \code{x} is a logical vector.

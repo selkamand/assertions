@@ -6,7 +6,6 @@
 \usage{
 assert_all_files_exist(
   x,
-  include_lists = FALSE,
   msg = NULL,
   call = rlang::caller_env(),
   arg_name = NULL
@@ -14,8 +13,6 @@ assert_all_files_exist(
 }
 \arguments{
 \item{x}{Paths to files (character)}
-
-\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{msg}{A character string containing the error message if any files in \code{x} is does not exist}
 

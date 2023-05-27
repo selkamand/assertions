@@ -6,7 +6,6 @@
 \usage{
 assert_logical_vector(
   x,
-  include_lists = FALSE,
   msg = NULL,
   call = rlang::caller_env(),
   arg_name = NULL
@@ -14,8 +13,6 @@ assert_logical_vector(
 }
 \arguments{
 \item{x}{An object}
-
-\item{include_lists}{A logical value indicating whether to include lists in the check. Defaults to \code{FALSE}.}
 
 \item{msg}{A character string containing the error message to display if x is not an atomic logical vector}
 
