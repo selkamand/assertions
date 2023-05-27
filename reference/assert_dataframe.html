@@ -86,7 +86,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">assert_dataframe</span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span> <span class="co"># Passes</span></span></span>
 <span class="r-in"><span><span class="fu">assert_dataframe</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># Passes</span></span></span>
 <span class="r-in"><span></span></span>
@@ -97,7 +97,9 @@
 <span class="r-in"><span><span class="fu">assert_dataframe</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># Throws default error</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">assert_dataframe</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, msg <span class="op">=</span> <span class="st">"Custom error message"</span><span class="op">)</span> <span class="co"># Throws custom error</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir, enclos) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   '<span style="font-weight: bold;">1:10</span>' must be a <span style="font-weight: bold;">data.frame</span>, not a <span style="font-weight: bold;">integer</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

@@ -86,7 +86,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co"># Assert that a variable is reactive</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">shiny</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/reactive.html" class="external-link">reactive</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">assert_reactive</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># does nothing</span></span></span>
@@ -94,7 +94,9 @@
 <span class="r-in"><span><span class="co"># Assert that a variable is not a list</span></span></span>
 <span class="r-in"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span></span></span>
 <span class="r-in"><span><span class="fu">assert_reactive</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>  <span class="co"># stops execution and prints an error message</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir, enclos) : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   '<span style="font-weight: bold;">x</span>' must be a <span style="font-weight: bold;">reactive</span>, not a <span style="font-weight: bold;">numeric</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
