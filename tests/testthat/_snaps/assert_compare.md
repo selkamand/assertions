@@ -3,54 +3,117 @@
     Code
       assert_greater_than(c(2, 3, 1), 3)
     Error <rlang_error>
-      c(2, 3, 1) must all be greater than `3`.
+      'c(2, 3, 1)' is not a number! (length is 3, not 1)
 
 ---
 
     Code
       assert_greater_than(c(2, 3, 4), 2)
     Error <rlang_error>
-      c(2, 3, 4) must all be greater than `2`.
+      'c(2, 3, 4)' is not a number! (length is 3, not 1)
 
 ---
 
     Code
       assert_greater_than("abc", 2)
     Error <rlang_error>
-      '"abc"' must be numeric, not a character
+      '"abc"' is not a number! (class is character, not numeric)
 
 ---
 
     Code
       assert_greater_than(list(1, 2, 3), 2)
     Error <rlang_error>
-      'list(1, 2, 3)' must be numeric, not a list
+      'list(1, 2, 3)' is not a number! (class is list, not numeric)
 
 ---
 
     Code
-      assert_greater_than(c(1, 2, 3), 2)
+      assert_greater_than(c(3, 4, 5), 2)
     Error <rlang_error>
-      c(1, 2, 3) must all be greater than `2`.
+      'c(3, 4, 5)' is not a number! (length is 3, not 1)
 
 ---
 
     Code
-      assert_greater_than(factor(c(1, 2, 3)), 2)
+      assert_greater_than(factor(4), 2)
     Error <rlang_error>
-      'factor(c(1, 2, 3))' must be numeric, not a factor
+      'factor(4)' is not a number! (class is factor, not numeric)
 
 ---
 
     Code
       assert_greater_than(TRUE, 2)
     Error <rlang_error>
-      'TRUE' must be numeric, not a logical
+      'TRUE' is not a number! (class is logical, not numeric)
 
 ---
 
     Code
       assert_greater_than(NULL, 2)
+    Error <rlang_error>
+      'NULL' is not a number! (class is NULL, not numeric)
+
+# assert_all_greater_than() works [plain]
+
+    Code
+      assert_all_greater_than(c(2, 3, 1), 3)
+    Error <rlang_error>
+      c(2, 3, 1) must all be greater than `3`.
+
+---
+
+    Code
+      assert_all_greater_than(c(2, 3, 4), 2)
+    Error <rlang_error>
+      c(2, 3, 4) must all be greater than `2`.
+
+---
+
+    Code
+      assert_all_greater_than(2, 2)
+    Error <rlang_error>
+      2 must be greater than `2`.
+
+---
+
+    Code
+      assert_all_greater_than("abc", 2)
+    Error <rlang_error>
+      '"abc"' must be numeric, not a character
+
+---
+
+    Code
+      assert_all_greater_than(list(1, 2, 3), 2)
+    Error <rlang_error>
+      'list(1, 2, 3)' must be numeric, not a list
+
+---
+
+    Code
+      assert_all_greater_than(c(1, 2, 3), 2)
+    Error <rlang_error>
+      c(1, 2, 3) must all be greater than `2`.
+
+---
+
+    Code
+      assert_all_greater_than(factor(c(1, 2, 3)), 2)
+    Error <rlang_error>
+      'factor(c(1, 2, 3))' must be numeric, not a factor
+
+---
+
+    Code
+      assert_all_greater_than(TRUE, 2)
+    Error <rlang_error>
+      'TRUE' must be numeric, not a logical
+
+---
+
+    Code
+      assert_all_greater_than(NULL, 2)
     Error <rlang_error>
       'NULL' must be numeric, not a NULL
 
@@ -101,7 +164,7 @@
     Code
       assert_greater_than(NULL, 2)
     Error <rlang_error>
-      'NULL' must be numeric, not a NULL
+      'NULL' is not a number! (class is NULL, not numeric)
 
 ---
 

@@ -7,7 +7,6 @@
 assert_greater_than_or_equal_to(
   x,
   minimum,
-  all_must_satisfy = TRUE,
   msg = NULL,
   call = rlang::caller_env(),
   arg_name = NULL
@@ -18,9 +17,7 @@ assert_greater_than_or_equal_to(
 
 \item{minimum}{The minimum value to compare against}
 
-\item{all_must_satisfy}{A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient.}
-
-\item{msg}{A character string containing the error message to display if \code{x} is not greater than or equal to the specified minimum value}
+\item{msg}{A character string containing the error message to display if \code{x} is not greater than or equal to the specified minimum value (string)}
 
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
@@ -35,7 +32,7 @@ Assert that the input object is greater than or equal to a specified minimum val
 \examples{
 try({
 assert_greater_than_or_equal_to(3, 2) # Passes
-assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
+assert_greater_than_or_equal_to(c(3, 4, 5), 2) # Passes
 assert_greater_than_or_equal_to(2, 3) # Throws error
 })
 }
