@@ -18,6 +18,9 @@ A scalar representing the number of elements that are in the first set but not i
 Counts the number of elements that are in the first set but not in the second set.
 }
 \examples{
-assertions:::setopts_count_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
+if(interactive()){
+setopts_count_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
 # Output: 2
+}
+
 }

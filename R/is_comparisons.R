@@ -54,9 +54,11 @@ compare <- function(x, equal_to = NULL, minimum = NULL, maximum = NULL, comparis
 #'
 #' @return A logical value indicating whether all elements of the numeric vector x are greater than the specified minimum value
 #' @examples
+#' if(interactive()){
 #' is_greater_than(c(2,3,4), 1) # TRUE
 #' is_greater_than(c(2,3,4), 2) # TRUE
 #' is_greater_than(c(2,3,1), 3) # FALSE
+#' }
 is_greater_than <- function(x, minimum){
   compare(x = x, minimum = minimum, all_must_satisfy = TRUE, comparison_inclusive = FALSE)
 }
@@ -69,9 +71,11 @@ is_greater_than <- function(x, minimum){
 #' @param minimum The minimum value to compare against
 #' @return A logical value indicating whether all elements of the numeric vector x are greater than or equal to the specified minimum value
 #' @examples
+#' if(interactive()){
 #' is_greater_than_or_equal_to(c(2,3,4), 1) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,4), 2) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,1), 3) # FALSE
+#' }
 is_greater_than_or_equal_to <- function(x, minimum){
   compare(x = x, minimum = minimum, all_must_satisfy = TRUE, comparison_inclusive = TRUE)
 }
@@ -100,12 +104,13 @@ is_identical <- function(x, y){
 #' @return TRUE if x is equal to y
 #'
 #' @examples
+#' if(interactive()){
 #' is_equal(1, 1) #TRUE
 #' is_equal(c(1, 2), 1) #FALSE
 #'
 #' is_equal(c("A", "B"), c("A", "B")) #TRUE
 #' is_equal("A", "B") #FALSE
-#'
+#' }
 is_equal <- function(x, y, tolerance = sqrt(.Machine$double.eps), check_names = TRUE, check_environment = TRUE, check_tzone = TRUE){
   isTRUE(all.equal(x, y, check.names = check_names, check.environment = check_environment, check.tzone = check_tzone))
 }

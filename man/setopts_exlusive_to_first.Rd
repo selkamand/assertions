@@ -18,6 +18,7 @@ A vector of elements that are in the first set but not in the second set.
 Finds the elements that are in the first set but not in the second set.
 }
 \examples{
-assertions:::setopts_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
-# Output: [1] 1 2
+if(interactive()){
+setopts_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
+}
 }

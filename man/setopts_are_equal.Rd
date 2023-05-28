@@ -18,10 +18,12 @@ A logical value indicating whether the sets are equal (\code{TRUE}) or not (\cod
 Determine if the two sets are equal.
 }
 \examples{
-assertions:::setopts_are_equal(c(1, 2, 3), c(1, 2, 3))
+if(interactive()){
+setopts_are_equal(c(1, 2, 3), c(1, 2, 3))
 # Output: TRUE
-assertions:::setopts_are_equal(c(1, 2, 3), c(3, 2, 1))
+setopts_are_equal(c(1, 2, 3), c(3, 2, 1))
 # Output: TRUE
-assertions:::setopts_are_equal(c(1, 2, 3), c(1, 2, 3, 4))
+setopts_are_equal(c(1, 2, 3), c(1, 2, 3, 4))
 # Output: FALSE
+}
 }

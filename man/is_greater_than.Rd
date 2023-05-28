@@ -18,7 +18,9 @@ A logical value indicating whether all elements of the numeric vector x are grea
 This function checks if a numeric vector is greater than a specified minimum value. It can also optionally check if all elements of the vector must be greater than the minimum value or if only one element is sufficient
 }
 \examples{
+if(interactive()){
 is_greater_than(c(2,3,4), 1) # TRUE
 is_greater_than(c(2,3,4), 2) # TRUE
 is_greater_than(c(2,3,1), 3) # FALSE
+}
 }

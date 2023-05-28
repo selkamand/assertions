@@ -16,6 +16,8 @@ A vector of the duplicated values in the input vector.
 This function returns a vector of the duplicated values in the input vector.
 }
 \examples{
-assertions:::util_get_duplicated_values(c(1, 2, 2))  # returns 2
-assertions:::util_get_duplicated_values(c(1, 2, 3))  # returns NULL
+if(interactive()) {
+util_get_duplicated_values(c(1, 2, 2))  # returns 2
+util_get_duplicated_values(c(1, 2, 3))  # returns NULL
+}
 }

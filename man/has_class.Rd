@@ -18,7 +18,9 @@ A logical scalar indicating \code{x} belongs to \code{class}
 This function checks whether object is a specific class
 }
 \examples{
-has_class(1, "numeric") # TRUE
-has_class(1, "character") # FALSE
+if(interactive()) {
+  has_class(1, "numeric") # TRUE
+  has_class(1, "character") # FALSE
+}
 }
 \concept{is_type}

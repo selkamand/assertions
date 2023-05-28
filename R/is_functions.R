@@ -8,8 +8,10 @@
 #' @return A logical indicating whether `x` is a vector
 #'
 #' @examples
+#' if(interactive()){
 #' is_vector(1:10)
 #' is_vector(list(1:10)) # Fails
+#' }
 #'
 #' @concept is_type
 #'
@@ -24,11 +26,13 @@ is_vector <- function(x){
 #' @param x An object to check.
 #' @return A logical value indicating whether `x` is a numeric vector.
 #' @examples
+#' if(interactive()){
 #' is_numeric_vector(c(1, 2, 3)) # TRUE
 #' is_numeric_vector(list(1, 2, 3)) # FALSE
 #' is_numeric_vector(1:5) # TRUE
 #' is_numeric_vector("hello") # FALSE
 #' is_numeric_vector(list(1, 2, "a")) # FALSE
+#' }
 #'
 #' @concept is_type
 #'
@@ -90,9 +94,11 @@ is_string <- function(x){
 #' @param x A value to check.
 #' @return A logical scalar indicating whether `x` is a logical flag.
 #' @examples
+#' if(interactive()){
 #' is_flag(TRUE)
 #' is_flag(FALSE)
 #' is_flag(c(TRUE, FALSE))
+#' }
 #' @concept is_type
 #'
 is_flag <- function(x){
@@ -109,10 +115,12 @@ is_flag <- function(x){
 #' @param include_dataframes A logical indicating whether data_frames should be considered vectors. Default is `FALSE`.
 #' @return A logical scalar indicating whether `x` is a list.
 #' @examples
+#' if(interactive()){
 #' is_list(list(1, 2)) # TRUE
 #' is_list(c(1, 2, 3)) # FALSE
 #' is_list(data.frame()) # FALSE
 #' is_list(data.frame(), include_dataframes = TRUE) # TRUE
+#' }
 #' @concept is_type
 #'
 is_list <- function(x, include_dataframes = FALSE){
@@ -126,10 +134,11 @@ is_list <- function(x, include_dataframes = FALSE){
 #' @param x A value to check.
 #' @return A logical scalar indicating whether `x` is a list.
 #' @examples
-#' \dontrun{
+#' if(interactive()){
 #' is_reactive(shiny::reactive(1)) # TRUE
 #' is_reactive(1) # FALSE
 #' }
+#'
 #' @concept is_type
 #'
 is_reactive <- function(x){

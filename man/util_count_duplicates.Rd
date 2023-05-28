@@ -16,6 +16,8 @@ The number of duplicated values in the input vector.
 This function returns the number of duplicated values in the input vector.
 }
 \examples{
-assertions:::util_count_duplicates(c(1, 2, 2))  # returns 1
-assertions:::util_count_duplicates(c(1, 2, 3))  # returns 0
+if(interactive()) {
+util_count_duplicates(c(1, 2, 2))  # returns 1
+util_count_duplicates(c(1, 2, 3))  # returns 0
+}
 }

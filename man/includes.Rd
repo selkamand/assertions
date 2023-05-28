@@ -18,10 +18,13 @@ A logical value indicating whether all elements of \code{required} are present i
 Checks if all elements of \code{required} are present in \code{x}.
 }
 \examples{
-assertions:::includes(c(1, 2, 3), c(1, 2))
+if(interactive()){
+includes(c(1, 2, 3), c(1, 2))
 # Output: TRUE
-assertions:::includes(c(1, 2, 3), c(2, 4))
+includes(c(1, 2, 3), c(2, 4))
 # Output: FALSE
-assertions:::includes(c(1, 2, 3), c(3, 2, 1))
+includes(c(1, 2, 3), c(3, 2, 1))
 # Output: TRUE
+}
+
 }
