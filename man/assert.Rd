@@ -11,7 +11,7 @@ assert(..., msg = NULL, call = rlang::caller_env())
 
 \item{msg}{A character string containing the error message to display if any of the conditions are not met. The string can include the placeholder {failed_expressions} to insert a list of the failed expressions. The string can also include {?s} and {?is/are} to insert the correct pluralization for the list of failed expressions.}
 
-\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+\item{call}{Only relevant when pooling assertions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 }
 \value{
 invisible(TRUE) if all conditions are met, otherwise aborts with the error message specified by msg
