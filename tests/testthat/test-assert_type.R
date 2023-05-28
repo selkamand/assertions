@@ -82,27 +82,27 @@ cli::test_that_cli("assert_vector() works", configs = "plain",  {
 # Assert Factor -----------------------------------------------------------
 cli::test_that_cli("assert_vector() works", configs = "plain",  {
   # Works for factors
-  expect_identical(assert_factor(factor(c("a", "b", "c"))), TRUE)
-  expect_identical(assert_factor(factor(c(1, 2, 3))), TRUE)
+  expect_identical(assert_factor_vector(factor(c("a", "b", "c"))), TRUE)
+  expect_identical(assert_factor_vector(factor(c(1, 2, 3))), TRUE)
 
   # Works for empty factors
-  expect_identical(assert_factor(factor()), TRUE)
+  expect_identical(assert_factor_vector(factor()), TRUE)
 
   # Aborts for non-factor objects
-  expect_error(assert_factor(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' must be a factor, not a character", fixed = TRUE)
-  expect_error(assert_factor(1:5), "'1:5' must be a factor, not a integer", fixed = TRUE)
-  expect_error(assert_factor(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' must be a factor, not a data.frame", fixed = TRUE)
-  expect_error(assert_factor(matrix(1:9, 3)), "'matrix(1:9, 3)' must be a factor, not a matrix", fixed = TRUE)
-  expect_error(assert_factor(list(a = 1, b = 2)), "'list(a = 1, b = 2)' must be a factor, not a list", fixed = TRUE)
-  expect_error(assert_factor(function(x) x), "'function(x) x' must be a factor, not a function", fixed = TRUE)
-  expect_error(assert_factor(environment()), "'environment()' must be a factor, not a environment", fixed = TRUE)
+  expect_error(assert_factor_vector(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' must be a factor, not a character", fixed = TRUE)
+  expect_error(assert_factor_vector(1:5), "'1:5' must be a factor, not a integer", fixed = TRUE)
+  expect_error(assert_factor_vector(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' must be a factor, not a data.frame", fixed = TRUE)
+  expect_error(assert_factor_vector(matrix(1:9, 3)), "'matrix(1:9, 3)' must be a factor, not a matrix", fixed = TRUE)
+  expect_error(assert_factor_vector(list(a = 1, b = 2)), "'list(a = 1, b = 2)' must be a factor, not a list", fixed = TRUE)
+  expect_error(assert_factor_vector(function(x) x), "'function(x) x' must be a factor, not a function", fixed = TRUE)
+  expect_error(assert_factor_vector(environment()), "'environment()' must be a factor, not a environment", fixed = TRUE)
 
   # Error messages use variable name of passed arguments
   y <- c("a", "b", "c")
-  expect_error(assert_factor(y), "'y' must be a factor, not a character", fixed = TRUE)
+  expect_error(assert_factor_vector(y), "'y' must be a factor, not a character", fixed = TRUE)
 
   # Custom error messages work
-  expect_error(assert_factor(1:5, msg = "Custom error message"), "Custom error message")
+  expect_error(assert_factor_vector(1:5, msg = "Custom error message"), "Custom error message")
 })
 
 

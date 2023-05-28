@@ -118,9 +118,8 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 ## factor -----------------------------------------------------------
 #' Assert input is a factor
 #'
-#' Assert an R object is a factor
-#' Works for \strong{vector} and \strong{matrix} objects.
-#' To assert an object is specifically a \strong{factor vector} see [assert_factor_vector()]
+#' Assert an R object is a factor.
+#' Note that no assert_factor function exists since in R factors are always vector quantities (never scalar / in matrices)
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a factor
@@ -130,16 +129,21 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 #'
 #' @examples
 #' try({
-#' assert_factor(factor(c("a", "b", "c"))) # Passes
-#' assert_factor(c("a", "b", "c")) # Throws default error
-#' assert_factor(factor(c("a", "b", "c")), "Custom error message") # Passes
-#' assert_factor(1:3, "Custom error message") # Throws custom error
+#' assert_factor_vector(factor(c("a", "b", "c"))) # Passes
+#' assert_factor_vector(c("a", "b", "c")) # Throws default error
+#' assert_factor_vector(factor(c("a", "b", "c")), "Custom error message") # Passes
+#' assert_factor_vector(1:3, "Custom error message") # Throws custom error
 #' })
+#'
+#' @details
+#' Technically this function name is misleading, since \code{is.vector(factor(1)) == FALSE}
+#' but since they act exactly like vectors to end users, I think this name is the most suitable
 #'
 #'
 #' @concept assert_type
 #' @export
-assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_type("factor"))
+assert_factor_vector <- assert_create(is.factor, default_error_msg = msg_helper_assert_type("factor"))
+
 
 ## numeric -----------------------------------------------------------
 #' Assert input is numeric
