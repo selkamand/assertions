@@ -22,8 +22,6 @@ assert_greater_than_or_equal_to(
 \item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
-
-\item{all_must_satisfy}{A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient.}
 }
 \value{
 invisible(TRUE) if \code{x} is greater than or equal to the specified minimum value, otherwise aborts with the error message specified by \code{msg}
@@ -34,7 +32,7 @@ Assert that the input object is greater than or equal to a specified minimum val
 \examples{
 try({
 assert_greater_than_or_equal_to(3, 2) # Passes
-assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
+assert_greater_than_or_equal_to(c(3, 4, 5), 2) # Passes
 assert_greater_than_or_equal_to(2, 3) # Throws error
 })
 }

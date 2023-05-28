@@ -68,7 +68,6 @@ assert_greater_than <- assert_create_chain(
 #'
 #' @param x An object to check
 #' @param minimum The minimum value to compare against
-#' @param all_must_satisfy A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient.
 #' @param msg A character string containing the error message to display if `x` is not greater than or equal to the specified minimum value (string)
 #' @inheritParams common_roxygen_params
 #'
@@ -77,7 +76,7 @@ assert_greater_than <- assert_create_chain(
 #' @examples
 #' try({
 #' assert_greater_than_or_equal_to(3, 2) # Passes
-#' assert_greater_than_or_equal_to(c(3, 4, 5), 2, all_must_satisfy = TRUE) # Passes
+#' assert_greater_than_or_equal_to(c(3, 4, 5), 2) # Passes
 #' assert_greater_than_or_equal_to(2, 3) # Throws error
 #' })
 #' @export
