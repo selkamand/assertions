@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_flag}
 \alias{assert_flag}
-\title{Assert that the input object is a scalar logical}
+\title{Assert input is a scalar logical}
 \usage{
 assert_flag(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_flag(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a scalar logical, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a flag (a logical of length 1: \code{TRUE} or \code{FALSE})
+Assert input is a flag (a logical of length 1: \code{TRUE} or \code{FALSE})
 }
 \examples{
 try({

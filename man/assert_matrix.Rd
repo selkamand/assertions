@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_matrix}
 \alias{assert_matrix}
-\title{Assert that the input object is a matrix}
+\title{Assert input is a matrix}
 \usage{
 assert_matrix(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_matrix(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a matrix, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a matrix
+Assert input is a matrix
 }
 \examples{
 try({

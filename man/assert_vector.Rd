@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_vector}
 \alias{assert_vector}
-\title{Assert that the input object is a vector}
+\title{Assert input is a vector}
 \usage{
 assert_vector(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_vector(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a vector, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a vector
+Assert input is a vector
 }
 \note{
 By default, lists are not considered vectors (i.e. \code{include_lists = FALSE}) to align with what end-users will expect, in spite of these objects technically being vectors.

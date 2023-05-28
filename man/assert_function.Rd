@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_function}
 \alias{assert_function}
-\title{Assert that x is a function}
+\title{Assert input is a function}
 \usage{
 assert_function(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_function(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a function, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that x is a function
+Assert input is a function
 }
 \examples{
 try({

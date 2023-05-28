@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_number}
 \alias{assert_number}
-\title{Assert that the input object is a number}
+\title{Assert input is a number}
 \usage{
 assert_number(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }

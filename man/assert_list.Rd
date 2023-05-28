@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_list}
 \alias{assert_list}
-\title{Assert that x is a list}
+\title{Assert input is a list}
 \usage{
 assert_list(
   x,
@@ -27,7 +27,7 @@ assert_list(
 invisible(TRUE) if \code{x} is a list, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that x is a list
+Assert input is a list
 }
 \examples{
 try({

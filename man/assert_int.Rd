@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_int}
 \alias{assert_int}
-\title{Assert that the input object is an integer}
+\title{Assert input is an integer}
 \usage{
 assert_int(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_int(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is an integer, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is an integer
+Assert input is an integer
 }
 \note{
 In R, integers are whole numbers.

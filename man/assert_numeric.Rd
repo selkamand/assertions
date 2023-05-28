@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_numeric}
 \alias{assert_numeric}
-\title{Assert that the input object is numeric}
+\title{Assert input is numeric}
 \usage{
 assert_numeric(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,9 @@ assert_numeric(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is numeric, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is numeric
+Assert an R object is numeric
+Works for \strong{vector} and \strong{matrix} objects.
+To assert an object is specifically a \strong{numeric vector} see \code{\link[=assert_numeric_vector]{assert_numeric_vector()}}
 }
 \examples{
 try({

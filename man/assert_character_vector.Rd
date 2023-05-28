@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_character_vector}
 \alias{assert_character_vector}
-\title{Assert that the input object is a character vector}
+\title{Assert input is a character vector}
 \usage{
 assert_character_vector(
   x,
@@ -24,12 +24,13 @@ assert_character_vector(
 invisible(TRUE) if \code{x} is a character vector, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a character vector
+Assert an object is a character vector. Length 1 character vectors (strings) are considered vectors.
 }
 \examples{
 try({
 assert_character_vector(c("a", "b", "c")) # Passes
 assert_character_vector(c("a", 1, "b")) # Throws default error
+assert_character_vector(matrix(c('A', 'B', 'C', 'D')))  # Throws error since type = matrix
 assert_character_vector(c("a", 1, "b"), "Custom error message") # Throws custom error
 })
 
