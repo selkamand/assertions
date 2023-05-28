@@ -2,12 +2,12 @@
 % Please edit documentation in R/utils.R
 \name{common_roxygen_params}
 \alias{common_roxygen_params}
-\title{Common Paramater Descriptions}
+\title{Common Parameter Descriptions}
 \usage{
 common_roxygen_params(call, arg_name, msg, ...)
 }
 \arguments{
-\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+\item{call}{Only relevant when pooling assertions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 
@@ -16,5 +16,5 @@ common_roxygen_params(call, arg_name, msg, ...)
 \item{...}{Used to pass any arguments to assertion function}
 }
 \description{
-Common Paramater Descriptions
+Common Parameter Descriptions
 }

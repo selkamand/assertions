@@ -19,7 +19,7 @@ assert_names_include(
 
 \item{msg}{A character string containing the error message to display if any of the \code{names} are not present in \code{x}}
 
-\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+\item{call}{Only relevant when pooling assertions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }

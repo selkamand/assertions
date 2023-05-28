@@ -32,7 +32,7 @@ You may need to set check.environment=FALSE in unexpected cases, such as when co
 
 \item{msg}{A character string containing the error message to display if \code{x} is not equal to \code{y}}
 
-\item{call}{Only relevant when pooling assert_ions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
+\item{call}{Only relevant when pooling assertions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
