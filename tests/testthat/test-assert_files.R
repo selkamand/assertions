@@ -155,5 +155,59 @@ test_that("assert_all_files_have_extension() works", {
 
 })
 
+test_that("assert_file_does_not_exist() works", {
 
+  # Create Self deleting file
+  file1 <- withr::local_tempfile()
+  write("file contents", file1)
+
+  # Create self-deleting directory
+  dirpath <- withr::local_tempdir()
+
+  # Expectations
+  expect_true(assert_file_does_not_exist("foo"))
+  expect_true(assert_file_does_not_exist("asdaskld"))
+
+
+
+  # Throws error if file exists
+  expect_error(assert_file_does_not_exist(file1), regexp = "File .* already exists")
+
+  # Throws error if multiple files are supplied
+  expect_snapshot(assert_file_does_not_exist(c("foo", "bar")), error = TRUE)
+
+  # Throws error if non-character filepath given
+  expect_snapshot(assert_file_does_not_exist(2), error = TRUE)
+
+  # Throws error if a directory already exists
+  expect_error(assert_file_does_not_exist(dirpath), regexp = "Directory .* already exists")
+})
+
+test_that("assert_directory_does_not_exist() works", {
+
+  # Create Self deleting file
+  file1 <- withr::local_tempfile()
+  write("file contents", file1)
+
+  # Create self-deleting directory
+  dirpath <- withr::local_tempdir()
+
+  # Expectations
+  expect_true(assert_directory_does_not_exist("foo"))
+  expect_true(assert_directory_does_not_exist("asdaskld"))
+
+
+
+  # Throws error if file exists
+  expect_error(assert_file_does_not_exist(file1), regexp = "File .* already exists")
+
+  # Throws error if multiple files are supplied
+  expect_snapshot(assert_directory_does_not_exist(c("foo", "bar")), error = TRUE)
+
+  # Throws error if non-character filepath given
+  expect_snapshot(assert_directory_does_not_exist(2), error = TRUE)
+
+  # Throws error if a directory already exists
+  expect_error(assert_file_does_not_exist(dirpath), regexp = "Directory .* already exists")
+})
 

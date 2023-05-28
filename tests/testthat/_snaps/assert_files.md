@@ -161,3 +161,31 @@
     Error <rlang_error>
       'c(TRUE)' must be a character, not a logical
 
+# assert_file_does_not_exist() works
+
+    Code
+      assert_file_does_not_exist(c("foo", "bar"))
+    Error <rlang_error>
+      'c("foo", "bar")' is not a string! (length is 2, not 1)
+
+---
+
+    Code
+      assert_file_does_not_exist(2)
+    Error <rlang_error>
+      '2' is not a string! (class is numeric, not character)
+
+# assert_directory_does_not_exist() works
+
+    Code
+      assert_directory_does_not_exist(c("foo", "bar"))
+    Error <rlang_error>
+      'c("foo", "bar")' is not a string! (length is 2, not 1)
+
+---
+
+    Code
+      assert_directory_does_not_exist(2)
+    Error <rlang_error>
+      '2' is not a string! (class is numeric, not character)
+

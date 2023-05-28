@@ -4,38 +4,6 @@ all_files_exist <- function(x){
   all(file.exists(x))
 }
 
-#' Check file permissions
-#'
-#' Check if the specified filepaths have the specified permissions
-#'
-#' @param x A character vector of file paths to check
-#' @param permission A character string of permission to check for. One of c('write', 'execute', 'read')
-#'
-#' @return A logical value indicating whether all files have the specified permissions
-#' @export
-#'
-#' @examples
-#' try({
-#' has_permission(c("file1.txt", "file2.txt"), permission = "rw")
-#' })
-has_permission <- function(x, permission = c('write', 'execute', 'read')){
-  permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
-  permission <- rlang::arg_match(permission)
-  mode <- permission_to_mode[match(permission, names(permission_to_mode))]
-
-  exit_code <- file.access(names = x, mode)
-  if (all(exit_code == 0)) return(TRUE)
-  else return(FALSE)
-}
-
-has_permission_vec <- function(x, permission = c('write', 'execute', 'read')){
-  permission_to_mode <- c('write'=2, 'execute'=1, 'read'=4)
-  permission <- rlang::arg_match(permission)
-  mode <- permission_to_mode[match(permission, names(permission_to_mode))]
-
-  exit_code <- file.access(names = x, mode)
-  return(exit_code == 0)
-}
 
 is_dir <- function(x){
   all(dir.exists(x))
@@ -45,6 +13,11 @@ is_file <- function(x){
   all(file.exists(x) & !dir.exists(x))
 }
 
+file_or_dir <- function(x){
+  if(is_file(x)) return ('File')
+  else if(is_dir(x)) return('Directory')
+  else return('Unknown filetype')
+}
 
 get_file_extensions <- function(filenames) {
   filenames <- basename(filenames)
@@ -95,7 +68,7 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @param msg A character string containing the error message if any files in `x` is does not exist
 #' @inheritParams common_roxygen_params
 #' @inheritParams assert_character_vector
-#' @return invisible(TRUE) if file `x` exists, otherwise aborts with the error message specified by `msg`
+#' @return invisible(TRUE) if all files in `x` exist, otherwise aborts with the error message specified by `msg`
 #'
 #' @examples
 #' real_file <- system.file("DESCRIPTION", package = "assertions")
@@ -145,6 +118,56 @@ assert_file_exists <- assert_create_chain(
 )
 
 
+#' Assert a file does not exist
+#'
+#' Assert that a file does not exist. Useful for avoiding overwriting.
+#'
+#' @param x Path to a file (string)
+#' @param msg A character string containing the error message if file `x` already exists
+#' @inheritParams common_roxygen_params
+#' @return invisible(TRUE) if file `x` does not exist, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' real_file <- system.file("DESCRIPTION", package = "assertions")
+#'
+#' try({
+#' assert_file_does_not_exist("foo") # Passes
+#' assert_file_does_not_exist(real_file) # Throws error
+#' assert_file_does_not_exist(c("foo", "bar")) # Throws Error (single file only)
+#' })
+#'
+#' @concept assert_file
+#' @export
+assert_file_does_not_exist <- assert_create_chain(
+  assert_string,
+  assert_create(
+    func = function(x){!file.exists(x)},
+    default_error_msg = "{.strong {file_or_dir(arg_value)} ({.path {arg_value}})} already exists"
+    )
+)
+
+#' Assert a directory does not exist
+#'
+#' Assert that a directory does not already exist. Useful for avoiding overwriting.
+#' This function is an exact copy of [assert_file_does_not_exist()] and included to make assertion code more readable.
+#'
+#' @param x Path to a file (string)
+#' @param msg A character string containing the error message if file `x` already exists
+#' @inheritParams common_roxygen_params
+#' @return invisible(TRUE) if directory `x` does not already exist, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' real_dir <- system.file("tests", package = "assertions")
+#'
+#' try({
+#' assert_directory_does_not_exist("foo") # Passes
+#' assert_directory_does_not_exist(real_dir) # Throws error
+#' assert_directory_does_not_exist(c("foo", "bar")) # Throws Error (single file only)
+#' })
+#'
+#' @concept assert_file
+#' @export
+assert_directory_does_not_exist <- assert_file_does_not_exist
 
 #' Assert all files are directories
 #'
