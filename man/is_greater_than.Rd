@@ -4,14 +4,12 @@
 \alias{is_greater_than}
 \title{Check if a numeric vector is greater than a specified minimum value}
 \usage{
-is_greater_than(x, minimum, all_must_satisfy = TRUE)
+is_greater_than(x, minimum)
 }
 \arguments{
 \item{x}{a numeric vector to check}
 
 \item{minimum}{The minimum value to compare against}
-
-\item{all_must_satisfy}{A logical value indicating whether all elements of the vector must be greater than the minimum value or if only one element is sufficient. Default is TRUE}
 }
 \value{
 A logical value indicating whether all elements of the numeric vector x are greater than the specified minimum value
@@ -22,6 +20,5 @@ This function checks if a numeric vector is greater than a specified minimum val
 \examples{
 is_greater_than(c(2,3,4), 1) # TRUE
 is_greater_than(c(2,3,4), 2) # TRUE
-is_greater_than(c(2,3,4), 3, all_must_satisfy=FALSE) # TRUE
 is_greater_than(c(2,3,1), 3) # FALSE
 }

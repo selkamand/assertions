@@ -4,14 +4,12 @@
 \alias{is_greater_than_or_equal_to}
 \title{Check if a numeric vector is greater than or equal to a specified minimum value}
 \usage{
-is_greater_than_or_equal_to(x, minimum, all_must_satisfy = TRUE)
+is_greater_than_or_equal_to(x, minimum)
 }
 \arguments{
 \item{x}{a numeric vector to check}
 
 \item{minimum}{The minimum value to compare against}
-
-\item{all_must_satisfy}{A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient. Default is TRUE}
 }
 \value{
 A logical value indicating whether all elements of the numeric vector x are greater than or equal to the specified minimum value
