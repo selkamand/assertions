@@ -21,7 +21,7 @@ assert_all_files_exist(
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
-invisible(TRUE) if file \code{x} exists, otherwise aborts with the error message specified by \code{msg}
+invisible(TRUE) if all files in \code{x} exist, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
 Assert all files in vector exist. To assert a single file exists, see \code{\link[=assert_file_exists]{assert_file_exists()}}
