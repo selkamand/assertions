@@ -38,6 +38,7 @@ is_numeric_vector <- function(x){
   is.numeric(x) && is_vector(x)
 }
 
+
 #' Check if an object is a single number
 #'
 #' @param x An object to check.
