@@ -16,9 +16,10 @@ A logical scalar indicating whether \code{x} is a list.
 This function checks if a value is reactive
 }
 \examples{
-\dontrun{
+if(interactive()){
 is_reactive(shiny::reactive(1)) # TRUE
 is_reactive(1) # FALSE
 }
+
 }
 \concept{is_type}

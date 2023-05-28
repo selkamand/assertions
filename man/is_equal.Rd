@@ -34,10 +34,11 @@ TRUE if x is equal to y
 Is \code{x} equal to \code{y}. powered by the \code{\link[=all.equal]{all.equal()}} function.
 }
 \examples{
+if(interactive()){
 is_equal(1, 1) #TRUE
 is_equal(c(1, 2), 1) #FALSE
 
 is_equal(c("A", "B"), c("A", "B")) #TRUE
 is_equal("A", "B") #FALSE
-
+}
 }

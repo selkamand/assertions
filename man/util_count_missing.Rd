@@ -16,6 +16,8 @@ The number of missing values in the input vector.
 This function returns the number of missing values (\code{NA}) in the input vector.
 }
 \examples{
-assertions:::util_count_missing(c(1, 2, 3))  # returns 0
-assertions:::util_count_missing(c(1, NA, 2))  # returns 1
+if(interactive()){
+util_count_missing(c(1, 2, 3))  # returns 0
+util_count_missing(c(1, NA, 2))  # returns 1
+}
 }

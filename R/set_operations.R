@@ -7,11 +7,12 @@
 #' @param y A numeric, character, or logical vector.
 #' @return A logical value indicating whether `x` is a subset of `y`.
 #' @examples
+#' if(interactive()){
 #' is_subset(1:3, 1:5)
 #' is_subset(letters[1:3], letters)
 #' is_subset(TRUE, c(TRUE, FALSE))
+#' }
 #'
-#' @export
 is_subset <- function(x, y){
   all(x %in% y)
 }
@@ -25,11 +26,11 @@ is_subset <- function(x, y){
 #' @param y A numeric, character, or logical vector.
 #' @return A logical value indicating whether `x` is a superset of `y`.
 #' @examples
+#' if(interactive()){
 #' is_superset(1:5, 1:3)
 #' is_superset(letters, letters[1:3])
 #' is_superset(c(TRUE, FALSE), TRUE)
-#'
-#' @export
+#' }
 is_superset <- function(x, y){
   all(y %in% x)
 }
@@ -47,8 +48,9 @@ is_superset <- function(x, y){
 #' @return A vector of elements that are in the first set but not in the second set.
 #'
 #' @examples
-#' assertions:::setopts_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
-#' # Output: [1] 1 2
+#' if(interactive()){
+#' setopts_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
+#' }
 setopts_exlusive_to_first <- function(x, y){
   setdiff(x, y)
 }
@@ -64,8 +66,11 @@ setopts_exlusive_to_first <- function(x, y){
 #' @return A scalar representing the number of elements that are in the first set but not in the second set.
 #'
 #' @examples
-#' assertions:::setopts_count_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
+#' if(interactive()){
+#' setopts_count_exlusive_to_first(c(1, 2, 3), c(3, 4, 5))
 #' # Output: 2
+#' }
+#'
 setopts_count_exlusive_to_first <- function(x, y){
   length(setdiff(x, y))
 }
@@ -81,8 +86,10 @@ setopts_count_exlusive_to_first <- function(x, y){
 #' @return A vector of elements that are present in both sets.
 #'
 #' @examples
-#' assertions:::setopts_common_elements(c(1, 2, 3), c(2, 3, 4))
-#' # Output: [1] 2 3
+#' if(interactive()){
+#' setopts_common_elements(c(1, 2, 3), c(2, 3, 4))
+#' # Output: 2 3
+#' }
 setopts_common_elements <- function(x, y){
   intersect(x, y)
 }
@@ -98,12 +105,14 @@ setopts_common_elements <- function(x, y){
 #' @return A logical value indicating whether the sets are equal (`TRUE`) or not (`FALSE`).
 #'
 #' @examples
-#' assertions:::setopts_are_equal(c(1, 2, 3), c(1, 2, 3))
+#' if(interactive()){
+#' setopts_are_equal(c(1, 2, 3), c(1, 2, 3))
 #' # Output: TRUE
-#' assertions:::setopts_are_equal(c(1, 2, 3), c(3, 2, 1))
+#' setopts_are_equal(c(1, 2, 3), c(3, 2, 1))
 #' # Output: TRUE
-#' assertions:::setopts_are_equal(c(1, 2, 3), c(1, 2, 3, 4))
+#' setopts_are_equal(c(1, 2, 3), c(1, 2, 3, 4))
 #' # Output: FALSE
+#' }
 setopts_are_equal <- function(x, y){
   setequal(x, y)
 }
@@ -123,12 +132,15 @@ setopts_are_equal <- function(x, y){
 #' @return A logical value indicating whether all elements of `required` are present in `x` (`TRUE`) or not (`FALSE`).
 #'
 #' @examples
-#' assertions:::includes(c(1, 2, 3), c(1, 2))
+#' if(interactive()){
+#' includes(c(1, 2, 3), c(1, 2))
 #' # Output: TRUE
-#' assertions:::includes(c(1, 2, 3), c(2, 4))
+#' includes(c(1, 2, 3), c(2, 4))
 #' # Output: FALSE
-#' assertions:::includes(c(1, 2, 3), c(3, 2, 1))
+#' includes(c(1, 2, 3), c(3, 2, 1))
 #' # Output: TRUE
+#' }
+#'
 includes <- function(x, required){
   is_subset(required, x)
 }

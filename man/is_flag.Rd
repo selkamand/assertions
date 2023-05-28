@@ -16,8 +16,10 @@ A logical scalar indicating whether \code{x} is a logical flag.
 This function checks if a value is a logical scalar (i.e., a single logical value).
 }
 \examples{
+if(interactive()){
 is_flag(TRUE)
 is_flag(FALSE)
 is_flag(c(TRUE, FALSE))
+}
 }
 \concept{is_type}

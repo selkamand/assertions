@@ -8,9 +8,10 @@
 #' @param x A vector.
 #' @return A logical value indicating whether the input vector contains duplicated elements.
 #' @examples
+#' if(interactive()){
 #' has_duplicates(c(1, 2, 3))  # returns FALSE
 #' has_duplicates(c(1, 2, 2))  # returns TRUE
-#' @export
+#' }
 has_duplicates <- function(x){
   anyDuplicated(x) != 0
 }
@@ -23,9 +24,10 @@ has_duplicates <- function(x){
 #' @param x A vector.
 #' @return A logical value indicating whether the input vector contains no duplicated elements.
 #' @examples
+#' if(interactive()){
 #' has_no_duplicates(c(1, 2, 3))  # returns TRUE
 #' has_no_duplicates(c(1, 2, 2))  # returns FALSE
-#' @export
+#' }
 has_no_duplicates <- function(x){
   !has_duplicates(x)
 }
@@ -38,10 +40,10 @@ has_no_duplicates <- function(x){
 #' @param x A vector.
 #' @return A logical value indicating whether the input vector contains missing values.
 #' @examples
+#' if(interactive()){
 #' has_missing_values(c(1, 2, 3))  # returns FALSE
 #' has_missing_values(c(1, NA, 2))  # returns TRUE
-#'
-#' @export
+#' }
 has_missing_values <- function(x){
   anyNA(x)
 }
@@ -54,9 +56,10 @@ has_missing_values <- function(x){
 #' @param x A vector.
 #' @return A logical value indicating whether the input vector contains no missing values.
 #' @examples
+#' if(interactive()){
 #' has_no_missing_values(c(1, 2, 3))  # returns TRUE
 #' has_no_missing_values(c(1, NA, 2))  # returns FALSE
-#' @export
+#' }
 has_no_missing_values <- function(x){
   !has_missing_values(x)
 }
@@ -69,8 +72,10 @@ has_no_missing_values <- function(x){
 #' @param x A vector.
 #' @return The number of missing values in the input vector.
 #' @examples
-#' assertions:::util_count_missing(c(1, 2, 3))  # returns 0
-#' assertions:::util_count_missing(c(1, NA, 2))  # returns 1
+#' if(interactive()){
+#' util_count_missing(c(1, 2, 3))  # returns 0
+#' util_count_missing(c(1, NA, 2))  # returns 1
+#' }
 util_count_missing <- function(x){
   sum(is.na(x))
 }
@@ -82,8 +87,10 @@ util_count_missing <- function(x){
 #' @param x A vector.
 #' @return The number of duplicated values in the input vector.
 #' @examples
-#' assertions:::util_count_duplicates(c(1, 2, 2))  # returns 1
-#' assertions:::util_count_duplicates(c(1, 2, 3))  # returns 0
+#' if(interactive()) {
+#' util_count_duplicates(c(1, 2, 2))  # returns 1
+#' util_count_duplicates(c(1, 2, 3))  # returns 0
+#' }
 util_count_duplicates <- function(x){
   sum(duplicated(x))
 }
@@ -95,8 +102,10 @@ util_count_duplicates <- function(x){
 #' @param x A vector.
 #' @return A vector of the duplicated values in the input vector.
 #' @examples
-#' assertions:::util_get_duplicated_values(c(1, 2, 2))  # returns 2
-#' assertions:::util_get_duplicated_values(c(1, 2, 3))  # returns NULL
+#' if(interactive()) {
+#' util_get_duplicated_values(c(1, 2, 2))  # returns 2
+#' util_get_duplicated_values(c(1, 2, 3))  # returns NULL
+#' }
 util_get_duplicated_values <- function(x){
   unique(x[duplicated(x)])
 }
@@ -110,9 +119,10 @@ util_get_duplicated_values <- function(x){
 #' @param class checks if `x` belongs to `class`. If multiple values of `class` are supplied, returns whether `x` belongs to any of them (character)
 #' @return A logical scalar indicating `x` belongs to `class`
 #' @examples
-#' has_class(1, "numeric") # TRUE
-#' has_class(1, "character") # FALSE
-#' @export
+#' if(interactive()) {
+#'   has_class(1, "numeric") # TRUE
+#'   has_class(1, "character") # FALSE
+#' }
 #' @concept is_type
 #'
 has_class <- function(x, class){

@@ -18,8 +18,10 @@ A logical value indicating whether \code{x} is a subset of \code{y}.
 Determines if all elements in set \code{x} are also present in set \code{y}.
 }
 \examples{
+if(interactive()){
 is_subset(1:3, 1:5)
 is_subset(letters[1:3], letters)
 is_subset(TRUE, c(TRUE, FALSE))
+}
 
 }

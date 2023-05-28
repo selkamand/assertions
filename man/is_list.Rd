@@ -20,9 +20,11 @@ By default, definition of a 'list' excludes data.frames in spite of them technic
 This behaviour can be changed by setting \code{include_dataframes = TRUE}
 }
 \examples{
+if(interactive()){
 is_list(list(1, 2)) # TRUE
 is_list(c(1, 2, 3)) # FALSE
 is_list(data.frame()) # FALSE
 is_list(data.frame(), include_dataframes = TRUE) # TRUE
+}
 }
 \concept{is_type}

@@ -18,6 +18,8 @@ A vector of elements that are present in both sets.
 Find the elements that are present in both sets.
 }
 \examples{
-assertions:::setopts_common_elements(c(1, 2, 3), c(2, 3, 4))
-# Output: [1] 2 3
+if(interactive()){
+setopts_common_elements(c(1, 2, 3), c(2, 3, 4))
+# Output: 2 3
+}
 }

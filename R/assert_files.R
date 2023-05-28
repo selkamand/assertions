@@ -36,7 +36,6 @@ get_file_extensions <- function(filenames) {
 #' @param compression should compression extension ‘.gz’, ‘.bz2’ or ‘.xz’ be removed first?
 #'
 #' @return TRUE if all x have valid extensions as supplied by `extensions` (flag)
-#' @export
 #'
 has_extension <- function(x, extensions, compression = FALSE){
   if(compression){

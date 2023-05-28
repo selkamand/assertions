@@ -17,7 +17,8 @@ This function returns a logical value indicating whether the input vector contai
 missing values (\code{NA}).
 }
 \examples{
+if(interactive()){
 has_missing_values(c(1, 2, 3))  # returns FALSE
 has_missing_values(c(1, NA, 2))  # returns TRUE
-
+}
 }
