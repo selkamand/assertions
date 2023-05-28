@@ -163,6 +163,17 @@
 <p>See <code>?assert_create()</code> for details</p>
 </div>
 <div class="section level2">
+<h2 id="vectorised-assertions">Vectorised assertions<a class="anchor" aria-label="anchor" href="#vectorised-assertions"></a>
+</h2>
+<p>Assertions may have <em>vectorised</em> versions that test whether <em>all</em> elements in a vector/matrix meet a condition.</p>
+<p>For example:</p>
+<ul>
+<li><p><code><a href="reference/assert_greater_than.html">assert_greater_than()</a></code> expects a single number as an input</p></li>
+<li><p><code><a href="reference/assert_all_greater_than.html">assert_all_greater_than()</a></code> works on vectors/matrices.</p></li>
+</ul>
+<p>Vectorised functions have the <code>assert_all_</code> prefix.</p>
+</div>
+<div class="section level2">
 <h2 id="contributing-to-this-package">Contributing to this package<a class="anchor" aria-label="anchor" href="#contributing-to-this-package"></a>
 </h2>
 <p>Two options</p>
