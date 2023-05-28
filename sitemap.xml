@@ -58,6 +58,9 @@
     <loc>/reference/assert_dataframe.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_directory_does_not_exist.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_directory_exists.html</loc>
   </url>
   <url>
@@ -68,6 +71,9 @@
   </url>
   <url>
     <loc>/reference/assert_factor_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/assert_file_does_not_exist.html</loc>
   </url>
   <url>
     <loc>/reference/assert_file_exists.html</loc>
@@ -188,9 +194,6 @@
   </url>
   <url>
     <loc>/reference/has_no_missing_values.html</loc>
-  </url>
-  <url>
-    <loc>/reference/has_permission.html</loc>
   </url>
   <url>
     <loc>/reference/includes.html</loc>
