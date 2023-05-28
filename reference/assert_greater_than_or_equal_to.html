@@ -57,7 +57,6 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">assert_greater_than_or_equal_to</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  <span class="va">minimum</span>,</span>
-<span>  all_must_satisfy <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  msg <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  call <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/stack.html" class="external-link">caller_env</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  arg_name <span class="op">=</span> <span class="cn">NULL</span></span>
@@ -74,12 +73,8 @@
 <dd><p>The minimum value to compare against</p></dd>
 
 
-<dt>all_must_satisfy</dt>
-<dd><p>A logical value indicating whether all elements of the vector must be greater than or equal to the minimum value or if only one element is sufficient.</p></dd>
-
-
 <dt>msg</dt>
-<dd><p>A character string containing the error message to display if <code>x</code> is not greater than or equal to the specified minimum value</p></dd>
+<dd><p>A character string containing the error message to display if <code>x</code> is not greater than or equal to the specified minimum value (string)</p></dd>
 
 
 <dt>call</dt>
@@ -103,7 +98,7 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/try.html" class="external-link">try</a></span><span class="op">(</span><span class="op">{</span></span></span>
 <span class="r-in"><span><span class="fu">assert_greater_than_or_equal_to</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span> <span class="co"># Passes</span></span></span>
-<span class="r-in"><span><span class="fu">assert_greater_than_or_equal_to</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fl">2</span>, all_must_satisfy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="co"># Passes</span></span></span>
+<span class="r-in"><span><span class="fu">assert_greater_than_or_equal_to</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">4</span>, <span class="fl">5</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span> <span class="co"># Passes</span></span></span>
 <span class="r-in"><span><span class="fu">assert_greater_than_or_equal_to</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span> <span class="co"># Throws error</span></span></span>
 <span class="r-in"><span><span class="op">}</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Error in eval(expr, envir, enclos) : </span>
