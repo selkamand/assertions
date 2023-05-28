@@ -7,8 +7,6 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN
-status](https://www.r-pkg.org/badges/version/assertions)](https://CRAN.R-project.org/package=assertions)
 [![Codecov test
 coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main)
 [![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
@@ -41,7 +39,14 @@ The goals with assertions are to provide
 
 ## Installation
 
-You can install the development version of assertions like so
+``` r
+install.packages("assertions")
+```
+
+### Development version
+
+To get a bug fix or to use a feature from the development version, you
+can install the development version of assertions from GitHub.
 
 ``` r
 # install.packages('remotes')
@@ -150,10 +155,10 @@ Two options
 
 Great alternative packages for writing assertions include:
 
-- [`assertthat`](https://github.com/ropensci/assertthat)
-- [`checkmate`](https://github.com/HenrikBengtsson/checkmate)
-- [`assertive`](https://github.com/assertive/assertive)
-- [`ensurer`](https://github.com/HenrikBengtsson/ensurer)
+- [`assertthat`](https://github.com/hadley/assertthat)
+- [`checkmate`](https://github.com/mllg/checkmate)
+- [`assertive`](https://bitbucket.org/richierocks/assertive)
+- [`ensurer`](https://github.com/smbache/ensurer)
 
 Each package has its own features and syntax. So hopefully there is one
 that suits your needs and preferences. I’m a big fan of `checkmate` for
