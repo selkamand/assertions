@@ -64,7 +64,9 @@ assert_greater_than <- assert_create_chain(
   assert_all_greater_than
 )
 
-#' Assert that the input object is greater than or equal to a specified minimum value
+#' Assert input is greater than or equal to a specified minimum value
+#'
+#' Assert all elements in a numeric vector/matrix are above some minimum value.
 #'
 #' @param x An object to check
 #' @param minimum The minimum value to compare against
@@ -80,12 +82,36 @@ assert_greater_than <- assert_create_chain(
 #' assert_greater_than_or_equal_to(2, 3) # Throws error
 #' })
 #' @export
-assert_greater_than_or_equal_to <- assert_create_chain(
+assert_all_greater_than_or_equal_to <- assert_create_chain(
   assert_numeric,
   assert_create(
     is_greater_than_or_equal_to,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
   )
+)
+
+#' Assert input is greater than or equal to a specified minimum value
+#'
+#' Assert all elements in a numeric vector/matrix are above or equal to some minimum value.
+#' For vectorized version see [assert_all_greater_than_or_equal_to()]
+#'
+#' @param x An object to check
+#' @param minimum The minimum value to compare against
+#' @param msg A character string containing the error message to display if `x` is not greater than or equal to the specified minimum value (string)
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is greater than or equal to the specified minimum value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_greater_than_or_equal_to(3, 2) # Passes
+#' assert_greater_than_or_equal_to(c(3, 4, 5), 2) # Throws error
+#' assert_greater_than_or_equal_to(2, 3) # Throws error
+#' })
+#' @export
+assert_greater_than_or_equal_to <- assert_create_chain(
+  assert_number,
+  assert_all_greater_than_or_equal_to
 )
 
 #' Assert that the input object is identical to a specified value
