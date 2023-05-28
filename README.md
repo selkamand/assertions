@@ -116,6 +116,19 @@ assert_lowercase("NOT all lower case")
 
 See `?assert_create()` for details
 
+## Vectorised assertions
+
+Assertions may have *vectorised* versions that test whether *all*
+elements in a vector/matrix meet a condition.
+
+For example:
+
+- `assert_greater_than()` expects a single number as an input
+
+- `assert_all_greater_than()` works on vectors/matrices.
+
+Vectorised functions have the `assert_all_` prefix.
+
 ## Contributing to this package
 
 Two options
