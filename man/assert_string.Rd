@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_string}
 \alias{assert_string}
-\title{Assert that the input object is a character string}
+\title{Assert input is a character string}
 \usage{
 assert_string(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_string(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if x is a string, otherwise aborts with the error message specified by msg
 }
 \description{
-Assert that the input object is a character string
+Assert input is a character string
 }
 \examples{
 try({

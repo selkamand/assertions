@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_dataframe}
 \alias{assert_dataframe}
-\title{Assert that the input object is a data frame}
+\title{Assert input is a data frame}
 \usage{
 assert_dataframe(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,7 @@ assert_dataframe(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a data frame, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a data frame
+Assert input is a data frame
 }
 \examples{
 try({

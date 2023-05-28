@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_logical_vector}
 \alias{assert_logical_vector}
-\title{Assert that the input object is an atomic logical vector}
+\title{Assert input is an atomic logical vector}
 \usage{
 assert_logical_vector(
   x,
@@ -24,7 +24,7 @@ assert_logical_vector(
 invisible(TRUE) if x is an atomic logical vector, otherwise aborts with the error message specified by msg
 }
 \description{
-Assert that the input object is an atomic logical vector
+Assert input is an atomic logical vector
 }
 \examples{
 try({

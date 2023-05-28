@@ -9,7 +9,7 @@ msg_helper_assert_type <- function(expected_type, a = TRUE, an =FALSE){
 }
 
 # Dataframe ---------------------------------------------------------------
-#' Assert that the input object is a data frame
+#' Assert input is a data frame
 #'
 #' @include assert_create.R
 #' @include is_functions.R
@@ -45,7 +45,7 @@ assert_dataframe <- assert_create(
 # Matrix ------------------------------------------------------------------
 
 
-#' Assert that the input object is a matrix
+#' Assert input is a matrix
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a matrix
@@ -71,7 +71,7 @@ assert_matrix <- assert_create(
 
 
 # Vector ------------------------------------------------------------------
-#' Assert that the input object is a vector
+#' Assert input is a vector
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a vector
@@ -116,7 +116,11 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 
 
 ## factor -----------------------------------------------------------
-#' Assert that the input object is a factor
+#' Assert input is a factor
+#'
+#' Assert an R object is a factor
+#' Works for \strong{vector} and \strong{matrix} objects.
+#' To assert an object is specifically a \strong{factor vector} see [assert_factor_vector()]
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a factor
@@ -138,7 +142,11 @@ assert_vector <- assert_create(func = is_vector, msg_helper_assert_type("vector"
 assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_type("factor"))
 
 ## numeric -----------------------------------------------------------
-#' Assert that the input object is numeric
+#' Assert input is numeric
+#'
+#' Assert an R object is numeric
+#' Works for \strong{vector} and \strong{matrix} objects.
+#' To assert an object is specifically a \strong{numeric vector} see [assert_numeric_vector()]
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not numeric
@@ -161,7 +169,7 @@ assert_factor <- assert_create(is.factor, default_error_msg = msg_helper_assert_
 assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_assert_type("numeric", a = FALSE))
 
 ## numeric vector -----------------------------------------------------------
-#' Assert that the input object is a numeric vector
+#' Assert input is a numeric vector
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a numeric vector
@@ -176,7 +184,7 @@ assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_asser
 assert_numeric_vector <- assert_create(is_numeric_vector, default_error_msg = msg_helper_assert_type("numeric vector"))
 
 ## number -----------------------------------------------------------
-#' Assert that the input object is a number
+#' Assert input is a number
 #'
 #' A number is a length 1 numeric vector.
 #' Numbers can be either integers or doubles.
@@ -204,7 +212,7 @@ assert_number <- assert_create_chain(
 )
 
 
-#' Assert that the input object is an integer
+#' Assert input is an integer
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not an integer
@@ -235,7 +243,11 @@ assert_int <- assert_create(is.integer, msg_helper_assert_type("integer", an = T
 # Logicals ----------------------------------------------------------------
 
 ## logical -----------------------------------------------------------
-#' Assert that the input object is logical
+#' Assert input is logical
+#'
+#' Assert an R object is 'logical' (TRUE/FALSE).
+#' Works for \strong{vector} and \strong{matrix} objects.
+#' To assert an object is specifically a \strong{logical vector} see [assert_logical_vector()]
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not logical
@@ -259,7 +271,9 @@ assert_logical <- assert_create(is.logical, msg_helper_assert_type("logical", a 
 
 
 ## logical vector -----------------------------------------------------------
-#' Assert that the input object is an atomic logical vector
+#' Assert input is an atomic logical vector
+#'
+#'
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not an atomic logical vector
@@ -281,9 +295,9 @@ assert_logical_vector <- assert_create(is_logical_vector, msg_helper_assert_type
 
 
 ## flag -----------------------------------------------------------
-#' Assert that the input object is a scalar logical
+#' Assert input is a scalar logical
 #'
-#' Assert that the input object is a flag (a logical of length 1: `TRUE` or `FALSE`)
+#' Assert input is a flag (a logical of length 1: `TRUE` or `FALSE`)
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a scalar logical
@@ -310,7 +324,11 @@ assert_flag <- assert_create_chain(
 # Characters --------------------------------------------------------------
 
 ## character -----------------------------------------------------------
-#' Assert that the input object is a character vector
+#' Assert input is a character vector
+#'
+#' Assert an R object is a 'character' type.
+#' Works for \strong{vector} and \strong{matrix} objects.
+#' To assert an object is specifically a \strong{character vector} see [assert_character_vector()]
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a character vector
@@ -321,7 +339,9 @@ assert_flag <- assert_create_chain(
 #' @examples
 #' try({
 #' assert_character("a") # Passes
+#' assert_character("a") # Passes
 #' assert_character(c("a", "b", "c")) # Passes
+#' assert_character(matrix(c('A', 'B', 'C', 'D')))  # Passes
 #' assert_character(1:3) # Throws default error
 #' assert_character(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' })
@@ -332,7 +352,9 @@ assert_flag <- assert_create_chain(
 assert_character <- assert_create(is.character, msg_helper_assert_type("character"))
 
 ## character vector -----------------------------------------------------------
-#' Assert that the input object is a character vector
+#' Assert input is a character vector
+#'
+#' Assert an object is a character vector. Length 1 character vectors (strings) are considered vectors.
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a character vector
@@ -344,6 +366,7 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 #' try({
 #' assert_character_vector(c("a", "b", "c")) # Passes
 #' assert_character_vector(c("a", 1, "b")) # Throws default error
+#' assert_character_vector(matrix(c('A', 'B', 'C', 'D')))  # Throws error since type = matrix
 #' assert_character_vector(c("a", 1, "b"), "Custom error message") # Throws custom error
 #' })
 #'
@@ -353,7 +376,7 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_type("character vector"))
 
 ## string -----------------------------------------------------------
-#' Assert that the input object is a character string
+#' Assert input is a character string
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not a string
@@ -377,9 +400,9 @@ assert_string <- assert_create_chain(
   assert_create(is_scalar, "'{.strong {arg_name}}' is not a string! (length is {.strong {length(arg_value)}}, not 1)")
   )
 
-#' Assert that the input object is a  non empty character string
+#' Assert input is a  non empty character string
 #'
-#' Asserts that x is a string, and nonempty (i.e. not equal to '')
+#' Asserts input is a string, and nonempty (i.e. not equal to '')
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if x is not a
@@ -404,7 +427,7 @@ assert_non_empty_string <- assert_create(
 # Functions ---------------------------------------------------------------
 
 ## function ----------------------------------------------------------------
-#' Assert that x is a function
+#' Assert input is a function
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a function
@@ -432,7 +455,7 @@ assert_function <- assert_create(is.function, msg_helper_assert_type(expected_ty
 
 # Lists -------------------------------------------------------------------
 
-#' Assert that x is a list
+#' Assert input is a list
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a list

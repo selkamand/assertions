@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_numeric_vector}
 \alias{assert_numeric_vector}
-\title{Assert that the input object is a numeric vector}
+\title{Assert input is a numeric vector}
 \usage{
 assert_numeric_vector(
   x,
@@ -24,6 +24,6 @@ assert_numeric_vector(
 invisible(TRUE) if \code{x} is a numeric vector, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is a numeric vector
+Assert input is a numeric vector
 }
 \concept{assert_type}

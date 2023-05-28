@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_non_empty_string}
 \alias{assert_non_empty_string}
-\title{Assert that the input object is a  non empty character string}
+\title{Assert input is a  non empty character string}
 \usage{
 assert_non_empty_string(
   x,
@@ -24,7 +24,7 @@ assert_non_empty_string(
 invisible(TRUE) if x is a character vector, otherwise aborts with the error message specified by msg
 }
 \description{
-Asserts that x is a string, and nonempty (i.e. not equal to '')
+Asserts input is a string, and nonempty (i.e. not equal to '')
 }
 \examples{
 try({

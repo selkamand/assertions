@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_type.R
 \name{assert_logical}
 \alias{assert_logical}
-\title{Assert that the input object is logical}
+\title{Assert input is logical}
 \usage{
 assert_logical(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 }
@@ -19,7 +19,9 @@ assert_logical(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is logical, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that the input object is logical
+Assert an R object is 'logical' (TRUE/FALSE).
+Works for \strong{vector} and \strong{matrix} objects.
+To assert an object is specifically a \strong{logical vector} see \code{\link[=assert_logical_vector]{assert_logical_vector()}}
 }
 \examples{
 try({
