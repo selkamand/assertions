@@ -20,6 +20,5 @@ This function checks if a numeric vector is greater than or equal to a specified
 \examples{
 is_greater_than_or_equal_to(c(2,3,4), 1) # TRUE
 is_greater_than_or_equal_to(c(2,3,4), 2) # TRUE
-is_greater_than_or_equal_to(c(2,3,4), 3, all_must_satisfy=FALSE) # TRUE
 is_greater_than_or_equal_to(c(2,3,1), 3) # FALSE
 }

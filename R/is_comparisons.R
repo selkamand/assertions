@@ -72,7 +72,6 @@ is_greater_than <- function(x, minimum){
 #' @examples
 #' is_greater_than_or_equal_to(c(2,3,4), 1) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,4), 2) # TRUE
-#' is_greater_than_or_equal_to(c(2,3,4), 3, all_must_satisfy=FALSE) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,1), 3) # FALSE
 #' @export
 is_greater_than_or_equal_to <- function(x, minimum){
