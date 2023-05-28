@@ -19,4 +19,5 @@ no duplicated elements.
 \examples{
 has_no_duplicates(c(1, 2, 3))  # returns TRUE
 has_no_duplicates(c(1, 2, 2))  # returns FALSE
+
 }

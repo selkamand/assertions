@@ -11,7 +11,6 @@
 #' is_subset(letters[1:3], letters)
 #' is_subset(TRUE, c(TRUE, FALSE))
 #'
-#' @export
 is_subset <- function(x, y){
   all(x %in% y)
 }
@@ -29,7 +28,6 @@ is_subset <- function(x, y){
 #' is_superset(letters, letters[1:3])
 #' is_superset(c(TRUE, FALSE), TRUE)
 #'
-#' @export
 is_superset <- function(x, y){
   all(y %in% x)
 }

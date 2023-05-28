@@ -57,7 +57,6 @@ compare <- function(x, equal_to = NULL, minimum = NULL, maximum = NULL, comparis
 #' is_greater_than(c(2,3,4), 1) # TRUE
 #' is_greater_than(c(2,3,4), 2) # TRUE
 #' is_greater_than(c(2,3,1), 3) # FALSE
-#' @export
 is_greater_than <- function(x, minimum){
   compare(x = x, minimum = minimum, all_must_satisfy = TRUE, comparison_inclusive = FALSE)
 }
@@ -73,7 +72,6 @@ is_greater_than <- function(x, minimum){
 #' is_greater_than_or_equal_to(c(2,3,4), 1) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,4), 2) # TRUE
 #' is_greater_than_or_equal_to(c(2,3,1), 3) # FALSE
-#' @export
 is_greater_than_or_equal_to <- function(x, minimum){
   compare(x = x, minimum = minimum, all_must_satisfy = TRUE, comparison_inclusive = TRUE)
 }
@@ -84,7 +82,6 @@ is_greater_than_or_equal_to <- function(x, minimum){
 #' @param x first object to compare
 #' @param y second object to compare
 #' @return logical value indicating whether or not the objects are identical
-#' @export
 is_identical <- function(x, y){
   identical(x = x, y = y)
 }
@@ -101,7 +98,6 @@ is_identical <- function(x, y){
 #' You may need to set check.environment=FALSE in unexpected cases, such as when comparing two nls() fits. (flag)
 #' @param check_tzone should  "tzone" attributes be compared. Important for comparing POSIXt objects. (flag)
 #' @return TRUE if x is equal to y
-#' @export
 #'
 #' @examples
 #' is_equal(1, 1) #TRUE
@@ -123,7 +119,6 @@ is_equal <- function(x, y, tolerance = sqrt(.Machine$double.eps), check_names = 
 #' @param y second object to compare
 #'
 #' @return TRUE if x and y are of the same type, otherwise FALSE
-#' @export
 #'
 is_same_type <- function(x, y){
   typeof(x) == typeof(y)

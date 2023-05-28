@@ -10,7 +10,6 @@
 #' @examples
 #' has_duplicates(c(1, 2, 3))  # returns FALSE
 #' has_duplicates(c(1, 2, 2))  # returns TRUE
-#' @export
 has_duplicates <- function(x){
   anyDuplicated(x) != 0
 }
@@ -25,7 +24,7 @@ has_duplicates <- function(x){
 #' @examples
 #' has_no_duplicates(c(1, 2, 3))  # returns TRUE
 #' has_no_duplicates(c(1, 2, 2))  # returns FALSE
-#' @export
+#'
 has_no_duplicates <- function(x){
   !has_duplicates(x)
 }
@@ -41,7 +40,6 @@ has_no_duplicates <- function(x){
 #' has_missing_values(c(1, 2, 3))  # returns FALSE
 #' has_missing_values(c(1, NA, 2))  # returns TRUE
 #'
-#' @export
 has_missing_values <- function(x){
   anyNA(x)
 }
@@ -56,7 +54,6 @@ has_missing_values <- function(x){
 #' @examples
 #' has_no_missing_values(c(1, 2, 3))  # returns TRUE
 #' has_no_missing_values(c(1, NA, 2))  # returns FALSE
-#' @export
 has_no_missing_values <- function(x){
   !has_missing_values(x)
 }
@@ -112,7 +109,7 @@ util_get_duplicated_values <- function(x){
 #' @examples
 #' has_class(1, "numeric") # TRUE
 #' has_class(1, "character") # FALSE
-#' @export
+
 #' @concept is_type
 #'
 has_class <- function(x, class){

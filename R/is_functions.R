@@ -13,7 +13,6 @@
 #'
 #' @concept is_type
 #'
-#' @export
 is_vector <- function(x){
   is.vector(x) && (!inherits(x, what = "list"))
 }
@@ -33,7 +32,6 @@ is_vector <- function(x){
 #'
 #' @concept is_type
 #'
-#' @export
 is_numeric_vector <- function(x){
   is.numeric(x) && is_vector(x)
 }
@@ -46,7 +44,6 @@ is_numeric_vector <- function(x){
 #'
 #' @concept is_type
 #'
-#' @export
 is_number <- function(x){
   is.numeric(x) && length(x) == 1
 }
@@ -57,7 +54,6 @@ is_number <- function(x){
 #' @return A logical value indicating whether `x` is a character vector.
 #'
 #' @concept is_type
-#' @export
 is_character_vector <- function(x){
   is.character(x) && is_vector(x)
 }
@@ -73,7 +69,6 @@ is_scalar <- function(x){
 #' @return A logical value indicating whether `x` is a logical vector.
 #'
 #' @concept is_type
-#' @export
 is_logical_vector <- function(x){
   is.logical(x) && is_vector(x)
 }
@@ -84,7 +79,6 @@ is_logical_vector <- function(x){
 #' @return A logical value indicating whether `x` is a single string.
 #'
 #' @concept is_type
-#' @export
 is_string <- function(x){
   is.character(x) && length(x) == 1
 }
@@ -99,7 +93,6 @@ is_string <- function(x){
 #' is_flag(TRUE)
 #' is_flag(FALSE)
 #' is_flag(c(TRUE, FALSE))
-#' @export
 #' @concept is_type
 #'
 is_flag <- function(x){
@@ -120,7 +113,6 @@ is_flag <- function(x){
 #' is_list(c(1, 2, 3)) # FALSE
 #' is_list(data.frame()) # FALSE
 #' is_list(data.frame(), include_dataframes = TRUE) # TRUE
-#' @export
 #' @concept is_type
 #'
 is_list <- function(x, include_dataframes = FALSE){
@@ -138,7 +130,6 @@ is_list <- function(x, include_dataframes = FALSE){
 #' is_reactive(shiny::reactive(1)) # TRUE
 #' is_reactive(1) # FALSE
 #' }
-#' @export
 #' @concept is_type
 #'
 is_reactive <- function(x){
@@ -167,7 +158,6 @@ is_whole_number <- function(x){
 #' @return Returns invisible(TRUE) if x is a numeric value with length 1. Returns a string
 #' with an error message if x is not a numeric value or has a length other than 1.
 #'
-#' @export
 #' @concept advanced
 is_number_advanced <- function(x){
   if(!is.numeric(x))
@@ -192,7 +182,6 @@ is_number_advanced <- function(x){
 #'
 #'
 #' @concept advanced
-#' @export
 is_flag_advanced <- function(x){
   if(!is.logical(x))
     return("'{.strong {arg_name}}' is not a {.strong flag}! (class is {.strong {class(arg_value)}}, not {.strong logical})")
