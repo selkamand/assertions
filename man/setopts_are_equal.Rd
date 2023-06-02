@@ -17,13 +17,3 @@ A logical value indicating whether the sets are equal (\code{TRUE}) or not (\cod
 \description{
 Determine if the two sets are equal.
 }
-\examples{
-if(interactive()){
-setopts_are_equal(c(1, 2, 3), c(1, 2, 3))
-# Output: TRUE
-setopts_are_equal(c(1, 2, 3), c(3, 2, 1))
-# Output: TRUE
-setopts_are_equal(c(1, 2, 3), c(1, 2, 3, 4))
-# Output: FALSE
-}
-}

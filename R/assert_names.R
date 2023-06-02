@@ -4,10 +4,7 @@
 #'
 #' @param x a named object
 #' @param names A character vector of names to check for in `x`.
-#' @return A logical value indicating whether `x` has all the names specified in `names`.
-#' @examples
-#' assertions:::has_all_names(list(a = 1, b = 2), c("a", "b"))  # returns TRUE
-#' assertions:::has_all_names(list(a = 1, b = 2), c("a", "c"))  # returns FALSE
+#' @return A logical value indicating whether `x` has all the names specified in `names`
 has_all_names <- function(x, names){
   is_subset(names, names(x))
 }

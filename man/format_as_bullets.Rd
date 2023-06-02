@@ -22,18 +22,3 @@ This allows for the easy creation of bullet point lists in error messages.
 The bullet argument allows the user to specify the desired bullet point symbol.
 The default bullet point symbols are: *, >, , x, v, i, and !.
 }
-\examples{
-\dontrun{
-cli::cli_abort(format_as_bullets(c("item 1", "item 2", "item 3")))
-#> * item 1
-#> * item 2
-#> * item 3
-
-
-cli::cli_abort(format_as_bullets(c("item 1", "item 2", "item 3"), bullet = ">"))
-#> > item 1
-#> > item 2
-#> > item 3
-}
-
-}

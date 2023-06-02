@@ -28,20 +28,6 @@ common_roxygen_params <- function(call, arg_name, msg, ...){
 #'
 #' @return A character string with each element of x formatted as a bullet point
 #'
-#' @examples
-#' \dontrun{
-#' cli::cli_abort(format_as_bullets(c("item 1", "item 2", "item 3")))
-#' #> * item 1
-#' #> * item 2
-#' #> * item 3
-#'
-#'
-#' cli::cli_abort(format_as_bullets(c("item 1", "item 2", "item 3"), bullet = ">"))
-#' #> > item 1
-#' #> > item 2
-#' #> > item 3
-#' }
-#'
 format_as_bullets <- function(x, bullet = c('*', '>', ' ', 'x', 'v', 'i', '!')){
   bullet <- rlang::arg_match(bullet)
   names(x) <- rep(bullet, times = length(x))
@@ -56,12 +42,6 @@ format_as_bullets <- function(x, bullet = c('*', '>', ' ', 'x', 'v', 'i', '!')){
 #'
 #' @return A character vector with inline tags applied to each element
 #'
-#' @examples
-#' \dontrun{
-#' format_inline(c("apple", "banana", "carrot"), inline_tag = "strong")
-#'
-#' format_inline(c("apple", "banana", "carrot"), inline_tag = "emph")
-#' }
 #'
 format_inline <- function(x, inline_tag = c('strong', 'emph', 'code', 'arg')){
   inline_tag <- rlang::arg_match(inline_tag)

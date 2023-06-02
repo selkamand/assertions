@@ -7,11 +7,6 @@
 #' @param x An object to check
 #' @return A logical indicating whether `x` is a vector
 #'
-#' @examples
-#' if(interactive()){
-#' is_vector(1:10)
-#' is_vector(list(1:10)) # Fails
-#' }
 #'
 #' @concept is_type
 #'
@@ -93,12 +88,7 @@ is_string <- function(x){
 #'
 #' @param x A value to check.
 #' @return A logical scalar indicating whether `x` is a logical flag.
-#' @examples
-#' if(interactive()){
-#' is_flag(TRUE)
-#' is_flag(FALSE)
-#' is_flag(c(TRUE, FALSE))
-#' }
+#'
 #' @concept is_type
 #'
 is_flag <- function(x){

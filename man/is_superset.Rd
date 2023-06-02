@@ -17,10 +17,3 @@ A logical value indicating whether \code{x} is a superset of \code{y}.
 \description{
 Determines if all elements in set \code{y} are also present in set \code{x}.
 }
-\examples{
-if(interactive()){
-is_superset(1:5, 1:3)
-is_superset(letters, letters[1:3])
-is_superset(c(TRUE, FALSE), TRUE)
-}
-}

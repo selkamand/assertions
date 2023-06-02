@@ -17,14 +17,3 @@ A logical value indicating whether all elements of \code{required} are present i
 \description{
 Checks if all elements of \code{required} are present in \code{x}.
 }
-\examples{
-if(interactive()){
-includes(c(1, 2, 3), c(1, 2))
-# Output: TRUE
-includes(c(1, 2, 3), c(2, 4))
-# Output: FALSE
-includes(c(1, 2, 3), c(3, 2, 1))
-# Output: TRUE
-}
-
-}

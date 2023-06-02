@@ -17,11 +17,4 @@ A logical indicating whether \code{x} is a vector
 Check if an object is a vector
 This function checks if an object is a vector
 }
-\examples{
-if(interactive()){
-is_vector(1:10)
-is_vector(list(1:10)) # Fails
-}
-
-}
 \concept{is_type}

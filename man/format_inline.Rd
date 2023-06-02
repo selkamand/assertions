@@ -17,11 +17,3 @@ A character vector with inline tags applied to each element
 \description{
 Preprocess character vectors for cli package functions
 }
-\examples{
-\dontrun{
-format_inline(c("apple", "banana", "carrot"), inline_tag = "strong")
-
-format_inline(c("apple", "banana", "carrot"), inline_tag = "emph")
-}
-
-}

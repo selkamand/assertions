@@ -26,6 +26,9 @@ assert_function_expects_n_arguments(
 
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
+\value{
+invisible(TRUE) if function \code{x} expects exactly n arguments, otherwise aborts with the error message specified by \code{msg}
+}
 \description{
 Assert a function expects n arguments, with user control over how variable arguments (...) are counted (default throws error)
 }

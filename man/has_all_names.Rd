@@ -12,12 +12,8 @@ has_all_names(x, names)
 \item{names}{A character vector of names to check for in \code{x}.}
 }
 \value{
-A logical value indicating whether \code{x} has all the names specified in \code{names}.
+A logical value indicating whether \code{x} has all the names specified in \code{names}
 }
 \description{
 This function returns a logical value indicating whether the object \code{x} has all the names specified in \code{names}.
-}
-\examples{
-assertions:::has_all_names(list(a = 1, b = 2), c("a", "b"))  # returns TRUE
-assertions:::has_all_names(list(a = 1, b = 2), c("a", "c"))  # returns FALSE
 }

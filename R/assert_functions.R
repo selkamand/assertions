@@ -38,5 +38,7 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
 #' @param dots how to deal with '...' dots (a.k.a variable arguments). Should we count as 0, 1 or infinite arguments. Or, do we just throw an error when we see '...' (default)
 #' @inheritParams common_roxygen_params
 #'
+#' @return invisible(TRUE) if function `x` expects exactly n arguments, otherwise aborts with the error message specified by `msg`
+#'
 #' @export
 assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced)
