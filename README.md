@@ -14,7 +14,8 @@ coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg
 [![](https://img.shields.io/github/last-commit/selkamand/assertions.svg)](https://github.com/selkamand/assertions/commits/main)
 [![Closed
 issues](https://img.shields.io/github/issues-closed/selkamand/assertions.svg)](https://github.com/selkamand/assertions/issues?q=is%3Aissue+is%3Aclosed)
-
+[![](http://cranlogs.r-pkg.org/badges/last-month/assertions)](https://cran.r-project.org/package=assertions)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/assertions)](https://cran.r-project.org/package=assertions)
 <!-- badges: end -->
 
 Simple assertions with sensible defaults and customisable error
