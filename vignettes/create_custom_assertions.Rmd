@@ -102,7 +102,7 @@ Here's a recreation of the example above, using a `func` that supplies strings t
 # Define Function
 is_a_string <- function(object){
  if(!is.character(object))
-   return("{arg_name} must be a character, not class({arg_value})")
+   return("{arg_name} must be a character, not {class(arg_value)}")
   
   if(length(object) != 1){
     return("{arg_name} must be length 1, not {length(object)}")
