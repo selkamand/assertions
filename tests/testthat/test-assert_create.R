@@ -110,7 +110,14 @@ cli::test_that_cli(configs = "plain", "assertion function works as expected with
   expect_snapshot(assert_between_min_and_max(2, min = 3, max = 5), error = TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "created assertion() functions throw informative error when mandatory arguments are not supplied", {
+  f1 <- function(bob, billy) { return(TRUE) }
+  assert_f1 <- assertions::assert_create(f1, default_error_msg = 'this is an error message')
 
+  expect_error(assert_f1(), regexp = "mandatory argument/s were not supplied", fixed=TRUE)
+  expect_error(assert_f1(bob = 'a'), regexp = "mandatory argument/s were not supplied", fixed=TRUE)
+  expect_true(assert_f1('a', 'b'))
+})
 
 # Test Creation of Assertion Chains  -----------------------------------------------------
 cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions part and not get confused if they contain variable names", {

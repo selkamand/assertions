@@ -110,3 +110,14 @@ func_arg_count <- function(func, dots = c("throw_error", "count_as_0", "count_as
 #   lgl <- unlist(args) == substitute()
 #   return(lgl)
 # }
+
+required_args_are_missing <- function (fun = sys.function(-1), ncall = 3) {
+  f_args <- formals(fun)
+  f_args <- f_args[vapply(f_args, is.symbol, FUN.VALUE = TRUE)]
+  f_args <- names(f_args)
+  f_args <- setdiff(f_args, "...")
+  test <- vapply(f_args,
+                 function(x) missingArg(as.name(x), envir = parent.frame(ncall), eval = TRUE),
+                 FUN.VALUE = TRUE)
+  return(any(test))
+}
