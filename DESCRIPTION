@@ -23,7 +23,7 @@ Imports:
     cli,
     glue,
     rlang
-URL: https://github.com/selkamand/assertions
+URL: https://github.com/selkamand/assertions, https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
 Collate: 
     'assert.R'
