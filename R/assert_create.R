@@ -83,6 +83,10 @@ assert_create <- function(func, default_error_msg = NULL){
   # Create body of assertion function
   body = quote({
 
+    # Check mandatory arguments are all supplied
+    if(required_args_are_missing())
+      cli::cli_abort('mandatory argument/s were not supplied')
+
     # Setup some variables ( these will be useful later)
     if(is.null(arg_name))
       arg_name <- deparse(match.call()[[2]])
