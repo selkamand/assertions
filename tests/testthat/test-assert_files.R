@@ -8,7 +8,7 @@ test_that("assert_file_exists() works", {
   expect_true(assert_file_exists(file1))
 
   # Throws error if file doesn't exist (can't be snapshots since tempfiles)
-  expect_error(assert_file_exists('sdasda'), "Failed to find file: 'sdasda'", fixed=TRUE)
+  expect_error(assert_file_exists('sdasda'), "Failed to find file: 'sdasda'", fixed = TRUE)
   expect_snapshot(assert_file_exists(c('sdasda', 'file2')), error = TRUE)
 
   # Throws error if non-character filepath given
@@ -20,6 +20,9 @@ test_that("assert_file_exists() works", {
   expect_error(assert_file_exists(dirpath), "is a directory, not a file")
   expect_snapshot(assert_file_exists(c(dirpath, dirpath2)), error = TRUE)
 
+  # Do NOT throw an error just because filepath is a glue string
+  file1_as_glue <- glue::glue('{file1}')
+  expect_error(assert_file_exists(file1_as_glue), regexp = NA)
 
 })
 
@@ -40,11 +43,16 @@ test_that("assert_all_files_exist() works", {
   expect_snapshot(assert_all_files_exist(2), error = TRUE)
 
 
-  # Throws error if not
+  # Throws error if any files are directories
   dirpath <- withr::local_tempdir()
   dirpath2 <- withr::local_tempdir()
   expect_snapshot(assert_all_files_exist(c('sdasda', 'file2')), error = TRUE)
   expect_error(assert_all_files_exist(c(dirpath, dirpath2), "are directories, not files"))
+
+  # Do NOT throw an error just because filepaths are glue strings
+  file1_as_glue <- c(glue::glue('{file1}'), glue::glue('{file1}'))
+  expect_error(assert_all_files_exist(file1_as_glue), regexp = NA)
+
 })
 
 test_that("assert_directory_exists() works", {
@@ -71,6 +79,10 @@ test_that("assert_directory_exists() works", {
   write("file contents", file1)
   write("file contents", file2)
   expect_error(assert_directory_exists(file1), "is a file, not a directory")
+
+  # Do NOT throw an error just because directory is a glue string
+  dirpath_as_glue <- glue::glue('{dirpath}')
+  expect_error(assert_directory_exists(dirpath_as_glue), regexp = NA)
 })
 
 
@@ -99,6 +111,11 @@ test_that("assert_all_directories_exist() works", {
   write("file contents", file2)
   expect_error(assert_all_directories_exist(file1), regexp = ".*? is a file, not a directory")
   expect_error(assert_all_directories_exist(c(file1, file2)), regexp = ".*? and .*? are files, not directories")
+
+  # Do NOT throw an error just because directories is a glue string
+  dirpath_as_glue <- c(glue::glue('{dirpath}'), glue::glue('{dirpath2}'))
+  expect_error(assert_all_directories_exist(dirpath_as_glue), regexp = NA)
+
 })
 
 

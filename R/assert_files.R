@@ -80,7 +80,7 @@ files_missing_extension <- function(x, extensions, compression = FALSE){
 #' @concept assert_file
 #' @export
 assert_all_files_exist <- assert_create_chain(
-  assert_character_vector,
+  assert_character_vector_or_glue,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find file{?s}: {.file {arg_value[!file.exists(arg_value)]}}"),
   assert_create(func = is_file, default_error_msg = "{x[dir.exists(x)]} {?is a/are} {.strong director{?y/ies}}, not {?a/} {.strong file{?s}}")
 )
@@ -192,7 +192,7 @@ assert_directory_does_not_exist <- assert_file_does_not_exist
 #' @concept assert_file
 #' @export
 assert_all_directories_exist <- assert_create_chain(
-  assert_character,
+  assert_character_vector_or_glue,
   assert_create(func = all_files_exist, default_error_msg = "Failed to find director{?y/ies}: {.file {arg_value[!file.exists(arg_value)]}}"),
   assert_create(is_dir, default_error_msg = "{.strong {arg_value[!dir.exists(arg_value)]}} {?is a/are} {.strong file{?s}}, not{? a/} {.strong director{?y/ies}}")
 )
@@ -248,7 +248,7 @@ assert_directory_exists <- assert_create_chain(
 #'
 #' @export
 assert_all_files_have_extension <- assert_create_chain(
-  assert_character,
+  assert_character_vector_or_glue,
   assert_create(has_extension, "'{.strong {arg_name}}' {cli::qty(files_missing_extension(arg_value, extensions, compression))}{?has/have} an invalid extension (required extension/s: {.strong {extensions}}).
   The following {cli::qty(files_missing_extension(arg_value, extensions, compression))} file{?s} ha{?s an/ve} unexpected extension{?s}:
   [{files_missing_extension(arg_value, extensions, compression)}]"
