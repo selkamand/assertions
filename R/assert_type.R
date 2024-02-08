@@ -372,12 +372,38 @@ assert_character <- assert_create(is.character, msg_helper_assert_type("characte
 #' assert_character_vector(c("a", 1, "b")) # Throws default error
 #' assert_character_vector(matrix(c('A', 'B', 'C', 'D')))  # Throws error since type = matrix
 #' assert_character_vector(c("a", 1, "b"), "Custom error message") # Throws custom error
+#' assert_character_vector(glue::glue('A')) # Throws error
 #' })
 #'
 #'
 #' @concept assert_type
 #' @export
 assert_character_vector <- assert_create(is_character_vector, msg_helper_assert_type("character vector"))
+
+## character vector or glue -----------------------------------------------------------
+#' Assert input is a character vector / glue vector
+#'
+#' Assert an object is a character vector (or a glue vector). Length 1 character vectors (strings) are considered vectors.
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if `x` is not a character vector
+#' @inheritParams common_roxygen_params
+#' @inheritParams is_character_vector
+#' @return invisible(TRUE) if `x` is a character vector, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_character_vector_or_glue(c("a", "b", "c")) # Passes
+#' assert_character_vector_or_glue(glue::glue('A')) # Passes
+#' assert_character_vector_or_glue(c("a", 1, "b")) # Throws default error
+#' assert_character_vector_or_glue(matrix(c('A', 'B', 'C', 'D')))  # Throws error since type = matrix
+#' assert_character_vector_or_glue(c("a", 1, "b"), "Custom error message") # Throws custom error
+#' })
+#'
+#'
+#' @concept assert_type
+#' @export
+assert_character_vector_or_glue <- assert_create(is_character_vector_or_glue, msg_helper_assert_type("character vector"))
 
 ## string -----------------------------------------------------------
 #' Assert input is a character string

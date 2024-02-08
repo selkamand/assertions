@@ -100,7 +100,7 @@
       assert_all_directories_exist(100)
     Condition
       Error:
-      ! '100' must be a character, not a numeric
+      ! '100' must be a character vector, not a numeric
 
 # assert_file_has_extension() works
 
@@ -182,7 +182,7 @@
       assert_all_files_have_extension(c(TRUE), extensions = "ext")
     Condition
       Error:
-      ! 'c(TRUE)' must be a character, not a logical
+      ! 'c(TRUE)' must be a character vector, not a logical
 
 # assert_file_does_not_exist() works
 

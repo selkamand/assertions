@@ -57,6 +57,17 @@ is_character_vector <- function(x){
   is.character(x) && is_vector(x)
 }
 
+#' Check if an object is a character vector
+#'
+#' Differs from [is_character_vector()] in that it permits glue character vectors to pass.
+#'
+#' @param x An object to check.
+#' @return A logical value indicating whether `x` is a character vector or glue vector.
+#'
+#' @concept is_type
+is_character_vector_or_glue <- function(x){
+  is.character(x) && (is_vector(x) | has_class(x, 'glue'))
+}
 
 is_scalar <- function(x){
  length(x) == 1
