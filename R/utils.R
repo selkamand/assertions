@@ -117,7 +117,7 @@ required_args_are_missing <- function(fun = sys.function(-1), ncall = 3) {
   f_args <- names(f_args)
   f_args <- setdiff(f_args, "...")
   test <- vapply(f_args,
-                 function(x) missingArg(as.name(x), envir = parent.frame(ncall), eval = TRUE),
+                 function(x) methods::missingArg(as.name(x), envir = parent.frame(ncall), eval = TRUE),
                  FUN.VALUE = TRUE)
   return(any(test))
 }

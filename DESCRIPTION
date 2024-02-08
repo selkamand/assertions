@@ -22,6 +22,7 @@ RoxygenNote: 7.3.1
 Imports: 
     cli,
     glue,
+    methods,
     rlang
 URL: https://github.com/selkamand/assertions, https://selkamand.github.io/assertions/
 VignetteBuilder: knitr
