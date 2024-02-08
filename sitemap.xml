@@ -49,6 +49,9 @@
     <loc>/reference/assert_character_vector.html</loc>
   </url>
   <url>
+    <loc>/reference/assert_character_vector_or_glue.html</loc>
+  </url>
+  <url>
     <loc>/reference/assert_class.html</loc>
   </url>
   <url>
@@ -209,6 +212,9 @@
   </url>
   <url>
     <loc>/reference/is_character_vector.html</loc>
+  </url>
+  <url>
+    <loc>/reference/is_character_vector_or_glue.html</loc>
   </url>
   <url>
     <loc>/reference/is_equal.html</loc>
