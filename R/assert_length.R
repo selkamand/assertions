@@ -16,7 +16,7 @@ assert_length <- assert_create(
   func = function(x, length) {
     if(!is.numeric(length)) return("'length' must be numeric")
     if(length(length) != 1) return("'length' must be a single number")
-    if(!is.whole.number(length)) return("'length' must be a whole number")
+    if(!is_whole_number(length)) return("'length' must be a whole number")
     if(length < 0) return("'length' must be non-negative")
     
     length(x) == length
@@ -35,7 +35,7 @@ assert_length_greater_than <- assert_create(
   func = function(x, length) {
     if(!is.numeric(length)) return("'length' must be numeric")
     if(length(length) != 1) return("'length' must be a single number")
-    if(!is.whole.number(length)) return("'length' must be a whole number")
+    if(!is_whole_number(length)) return("'length' must be a whole number")
     if(length < 0) return("'length' must be non-negative")
     
     length(x) > length
@@ -54,7 +54,7 @@ assert_length_greater_than_or_equal_to <- assert_create(
   func = function(x, length) {
     if(!is.numeric(length)) return("'length' must be numeric")
     if(length(length) != 1) return("'length' must be a single number")
-    if(!is.whole.number(length)) return("'length' must be a whole number")
+    if(!is_whole_number(length)) return("'length' must be a whole number")
     if(length < 0) return("'length' must be non-negative")
     
     length(x) >= length
@@ -73,7 +73,7 @@ assert_length_less_than <- assert_create(
   func = function(x, length) {
     if(!is.numeric(length)) return("'length' must be numeric")
     if(length(length) != 1) return("'length' must be a single number")
-    if(!is.whole.number(length)) return("'length' must be a whole number")
+    if(!is_whole_number(length)) return("'length' must be a whole number")
     if(length < 0) return("'length' must be non-negative")
     
     length(x) < length
@@ -92,7 +92,7 @@ assert_length_less_than_or_equal_to <- assert_create(
   func = function(x, length) {
     if(!is.numeric(length)) return("'length' must be numeric")
     if(length(length) != 1) return("'length' must be a single number")
-    if(!is.whole.number(length)) return("'length' must be a whole number")
+    if(!is_whole_number(length)) return("'length' must be a whole number")
     if(length < 0) return("'length' must be non-negative")
     
     length(x) <= length

@@ -85,4 +85,4 @@ cli::test_that_cli("assert_length_less_than_or_equal_to() works", configs = "pla
   expect_error(assert_length_less_than_or_equal_to(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length_less_than_or_equal_to(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
   expect_error(assert_length_less_than_or_equal_to(1:3, -1), "'length' must be non-negative", fixed = TRUE)
-}) 
+})
