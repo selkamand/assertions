@@ -173,3 +173,118 @@ assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}
 # #' })
 # #' @export
 #assert_type_identical <- assert_create(is_same_type, "{.strong {arg_name}} ({.strong {typeof(arg_value)}}) must be the same {aname(x)} type as {aname(y)} ({typeof(y)})")
+
+#' Assert input is less than a specified maximum value
+#'
+#' Assert all elements in a numeric vector/matrix are below some maximum value.
+#'
+#' @include assert_create.R
+#' @include assert_type.R
+#' @include is_functions.R
+#' @include is_comparisons.R
+#' @param x An object to check
+#' @param maximum The maximum value to compare against (number)
+#' @param msg A character string containing the error message to display if `x` is not less than the specified maximum value (string)
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is less than the specified maximum value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_all_less_than(1, 2) # Passes
+#' assert_all_less_than(c(1,2,3), 4) # Passes
+#' assert_all_less_than(c(1,2,3), 2) # Throws default error
+#' assert_all_less_than(c(1,2,3), 2, msg = "custom error message") # Throws custom error
+#' })
+#'
+#' @concept assert_comparison
+#' @export
+assert_all_less_than <- assert_create_chain(
+  assert_numeric,
+  assert_create(
+    is_less_than,
+    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than} `{.strong {maximum}}`."
+  )
+)
+
+#' Assert input is less than some maximum value
+#'
+#' Assert a number is less than a specified maximum value.
+#' To check all numbers in a vector / matrix are below a maximum value, see [assert_all_less_than()]
+#'
+#' @include assert_create.R
+#' @include assert_type.R
+#' @include is_functions.R
+#' @include is_comparisons.R
+#' @param x An object to check
+#' @param maximum The maximum value to compare against (number)
+#' @param msg A character string containing the error message to display if `x` is not less than the specified maximum value (string)
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is less than the specified maximum value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_less_than(1, 2) # Passes
+#' assert_less_than(1, 2) # Passes
+#' assert_less_than(c(1,2,3), 4) # Throws error (Must be a number)
+#' assert_less_than('A', 1) # Throws error (Must be a number)
+#' assert_less_than(3, 2, msg = "custom error message") # Throws custom error
+#' })
+#'
+#' @concept assert_comparison
+#' @export
+assert_less_than <- assert_create_chain(
+  assert_number,
+  assert_all_less_than
+)
+
+#' Assert input is less than or equal to a specified maximum value
+#'
+#' Assert all elements in a numeric vector/matrix are below or equal to some maximum value.
+#'
+#' @param x An object to check
+#' @param maximum The maximum value to compare against
+#' @param msg A character string containing the error message to display if `x` is not less than or equal to the specified maximum value (string)
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is less than or equal to the specified maximum value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_less_than_or_equal_to(1, 2) # Passes
+#' assert_less_than_or_equal_to(c(1, 2, 3), 3) # Passes
+#' assert_less_than_or_equal_to(3, 2) # Throws error
+#' })
+#' @export
+assert_all_less_than_or_equal_to <- assert_create_chain(
+  assert_numeric,
+  assert_create(
+    is_less_than_or_equal_to,
+    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than or equal to} `{.strong {maximum}}`."
+  )
+)
+
+#' Assert input is less than or equal to a specified maximum value
+#'
+#' Assert a number is less than or equal to a specified maximum value.
+#' For vectorized version see [assert_all_less_than_or_equal_to()]
+#'
+#' @param x An object to check
+#' @param maximum The maximum value to compare against
+#' @param msg A character string containing the error message to display if `x` is not less than or equal to the specified maximum value (string)
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is less than or equal to the specified maximum value, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#' try({
+#' assert_less_than_or_equal_to(1, 2) # Passes
+#' assert_less_than_or_equal_to(c(1, 2, 3), 3) # Throws error
+#' assert_less_than_or_equal_to(3, 2) # Throws error
+#' })
+#' @export
+assert_less_than_or_equal_to <- assert_create_chain(
+  assert_number,
+  assert_all_less_than_or_equal_to
+)
