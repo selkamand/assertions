@@ -22,7 +22,15 @@ invisible(TRUE) if \code{x} is not NULL, otherwise aborts with the error message
 This function asserts that the input is not NULL and aborts with an error message if it is.
 }
 \examples{
-assert_non_null(1)  # Passes
-assert_non_null(NULL)  # Throws default error
-assert_non_null(NULL, msg = "Custom error message")  # Throws custom error
+
+# Passes for non-NULL
+assert_non_null(1)
+
+try({
+ # Throws default error for NULL
+ assert_non_null(NULL)
+
+ # Throws custom error message
+ assert_non_null(NULL, msg = "Custom error message")
+})
 }

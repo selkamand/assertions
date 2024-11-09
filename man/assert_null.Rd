@@ -23,6 +23,10 @@ This function asserts that the input is NULL and aborts with an error message if
 }
 \examples{
 assert_null(NULL)  # Passes
-assert_null(1)  # Throws default error
-assert_null(1, msg = "Custom error message")  # Throws custom error
+
+try({
+ assert_null(1)  # Throws default error
+ assert_null(1, msg = "Custom error message")  # Throws custom error
+})
+
 }

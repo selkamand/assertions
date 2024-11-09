@@ -10,8 +10,12 @@
 #'
 #' @examples
 #' assert_null(NULL)  # Passes
-#' assert_null(1)  # Throws default error
-#' assert_null(1, msg = "Custom error message")  # Throws custom error
+#' 
+#' try({
+#'  assert_null(1)  # Throws default error
+#'  assert_null(1, msg = "Custom error message")  # Throws custom error
+#' })
+#' 
 #' @export
 assert_null <- assert_create(
   is.null,
@@ -29,9 +33,17 @@ assert_null <- assert_create(
 #' @return invisible(TRUE) if `x` is not NULL, otherwise aborts with the error message specified by `msg`.
 #'
 #' @examples
-#' assert_non_null(1)  # Passes
-#' assert_non_null(NULL)  # Throws default error
-#' assert_non_null(NULL, msg = "Custom error message")  # Throws custom error
+#' 
+#' # Passes for non-NULL
+#' assert_non_null(1)
+#' 
+#' try({
+#'  # Throws default error for NULL
+#'  assert_non_null(NULL)
+#' 
+#'  # Throws custom error message
+#'  assert_non_null(NULL, msg = "Custom error message")
+#' })
 #' @export
 assert_non_null <- assert_create(
   function(x) !is.null(x),
