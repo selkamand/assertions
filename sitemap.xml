@@ -49,6 +49,8 @@
 <url><loc>/reference/assert_no_duplicates.html</loc></url>
 <url><loc>/reference/assert_no_missing.html</loc></url>
 <url><loc>/reference/assert_non_empty_string.html</loc></url>
+<url><loc>/reference/assert_non_null.html</loc></url>
+<url><loc>/reference/assert_null.html</loc></url>
 <url><loc>/reference/assert_number.html</loc></url>
 <url><loc>/reference/assert_numeric.html</loc></url>
 <url><loc>/reference/assert_numeric_vector.html</loc></url>
