@@ -13,6 +13,8 @@
 <url><loc>/reference/assert_all_files_have_extension.html</loc></url>
 <url><loc>/reference/assert_all_greater_than.html</loc></url>
 <url><loc>/reference/assert_all_greater_than_or_equal_to.html</loc></url>
+<url><loc>/reference/assert_all_less_than.html</loc></url>
+<url><loc>/reference/assert_all_less_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_character.html</loc></url>
 <url><loc>/reference/assert_character_vector.html</loc></url>
 <url><loc>/reference/assert_character_vector_or_glue.html</loc></url>
@@ -41,6 +43,8 @@
 <url><loc>/reference/assert_length_greater_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_length_less_than.html</loc></url>
 <url><loc>/reference/assert_length_less_than_or_equal_to.html</loc></url>
+<url><loc>/reference/assert_less_than.html</loc></url>
+<url><loc>/reference/assert_less_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_list.html</loc></url>
 <url><loc>/reference/assert_logical.html</loc></url>
 <url><loc>/reference/assert_logical_vector.html</loc></url>
@@ -84,6 +88,8 @@
 <url><loc>/reference/is_greater_than.html</loc></url>
 <url><loc>/reference/is_greater_than_or_equal_to.html</loc></url>
 <url><loc>/reference/is_identical.html</loc></url>
+<url><loc>/reference/is_less_than.html</loc></url>
+<url><loc>/reference/is_less_than_or_equal_to.html</loc></url>
 <url><loc>/reference/is_list.html</loc></url>
 <url><loc>/reference/is_logical_vector.html</loc></url>
 <url><loc>/reference/is_non_empty_string_advanced.html</loc></url>
