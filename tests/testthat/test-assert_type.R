@@ -511,6 +511,8 @@ cli::test_that_cli("assert_scalar() works", configs = "plain", {
   expect_error(assert_scalar(c(1, 2)), "'c(1, 2)' must be a scalar, not a numeric", fixed = TRUE)
   expect_error(assert_scalar(c("a", "b")), "'c(\"a\", \"b\")' must be a scalar, not a character", fixed = TRUE)
   expect_error(assert_scalar(matrix(1:4, 2, 2)), "'matrix(1:4, 2, 2)' must be a scalar, not a matrix", fixed = TRUE)
+  expect_error(assert_scalar(matrix(1)), "'matrix(1)' must be a scalar, not a matrix", fixed = TRUE)
+  expect_error(assert_scalar(list(1)), "'list(1)' must be a scalar, not a list", fixed = TRUE)
   expect_error(assert_scalar(data.frame(a = 1)), "'data.frame(a = 1)' must be a scalar, not a data.frame", fixed = TRUE)
   expect_error(assert_scalar(list(a = 1)), "'list(a = 1)' must be a scalar, not a list", fixed = TRUE)
 
