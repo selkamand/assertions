@@ -9,7 +9,7 @@ assert_subset(x, y, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 \arguments{
 \item{x}{A vector to check}
 
-\item{y}{the acceptible values that x can take}
+\item{y}{the acceptable values that x can take}
 
 \item{msg}{The error message thrown if the assertion fails (string)}
 
