@@ -45,3 +45,27 @@ cli::test_that_cli("assert_one_of() works", config = "plain", {
   # Custom error messages work
   expect_error(assert_one_of(2, c(1, 3), msg = "Custom error message"), "Custom error message")
 })
+
+
+cli::test_that_cli("assert_set_equal() works", config = "plain", {
+  # Works for sets that are equivalent (same elements, ignoring order and duplicates)
+  expect_true(assert_set_equal(c(1, 2, 3), c(3, 2, 1)))       # Same elements, different order
+  expect_true(assert_set_equal(c("A", "B", "C"), c("C", "A", "B")))  # Same elements, different order
+  expect_true(assert_set_equal(c(1, 2, 2, 3), c(3, 2, 1)))    # Duplicate in x, equivalent to y
+
+  # Aborts for sets that differ in elements
+  expect_snapshot(assert_set_equal(c(1, 2, 3), c(1, 2)), error = TRUE) # Missing 3 in y
+  expect_snapshot(assert_set_equal(c("A", "B"), c("A", "B", "C")), error = TRUE) # Missing "C" in x
+  expect_snapshot(assert_set_equal(c(1, 3, 4), c(1, 2, 3)), error = TRUE) # Extra 4 in x, missing 2
+
+  # Aborts for sets with different types
+  expect_snapshot(assert_set_equal(c("A", "B", "C"), c(1, 2, 3)), error = TRUE) # Different types
+
+  # Error messages use variable name of passed arguments
+  x <- c(1, 2)
+  y <- c(1, 2, 3)
+  expect_error(assert_set_equal(x, y), "'x' is missing a required value: 3", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_set_equal(c(1, 2, 3), c(1, 2), msg = "Custom error message"), "Custom error message")
+})

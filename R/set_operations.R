@@ -166,12 +166,12 @@ sets_are_equivalent <- function(x, y){
 
 
   if(failure_mode == "both"){
-   return(paste0("{arg_name} is missing ",missing_plural_the,"required value",missing_plural,": {setopts_exlusive_to_first(y, x)}, and contains ",extra_plural_the, "unexpected value", extra_plural,": {setopts_exlusive_to_first(x, y)}."))
+   return(paste0("'{arg_name}' is missing ",missing_plural_the,"required value",missing_plural,": {setopts_exlusive_to_first(y, x)}, and contains ",extra_plural_the, "unexpected value", extra_plural,": {setopts_exlusive_to_first(x, y)}."))
   }
   else if(failure_mode == "extra"){
-    return(paste0("{arg_name} contains ", extra_plural_the, "unexpected value",extra_plural,": {setopts_exlusive_to_first(x, y)}."))
+    return(paste0("'{arg_name}' contains ", extra_plural_the, "unexpected value",extra_plural,": {setopts_exlusive_to_first(x, y)}."))
   }
   else if(failure_mode == "missing"){
-    return(paste0("{arg_name} is missing" ,missing_plural_the, " required value",missing_plural," {setopts_exlusive_to_first(y, x)}."))
+    return(paste0("'{arg_name}' is missing" ,missing_plural_the, " required value",missing_plural,": {setopts_exlusive_to_first(y, x)}."))
   }
 }
