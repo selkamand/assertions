@@ -535,7 +535,8 @@ assert_reactive <- assert_create(func = is_reactive, default_error_msg = msg_hel
 ## Scalar -----------------------------------------------------------
 #' Assert input is a scalar
 #'
-#' Assert that an object is a scalar, meaning it has length 1 (but can be of any type).
+#' Assert that an object is a scalar, meaning it is a length 1 atomic vector (such as \code{numeric(1)}, \code{character(1)} or \code{logical(1)}).
+#' Note lists, data.frames and matrices are never considered scalar objects, even if they have only one element.
 #'
 #' @param x An object
 #' @param msg A character string containing the error message to display if `x` is not a scalar

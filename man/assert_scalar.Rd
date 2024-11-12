@@ -19,7 +19,8 @@ assert_scalar(x, msg = NULL, call = rlang::caller_env(), arg_name = NULL)
 invisible(TRUE) if \code{x} is a scalar, otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert that an object is a scalar, meaning it has length 1 (but can be of any type).
+Assert that an object is a scalar, meaning it is a length 1 atomic vector (such as \code{numeric(1)}, \code{character(1)} or \code{logical(1)}).
+Note lists, data.frames and matrices are never considered scalar objects, even if they have only one element.
 }
 \examples{
 
