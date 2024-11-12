@@ -497,3 +497,27 @@ cli::test_that_cli("assert_function() works", config = "plain", {
   expect_error(assert_function(1, msg = "Custom error message"), "Custom error message")
 })
 
+
+# Assert Scalar -----------------------------------------------------------
+cli::test_that_cli("assert_scalar() works", configs = "plain", {
+
+  # Works for scalar values (single numeric, character, logical, etc.)
+  expect_true(assert_scalar(1))
+  expect_true(assert_scalar("a"))
+  expect_true(assert_scalar(TRUE))
+
+  # Aborts for non-scalar objects
+  expect_error(assert_scalar(NULL), "'NULL' must be a scalar, not a NULL", fixed = TRUE)
+  expect_error(assert_scalar(c(1, 2)), "'c(1, 2)' must be a scalar, not a numeric", fixed = TRUE)
+  expect_error(assert_scalar(c("a", "b")), "'c(\"a\", \"b\")' must be a scalar, not a character", fixed = TRUE)
+  expect_error(assert_scalar(matrix(1:4, 2, 2)), "'matrix(1:4, 2, 2)' must be a scalar, not a matrix", fixed = TRUE)
+  expect_error(assert_scalar(data.frame(a = 1)), "'data.frame(a = 1)' must be a scalar, not a data.frame", fixed = TRUE)
+  expect_error(assert_scalar(list(a = 1)), "'list(a = 1)' must be a scalar, not a list", fixed = TRUE)
+
+  # Error messages use variable name of passed arguments
+  y <- c("a", "b")
+  expect_error(assert_scalar(y), "'y' must be a scalar, not a character", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_scalar(c(1, 2), msg = "Custom error message"), "Custom error message")
+})

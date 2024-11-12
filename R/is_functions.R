@@ -70,7 +70,7 @@ is_character_vector_or_glue <- function(x){
 }
 
 is_scalar <- function(x){
- length(x) == 1
+ length(x) == 1 & typeof(x) != "list" & !any(class(x) %in% c("matrix"))
 }
 
 #' Check if an object is a logical vector

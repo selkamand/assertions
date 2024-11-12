@@ -530,3 +530,37 @@ assert_list <- assert_create(is_list, msg_helper_assert_type(expected_type = "li
 #' @concept assert_type
 #' @export
 assert_reactive <- assert_create(func = is_reactive, default_error_msg = msg_helper_assert_type(expected_type = "reactive"))
+
+
+## Scalar -----------------------------------------------------------
+#' Assert input is a scalar
+#'
+#' Assert that an object is a scalar, meaning it has length 1 (but can be of any type).
+#'
+#' @param x An object
+#' @param msg A character string containing the error message to display if `x` is not a scalar
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if `x` is a scalar, otherwise aborts with the error message specified by `msg`
+#'
+#' @examples
+#'
+#' # Pass when value is scalar
+#' assert_scalar(5) # Passes
+#' assert_scalar("single string") # Passes
+#' assert_scalar(TRUE) # Passes
+#'
+#' # Fail when value is not
+#' try({
+#' assert_scalar(c(1, 2, 3)) # Throws default error
+#' assert_scalar(matrix(1:4, 2, 2)) # Throws default error
+#' })
+#'
+#'
+#' @concept assert_type
+#' @export
+assert_scalar <- assert_create(
+  func = is_scalar,
+  default_error_msg = msg_helper_assert_type("scalar")
+)
+
