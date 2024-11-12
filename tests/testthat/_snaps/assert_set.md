@@ -38,3 +38,43 @@
       Error:
       x 'c("A")' contain an invalid value: A. Valid values include: 1, 2, and 3
 
+# assert_one_of() works [plain]
+
+    Code
+      assert_one_of(4, c(1, 2, 3))
+    Condition
+      Error:
+      x '4' must be one of 1, 2, or 3, not 4.
+
+---
+
+    Code
+      assert_one_of("D", c("A", "B", "C"))
+    Condition
+      Error:
+      x '"D"' must be one of A, B, or C, not D.
+
+---
+
+    Code
+      assert_one_of(3.5, c(1, 2.5, 3))
+    Condition
+      Error:
+      x '3.5' must be one of 1, 2.5, or 3, not 3.5.
+
+---
+
+    Code
+      assert_one_of(c(1, 2), c(1, 2, 3))
+    Condition
+      Error:
+      ! 'c(1, 2)' must be a scalar, not a numeric
+
+---
+
+    Code
+      assert_one_of(list(1, 2), c(1, 2, 3))
+    Condition
+      Error:
+      ! 'list(1, 2)' must be a scalar, not a list
+
