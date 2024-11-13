@@ -228,3 +228,133 @@ test_that("assert_directory_does_not_exist() works", {
   expect_error(assert_file_does_not_exist(dirpath), regexp = "Directory .* already exists")
 })
 
+
+# Test Underlying Functions -----------------------------------------------
+
+##  All files exist ------------------------------------------------
+test_that("all_files_exist() works", {
+  # False when files don't exist
+  expect_false(all_files_exist(c("ALKAWDWLKDLWADJWLD", "ADASKJDLAJWLDJKDKLWDJLAKDJWLKLDAW")))
+
+  # Create two temporary files
+  f1 <- withr::local_tempfile()
+  f2 <- withr::local_tempfile()
+  f3 <- "Does Not exist"
+
+  # Write some content to the files to ensure they exist
+  writeLines("Test content 1", f1)
+  writeLines("Test content 2", f2)
+
+  # Test that both files exist
+  expect_true(file.exists(f1))
+  expect_true(file.exists(f2))
+
+  # Test all_files_exist() function
+  expect_true(all_files_exist(c(f1, f2)))
+  expect_false(all_files_exist(c(f1, f2, f3)))
+})
+
+##  Has Extension ------------------------------------------------
+test_that("has_extension works() works", {
+  # False when files don't exist
+  expect_false(all_files_exist(c("ALKAWDWLKDLWADJWLD", "ADASKJDLAJWLDJKDKLWDJLAKDJWLKLDAW")))
+
+  # Create two temporary files
+  f1 <- withr::local_tempfile()
+  f2 <- withr::local_tempfile()
+  f3 <- "Does Not exist"
+
+  # Write some content to the files to ensure they exist
+  writeLines("Test content 1", f1)
+  writeLines("Test content 2", f2)
+
+  # Test that both files exist
+  expect_true(file.exists(f1))
+  expect_true(file.exists(f2))
+
+  # Test all_files_exist() function
+  expect_true(all_files_exist(c(f1, f2)))
+  expect_false(all_files_exist(c(f1, f2, f3)))
+})
+
+
+test_that("has_extension works with single valid extensions", {
+  expect_true(has_extension("file.txt", extensions = "txt"))
+  expect_true(has_extension("file.csv", extensions = "csv"))
+  expect_false(has_extension("file.doc", extensions = "txt"))
+})
+
+test_that("has_extension works with multiple valid extensions", {
+  expect_true(has_extension("file.txt", extensions = c("txt", "csv")))
+  expect_true(has_extension("file.csv", extensions = c("txt", "csv")))
+  expect_false(has_extension("file.doc", extensions = c("txt", "csv")))
+})
+
+test_that("has_extension handles multiple files", {
+  expect_true(has_extension(c("file1.txt", "file2.txt"), extensions = "txt"))
+  expect_false(has_extension(c("file1.txt", "file2.csv"), extensions = "txt"))
+  expect_true(has_extension(c("file1.txt", "file2.csv"), extensions = c("txt", "csv")))
+})
+
+test_that("has_extension handles compression correctly", {
+  expect_true(has_extension("file.txt.gz", extensions = "txt", compression = TRUE))
+  expect_false(has_extension("file.doc.gz", extensions = "txt", compression = TRUE))
+  expect_true(has_extension("file.txt.bz2", extensions = "txt", compression = TRUE))
+  expect_true(has_extension("file.csv.xz", extensions = "csv", compression = TRUE))
+  expect_false(has_extension("file.csv.zip", extensions = "csv", compression = TRUE)) # zip is not supported as compression
+})
+
+test_that("has_extension handles files without extensions", {
+  expect_false(has_extension("file", extensions = "txt"))
+  expect_false(has_extension("file", extensions = c("txt", "csv")))
+  expect_true(has_extension("file", extensions = "")) # No extension, treated as valid if `extensions` includes an empty string
+})
+
+test_that("has_extension handles mixed cases and unexpected inputs", {
+  expect_false(has_extension(c("file.TXT", "file.csv"), extensions = "txt")) # Case sensitivity
+  expect_true(has_extension("file.txt.gz", extensions = "txt", compression = TRUE))
+  expect_false(has_extension("file.txt.gz", extensions = "gz", compression = TRUE)) # Compression stripped
+  expect_true(has_extension(c("file.txt", "file.TXT"), extensions = c("txt", "TXT"))) # Mixed-case extensions
+})
+
+##  Files Missing Extension ------------------------------------------------
+
+test_that("files_missing_extension identifies files without specified extensions", {
+  # Only "file.doc" does not match the specified extensions
+  expect_equal(files_missing_extension(c("file.txt", "file.csv", "file.doc"), extensions = c("txt", "csv")),
+               c("file.doc"))
+
+  # Both "file.doc" and "file.pdf" do not match "txt"
+  expect_equal(files_missing_extension(c("file.txt", "file.doc", "file.pdf"), extensions = "txt"),
+               c("file.doc", "file.pdf"))
+
+  # No files are missing the specified extension
+  expect_equal(files_missing_extension(c("file.txt", "file.csv"), extensions = c("txt", "csv")),
+               character(0))
+})
+
+
+test_that("files_missing_extension handles compression correctly", {
+  # Only "file.doc.gz" does not match "txt" when compression is enabled
+  expect_equal(files_missing_extension(c("file.txt.gz", "file.csv.bz2", "file.doc.gz"), extensions = "txt", compression = TRUE),
+               c("file.csv.bz2", "file.doc.gz"))
+
+  # When compression is disabled, all files with compression extensions are treated as missing
+  expect_equal(files_missing_extension(c("file.txt.gz", "file.csv.bz2", "file.doc.gz"), extensions = c("txt", "csv"), compression = FALSE),
+               c("file.txt.gz", "file.csv.bz2", "file.doc.gz"))
+
+  # Mixed case: Only "file.doc.xz" is missing the specified extensions
+  expect_equal(files_missing_extension(c("file.txt.gz", "file.csv.bz2", "file.doc.xz"), extensions = c("txt", "csv"), compression = TRUE),
+               c("file.doc.xz"))
+})
+
+test_that("files_missing_extension handles files without any extensions", {
+  # Files without extensions should be identified as missing
+  expect_equal(files_missing_extension(c("file1", "file2.txt", "file3"), extensions = "txt"),
+               c("file1", "file3"))
+
+  # If extensions includes an empty string, files without extensions should be considered valid
+  expect_equal(files_missing_extension(c("file1", "file2.txt", "file3"), extensions = c("txt", "")),
+               character(0))
+})
+

@@ -29,7 +29,7 @@ get_file_extensions <- function(filenames) {
   }, character(1))
 }
 
-#' Title
+#' Has Extension
 #'
 #' @param x object to test
 #' @param extensions valid extensions (character vector). Do not include the '.', e.g. supply `extensions = 'txt'` not `extensions = '.txt'`
@@ -46,16 +46,18 @@ has_extension <- function(x, extensions, compression = FALSE){
   all(observed_ext %in% extensions)
 }
 
+# Which of the filenames are missing the required extension?
 files_missing_extension <- function(x, extensions, compression = FALSE){
+  original = x
   if(compression){
-    x = sub(x = x,"\\.(gz|bz2|xz)$","")
+  x = sub(x = x,"\\.(gz|bz2|xz)$","")
   }
 
   observed_ext <- get_file_extensions(x)
-  x[!observed_ext %in% extensions]
+  original[!observed_ext %in% extensions]
 }
 
-# Files ---------------------------------------------------------------
+# File Assertions ---------------------------------------------------------------
 
 #' Assert that all files exist
 #'
