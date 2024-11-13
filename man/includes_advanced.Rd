@@ -18,4 +18,5 @@ Otherwise returns a string representing the appropriate error message to display
 \description{
 This function checks that \code{x} includes all of the \code{required} elements.
 \code{x} must be the same type as \code{required}.
+Factors are treated as character vectors.
 }

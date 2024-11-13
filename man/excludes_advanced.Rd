@@ -18,4 +18,5 @@ Otherwise returns a string representing the appropriate error message to display
 \description{
 This function checks that \code{x} does not include any of the \code{illegal} elements.
 \code{x} must be the same type as \code{illegal}.
+Factors are treated as character vectors.
 }

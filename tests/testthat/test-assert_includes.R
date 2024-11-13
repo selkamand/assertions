@@ -2,12 +2,16 @@ cli::test_that_cli("assert_includes() works", config = "plain", {
   # Works for objects that include all of the required elements
   expect_true(assert_includes(c(1, 2, 3), c(1, 2)))
   expect_true(assert_includes(c(1, 2, 3), 1))
+  expect_true(assert_includes(factor(c("a")), "a"))
+  expect_true(assert_includes(factor(c(1:5)), 5))
 
   # Aborts for objects that do not include all of the required elements
   expect_snapshot(assert_includes(c(1, 2, 3), c(4, 5)), error = TRUE)
   expect_snapshot(assert_includes(1, c(2, 3)), error = TRUE)
   expect_snapshot(assert_includes(1, c(1, 3)), error = TRUE)
   expect_snapshot(assert_includes("abc", "def"), error = TRUE)
+  expect_snapshot(assert_includes(factor(c("a")), "b"), error = TRUE)
+  expect_snapshot(assert_includes(factor(c(1:5)), 6), error = TRUE)
 
   # Aborts for object which have a different 'type' to the required elements (e.g. numeric vs character)
   expect_snapshot(assert_includes(c(1, 2, 3), c("A")), error = TRUE)
@@ -25,11 +29,15 @@ cli::test_that_cli("assert_excludes() works", config = "plain", {
   # Works for objects that exclude all of the illegal elements
   expect_true(assert_excludes(c(1, 2, 3), c(4, 5)))
   expect_true(assert_excludes(1, c(2, 3)))
+  expect_true(assert_excludes(factor(c("a")), "b"))
+  expect_true(assert_excludes(factor(c(1:5)), 6))
 
   # Aborts for objects that contain any of the illegal elements
   expect_snapshot(assert_excludes(c(1, 2, 3), c(1, 2)), error = TRUE)
   expect_snapshot(assert_excludes(1, c(1, 3)), error = TRUE)
+  expect_snapshot(assert_excludes(c(1, 2, 3), "A"), error = TRUE)
   expect_snapshot(assert_excludes("abc", "abc"), error = TRUE)
+  expect_snapshot(assert_excludes(factor(c("a", "b", "c")), "a"), error = TRUE)
 
   # Aborts for object which have a different 'type' to the required elements (e.g. numeric vs character)
   expect_snapshot(assert_excludes(c(1, 2, 3), c("A")), error = TRUE)

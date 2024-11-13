@@ -103,12 +103,20 @@ includes <- function(x, required){
 #'
 #' This function checks that `x` includes all of the `required` elements.
 #' `x` must be the same type as `required`.
+#' Factors are treated as character vectors.
 #'
 #' @param x An object to check
 #' @param required The required elements to check for
 #' @return Returns TRUE if `x` is the same type as `required` and `x` includes all the `required` elements.
 #' Otherwise returns a string representing the appropriate error message to display
 includes_advanced <- function(x, required){
+
+  # Special rules for factors (we treat them as characters)
+  if(is.factor(x)) {
+    x <- as.character(x)
+    if(is.numeric(required)) required <- as.character(required)
+  }
+
   if(!is_same_type(x, required))
     return("'{.strong {arg_name}}' (type: {.strong {typeof(x)}}) must be the same type as {deparse(substitute(required))} (type: {typeof(required)})")
   else{
@@ -126,12 +134,20 @@ includes_advanced <- function(x, required){
 #'
 #' This function checks that `x` does not include any of the `illegal` elements.
 #' `x` must be the same type as `illegal`.
+#' Factors are treated as character vectors.
 #'
 #' @param x An object to check
 #' @param illegal The prohibited elements to check for
 #' @return Returns TRUE if `x` is the same type as `illegal` and `x` does not include any of the `illegal` elements.
 #' Otherwise returns a string representing the appropriate error message to display
 excludes_advanced <- function(x, illegal){
+
+  # Special rules for factors (we treat them as characters)
+  if(is.factor(x)) {
+    x <- as.character(x)
+    if(is.numeric(illegal)) illegal <- as.character(illegal)
+  }
+
   if(!is_same_type(x, illegal))
     return("'{.strong {arg_name}}' (type: {.strong {typeof(x)}}) must be the same type as {deparse(substitute(illegal))} (type: {typeof(illegal)})")
   else{

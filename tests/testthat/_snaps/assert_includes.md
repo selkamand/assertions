@@ -33,6 +33,22 @@
 ---
 
     Code
+      assert_includes(factor(c("a")), "b")
+    Condition
+      Error:
+      ! 'factor(c("a"))' must include b
+
+---
+
+    Code
+      assert_includes(factor(c(1:5)), 6)
+    Condition
+      Error:
+      ! 'factor(c(1:5))' must include 6
+
+---
+
+    Code
       assert_includes(c(1, 2, 3), c("A"))
     Condition
       Error:
@@ -57,10 +73,26 @@
 ---
 
     Code
+      assert_excludes(c(1, 2, 3), "A")
+    Condition
+      Error:
+      ! 'c(1, 2, 3)' (type: double) must be the same type as "A" (type: character)
+
+---
+
+    Code
       assert_excludes("abc", "abc")
     Condition
       Error:
       ! '"abc"' must exclude: abc
+
+---
+
+    Code
+      assert_excludes(factor(c("a", "b", "c")), "a")
+    Condition
+      Error:
+      ! 'factor(c("a", "b", "c"))' must exclude: a
 
 ---
 
