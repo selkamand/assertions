@@ -123,10 +123,13 @@ cli::test_that_cli(configs = "plain", "created assertion() functions throw infor
 cli::test_that_cli(configs = "plain", "assert_create edge case errors", {
 
   # Function has dots
-  expect_no_error(assert_create(func = function(a, b, ...){ FALSE }, default_error_msg = "error"))
+  expect_no_error(assert_create(func = function(a, b, ...){ FALSE }))
 
   # Function has dots but no other arguments
-  expect_error(assert_create(func = function( ...){ FALSE }, default_error_msg = "error"), regexp = "must have at least 1 paramater.*Note '\\.\\.\\.' does NOT count as an argument")
+  expect_error(assert_create(func = function( ...){ FALSE }), regexp = "must have at least 1 paramater.*Note '\\.\\.\\.' does NOT count as an argument")
+
+  # Function has names that clash with those assert_create adds to all assertions
+  expect_error(assert_create(func = function(msg){ FALSE }), regexp = "cannot include paramaters named 'msg', 'call', or 'arg_name", fixed=TRUE)
 
 })
 
