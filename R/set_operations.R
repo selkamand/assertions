@@ -144,3 +144,34 @@ excludes_advanced <- function(x, illegal){
   return(TRUE)
 }
 
+
+sets_are_equivalent <- function(x, y){
+  if(setequal(x, y))
+    return(TRUE)
+
+  extra_values <- setopts_exlusive_to_first(x, y)
+  missing_values <- setopts_exlusive_to_first(y, x)
+
+  any_extra = length(extra_values) > 0
+  any_missing = length(missing_values) > 0
+
+  failure_mode <- if(any_extra & any_missing) "both"
+                        else if (any_extra & !any_missing) "extra"
+                        else if(any_missing & !any_extra) "missing"
+
+  missing_plural = if(length(missing_values) > 1) "s" else ""
+  missing_plural_the = if(length(missing_values) < 2) " a " else ""
+  extra_plural = if(length(extra_values) > 1) "s" else ""
+  extra_plural_the = if(length(extra_values) < 2) " an " else ""
+
+
+  if(failure_mode == "both"){
+   return(paste0("'{arg_name}' is missing ",missing_plural_the,"required value",missing_plural,": {setopts_exlusive_to_first(y, x)}, and contains ",extra_plural_the, "unexpected value", extra_plural,": {setopts_exlusive_to_first(x, y)}."))
+  }
+  else if(failure_mode == "extra"){
+    return(paste0("'{arg_name}' contains ", extra_plural_the, "unexpected value",extra_plural,": {setopts_exlusive_to_first(x, y)}."))
+  }
+  else if(failure_mode == "missing"){
+    return(paste0("'{arg_name}' is missing" ,missing_plural_the, " required value",missing_plural,": {setopts_exlusive_to_first(y, x)}."))
+  }
+}

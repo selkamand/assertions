@@ -78,3 +78,35 @@
       Error:
       ! 'list(1, 2)' must be a scalar, not a list
 
+# assert_set_equal() works [plain]
+
+    Code
+      assert_set_equal(c(1, 2, 3), c(1, 2))
+    Condition
+      Error:
+      ! 'c(1, 2, 3)' contains an unexpected value: 3.
+
+---
+
+    Code
+      assert_set_equal(c("A", "B"), c("A", "B", "C"))
+    Condition
+      Error:
+      ! 'c("A", "B")' is missing a required value: C.
+
+---
+
+    Code
+      assert_set_equal(c(1, 3, 4), c(1, 2, 3))
+    Condition
+      Error:
+      ! 'c(1, 3, 4)' is missing a required value: 2, and contains an unexpected value: 4.
+
+---
+
+    Code
+      assert_set_equal(c("A", "B", "C"), c(1, 2, 3))
+    Condition
+      Error:
+      ! 'c("A", "B", "C")' is missing required values: 1, 2, and 3, and contains unexpected values: A, B, and C.
+
