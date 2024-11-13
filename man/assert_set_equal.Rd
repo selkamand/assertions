@@ -24,11 +24,17 @@ Returns \code{invisible(TRUE)} if \code{x} and \code{y} contain all the same ele
 This function checks that \code{x} and \code{y} contain exactly the same elements, ignoring order and duplicates.
 }
 \examples{
-assert_set_equal(c(1, 2, 3), c(3, 2, 1)) # Passes because elements are the same, order doesn't matter
-assert_set_equal(c("A", "B", "C"), c("C", "A", "B")) # Passes because elements are identical
+# Passes because elements are the same, order doesn't matter
+assert_set_equal(c(1, 2, 3), c(3, 2, 1))
+
+# Passes because elements are identical
+assert_set_equal(c("A", "B", "C"), c("C", "A", "B"))
 
 try({
-  assert_set_equal(c(1, 2, 3), c(1, 2)) # Throws error because elements are not identical
-  assert_set_equal(c("A", "B"), c("A", "B", "C")) # Throws error because elements differ
+  # Throws error because elements are not identical
+  assert_set_equal(c(1, 2, 3), c(1, 2))
+
+  # Throws error because elements differ
+  assert_set_equal(c("A", "B"), c("A", "B", "C"))
 })
 }
