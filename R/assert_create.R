@@ -72,7 +72,7 @@ assert_create <- function(func, default_error_msg = NULL){
 
   # Assert that function has no arguments named 'msg' or 'call', 'arg_name', since we need to add our own
   if(any(c('msg', 'call', 'arg_name') %in% names(args))){
-    cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
+    cli::cli_abort("Function supplied to `func` argument of `assert_create` cannot include paramaters namex 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
   }
 
   # Change add 'msg', 'call' and 'arg_name' arguments at the end
