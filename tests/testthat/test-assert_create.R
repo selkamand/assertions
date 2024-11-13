@@ -131,6 +131,9 @@ cli::test_that_cli(configs = "plain", "assert_create edge case errors", {
   # Function has names that clash with those assert_create adds to all assertions
   expect_error(assert_create(func = function(msg){ FALSE }), regexp = "cannot include paramaters named 'msg', 'call', or 'arg_name", fixed=TRUE)
 
+  # arg_name is not a string
+  assertion <- assert_create(func = function(a){ FALSE }, default_error_msg = "{arg_name} is ignored - this function always throws an error")
+  expect_error(assertion(a, arg_name = 2), regexp = "arg_name must be a string, not a numeric")
 })
 
 
@@ -145,6 +148,26 @@ cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions
   expect_error(assert_chain(length(y)), regexp = "length(y) must be a character", fixed = TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "Common assert_create_chain errors", {
+
+  # Throws error if argument given to assert_create_chain is not a function
+  expect_error(assert_create_chain(
+    2,
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+
+  # Throws error a function doesn't have the required arguments (x, msg & call(
+  expect_error(assert_create_chain(
+    function(x, msg, notcall){},
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+
+  # Throws error if functions have less than 4 args (some_obj_to_test and officially required functions: msg, call, arg_name)
+  expect_error(assert_create_chain(
+    function(x, msg, call){}, # 3 args only
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+})
 
 cli::test_that_cli(configs = "plain", "assert_create_chain:  user supplied  custom error message has access to the environment in which it was called", {
   assert_chain<- assert_create_chain(
