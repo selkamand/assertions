@@ -523,3 +523,31 @@ cli::test_that_cli("assert_scalar() works", configs = "plain", {
   # Custom error messages work
   expect_error(assert_scalar(c(1, 2), msg = "Custom error message"), "Custom error message")
 })
+
+
+# Assert Connection ---------------------------------------------------------
+cli::test_that_cli("assert_connection() works", configs = "plain", {
+
+  # Works for valid database connection objects
+  # conn <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")  # We use a mock connection instead since a real one would require more dependencies
+  conn <- structure(list(), class = c("SQLiteConnection", "DBIConnection"))
+
+  expect_true(assert_connection(conn))
+
+  # Aborts for non-connection objects
+  expect_error(assert_connection(42), "'42' must be a database connection, not a numeric", fixed = TRUE)
+  expect_error(assert_connection('not_a_connection'), "'\"not_a_connection\"' must be a database connection, not a character", fixed = TRUE)
+  expect_error(assert_connection(list()), "'list()' must be a database connection, not a list", fixed = TRUE)
+  expect_error(assert_connection(data.frame(a = 1)), "'data.frame(a = 1)' must be a database connection, not a data.frame", fixed = TRUE)
+
+
+  # Error messages use variable name of passed arguments
+  x <- list()
+  expect_error(assert_connection(x), "'x' must be a database connection, not a list", fixed = TRUE)
+
+  # Custom error messages work
+  expect_error(assert_connection(42, msg = "Custom error message"), "Custom error message")
+})
+
+
+

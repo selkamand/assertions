@@ -565,3 +565,36 @@ assert_scalar <- assert_create(
   default_error_msg = msg_helper_assert_type("scalar")
 )
 
+# Connections -----------------------------------------------------------------
+
+#' Assert input is a database connection
+#'
+#' Assert the input object is a database connection, specifically of the "DBIConnection" class,
+#' which is the standard virtual class used by the DBI package for database connections.
+#' Note this assertion does not test if the database connection is valid and/or active.
+#'
+#' @param x An object to assert is a database connection
+#' @param msg A custom error message displayed if `x` is not a valid database connection.
+#' @inheritParams common_roxygen_params
+#'
+#' @return `invisible(TRUE)` if `x` is a valid database connection, otherwise aborts with an error message.
+#'
+#' @examples
+#' try({
+#'   # Assuming a valid DBI connection `conn`:
+#'   assert_connection(conn) # Passes if `conn` is a DBI connection
+#'
+#'   assert_connection(42) # Fails with error message
+#' })
+#'
+#' @details
+#' This function is designed for use with objects inheriting from the "DBIConnection" class, which is used widely across database connection implementations in R.
+#' As other database interface packages are introduced, additional checks may be added to support other connection classes.
+#'
+#' @concept assert_type
+#' @export
+assert_connection <- assert_create(
+  func = is_connection,
+  default_error_msg = msg_helper_assert_type("database connection")
+)
+
