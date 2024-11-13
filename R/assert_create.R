@@ -53,7 +53,7 @@ assert_create <- function(func, default_error_msg = NULL){
   }
 
   # Ensure func has at least 1 argument
-  if(func_arg_count(func) == 0){
+  if(func_arg_count(func, dots = "count_as_0") == 0){
     if (func_supports_variable_arguments(func))
       additional_note = " (Note '...' does NOT count as an argument)"
     else additional_note = ""
@@ -72,7 +72,7 @@ assert_create <- function(func, default_error_msg = NULL){
 
   # Assert that function has no arguments named 'msg' or 'call', 'arg_name', since we need to add our own
   if(any(c('msg', 'call', 'arg_name') %in% names(args))){
-    cli::cli_abort("Function supplied to `func` argument of `create_dataframe` cannot include paramaters namex 'msg' or 'call', 'arg_name', since we add our own arguments with these names")
+    cli::cli_abort("Function supplied to `func` argument of `assert_create` cannot include paramaters named 'msg', 'call', or 'arg_name', since assert_create adds these arguments to every assertion")
   }
 
   # Change add 'msg', 'call' and 'arg_name' arguments at the end
@@ -204,7 +204,7 @@ assert_create_chain <- function(...){
       ))
   }
 
-  # Check functions all have the required arguments (x, msg & call)
+  # Check functions all have the required arguments (msg, call and arg_name)
   if(!all(vapply(dot_args, function(f){ all(c('msg', 'call', 'arg_name') %in% func_arg_names(f)) }, FUN.VALUE = logical(1)))){
     cli::cli_abort(
       c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",

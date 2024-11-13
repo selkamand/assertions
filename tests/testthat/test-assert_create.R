@@ -119,6 +119,24 @@ cli::test_that_cli(configs = "plain", "created assertion() functions throw infor
   expect_true(assert_f1('a', 'b'))
 })
 
+
+cli::test_that_cli(configs = "plain", "assert_create edge case errors", {
+
+  # Function has dots
+  expect_no_error(assert_create(func = function(a, b, ...){ FALSE }))
+
+  # Function has dots but no other arguments
+  expect_error(assert_create(func = function( ...){ FALSE }), regexp = "must have at least 1 paramater.*Note '\\.\\.\\.' does NOT count as an argument")
+
+  # Function has names that clash with those assert_create adds to all assertions
+  expect_error(assert_create(func = function(msg){ FALSE }), regexp = "cannot include paramaters named 'msg', 'call', or 'arg_name", fixed=TRUE)
+
+  # arg_name is not a string
+  assertion <- assert_create(func = function(a){ FALSE }, default_error_msg = "{arg_name} is ignored - this function always throws an error")
+  expect_error(assertion(a, arg_name = 2), regexp = "arg_name must be a string, not a numeric")
+})
+
+
 # Test Creation of Assertion Chains  -----------------------------------------------------
 cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions part and not get confused if they contain variable names", {
   #assert_is_character <- assert_create(is.character, "Error: {arg_name} must be a character")
@@ -130,6 +148,26 @@ cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions
   expect_error(assert_chain(length(y)), regexp = "length(y) must be a character", fixed = TRUE)
 })
 
+cli::test_that_cli(configs = "plain", "Common assert_create_chain errors", {
+
+  # Throws error if argument given to assert_create_chain is not a function
+  expect_error(assert_create_chain(
+    2,
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+
+  # Throws error a function doesn't have the required arguments (msg, call and arg_name)
+  expect_error(assert_create_chain(
+    function(x, msg, arg_name, notcall){},
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+
+  # Throws error if functions have less than 4 args (some_obj_to_test and officially required functions: msg, call, arg_name)
+  expect_error(assert_create_chain(
+    function(msg, call, arg_name){}, # 3 args only
+    assert_create(is.numeric, "{arg_name} must be numeric")
+  ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
+})
 
 cli::test_that_cli(configs = "plain", "assert_create_chain:  user supplied  custom error message has access to the environment in which it was called", {
   assert_chain<- assert_create_chain(
@@ -152,3 +190,11 @@ cli::test_that_cli(configs = "plain", "assert_create_chain: user supplied  custo
   age = "26"
   expect_error(assert_chain(age, "{arg_name} must be a number, not a {class(arg_value)}"), "age must be a number, not a character", fixed=TRUE)
 })
+
+
+cli::test_that_cli(configs = "plain", "assert_create_chain_example", {
+  expect_no_error(assert_create_chain_example())
+  expect_true(is.character(assert_create_chain_example()))
+})
+
+

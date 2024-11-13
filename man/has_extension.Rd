@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_files.R
 \name{has_extension}
 \alias{has_extension}
-\title{Title}
+\title{Has Extension}
 \usage{
 has_extension(x, extensions, compression = FALSE)
 }
@@ -17,5 +17,5 @@ has_extension(x, extensions, compression = FALSE)
 TRUE if all x have valid extensions as supplied by \code{extensions} (flag)
 }
 \description{
-Title
+Has Extension
 }
