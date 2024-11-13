@@ -580,12 +580,12 @@ assert_scalar <- assert_create(
 #' @return `invisible(TRUE)` if `x` is a valid database connection, otherwise aborts with an error message.
 #'
 #' @examples
-#' \try{
-#' # Assuming a valid DBI connection `conn`:
-#' assert_connection(conn) # Passes if `conn` is a DBI connection
+#' try({
+#'   # Assuming a valid DBI connection `conn`:
+#'   assert_connection(conn) # Passes if `conn` is a DBI connection
 #'
-#' assert_connection(42) # Fails with error message
-#' }
+#'   assert_connection(42) # Fails with error message
+#' })
 #'
 #' @details
 #' This function is designed for use with objects inheriting from the "DBIConnection" class, which is used widely across database connection implementations in R.

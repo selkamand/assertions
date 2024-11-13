@@ -28,12 +28,12 @@ This function is designed for use with objects inheriting from the "DBIConnectio
 As other database interface packages are introduced, additional checks may be added to support other connection classes.
 }
 \examples{
-\try{
-# Assuming a valid DBI connection `conn`:
-assert_connection(conn) # Passes if `conn` is a DBI connection
+try({
+  # Assuming a valid DBI connection `conn`:
+  assert_connection(conn) # Passes if `conn` is a DBI connection
 
-assert_connection(42) # Fails with error message
-}
+  assert_connection(42) # Fails with error message
+})
 
 }
 \concept{assert_type}
