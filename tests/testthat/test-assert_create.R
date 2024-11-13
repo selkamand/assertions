@@ -152,3 +152,11 @@ cli::test_that_cli(configs = "plain", "assert_create_chain: user supplied  custo
   age = "26"
   expect_error(assert_chain(age, "{arg_name} must be a number, not a {class(arg_value)}"), "age must be a number, not a character", fixed=TRUE)
 })
+
+
+cli::test_that_cli(configs = "plain", "assert_create_chain_example", {
+  expect_no_error(assert_create_chain_example())
+  expect_true(is.character(assert_create_chain_example()))
+})
+
+
