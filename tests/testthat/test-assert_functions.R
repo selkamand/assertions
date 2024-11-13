@@ -1,17 +1,5 @@
 
 # Test Underlying Functions -----------------------------------------------
-func_arg_count <- function(f, dots = "throw_error") {
-  args <- formals(f)
-  if ("..." %in% names(args)) {
-    switch(dots,
-           throw_error = stop("Function should not contain ... arguments"),
-           count_as_0 = return(length(args) - 1),
-           count_as_1 = return(length(args)),
-           count_as_inf = return(Inf))
-  }
-  return(length(args))
-}
-
 # Define some test functions for validation
 fn_0_args <- function() {}
 fn_1_arg <- function(a) {}
