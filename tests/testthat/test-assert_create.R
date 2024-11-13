@@ -156,15 +156,15 @@ cli::test_that_cli(configs = "plain", "Common assert_create_chain errors", {
     assert_create(is.numeric, "{arg_name} must be numeric")
   ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
 
-  # Throws error a function doesn't have the required arguments (x, msg & call(
+  # Throws error a function doesn't have the required arguments (msg, call and arg_name)
   expect_error(assert_create_chain(
-    function(x, msg, notcall){},
+    function(x, msg, arg_name, notcall){},
     assert_create(is.numeric, "{arg_name} must be numeric")
   ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
 
   # Throws error if functions have less than 4 args (some_obj_to_test and officially required functions: msg, call, arg_name)
   expect_error(assert_create_chain(
-    function(x, msg, call){}, # 3 args only
+    function(msg, call, arg_name){}, # 3 args only
     assert_create(is.numeric, "{arg_name} must be numeric")
   ), regexp = "Input to assert_create_chain must must be functions created by `assert_create()`", fixed=TRUE)
 })

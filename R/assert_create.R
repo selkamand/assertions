@@ -204,7 +204,7 @@ assert_create_chain <- function(...){
       ))
   }
 
-  # Check functions all have the required arguments (x, msg & call)
+  # Check functions all have the required arguments (msg, call and arg_name)
   if(!all(vapply(dot_args, function(f){ all(c('msg', 'call', 'arg_name') %in% func_arg_names(f)) }, FUN.VALUE = logical(1)))){
     cli::cli_abort(
       c("Input to {.strong assert_create_chain} must must be {.strong functions} created by {.strong `assert_create()`}",
