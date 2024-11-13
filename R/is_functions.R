@@ -150,6 +150,11 @@ is_reactive <- function(x){
 is_whole_number <- function(x){
   return(x%%1==0)
 }
+
+is_connection <- function(x){
+  inherits(x, "DBIConnection")
+}
+
 # Advanced ----------------------------------------------------------------
 # assert_create_advanced functions -----------------------------------------
 # These functions are for feeding into assert_create_advanced
