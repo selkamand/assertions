@@ -53,7 +53,7 @@ assert_create <- function(func, default_error_msg = NULL){
   }
 
   # Ensure func has at least 1 argument
-  if(func_arg_count(func) == 0){
+  if(func_arg_count(func, dots = "count_as_0") == 0){
     if (func_supports_variable_arguments(func))
       additional_note = " (Note '...' does NOT count as an argument)"
     else additional_note = ""

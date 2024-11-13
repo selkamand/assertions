@@ -119,6 +119,18 @@ cli::test_that_cli(configs = "plain", "created assertion() functions throw infor
   expect_true(assert_f1('a', 'b'))
 })
 
+
+cli::test_that_cli(configs = "plain", "assert_create edge case errors", {
+
+  # Function has dots
+  expect_no_error(assert_create(func = function(a, b, ...){ FALSE }, default_error_msg = "error"))
+
+  # Function has dots but no other arguments
+  expect_error(assert_create(func = function( ...){ FALSE }, default_error_msg = "error"), regexp = "must have at least 1 paramater.*Note '\\.\\.\\.' does NOT count as an argument")
+
+})
+
+
 # Test Creation of Assertion Chains  -----------------------------------------------------
 cli::test_that_cli(configs = "plain", "assertion chains can evaluate expressions part and not get confused if they contain variable names", {
   #assert_is_character <- assert_create(is.character, "Error: {arg_name} must be a character")
