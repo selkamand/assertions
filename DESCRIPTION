@@ -48,3 +48,4 @@ Collate:
     'coverage_testing.R'
     'export_testing.R'
     'has.R'
+BugReports: https://github.com/selkamand/assertions/issues
