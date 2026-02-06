@@ -20,7 +20,7 @@ invisible(TRUE) if \code{x} is finite, otherwise aborts with the error message s
 }
 \description{
 Check that a single numeric value is finite (not \code{NA}, \code{NaN}, \code{Inf}, or \code{-Inf}).
-For vectorized version see \link{assert_all_finite}.
+For vectorized version see \code{\link[=assert_all_finite]{assert_all_finite()}}.
 }
 \examples{
 try({
