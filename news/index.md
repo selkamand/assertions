@@ -1,0 +1,39 @@
+# Changelog
+
+## assertions 0.2.0
+
+CRAN release: 2024-11-19
+
+- Added [`assert_all_finite()`](../reference/assert_all_finite.md) and
+  [`assert_finite()`](../reference/assert_finite.md) for checking
+  numeric inputs have no `NA`, `NaN`, or infinite values
+
+- Improved factor support for
+  [`assert_includes()`](../reference/assert_includes.md) and
+  [`assert_excludes()`](../reference/assert_excludes.md)
+
+- Added [`assert_connection()`](../reference/assert_connection.md)
+
+- Added [`assert_set_equal()`](../reference/assert_set_equal.md)
+
+- Added [`assert_one_of()`](../reference/assert_one_of.md)
+
+- Added [`assert_scalar()`](../reference/assert_scalar.md)
+
+- Added missing [`assert_less_than()`](../reference/assert_less_than.md)
+  assertions.
+
+- Added [`assert_null()`](../reference/assert_null.md) and
+  [`assert_non_null()`](../reference/assert_non_null.md)
+
+- Added [`assert_length()`](../reference/assert_length.md)
+
+- Improved error messages when
+  [`assert_create()`](../reference/assert_create.md) arguments are
+  inappropriate
+
+## assertions 0.1.0
+
+CRAN release: 2023-06-02
+
+- Added a `NEWS.md` file to track changes to the package.

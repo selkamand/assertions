@@ -11,6 +11,7 @@
 <url><loc>/reference/assert_all_directories_exist.html</loc></url>
 <url><loc>/reference/assert_all_files_exist.html</loc></url>
 <url><loc>/reference/assert_all_files_have_extension.html</loc></url>
+<url><loc>/reference/assert_all_finite.html</loc></url>
 <url><loc>/reference/assert_all_greater_than.html</loc></url>
 <url><loc>/reference/assert_all_greater_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_all_less_than.html</loc></url>
@@ -31,6 +32,7 @@
 <url><loc>/reference/assert_file_does_not_exist.html</loc></url>
 <url><loc>/reference/assert_file_exists.html</loc></url>
 <url><loc>/reference/assert_file_has_extension.html</loc></url>
+<url><loc>/reference/assert_finite.html</loc></url>
 <url><loc>/reference/assert_flag.html</loc></url>
 <url><loc>/reference/assert_function.html</loc></url>
 <url><loc>/reference/assert_function_expects_n_arguments.html</loc></url>

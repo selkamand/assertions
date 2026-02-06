@@ -1,0 +1,146 @@
+# Create Custom Assertions
+
+## Getting Started
+
+Do you have a custom assertion that you want to use repeatedly in your
+code? Then create your own assertion functions with the
+[`assert_create()`](../reference/assert_create.md) function!
+
+Lets start by recreating the
+[`assert_numeric()`](../reference/assert_numeric.md) assertion using
+[`assert_create()`](../reference/assert_create.md):
+
+``` r
+# Load library
+library(assertions)
+
+# Create a function that asserts input is numeric
+assert_numeric_2 <- assert_create(
+  func = is.numeric, # Returns TRUE/FALSE for assertion PASS/FAIL
+  default_error_msg = "'{arg_name}' must be of type numeric, not {class(arg_value)}"
+  )
+
+# Assertion passes if input is numeric
+assert_numeric_2(123)
+
+# But throws the expected error if input is not numeric
+assert_numeric_2("abc")
+```
+
+To create a custom assertion function, you need to supply two arguments
+to assert_create():
+
+`func`: a **function** that take an object to assert and returns TRUE or
+FALSE depending on whether the assertion should **pass** or **fail**.
+
+`default_error_msg`: a **character string** providing an **error
+message** in case the assertion **fails**. This string can include
+special termss such as:
+
+1.  **{arg_name}** to refer to the name of the variable being checked
+2.  **{arg_value}** to refer to the value of the variable.
+3.  **{code_to_evaluate}** to evaluate code within the error message.
+    Customise ‘*code_to_evaluate*’. e.g `{class(arg_name)}`
+4.  **{.strong bold_text}** to perform inline formatting. Customise
+    ‘*bold_text*’
+
+## Advanced Assertions
+
+**Problem:**
+
+Sometimes it is necessary to perform several assertions on a single
+object, and return error messages specific to the mode of failure. In
+these cases, it can be useful to chain together a series of different
+assertions on the object.
+
+**Solution:**
+
+The [`assert_create_chain()`](../reference/assert_create_chain.md)
+function allows you to combine multiple assertion functions created with
+[`assert_create()`](../reference/assert_create.md) into a single
+assertion. Each of the wrapped assertions are evaluated in the order
+they are supplied, and if any of the assertions fail, the appropriate
+error message is returned.
+
+**Example**
+
+Here’s an example of how to use
+[`assert_create_chain()`](../reference/assert_create_chain.md) to create
+an assertion function that asserts input is a string by individually
+asserting that
+
+1.  Input is a ‘character’ type
+
+2.  Input length is 1
+
+``` r
+assert_string <- assert_create_chain(
+  assert_create(is.character, '{arg_name} must be a character, not {class(arg_value)}'),
+  assert_create(function(s){ length(s)==1 }, '{arg_name} must be length 1, not {arg_value}')
+)
+
+# Assert String
+assert_string("String")
+
+assert_string(3)
+# Output: Error: '3' must be a character
+```
+
+## More Advanced Assertions
+
+**Problem:**
+
+We often need error messages to vary significantly based on the input.
+
+**Solution**
+
+In such cases, it is more convenient to define the error messages in the
+function you pass to `func`. How does this work?
+
+In our call to `assert_create`, instead of defining a
+`default_error_msg`, we can design `func` to return a string when the
+assertion should fail. This string will become the error message. By
+returning different strings upon different failure conditions, we can
+produce very diverse error messages very easily.
+
+**Example**
+
+Here’s a recreation of the example above, using a `func` that supplies
+strings to indicate assertion failure
+
+``` r
+# Define Function
+is_a_string <- function(object){
+ if(!is.character(object))
+   return("{arg_name} must be a character, not {class(arg_value)}")
+  
+  if(length(object) != 1){
+    return("{arg_name} must be length 1, not {length(object)}")
+  }
+  
+  return(TRUE)
+}
+
+# Create Assertion
+assert_is_string <- assert_create(
+ is_a_string
+)
+
+# Test assertion works
+assert_is_string("String")
+
+assert_is_string(3)
+# 3 must be a character, not numeric
+
+assert_is_string(c("A", "B"))
+```
+
+**Additional Notes**
+
+Note that in your error strings can use the special terms such as
+`{arg_name}`, but you will NOT have access to the first argument using
+its original name (e.g. `{object}`, in the example above). This is
+because assert_create changes this first arguments name.
+
+Values of all other arguments can be referred to in string using
+`{name_of_nonfirst_argument}`

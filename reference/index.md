@@ -1,0 +1,190 @@
+# Package index
+
+## All functions
+
+- [`assert()`](assert.md) : Assert that conditions are met
+- [`assert_all_directories_exist()`](assert_all_directories_exist.md) :
+  Assert all files are directories
+- [`assert_all_files_exist()`](assert_all_files_exist.md) : Assert that
+  all files exist
+- [`assert_all_files_have_extension()`](assert_all_files_have_extension.md)
+  : Assert file extensions
+- [`assert_all_finite()`](assert_all_finite.md) : Assert that all values
+  are finite
+- [`assert_all_greater_than()`](assert_all_greater_than.md) : Assert
+  input is greater than a specified minimum value
+- [`assert_all_greater_than_or_equal_to()`](assert_all_greater_than_or_equal_to.md)
+  : Assert input is greater than or equal to a specified minimum value
+- [`assert_all_less_than()`](assert_all_less_than.md) : Assert input is
+  less than a specified maximum value
+- [`assert_all_less_than_or_equal_to()`](assert_all_less_than_or_equal_to.md)
+  : Assert input is less than or equal to a specified maximum value
+- [`assert_character()`](assert_character.md) : Assert input is a
+  character vector
+- [`assert_character_vector()`](assert_character_vector.md) : Assert
+  input is a character vector
+- [`assert_character_vector_or_glue()`](assert_character_vector_or_glue.md)
+  : Assert input is a character vector / glue vector
+- [`assert_class()`](assert_class.md) : Assert object belongs to class
+- [`assert_connection()`](assert_connection.md) : Assert input is a
+  database connection
+- [`assert_create()`](assert_create.md) : Create an assertion function
+- [`assert_create_chain()`](assert_create_chain.md) : Create Chains of
+  Assertions
+- [`assert_dataframe()`](assert_dataframe.md) : Assert input is a data
+  frame
+- [`assert_directory_does_not_exist()`](assert_directory_does_not_exist.md)
+  : Assert a directory does not exist
+- [`assert_directory_exists()`](assert_directory_exists.md) : Assert are
+  directory exists
+- [`assert_equal()`](assert_equal.md) : Assert that the input objects
+  are equal
+- [`assert_excludes()`](assert_excludes.md) : Assert object does not
+  include any illegal values
+- [`assert_factor_vector()`](assert_factor_vector.md) : Assert input is
+  a factor
+- [`assert_file_does_not_exist()`](assert_file_does_not_exist.md) :
+  Assert a file does not exist
+- [`assert_file_exists()`](assert_file_exists.md) : Assert a file exists
+- [`assert_file_has_extension()`](assert_file_has_extension.md) : Assert
+  file extensions
+- [`assert_finite()`](assert_finite.md) : Assert that a value is finite
+- [`assert_flag()`](assert_flag.md) : Assert input is a scalar logical
+- [`assert_function()`](assert_function.md) : Assert input is a function
+- [`assert_function_expects_n_arguments()`](assert_function_expects_n_arguments.md)
+  : Assert function expects n arguments
+- [`assert_greater_than()`](assert_greater_than.md) : Assert input is
+  greater than some minimum value
+- [`assert_greater_than_or_equal_to()`](assert_greater_than_or_equal_to.md)
+  : Assert input is greater than or equal to a specified minimum value
+- [`assert_identical()`](assert_identical.md) : Assert that the input
+  object is identical to a specified value
+- [`assert_includes()`](assert_includes.md) : Assert object includes
+  required
+- [`assert_int()`](assert_int.md) : Assert input is an integer
+- [`assert_length()`](assert_length.md) : Assert Length
+- [`assert_length_greater_than()`](assert_length_greater_than.md) :
+  Assert Length Greater Than
+- [`assert_length_greater_than_or_equal_to()`](assert_length_greater_than_or_equal_to.md)
+  : Assert Length Greater Than or Equal To
+- [`assert_length_less_than()`](assert_length_less_than.md) : Assert
+  Length Less Than
+- [`assert_length_less_than_or_equal_to()`](assert_length_less_than_or_equal_to.md)
+  : Assert Length Less Than or Equal To
+- [`assert_less_than()`](assert_less_than.md) : Assert input is less
+  than some maximum value
+- [`assert_less_than_or_equal_to()`](assert_less_than_or_equal_to.md) :
+  Assert input is less than or equal to a specified maximum value
+- [`assert_list()`](assert_list.md) : Assert input is a list
+- [`assert_logical()`](assert_logical.md) : Assert input is logical
+- [`assert_logical_vector()`](assert_logical_vector.md) : Assert input
+  is an atomic logical vector
+- [`assert_matrix()`](assert_matrix.md) : Assert input is a matrix
+- [`assert_names_include()`](assert_names_include.md) : Assert that the
+  input object includes a specified name
+- [`assert_no_duplicates()`](assert_no_duplicates.md) : Assert that the
+  input vector has no duplicates
+- [`assert_no_missing()`](assert_no_missing.md) : Assert that the input
+  vector has no missing values
+- [`assert_non_empty_string()`](assert_non_empty_string.md) : Assert
+  input is a non empty character string
+- [`assert_non_null()`](assert_non_null.md) : Assert that the input is
+  not NULL
+- [`assert_null()`](assert_null.md) : Assert that the input is NULL
+- [`assert_number()`](assert_number.md) : Assert input is a number
+- [`assert_numeric()`](assert_numeric.md) : Assert input is numeric
+- [`assert_numeric_vector()`](assert_numeric_vector.md) : Assert input
+  is a numeric vector
+- [`assert_one_of()`](assert_one_of.md) : Check if a scalar value is one
+  of the acceptable values
+- [`assert_reactive()`](assert_reactive.md) : Assert that x is reactive
+- [`assert_scalar()`](assert_scalar.md) : Assert input is a scalar
+- [`assert_set_equal()`](assert_set_equal.md) : Check if two sets are
+  identical
+- [`assert_string()`](assert_string.md) : Assert input is a character
+  string
+- [`assert_subset()`](assert_subset.md) : Check if a vector is a subset
+  of another
+- [`assert_vector()`](assert_vector.md) : Assert input is a vector
+- [`assert_whole_number()`](assert_whole_number.md) : Assert that the
+  input object is a whole number
+- [`assertion_names()`](assertion_names.md) : List assertion names
+- [`assertion_tests()`](assertion_tests.md) : Count tests per Assertion
+- [`check_all_assertions_are_tested_enough()`](check_all_assertions_are_tested_enough.md)
+  : Check assertions are tested enough
+- [`common_roxygen_params()`](common_roxygen_params.md) : Common
+  Parameter Descriptions
+- [`excludes_advanced()`](excludes_advanced.md) : Check if an object
+  does not contain prohibited elements
+- [`format_as_bullets()`](format_as_bullets.md) : Preprocess character
+  vectors for cli::cli_abort()
+- [`format_inline()`](format_inline.md) : Preprocess character vectors
+  for cli package functions
+- [`has_all_names()`](has_all_names.md) : Check if a named object has
+  all specified names
+- [`has_class()`](has_class.md) : Check object is some class
+- [`has_duplicates()`](has_duplicates.md) : Check if a vector has
+  duplicates
+- [`has_extension()`](has_extension.md) : Has Extension
+- [`has_missing_values()`](has_missing_values.md) : Check if a vector
+  has missing values
+- [`has_no_duplicates()`](has_no_duplicates.md) : Check if a vector has
+  no duplicates
+- [`has_no_missing_values()`](has_no_missing_values.md) : Check if a
+  vector has no missing values
+- [`includes()`](includes.md) : Check if All Values in Required are in x
+- [`includes_advanced()`](includes_advanced.md) : Check if an object
+  contains required elements
+- [`is_character_vector()`](is_character_vector.md) : Check if an object
+  is a character vector
+- [`is_character_vector_or_glue()`](is_character_vector_or_glue.md) :
+  Check if an object is a character vector
+- [`is_equal()`](is_equal.md) : Check equality of two objects
+- [`is_flag()`](is_flag.md) : Check if a value is a logical flag
+- [`is_flag_advanced()`](is_flag_advanced.md) : Check if x is a flag
+- [`is_greater_than()`](is_greater_than.md) : Check if a numeric vector
+  is greater than a specified minimum value
+- [`is_greater_than_or_equal_to()`](is_greater_than_or_equal_to.md) :
+  Check if a numeric vector is greater than or equal to a specified
+  minimum value
+- [`is_identical()`](is_identical.md) : Check if two objects are
+  identical
+- [`is_less_than()`](is_less_than.md) : Check if a numeric vector is
+  less than a specified maximum value
+- [`is_less_than_or_equal_to()`](is_less_than_or_equal_to.md) : Check if
+  a numeric vector is less than or equal to a specified maximum value
+- [`is_list()`](is_list.md) : Check if a value is a list
+- [`is_logical_vector()`](is_logical_vector.md) : Check if an object is
+  a logical vector
+- [`is_non_empty_string_advanced()`](is_non_empty_string_advanced.md) :
+  Check if x is a nonempty string
+- [`is_number()`](is_number.md) : Check if an object is a single number
+- [`is_number_advanced()`](is_number_advanced.md) : Check if x is a
+  number
+- [`is_numeric_vector()`](is_numeric_vector.md) : Check if an object is
+  a numeric vector
+- [`is_reactive()`](is_reactive.md) : Check if a value is reactive
+- [`is_same_type()`](is_same_type.md) : Check equality of type
+- [`is_string()`](is_string.md) : Check if an object is a single string
+- [`is_string_advanced()`](is_string_advanced.md) : Check if x is a
+  string
+- [`is_subset()`](is_subset.md) : Check if one set is a subset of
+  another
+- [`is_superset()`](is_superset.md) : Check if one set is a superset of
+  another
+- [`is_vector()`](is_vector.md) : Check if an object is a vector This
+  function checks if an object is a vector
+- [`setopts_are_equal()`](setopts_are_equal.md) : Compare Sets for
+  Equality
+- [`setopts_common_elements()`](setopts_common_elements.md) : Find
+  Common Elements
+- [`setopts_count_exlusive_to_first()`](setopts_count_exlusive_to_first.md)
+  : Count of Elements Exclusive to First Set
+- [`setopts_exlusive_to_first()`](setopts_exlusive_to_first.md) :
+  Elements Exclusive to First Set
+- [`util_count_duplicates()`](util_count_duplicates.md) : Count the
+  number of duplicated values in a vector
+- [`util_count_missing()`](util_count_missing.md) : Count the number of
+  missing values in a vector
+- [`util_get_duplicated_values()`](util_get_duplicated_values.md) : Get
+  the duplicated values in a vector
