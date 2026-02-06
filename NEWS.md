@@ -1,5 +1,6 @@
 # assertions 0.2.0
 
+* Added `assert_all_finite()` and `assert_finite()` for checking numeric inputs have no `NA`, `NaN`, or infinite values
 * Improved factor support for `assert_includes()` and `assert_excludes()`
 
 * Added `assert_connection()`

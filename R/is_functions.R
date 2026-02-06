@@ -151,6 +151,10 @@ is_whole_number <- function(x){
   return(x%%1==0)
 }
 
+is_all_finite <- function(x){
+  all(is.finite(x))
+}
+
 is_connection <- function(x){
   inherits(x, "DBIConnection")
 }
@@ -254,7 +258,6 @@ is_non_empty_string_advanced <- function(x){
 
   return(invisible(TRUE))
 }
-
 
 
 
