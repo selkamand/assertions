@@ -8,7 +8,7 @@ assert_between(
   x,
   minimum,
   maximum,
-  comparison_inclusive = TRUE,
+  inclusive = TRUE,
   msg = NULL,
   call = rlang::caller_env(),
   arg_name = NULL
