@@ -144,7 +144,7 @@ cli::test_that_cli("assert_all_between() works", config = "plain", {
   # Exclusive bounds when requested
   expect_error(
     assert_all_between(c(2, 3, 4), 2, 4, inclusive = FALSE),
-    "must all be between `2`and`4` (exclusive).",
+    "must all be between 2 and 4 (exclusive).",
     fixed = TRUE
   )
   expect_true(assert_all_between(c(2.1, 3), 2, 4, inclusive = FALSE))
@@ -152,7 +152,7 @@ cli::test_that_cli("assert_all_between() works", config = "plain", {
   # Throws default errors when false
   expect_error(
     assert_all_between(c(2, 3, 1), 2, 4),
-    "must all be between `2`and`4` (inclusive).",
+    "must all be between 2 and 4 (inclusive).",
     fixed = TRUE
   )
 
@@ -178,7 +178,7 @@ cli::test_that_cli("assert_between() works", config = "plain", {
   expect_true(assert_between(2.5, 1, 4))
 
   # Throws default errors when false
-  expect_error(assert_between(5, 1, 4), "must be between `1`and`4` (inclusive).", fixed = TRUE)
+  expect_error(assert_between(5, 1, 4), "must be between 1 and 4 (inclusive).", fixed = TRUE)
 
   # Throws custom error
   expect_error(assert_between(5, 1, 4, msg = "custom error message"), "custom error message")
