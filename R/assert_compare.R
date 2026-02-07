@@ -298,6 +298,7 @@ assert_less_than_or_equal_to <- assert_create_chain(
 #' @param maximum The maximum value to compare against (number)
 #' @param msg A character string containing the error message to display if `x` is not between the specified minimum and maximum values (string)
 #' @inheritParams common_roxygen_params
+#' @inheritParams is_between
 #'
 #' @return invisible(TRUE) if `x` is between the specified minimum and maximum values, otherwise aborts with the error message specified by `msg`
 #'
@@ -315,15 +316,7 @@ assert_less_than_or_equal_to <- assert_create_chain(
 assert_all_between <- assert_create_chain(
   assert_numeric,
   assert_create(
-    function(x, minimum, maximum, inclusive = TRUE){
-      is_between(
-        x = x,
-        minimum = minimum,
-        maximum = maximum,
-        inclusive = inclusive,
-        all_must_satisfy = TRUE
-      )
-    },
+    is_between,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
   )
 )
@@ -334,9 +327,8 @@ assert_all_between <- assert_create_chain(
 #' To check all numbers in a vector / matrix are between minimum and maximum values, see [assert_all_between()]
 #'
 #' @param x An object to check
-#' @param minimum The minimum value to compare against (number)
-#' @param maximum The maximum value to compare against (number)
 #' @param msg A character string containing the error message to display if `x` is not between the specified minimum and maximum values (string)
+#' @inheritParams is_between
 #' @inheritParams common_roxygen_params
 #'
 #' @return invisible(TRUE) if `x` is between the specified minimum and maximum values, otherwise aborts with the error message specified by `msg`
@@ -355,15 +347,7 @@ assert_all_between <- assert_create_chain(
 assert_between <- assert_create_chain(
   assert_number,
   assert_create(
-    function(x, minimum, maximum, inclusive = TRUE){
-      is_between(
-        x = x,
-        minimum = minimum,
-        maximum = maximum,
-        inclusive = inclusive,
-        all_must_satisfy = TRUE
-      )
-    },
+    is_between,
     default_error_msg = "{.strong {arg_name}} must be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
   )
 )

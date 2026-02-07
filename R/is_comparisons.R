@@ -123,7 +123,6 @@ is_less_than_or_equal_to <- function(x, maximum){
 #' @param minimum The minimum value to compare against
 #' @param maximum The maximum value to compare against
 #' @param inclusive should comparisons allow equality with the minimum and maximum values? (flag)
-#' @param all_must_satisfy should all elements satisfy the comparison? (flag)
 #' @return A logical value indicating whether all elements of the numeric vector x are between the specified minimum and maximum values
 #' @examples
 #' if(interactive()){
@@ -131,13 +130,13 @@ is_less_than_or_equal_to <- function(x, maximum){
 #' is_between(c(2,3,4), 2, 4) # TRUE
 #' is_between(c(2,3,1), 2, 4) # FALSE
 #' }
-is_between <- function(x, minimum, maximum, inclusive = TRUE, all_must_satisfy = TRUE){
+is_between <- function(x, minimum, maximum, inclusive = TRUE){
   compare(
     x = x,
     minimum = minimum,
     maximum = maximum,
     comparison_inclusive = inclusive,
-    all_must_satisfy = all_must_satisfy
+    all_must_satisfy = TRUE
   )
 }
 

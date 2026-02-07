@@ -4,7 +4,7 @@
 \alias{is_between}
 \title{Check if a numeric vector is between a specified minimum and maximum value}
 \usage{
-is_between(x, minimum, maximum, inclusive = TRUE, all_must_satisfy = TRUE)
+is_between(x, minimum, maximum, inclusive = TRUE)
 }
 \arguments{
 \item{x}{a numeric vector to check}
@@ -14,8 +14,6 @@ is_between(x, minimum, maximum, inclusive = TRUE, all_must_satisfy = TRUE)
 \item{maximum}{The maximum value to compare against}
 
 \item{inclusive}{should comparisons allow equality with the minimum and maximum values? (flag)}
-
-\item{all_must_satisfy}{should all elements satisfy the comparison? (flag)}
 }
 \value{
 A logical value indicating whether all elements of the numeric vector x are between the specified minimum and maximum values

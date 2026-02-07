@@ -17,9 +17,11 @@ assert_between(
 \arguments{
 \item{x}{An object to check}
 
-\item{minimum}{The minimum value to compare against (number)}
+\item{minimum}{The minimum value to compare against}
 
-\item{maximum}{The maximum value to compare against (number)}
+\item{maximum}{The maximum value to compare against}
+
+\item{inclusive}{should comparisons allow equality with the minimum and maximum values? (flag)}
 
 \item{msg}{A character string containing the error message to display if \code{x} is not between the specified minimum and maximum values (string)}
 

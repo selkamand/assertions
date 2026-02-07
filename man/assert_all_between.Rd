@@ -21,6 +21,8 @@ assert_all_between(
 
 \item{maximum}{The maximum value to compare against (number)}
 
+\item{inclusive}{should comparisons allow equality with the minimum and maximum values? (flag)}
+
 \item{msg}{A character string containing the error message to display if \code{x} is not between the specified minimum and maximum values (string)}
 
 \item{call}{Only relevant when pooling assertions into multi-assertion helper functions. See \link[cli]{cli_abort} for details.}
