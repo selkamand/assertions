@@ -324,7 +324,7 @@ assert_all_between <- assert_create_chain(
         all_must_satisfy = TRUE
       )
     },
-    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong between} `{.strong {minimum}}`and`{.strong {maximum}}` {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
+    default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
   )
 )
 
@@ -364,6 +364,6 @@ assert_between <- assert_create_chain(
         all_must_satisfy = TRUE
       )
     },
-    default_error_msg = "{.strong {arg_name}} must be {.strong between} `{.strong {minimum}}`and`{.strong {maximum}}` {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
+    default_error_msg = "{.strong {arg_name}} must be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
   )
 )
