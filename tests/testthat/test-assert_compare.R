@@ -142,11 +142,19 @@ cli::test_that_cli("assert_all_between() works", config = "plain", {
   expect_true(assert_all_between(c(2, 3, 4), 2, 4))
 
   # Exclusive bounds when requested
-  expect_snapshot(assert_all_between(c(2, 3, 4), 2, 4, comparison_inclusive = FALSE), error = TRUE)
+  expect_error(
+    assert_all_between(c(2, 3, 4), 2, 4, comparison_inclusive = FALSE),
+    "must all be between",
+    fixed = TRUE
+  )
   expect_true(assert_all_between(c(2.1, 3), 2, 4, comparison_inclusive = FALSE))
 
   # Throws default errors when false
-  expect_snapshot(assert_all_between(c(2, 3, 1), 2, 4), error = TRUE)
+  expect_error(
+    assert_all_between(c(2, 3, 1), 2, 4),
+    "must all be between",
+    fixed = TRUE
+  )
 
   # Throws custom error
   expect_error(assert_all_between(c(2, 3, 1), 2, 4, msg = "custom error message"), "custom error message")
@@ -156,11 +164,11 @@ cli::test_that_cli("assert_all_between() works", config = "plain", {
   expect_error(assert_all_between(x, 2, 4), "x", fixed = TRUE)
 
   # Aborts with non-numeric input
-  expect_snapshot(assert_all_between('abc', 2, 4), error = TRUE)
-  expect_snapshot(assert_all_between(list(1, 2, 3), 2, 4), error = TRUE)
-  expect_snapshot(assert_all_between(factor(c(1, 2, 3)), 2, 4), error = TRUE)
-  expect_snapshot(assert_all_between(TRUE, 2, 4), error = TRUE)
-  expect_snapshot(assert_all_between(NULL, 2, 4), error = TRUE)
+  expect_error(assert_all_between('abc', 2, 4), "must be numeric", fixed = TRUE)
+  expect_error(assert_all_between(list(1, 2, 3), 2, 4), "must be numeric", fixed = TRUE)
+  expect_error(assert_all_between(factor(c(1, 2, 3)), 2, 4), "must be numeric", fixed = TRUE)
+  expect_error(assert_all_between(TRUE, 2, 4), "must be numeric", fixed = TRUE)
+  expect_error(assert_all_between(NULL, 2, 4), "must be numeric", fixed = TRUE)
 })
 
 cli::test_that_cli("assert_between() works", config = "plain", {
@@ -170,7 +178,7 @@ cli::test_that_cli("assert_between() works", config = "plain", {
   expect_true(assert_between(2.5, 1, 4))
 
   # Throws default errors when false
-  expect_snapshot(assert_between(5, 1, 4), error = TRUE)
+  expect_error(assert_between(5, 1, 4), "must be between", fixed = TRUE)
 
   # Throws custom error
   expect_error(assert_between(5, 1, 4, msg = "custom error message"), "custom error message")
@@ -180,12 +188,12 @@ cli::test_that_cli("assert_between() works", config = "plain", {
   expect_error(assert_between(x, 1, 4), "x", fixed = TRUE)
 
   # Aborts with non-number input
-  expect_snapshot(assert_between('abc', 1, 4), error = TRUE)
-  expect_snapshot(assert_between(list(1, 2, 3), 1, 4), error = TRUE)
-  expect_snapshot(assert_between(c(2, 3, 4), 1, 4), error = TRUE)
-  expect_snapshot(assert_between(factor(4), 1, 4), error = TRUE)
-  expect_snapshot(assert_between(TRUE, 1, 4), error = TRUE)
-  expect_snapshot(assert_between(NULL, 1, 4), error = TRUE)
+  expect_error(assert_between('abc', 1, 4), "is not a number", fixed = TRUE)
+  expect_error(assert_between(list(1, 2, 3), 1, 4), "is not a number", fixed = TRUE)
+  expect_error(assert_between(c(2, 3, 4), 1, 4), "is not a number", fixed = TRUE)
+  expect_error(assert_between(factor(4), 1, 4), "is not a number", fixed = TRUE)
+  expect_error(assert_between(TRUE, 1, 4), "is not a number", fixed = TRUE)
+  expect_error(assert_between(NULL, 1, 4), "is not a number", fixed = TRUE)
 })
 
 cli::test_that_cli("assert_identical() works", config = "plain", {
@@ -268,4 +276,3 @@ cli::test_that_cli("assert_equal() works", config = "plain", {
   expect_error(assert_equal(x, y), "x.*y")
 
 })
-
