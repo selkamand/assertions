@@ -158,6 +158,8 @@ functions, and `assertthat` for its error message customization.
 ## All functions
 
 - [`assert()`](assert.md) : Assert that conditions are met
+- [`assert_all_between()`](assert_all_between.md) : Assert input is
+  between a specified minimum and maximum value
 - [`assert_all_directories_exist()`](assert_all_directories_exist.md) :
   Assert all files are directories
 - [`assert_all_files_exist()`](assert_all_files_exist.md) : Assert that
@@ -174,6 +176,8 @@ functions, and `assertthat` for its error message customization.
   less than a specified maximum value
 - [`assert_all_less_than_or_equal_to()`](assert_all_less_than_or_equal_to.md)
   : Assert input is less than or equal to a specified maximum value
+- [`assert_between()`](assert_between.md) : Assert input is between a
+  specified minimum and maximum value
 - [`assert_character()`](assert_character.md) : Assert input is a
   character vector
 - [`assert_character_vector()`](assert_character_vector.md) : Assert
@@ -290,6 +294,8 @@ functions, and `assertthat` for its error message customization.
 - [`includes()`](includes.md) : Check if All Values in Required are in x
 - [`includes_advanced()`](includes_advanced.md) : Check if an object
   contains required elements
+- [`is_between()`](is_between.md) : Check if a numeric vector is between
+  a specified minimum and maximum value
 - [`is_character_vector()`](is_character_vector.md) : Check if an object
   is a character vector
 - [`is_character_vector_or_glue()`](is_character_vector_or_glue.md) :

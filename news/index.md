@@ -4,6 +4,9 @@
 
 CRAN release: 2024-11-19
 
+- Added [`assert_all_between()`](../reference/assert_all_between.md) and
+  [`assert_between()`](../reference/assert_between.md) assertions.
+
 - Added [`assert_all_finite()`](../reference/assert_all_finite.md) and
   [`assert_finite()`](../reference/assert_finite.md) for checking
   numeric inputs have no `NA`, `NaN`, or infinite values

@@ -8,6 +8,7 @@
 <url><loc>/index.html</loc></url>
 <url><loc>/news/index.html</loc></url>
 <url><loc>/reference/assert.html</loc></url>
+<url><loc>/reference/assert_all_between.html</loc></url>
 <url><loc>/reference/assert_all_directories_exist.html</loc></url>
 <url><loc>/reference/assert_all_files_exist.html</loc></url>
 <url><loc>/reference/assert_all_files_have_extension.html</loc></url>
@@ -16,6 +17,7 @@
 <url><loc>/reference/assert_all_greater_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_all_less_than.html</loc></url>
 <url><loc>/reference/assert_all_less_than_or_equal_to.html</loc></url>
+<url><loc>/reference/assert_between.html</loc></url>
 <url><loc>/reference/assert_character.html</loc></url>
 <url><loc>/reference/assert_character_vector.html</loc></url>
 <url><loc>/reference/assert_character_vector_or_glue.html</loc></url>
@@ -86,6 +88,7 @@
 <url><loc>/reference/includes.html</loc></url>
 <url><loc>/reference/includes_advanced.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
+<url><loc>/reference/is_between.html</loc></url>
 <url><loc>/reference/is_character_vector.html</loc></url>
 <url><loc>/reference/is_character_vector_or_glue.html</loc></url>
 <url><loc>/reference/is_equal.html</loc></url>
