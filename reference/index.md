@@ -57,6 +57,8 @@
 - [`assert_finite()`](assert_finite.md) : Assert that a value is finite
 - [`assert_flag()`](assert_flag.md) : Assert input is a scalar logical
 - [`assert_function()`](assert_function.md) : Assert input is a function
+- [`assert_function_expects()`](assert_function_expects.md) : Assert
+  function expects specific parameter names
 - [`assert_function_expects_n_arguments()`](assert_function_expects_n_arguments.md)
   : Assert function expects n arguments
 - [`assert_greater_than()`](assert_greater_than.md) : Assert input is
