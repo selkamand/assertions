@@ -45,8 +45,9 @@ Collate:
     'assert_null.R'
     'assert_numerical.R'
     'assert_packages.R'
+    'has.R'
+    'assert_regex.R'
     'assert_set.R'
     'coverage_testing.R'
     'export_testing.R'
-    'has.R'
 BugReports: https://github.com/selkamand/assertions/issues

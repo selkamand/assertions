@@ -1,5 +1,7 @@
 # assertions 0.2.0
 
+* Added `assert_all_strings_contain()` and `assert_string_contains()` for checking character inputs against regular expressions
+
 * Added `assert_packages_installed()`
 
 * Added `assert_all_between()` and `assert_between()` assertions
