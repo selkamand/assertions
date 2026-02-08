@@ -7,20 +7,14 @@ is_packages_installed <- function(x) {
     return(TRUE)
   }
 
-  label <- cli::pluralize("{qty} package{?s}", qty = length(missing))
-  label <- sub("^\\d+\\s+", "", label)
-  paste0(
-    "Missing the required ",
-    label,
-    ": ",
-    paste0(missing, collapse = ", "),
-    ". Please install and try again."
+  cli::pluralize(
+    "Missing the required package{?s}: {missing}. Please install and try again."
   )
 }
 
 #' Assert packages are installed
 #'
-#' Assert that one or more named packages are installed. Intended as a drop-in
+#' Assert that one or more packages are installed. Intended as a drop-in
 #' replacement for `requireNamespace()` + `cli::cli_abort()` checks.
 #'
 #' @include assert_create.R
