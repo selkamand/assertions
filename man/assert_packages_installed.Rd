@@ -26,8 +26,7 @@ invisible(TRUE) if \code{x} is installed, otherwise aborts with the
 message specified by \code{msg}
 }
 \description{
-Assert that one or more named packages are installed. Intended as a drop-in
-replacement for \code{requireNamespace()} + \code{cli::cli_abort()} checks.
+Assert that one or more packages are installed.
 }
 \examples{
 try({

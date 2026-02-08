@@ -14,8 +14,7 @@ is_packages_installed <- function(x) {
 
 #' Assert packages are installed
 #'
-#' Assert that one or more packages are installed. Intended as a drop-in
-#' replacement for `requireNamespace()` + `cli::cli_abort()` checks.
+#' Assert that one or more packages are installed.
 #'
 #' @include assert_create.R
 #' @include assert_type.R
