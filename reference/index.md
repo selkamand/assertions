@@ -101,6 +101,8 @@
   is a numeric vector
 - [`assert_one_of()`](assert_one_of.md) : Check if a scalar value is one
   of the acceptable values
+- [`assert_packages_installed()`](assert_packages_installed.md) : Assert
+  packages are installed
 - [`assert_reactive()`](assert_reactive.md) : Assert that x is reactive
 - [`assert_scalar()`](assert_scalar.md) : Assert input is a scalar
 - [`assert_set_equal()`](assert_set_equal.md) : Check if two sets are

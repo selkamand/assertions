@@ -64,6 +64,7 @@
 <url><loc>/reference/assert_numeric.html</loc></url>
 <url><loc>/reference/assert_numeric_vector.html</loc></url>
 <url><loc>/reference/assert_one_of.html</loc></url>
+<url><loc>/reference/assert_packages_installed.html</loc></url>
 <url><loc>/reference/assert_reactive.html</loc></url>
 <url><loc>/reference/assert_scalar.html</loc></url>
 <url><loc>/reference/assert_set_equal.html</loc></url>
