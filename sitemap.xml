@@ -17,6 +17,7 @@
 <url><loc>/reference/assert_all_greater_than_or_equal_to.html</loc></url>
 <url><loc>/reference/assert_all_less_than.html</loc></url>
 <url><loc>/reference/assert_all_less_than_or_equal_to.html</loc></url>
+<url><loc>/reference/assert_all_strings_contain.html</loc></url>
 <url><loc>/reference/assert_between.html</loc></url>
 <url><loc>/reference/assert_character.html</loc></url>
 <url><loc>/reference/assert_character_vector.html</loc></url>
@@ -69,6 +70,7 @@
 <url><loc>/reference/assert_scalar.html</loc></url>
 <url><loc>/reference/assert_set_equal.html</loc></url>
 <url><loc>/reference/assert_string.html</loc></url>
+<url><loc>/reference/assert_string_contains.html</loc></url>
 <url><loc>/reference/assert_subset.html</loc></url>
 <url><loc>/reference/assert_vector.html</loc></url>
 <url><loc>/reference/assert_whole_number.html</loc></url>
@@ -76,6 +78,7 @@
 <url><loc>/reference/assertion_tests.html</loc></url>
 <url><loc>/reference/check_all_assertions_are_tested_enough.html</loc></url>
 <url><loc>/reference/common_roxygen_params.html</loc></url>
+<url><loc>/reference/contains_pattern.html</loc></url>
 <url><loc>/reference/excludes_advanced.html</loc></url>
 <url><loc>/reference/format_as_bullets.html</loc></url>
 <url><loc>/reference/format_inline.html</loc></url>

@@ -21,6 +21,8 @@
   less than a specified maximum value
 - [`assert_all_less_than_or_equal_to()`](assert_all_less_than_or_equal_to.md)
   : Assert input is less than or equal to a specified maximum value
+- [`assert_all_strings_contain()`](assert_all_strings_contain.md) :
+  Assert all strings contain a regex pattern
 - [`assert_between()`](assert_between.md) : Assert input is between a
   specified minimum and maximum value
 - [`assert_character()`](assert_character.md) : Assert input is a
@@ -109,6 +111,8 @@
   identical
 - [`assert_string()`](assert_string.md) : Assert input is a character
   string
+- [`assert_string_contains()`](assert_string_contains.md) : Assert
+  string contains a regex pattern
 - [`assert_subset()`](assert_subset.md) : Check if a vector is a subset
   of another
 - [`assert_vector()`](assert_vector.md) : Assert input is a vector
@@ -120,6 +124,8 @@
   : Check assertions are tested enough
 - [`common_roxygen_params()`](common_roxygen_params.md) : Common
   Parameter Descriptions
+- [`contains_pattern()`](contains_pattern.md) : Check if strings contain
+  a regex pattern
 - [`excludes_advanced()`](excludes_advanced.md) : Check if an object
   does not contain prohibited elements
 - [`format_as_bullets()`](format_as_bullets.md) : Preprocess character

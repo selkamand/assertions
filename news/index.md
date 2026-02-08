@@ -5,6 +5,12 @@
 CRAN release: 2024-11-19
 
 - Added
+  [`assert_all_strings_contain()`](../reference/assert_all_strings_contain.md)
+  and
+  [`assert_string_contains()`](../reference/assert_string_contains.md)
+  for checking character inputs against regular expressions
+
+- Added
   [`assert_packages_installed()`](../reference/assert_packages_installed.md)
 
 - Added [`assert_all_between()`](../reference/assert_all_between.md) and
