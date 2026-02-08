@@ -33,3 +33,11 @@ Assert that a function signature includes required set of parameter names in its
 formal argument list, regardless of whether those parameters have default
 values. The \code{...} argument is ignored.
 }
+\examples{
+my_fun <- function(x, y = 1, ...) x + y
+assert_function_expects(my_fun, c("x", "y"))
+
+try({
+  assert_function_expects(my_fun, c("x", "z"))
+})
+}

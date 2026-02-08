@@ -84,5 +84,13 @@ assert_function_expects_n_arguments <- assert_create(func = function_expects_n_a
 #' @return invisible(TRUE) if function `x` declares all required parameters,
 #'   otherwise aborts with the error message specified by `msg`
 #'
+#' @examples
+#' my_fun <- function(x, y = 1, ...) x + y
+#' assert_function_expects(my_fun, c("x", "y"))
+#'
+#' try({
+#'   assert_function_expects(my_fun, c("x", "z"))
+#' })
+#'
 #' @export
 assert_function_expects <- assert_create(func = function_expects_advanced)
