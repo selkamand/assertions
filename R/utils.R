@@ -68,6 +68,16 @@ func_supports_variable_arguments <- function(func){
 func_args_as_pairlist <- function(func){
   formals(args(func))
 }
+
+func_required_arg_names <- function(func){
+  args <- formals(args(func))
+  if(length(args) == 0){
+    return(character(0))
+  }
+  required_args <- args[vapply(args, is.symbol, FUN.VALUE = TRUE)]
+  required_args <- names(required_args)
+  setdiff(required_args, "...")
+}
 #
 # func_args_as_alist <- function(func){
 #   a= unlist(func_args_as_pairlist(func))

@@ -6,6 +6,9 @@ fn_1_arg <- function(a) {}
 fn_2_args <- function(a, b) {}
 fn_1_arg_with_dots <- function(a, ...) {}
 fn_2_args_with_dots <- function(a, b, ...) {}
+fn_with_required_args <- function(x, y, z = 1, ...) {}
+fn_with_defaults <- function(x = 1, y = 2) {}
+fn_with_no_required <- function(...) {}
 
 # Unit tests for `function_expects_n_arguments_advanced`
 test_that("function_expects_n_arguments_advanced behaves correctly for exact argument count", {
@@ -69,6 +72,21 @@ test_that("function_expects_n_arguments_advanced handles `dots` parameter correc
   expect_true(function_expects_n_arguments_advanced(fn_2_args_with_dots, Inf, dots = "count_as_inf"))
 })
 
+test_that("function_expects_advanced validates required argument names", {
+  expect_true(function_expects_advanced(fn_2_args, c("a", "b")))
+  expect_true(function_expects_advanced(fn_with_required_args, c("x", "y")))
+
+  expect_match(function_expects_advanced(fn_2_args, "c"),
+               "missing the following parameter", fixed = TRUE)
+  expect_match(function_expects_advanced(fn_2_args, c("b", "c")),
+               "missing the following parameter", fixed = TRUE)
+  expect_match(function_expects_advanced(fn_with_no_required, "x"),
+               "missing the following parameter", fixed = TRUE)
+  expect_true(function_expects_advanced(fn_with_defaults, "x"))
+  expect_match(function_expects_advanced(1, "x"),
+               "must be a function, not a", fixed = TRUE)
+})
+
 
 
 
@@ -105,3 +123,53 @@ cli::test_that_cli("assert_function_expects_n_arguments() works", config = "plai
   # Custom error messages work
   expect_error(assert_function_expects_n_arguments(my_func, 3, msg = "Custom error message"), "Custom error message")
 })
+
+cli::test_that_cli("assert_function_expects() works", config = "plain", {
+
+  # Function with required args and one defaulted argument
+  my_func <- function(a, b, c = 1) { a + b + c }
+
+  # Function that accepts additional arguments via ...
+  my_func_dots <- function(a, b, ...) { a + b }
+
+  # Succeeds when required parameters are present (ignores defaults)
+  expect_true(assert_function_expects(my_func, c("a", "b")))
+
+  # Succeeds when required parameters are present and ... is ignored
+  expect_true(assert_function_expects(my_func_dots, c("a", "b")))
+
+  # Succeeds when checking for a parameter with a default value
+  expect_true(assert_function_expects(my_func, c("c")))
+
+  # Function missing one of the required parameters
+  my_func2 <- function(a, c) { a + c }
+
+  # Errors when a required parameter is absent from the signature
+  expect_error(
+    assert_function_expects(my_func2, c("a", "b")),
+    "Function 'my_func2' is missing the following parameter in its signature: `b`"
+  )
+
+  # Errors when input is not a function
+  expect_error(
+    assert_function_expects(123, "a"),
+    "'123' must be a function, not a numeric"
+  )
+
+  # Errors when function has no matching required parameters
+  expect_error(
+    assert_function_expects(fn_with_no_required, "a"),
+    "Function 'fn_with_no_required' is missing the following parameter in its signature: `a`"
+  )
+
+  # Succeeds when required parameter exists even if it has a default
+  expect_true(assert_function_expects(fn_with_defaults, "x"))
+
+  # Uses custom error message when provided
+  expect_error(
+    assert_function_expects(my_func, c("a", "d"), msg = "Custom error message"),
+    "Custom error message"
+  )
+
+})
+
