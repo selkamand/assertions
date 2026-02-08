@@ -28,14 +28,14 @@ function_expects_advanced <- function(x, required){
   if(!is.function(x))
     return("{.strong '{arg_name}'} must be a function, not a {class(arg_value)}")
 
-  required_args <- func_required_arg_names(x)
-  if(!is_subset(required, required_args)){
-    missing_args <- setopts_exlusive_to_first(required, required_args)
+  declared_args <- setdiff(func_arg_names(x), "...")
+  if(!is_subset(required, declared_args)){
+    missing_args <- setopts_exlusive_to_first(required, declared_args)
     missing_count <- length(missing_args)
     missing_args <- paste0("`", paste(missing_args, collapse = "`, `"), "`")
-    return(paste0("'{.strong {arg_name}}' is missing {.strong ", missing_count, "} required argument",
+    return(paste0("Function '{arg_name}' is missing the follwoing parameter",
                   if(missing_count == 1) "" else "s",
-                  ": {.strong ", missing_args, "}"
+                  " in its signature: {.strong ", missing_args, "}"
     ))
   }
 
