@@ -24,6 +24,24 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
   return(TRUE)
 }
 
+function_expects_advanced <- function(x, required){
+  if(!is.function(x))
+    return("{.strong '{arg_name}'} must be a function, not a {class(arg_value)}")
+
+  required_args <- func_required_arg_names(x)
+  if(!is_subset(required, required_args)){
+    missing_args <- setopts_exlusive_to_first(required, required_args)
+    missing_count <- length(missing_args)
+    missing_args <- paste0("`", paste(missing_args, collapse = "`, `"), "`")
+    return(paste0("'{.strong {arg_name}}' is missing {.strong ", missing_count, "} required argument",
+                  if(missing_count == 1) "" else "s",
+                  ": {.strong ", missing_args, "}"
+    ))
+  }
+
+  return(TRUE)
+}
+
 
 # Assertions --------------------------------------------------------------
 
@@ -42,3 +60,18 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
 #'
 #' @export
 assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced)
+
+#' Assert function expects required argument names
+#'
+#' Assert a function expects a set of required argument names.
+#'
+#' @include assert_create.R
+#' @include utils.R
+#' @param x a function to check includes required argument names
+#' @param required a character vector of required argument names
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if function `x` expects all required arguments, otherwise aborts with the error message specified by `msg`
+#'
+#' @export
+assert_function_expects <- assert_create(func = function_expects_advanced)
