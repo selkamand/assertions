@@ -21,7 +21,25 @@ contains_pattern <- function(x, pattern, ignore.case = FALSE, perl = FALSE, fixe
   if (!is_flag(useBytes))
     return("'useBytes' must be a logical flag")
 
-  all(grepl(pattern, x, ignore.case = ignore.case, perl = perl, fixed = fixed, useBytes = useBytes))
+  matches <- grepl(pattern, x, ignore.case = ignore.case, perl = perl, fixed = fixed, useBytes = useBytes)
+
+  if (all(matches))
+    return(TRUE)
+
+  total <- length(x)
+  failed <- sum(!matches)
+
+  if (total == 1) {
+    return("'{.strong {arg_name}}' must match regex `{pattern}`")
+  }
+
+  paste0(
+    "'{.strong {arg_name}}' must all match regex `{pattern}`. ",
+    failed,
+    "/",
+    total,
+    " elements did not match pattern"
+  )
 }
 
 #' Assert all strings contain a regex pattern
@@ -53,8 +71,7 @@ assert_all_strings_contain <- assert_create_chain(
   assert_character_vector,
   assert_no_missing,
   assert_create(
-    func = contains_pattern,
-    default_error_msg = "'{.strong {arg_name}}' must all match regex {.strong {pattern}}"
+    func = contains_pattern
   )
 )
 
