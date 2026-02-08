@@ -25,12 +25,12 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
 }
 
 
-#' Expect function has arguments
-#'
-#' @param required the names of parameters the function must support (character)
-#'
-#' @returns TRUE if the function contains the expected parameters, otherwise returns a string (the error message)
-#'
+# Expect function has arguments
+# @param
+# @param required the names of parameters the function must support (character)
+#
+# @returns TRUE if the function contains the expected parameters, otherwise returns a string (the error message)
+#
 function_expects_advanced <- function(x, required){
   if(!is.function(x)) {
     value_class <- toString(class(x))
