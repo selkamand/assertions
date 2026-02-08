@@ -125,19 +125,51 @@ cli::test_that_cli("assert_function_expects_n_arguments() works", config = "plai
 })
 
 cli::test_that_cli("assert_function_expects() works", config = "plain", {
+
+  # Function with required args and one defaulted argument
   my_func <- function(a, b, c = 1) { a + b + c }
+
+  # Function that accepts additional arguments via ...
   my_func_dots <- function(a, b, ...) { a + b }
+
+  # Succeeds when required parameters are present (ignores defaults)
   expect_true(assert_function_expects(my_func, c("a", "b")))
+
+  # Succeeds when required parameters are present and ... is ignored
   expect_true(assert_function_expects(my_func_dots, c("a", "b")))
 
+  # Succeeds when checking for a parameter with a default value
+  expect_true(assert_function_expects(my_func, c("c")))
+
+  # Function missing one of the required parameters
   my_func2 <- function(a, c) { a + c }
+
+  # Errors when a required parameter is absent from the signature
   expect_error(
     assert_function_expects(my_func2, c("a", "b")),
     "Function 'my_func2' is missing the following parameter in its signature: `b`"
   )
-  expect_error(assert_function_expects(123, "a"), "'123' must be a function, not a numeric")
-  expect_error(assert_function_expects(fn_with_no_required, "a"),
-               "Function 'fn_with_no_required' is missing the following parameter in its signature: `a`")
+
+  # Errors when input is not a function
+  expect_error(
+    assert_function_expects(123, "a"),
+    "'123' must be a function, not a numeric"
+  )
+
+  # Errors when function has no matching required parameters
+  expect_error(
+    assert_function_expects(fn_with_no_required, "a"),
+    "Function 'fn_with_no_required' is missing the following parameter in its signature: `a`"
+  )
+
+  # Succeeds when required parameter exists even if it has a default
   expect_true(assert_function_expects(fn_with_defaults, "x"))
-  expect_error(assert_function_expects(my_func, c("a", "d"), msg = "Custom error message"), "Custom error message")
+
+  # Uses custom error message when provided
+  expect_error(
+    assert_function_expects(my_func, c("a", "d"), msg = "Custom error message"),
+    "Custom error message"
+  )
+
 })
+
