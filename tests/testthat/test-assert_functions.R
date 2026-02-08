@@ -77,11 +77,11 @@ test_that("function_expects_advanced validates required argument names", {
   expect_true(function_expects_advanced(fn_with_required_args, c("x", "y")))
 
   expect_match(function_expects_advanced(fn_2_args, "c"),
-               "missing the follwoing parameter", fixed = TRUE)
+               "missing the following parameter", fixed = TRUE)
   expect_match(function_expects_advanced(fn_2_args, c("b", "c")),
-               "missing the follwoing parameter", fixed = TRUE)
+               "missing the following parameter", fixed = TRUE)
   expect_match(function_expects_advanced(fn_with_no_required, "x"),
-               "missing the follwoing parameter", fixed = TRUE)
+               "missing the following parameter", fixed = TRUE)
   expect_true(function_expects_advanced(fn_with_defaults, "x"))
   expect_match(function_expects_advanced(1, "x"),
                "must be a function, not a", fixed = TRUE)
@@ -133,11 +133,11 @@ cli::test_that_cli("assert_function_expects() works", config = "plain", {
   my_func2 <- function(a, c) { a + c }
   expect_error(
     assert_function_expects(my_func2, c("a", "b")),
-    "Function 'my_func2' is missing the follwoing parameter in its signature: `b`"
+    "Function 'my_func2' is missing the following parameter in its signature: `b`"
   )
   expect_error(assert_function_expects(123, "a"), "'123' must be a function, not a numeric")
   expect_error(assert_function_expects(fn_with_no_required, "a"),
-               "Function 'fn_with_no_required' is missing the follwoing parameter in its signature: `a`")
+               "Function 'fn_with_no_required' is missing the following parameter in its signature: `a`")
   expect_true(assert_function_expects(fn_with_defaults, "x"))
   expect_error(assert_function_expects(my_func, c("a", "d"), msg = "Custom error message"), "Custom error message")
 })

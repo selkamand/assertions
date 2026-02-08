@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_functions.R
 \name{assert_function_expects}
 \alias{assert_function_expects}
-\title{Assert function expects required argument names}
+\title{Assert function expects specific parameter names}
 \usage{
 assert_function_expects(
   x,
@@ -13,9 +13,10 @@ assert_function_expects(
 )
 }
 \arguments{
-\item{x}{a function to check includes required argument names}
+\item{x}{a function to check for required parameter names}
 
-\item{required}{a character vector of required argument names}
+\item{required}{a character vector of parameter names that must appear in
+the function signature (order does not matter)}
 
 \item{msg}{The error message thrown if the assertion fails (string)}
 
@@ -24,8 +25,11 @@ assert_function_expects(
 \item{arg_name}{Advanced use only. Name of the argument passed (default: NULL, will automatically extract arg_name).}
 }
 \value{
-invisible(TRUE) if function \code{x} expects all required arguments, otherwise aborts with the error message specified by \code{msg}
+invisible(TRUE) if function \code{x} declares all required parameters,
+otherwise aborts with the error message specified by \code{msg}
 }
 \description{
-Assert a function expects a set of required argument names.
+Assert that a function signature includes required set of parameter names in its
+formal argument list, regardless of whether those parameters have default
+values. The \code{...} argument is ignored.
 }
