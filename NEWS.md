@@ -1,6 +1,6 @@
-# assertions 0.2.0
+# assertions 0.2.0.9000 (dev version)
 
-* Added `assert_function_expects()` for checking required argument names in functions
+* Added `assert_function_expects()` for checking argument names in functions
 
 * Added `assert_function_variadic()` for checking whether functions declare `...`
 
@@ -15,6 +15,12 @@
 * Improved factor support for `assert_includes()` and `assert_excludes()`
 
 * Improved missing-value errors for numeric comparison assertions (e.g., `assert_greater_than()` with `NaN`)
+
+* Improved `assert_numeric()` error messaging for non-numeric matrices/arrays
+
+# assertions 0.2.0
+
+* Improved factor support for `assert_includes()` and `assert_excludes()`
 
 * Added `assert_connection()`
 
@@ -31,8 +37,6 @@
 * Added `assert_length()`
 
 * Improved error messages when `assert_create()` arguments are inappropriate
-
-* Improved `assert_numeric()` error messaging for non-numeric matrices/arrays
 
 # assertions 0.1.0
 
