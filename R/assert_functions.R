@@ -24,6 +24,16 @@ function_expects_n_arguments_advanced <- function(x, n, dots = c("throw_error","
   return(TRUE)
 }
 
+function_variadic_advanced <- function(x){
+  if(!is.function(x))
+    return("{.strong '{arg_name}'} must be a function, not a {class(arg_value)}")
+
+  if(!func_supports_variable_arguments(x))
+    return("{.strong '{arg_name}'} must accept variable arguments via {.strong ...}")
+
+  return(TRUE)
+}
+
 
 # Expect function has arguments
 # @param
@@ -69,6 +79,32 @@ function_expects_advanced <- function(x, required){
 #'
 #' @export
 assert_function_expects_n_arguments <- assert_create(func = function_expects_n_arguments_advanced)
+
+#' Assert function is variadic
+#'
+#' Assert that a function signature declares the `...` argument (variadic
+#' arguments).
+#'
+#' @param x a function to check includes `...` in its signature
+#' @inheritParams common_roxygen_params
+#'
+#' @return invisible(TRUE) if function `x` declares `...`, otherwise aborts with
+#'   the error message specified by `msg`
+#'
+#' @examples
+#' my_fun <- function(x, ...) x
+#' assert_function_variadic(my_fun)
+#'
+#' try({
+#'   my_fun_no_dots <- function(x) x
+#'   assert_function_variadic(my_fun_no_dots)
+#' })
+#'
+#' @export
+assert_function_variadic <- assert_create_chain(
+  assert_function,
+  assert_create(func = function_variadic_advanced)
+)
 
 #' Assert function expects specific parameter names
 #'

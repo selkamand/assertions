@@ -9,6 +9,7 @@ fn_2_args_with_dots <- function(a, b, ...) {}
 fn_with_required_args <- function(x, y, z = 1, ...) {}
 fn_with_defaults <- function(x = 1, y = 2) {}
 fn_with_no_required <- function(...) {}
+fn_no_dots <- function(x, y) x + y
 
 # Unit tests for `function_expects_n_arguments_advanced`
 test_that("function_expects_n_arguments_advanced behaves correctly for exact argument count", {
@@ -25,7 +26,7 @@ test_that("function_expects_n_arguments_advanced behaves correctly for exact arg
 test_that("function_expects_n_arguments_advanced handles dots behavior correctly", {
   # Test with `...` and dots="throw_error"
   expect_match(function_expects_n_arguments_advanced(fn_1_arg_with_dots, 1, dots = "throw_error"),
-               "must not contain ... arguments", fixed = TRUE)
+               "must not contain ... arguments", fixed = TRUE) # dots throw error by default
 
   # Test with `...` and dots="count_as_0"
   expect_true(function_expects_n_arguments_advanced(fn_1_arg_with_dots, 1, dots = "count_as_0"))
@@ -44,6 +45,8 @@ test_that("function_expects_n_arguments_advanced returns correct error for non-f
   # Input is not a function
   expect_match(function_expects_n_arguments_advanced(42, 1), "must be a function, not a", fixed = TRUE)
   expect_match(function_expects_n_arguments_advanced("not_a_function", 1), "must be a function, not a", fixed = TRUE)
+  expect_match(function_expects_n_arguments_advanced(list(), 1), "must be a function, not a", fixed = TRUE)
+  expect_match(function_expects_n_arguments_advanced(NULL, 1), "must be a function, not a", fixed = TRUE)
 })
 
 test_that("function_expects_n_arguments_advanced correctly counts arguments for functions with no arguments", {
@@ -84,6 +87,18 @@ test_that("function_expects_advanced validates required argument names", {
                "missing the following parameter", fixed = TRUE)
   expect_true(function_expects_advanced(fn_with_defaults, "x"))
   expect_match(function_expects_advanced(1, "x"),
+               "must be a function, not a", fixed = TRUE)
+})
+
+test_that("function_variadic_advanced validates variable arguments", {
+  expect_true(function_variadic_advanced(fn_1_arg_with_dots))
+  expect_true(function_variadic_advanced(fn_2_args_with_dots))
+
+  expect_match(function_variadic_advanced(fn_no_dots),
+               "must accept variable arguments", fixed = TRUE)
+  expect_match(function_variadic_advanced(1),
+               "must be a function, not a", fixed = TRUE)
+  expect_match(function_variadic_advanced(list()),
                "must be a function, not a", fixed = TRUE)
 })
 
@@ -171,5 +186,42 @@ cli::test_that_cli("assert_function_expects() works", config = "plain", {
     "Custom error message"
   )
 
+  # Works with a single required argument
+  expect_true(assert_function_expects(fn_with_required_args, "x"))
+
+  # Reports missing parameters when multiple are absent
+  expect_error(
+    assert_function_expects(fn_with_defaults, c("x", "z")),
+    "missing the following parameter",
+    fixed = TRUE
+  )
 })
 
+cli::test_that_cli("assert_function_variadic() works", config = "plain", {
+  my_fun <- function(a, ...) { a }
+  my_fun_no_dots <- function(a) { a }
+  my_fun_with_defaults <- function(a = 1, ...) { a }
+  my_fun_only_dots <- function(...) { }
+  my_fun_many <- function(a, b = 1, ...) { a + b }
+
+  # Accepts a basic variadic signature
+  expect_true(assert_function_variadic(my_fun))
+
+  # Accepts variadic signatures with defaults
+  expect_true(assert_function_variadic(my_fun_with_defaults))
+
+  # Accepts dots-only signatures
+  expect_true(assert_function_variadic(my_fun_only_dots))
+
+  # Accepts multiple arguments with dots
+  expect_true(assert_function_variadic(my_fun_many))
+
+  # Rejects non-variadic signatures
+  expect_error(assert_function_variadic(my_fun_no_dots), "must accept variable arguments", fixed = TRUE)
+
+  # Rejects non-function numeric input
+  expect_error(assert_function_variadic(123), "'123' must be a function, not a numeric")
+
+  # Rejects non-function list input
+  expect_error(assert_function_variadic(list()), "must be a .*function", fixed = FALSE)
+})
