@@ -29,12 +29,14 @@ install.packages("assertions")
 
 ### Development version
 
-To get a bug fix or to use a feature from the development version, you
-can install the development version of assertions from GitHub.
+You can install the development version of assertions from GitHub by
+running:
 
 ``` r
-# install.packages('remotes')
-remotes::install_github('selkamand/assertions')
+if (!require("remotes", quietly = TRUE))
+    install.packages("remotes")
+
+remotes::install_github("selkamand/assertions")
 ```
 
 ## Quick Start

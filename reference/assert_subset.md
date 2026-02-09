@@ -47,6 +47,6 @@ assert_subset(1:3, 1:5) # Passes
 assert_subset(c("A", "B", "C"), c("A", "B")) # Throws error since "C" is not present in first vector
 })
 #> Error in eval(expr, envir) : 
-#>   ✖ 'c("A", "B", "C")' contain an invalid value: C. Valid values include:
+#>   ✖ 'c("A", "B", "C")' contains an invalid value: C. Valid values include:
 #>   A and B
 ```
