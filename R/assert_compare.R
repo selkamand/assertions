@@ -4,6 +4,7 @@
 #'
 #' @include assert_create.R
 #' @include assert_type.R
+#' @include has.R
 #' @include is_functions.R
 #' @include is_comparisons.R
 #' @param x An object to check
@@ -26,6 +27,7 @@
 #' @export
 assert_all_greater_than <- assert_create_chain(
   assert_numeric,
+  assert_no_missing,
   assert_create(
     is_greater_than,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
@@ -84,6 +86,7 @@ assert_greater_than <- assert_create_chain(
 #' @export
 assert_all_greater_than_or_equal_to <- assert_create_chain(
   assert_numeric,
+  assert_no_missing,
   assert_create(
     is_greater_than_or_equal_to,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
@@ -201,6 +204,7 @@ assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}
 #' @export
 assert_all_less_than <- assert_create_chain(
   assert_numeric,
+  assert_no_missing,
   assert_create(
     is_less_than,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than} `{.strong {maximum}}`."
@@ -259,6 +263,7 @@ assert_less_than <- assert_create_chain(
 #' @export
 assert_all_less_than_or_equal_to <- assert_create_chain(
   assert_numeric,
+  assert_no_missing,
   assert_create(
     is_less_than_or_equal_to,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than or equal to} `{.strong {maximum}}`."
@@ -315,6 +320,7 @@ assert_less_than_or_equal_to <- assert_create_chain(
 #' @export
 assert_all_between <- assert_create_chain(
   assert_numeric,
+  assert_no_missing,
   assert_create(
     is_between,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
@@ -346,6 +352,7 @@ assert_all_between <- assert_create_chain(
 #' @export
 assert_between <- assert_create_chain(
   assert_number,
+  assert_no_missing,
   assert_create(
     is_between,
     default_error_msg = "{.strong {arg_name}} must be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."

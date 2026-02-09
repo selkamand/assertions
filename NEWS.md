@@ -14,6 +14,8 @@
 
 * Improved factor support for `assert_includes()` and `assert_excludes()`
 
+* Improved missing-value errors for numeric comparison assertions (e.g., `assert_greater_than()` with `NaN`)
+
 * Added `assert_connection()`
 
 * Added `assert_set_equal()`

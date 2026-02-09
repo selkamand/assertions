@@ -203,7 +203,7 @@
     Code
       assert_all_greater_than_or_equal_to(c(4, NA), 3)
     Condition
-      Error in `compare()`:
+      Error:
       ! 'c(4, NA)' must have no missing values! Found 1
 
 # assert_greater_than_or_equal_to() works [plain]
