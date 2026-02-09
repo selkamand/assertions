@@ -9,6 +9,10 @@ CRAN release: 2024-11-19
   for checking required argument names in functions
 
 - Added
+  [`assert_function_variadic()`](../reference/assert_function_variadic.md)
+  for checking whether functions declare `...`
+
+- Added
   [`assert_all_strings_contain()`](../reference/assert_all_strings_contain.md)
   and
   [`assert_string_contains()`](../reference/assert_string_contains.md)

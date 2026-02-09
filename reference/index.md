@@ -61,6 +61,8 @@
   function expects specific parameter names
 - [`assert_function_expects_n_arguments()`](assert_function_expects_n_arguments.md)
   : Assert function expects n arguments
+- [`assert_function_variadic()`](assert_function_variadic.md) : Assert
+  function is variadic
 - [`assert_greater_than()`](assert_greater_than.md) : Assert input is
   greater than some minimum value
 - [`assert_greater_than_or_equal_to()`](assert_greater_than_or_equal_to.md)
