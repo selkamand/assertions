@@ -2,6 +2,8 @@
 
 * Added `assert_function_expects()` for checking required argument names in functions
 
+* Added `assert_function_variadic()` for checking whether functions declare `...`
+
 * Added `assert_all_strings_contain()` and `assert_string_contains()` for checking character inputs against regular expressions
 
 * Added `assert_packages_installed()`

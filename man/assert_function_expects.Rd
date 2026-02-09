@@ -40,4 +40,5 @@ assert_function_expects(my_fun, c("x", "y"))
 try({
   assert_function_expects(my_fun, c("x", "z"))
 })
+
 }
