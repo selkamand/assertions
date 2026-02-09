@@ -1,12 +1,10 @@
 # Changelog
 
-## assertions 0.2.0
-
-CRAN release: 2024-11-19
+## assertions 0.2.0.9000 (dev version)
 
 - Added
   [`assert_function_expects()`](../reference/assert_function_expects.md)
-  for checking required argument names in functions
+  for checking argument names in functions
 
 - Added
   [`assert_function_variadic()`](../reference/assert_function_variadic.md)
@@ -36,6 +34,17 @@ CRAN release: 2024-11-19
   [`assert_greater_than()`](../reference/assert_greater_than.md) with
   `NaN`)
 
+- Improved [`assert_numeric()`](../reference/assert_numeric.md) error
+  messaging for non-numeric matrices/arrays
+
+## assertions 0.2.0
+
+CRAN release: 2024-11-19
+
+- Improved factor support for
+  [`assert_includes()`](../reference/assert_includes.md) and
+  [`assert_excludes()`](../reference/assert_excludes.md)
+
 - Added [`assert_connection()`](../reference/assert_connection.md)
 
 - Added [`assert_set_equal()`](../reference/assert_set_equal.md)
@@ -55,9 +64,6 @@ CRAN release: 2024-11-19
 - Improved error messages when
   [`assert_create()`](../reference/assert_create.md) arguments are
   inappropriate
-
-- Improved [`assert_numeric()`](../reference/assert_numeric.md) error
-  messaging for non-numeric matrices/arrays
 
 ## assertions 0.1.0
 
