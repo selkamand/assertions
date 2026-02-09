@@ -196,6 +196,23 @@ cli::test_that_cli("assert_between() works", config = "plain", {
   expect_error(assert_between(NULL, 1, 4), "is not a number", fixed = TRUE)
 })
 
+cli::test_that_cli("numeric comparison assertions reject NaN with a missing-values error", config = "plain", {
+  expect_error(assert_greater_than(NaN, 2), "must have no missing values", fixed = FALSE)
+  expect_error(assert_all_greater_than(c(2, NaN), 1), "must have no missing values", fixed = FALSE)
+
+  expect_error(assert_greater_than_or_equal_to(NaN, 2), "must have no missing values", fixed = FALSE)
+  expect_error(assert_all_greater_than_or_equal_to(c(2, NaN), 2), "must have no missing values", fixed = FALSE)
+
+  expect_error(assert_less_than(NaN, 2), "must have no missing values", fixed = FALSE)
+  expect_error(assert_all_less_than(c(1, NaN), 2), "must have no missing values", fixed = FALSE)
+
+  expect_error(assert_less_than_or_equal_to(NaN, 2), "must have no missing values", fixed = FALSE)
+  expect_error(assert_all_less_than_or_equal_to(c(1, NaN), 2), "must have no missing values", fixed = FALSE)
+
+  expect_error(assert_between(NaN, 1, 3), "must have no missing values", fixed = FALSE)
+  expect_error(assert_all_between(c(1, NaN), 0, 2), "must have no missing values", fixed = FALSE)
+})
+
 cli::test_that_cli("assert_identical() works", config = "plain", {
 
   # Passes

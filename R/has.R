@@ -136,6 +136,7 @@ has_class <- function(x, class){
 #' This function asserts that the input vector has no missing values (`NA`) and aborts
 #' with an error message if it does.
 #'
+#' @include assert_create.R
 #' @param x A vector.
 #' @param msg A character string containing the error message to display if `x` has missing values.
 #' @inheritParams common_roxygen_params
