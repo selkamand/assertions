@@ -120,6 +120,7 @@ cli::test_that_cli("assert_numeric() works", configs = "plain", {
   expect_identical(assert_numeric(matrix(1:9, 3)), TRUE)
 
   # Aborts for non-numeric objects
+  expect_error(assert_numeric(matrix(LETTERS[1:5])), "'matrix(LETTERS[1:5])' must be numeric, not a character matrix", fixed = TRUE)
   expect_error(assert_numeric(c("a", "b", "c")), "'c(\"a\", \"b\", \"c\")' must be numeric, not a character", fixed = TRUE)
   expect_error(assert_numeric(factor(c(1, 2, 3))), "'factor(c(1, 2, 3))' must be numeric, not a factor", fixed = TRUE)
   expect_error(assert_numeric(data.frame(a = 1, b = 2)), "'data.frame(a = 1, b = 2)' must be numeric, not a data.frame", fixed = TRUE)
@@ -548,6 +549,5 @@ cli::test_that_cli("assert_connection() works", configs = "plain", {
   # Custom error messages work
   expect_error(assert_connection(42, msg = "Custom error message"), "Custom error message")
 })
-
 
 

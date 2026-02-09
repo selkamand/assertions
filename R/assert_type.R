@@ -170,7 +170,7 @@ assert_factor_vector <- assert_create(is.factor, default_error_msg = msg_helper_
 #'
 #' @concept assert_type
 #' @export
-assert_numeric <- assert_create(is.numeric, default_error_msg = msg_helper_assert_type("numeric", a = FALSE))
+assert_numeric <- assert_create(is_numeric_with_matrix_message, default_error_msg = msg_helper_assert_type("numeric", a = FALSE))
 
 ## numeric vector -----------------------------------------------------------
 #' Assert input is a numeric vector
@@ -597,4 +597,3 @@ assert_connection <- assert_create(
   func = is_connection,
   default_error_msg = msg_helper_assert_type("database connection")
 )
-
