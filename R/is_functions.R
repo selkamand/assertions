@@ -35,6 +35,19 @@ is_numeric_vector <- function(x){
   is.numeric(x) && is_vector(x)
 }
 
+is_numeric_with_matrix_message <- function(x){
+  if(is.numeric(x))
+    return(TRUE)
+
+  if(is.matrix(x) || is.array(x)){
+    structure_type <- if (is.matrix(x)) "matrix" else "array"
+    element_type <- typeof(x)
+    return(paste0("'{.strong {arg_name}}' must be numeric, not a {.strong ", element_type, "} ", structure_type))
+  }
+
+  return(FALSE)
+}
+
 
 #' Check if an object is a single number
 #'
@@ -258,6 +271,3 @@ is_non_empty_string_advanced <- function(x){
 
   return(invisible(TRUE))
 }
-
-
-

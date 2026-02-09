@@ -32,6 +32,8 @@
 
 * Improved error messages when `assert_create()` arguments are inappropriate
 
+* Improved `assert_numeric()` error messaging for non-numeric matrices/arrays
+
 # assertions 0.1.0
 
 * Added a `NEWS.md` file to track changes to the package.
