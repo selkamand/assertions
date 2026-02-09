@@ -32,6 +32,10 @@ CRAN release: 2024-11-19
   [`assert_includes()`](../reference/assert_includes.md) and
   [`assert_excludes()`](../reference/assert_excludes.md)
 
+- Improved missing-value errors for numeric comparison assertions (e.g.,
+  [`assert_greater_than()`](../reference/assert_greater_than.md) with
+  `NaN`)
+
 - Added [`assert_connection()`](../reference/assert_connection.md)
 
 - Added [`assert_set_equal()`](../reference/assert_set_equal.md)
