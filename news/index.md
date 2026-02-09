@@ -56,6 +56,9 @@ CRAN release: 2024-11-19
   [`assert_create()`](../reference/assert_create.md) arguments are
   inappropriate
 
+- Improved [`assert_numeric()`](../reference/assert_numeric.md) error
+  messaging for non-numeric matrices/arrays
+
 ## assertions 0.1.0
 
 CRAN release: 2023-06-02
