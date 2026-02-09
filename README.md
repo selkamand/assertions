@@ -7,8 +7,6 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![Codecov test
-coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions?branch=main)
 [![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
 [![](https://img.shields.io/github/languages/code-size/selkamand/assertions.svg)](https://github.com/selkamand/assertions)
 [![](https://img.shields.io/github/last-commit/selkamand/assertions.svg)](https://github.com/selkamand/assertions/commits/main)
@@ -16,9 +14,7 @@ coverage](https://codecov.io/gh/selkamand/assertions/branch/main/graph/badge.svg
 issues](https://img.shields.io/github/issues-closed/selkamand/assertions.svg)](https://github.com/selkamand/assertions/issues?q=is%3Aissue+is%3Aclosed)
 [![](http://cranlogs.r-pkg.org/badges/last-month/assertions)](https://cran.r-project.org/package=assertions)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/assertions)](https://cran.r-project.org/package=assertions)
-[![Codecov test
-coverage](https://codecov.io/gh/selkamand/assertions/graph/badge.svg)](https://app.codecov.io/gh/selkamand/assertions)
-[![R-CMD-check](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/selkamand/assertions/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 Simple assertions with sensible defaults and customisable error
@@ -49,12 +45,14 @@ install.packages("assertions")
 
 ### Development version
 
-To get a bug fix or to use a feature from the development version, you
-can install the development version of assertions from GitHub.
+You can install the development version of assertions from GitHub by
+running:
 
 ``` r
-# install.packages('remotes')
-remotes::install_github('selkamand/assertions')
+if (!require("remotes", quietly = TRUE))
+    install.packages("remotes")
+
+remotes::install_github("selkamand/assertions")
 ```
 
 ## Quick Start

@@ -28,7 +28,7 @@
       assert_subset("def", "abc")
     Condition
       Error:
-      x '"def"' contain an invalid value: def. Valid values include: abc
+      x '"def"' contains an invalid value: def. Valid values include: abc
 
 ---
 
@@ -36,7 +36,7 @@
       assert_subset(c("A"), c(1, 2, 3))
     Condition
       Error:
-      x 'c("A")' contain an invalid value: A. Valid values include: 1, 2, and 3
+      x 'c("A")' contains an invalid value: A. Valid values include: 1, 2, and 3
 
 # assert_one_of() works [plain]
 
