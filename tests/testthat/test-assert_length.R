@@ -13,6 +13,8 @@ cli::test_that_cli("assert_length() works", configs = "plain", {
   expect_error(assert_length(1:3, "3"), "'length' must be numeric", fixed = TRUE)
   expect_error(assert_length(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
+  expect_error(assert_length(1:3, NA_real_), "'length' must not be missing", fixed = TRUE)
+  expect_error(assert_length(1:3, NaN), "'length' must not be missing", fixed = TRUE)
   expect_error(assert_length(1:3, -1), "'length' must be non-negative", fixed = TRUE)
   
   # Error messages use variable name
@@ -36,6 +38,8 @@ cli::test_that_cli("assert_length_greater_than() works", configs = "plain", {
   expect_error(assert_length_greater_than(1:3, "3"), "'length' must be numeric", fixed = TRUE)
   expect_error(assert_length_greater_than(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length_greater_than(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
+  expect_error(assert_length_greater_than(1:3, NA_real_), "'length' must not be missing", fixed = TRUE)
+  expect_error(assert_length_greater_than(1:3, NaN), "'length' must not be missing", fixed = TRUE)
   expect_error(assert_length_greater_than(1:3, -1), "'length' must be non-negative", fixed = TRUE)
 })
 
@@ -52,6 +56,8 @@ cli::test_that_cli("assert_length_greater_than_or_equal_to() works", configs = "
   expect_error(assert_length_greater_than_or_equal_to(1:3, "3"), "'length' must be numeric", fixed = TRUE)
   expect_error(assert_length_greater_than_or_equal_to(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length_greater_than_or_equal_to(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
+  expect_error(assert_length_greater_than_or_equal_to(1:3, NA_real_), "'length' must not be missing", fixed = TRUE)
+  expect_error(assert_length_greater_than_or_equal_to(1:3, NaN), "'length' must not be missing", fixed = TRUE)
   expect_error(assert_length_greater_than_or_equal_to(1:3, -1), "'length' must be non-negative", fixed = TRUE)
 })
 
@@ -68,6 +74,8 @@ cli::test_that_cli("assert_length_less_than() works", configs = "plain", {
   expect_error(assert_length_less_than(1:3, "3"), "'length' must be numeric", fixed = TRUE)
   expect_error(assert_length_less_than(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length_less_than(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
+  expect_error(assert_length_less_than(1:3, NA_real_), "'length' must not be missing", fixed = TRUE)
+  expect_error(assert_length_less_than(1:3, NaN), "'length' must not be missing", fixed = TRUE)
   expect_error(assert_length_less_than(1:3, -1), "'length' must be non-negative", fixed = TRUE)
 })
 
@@ -84,5 +92,7 @@ cli::test_that_cli("assert_length_less_than_or_equal_to() works", configs = "pla
   expect_error(assert_length_less_than_or_equal_to(1:3, "3"), "'length' must be numeric", fixed = TRUE)
   expect_error(assert_length_less_than_or_equal_to(1:3, c(2, 3)), "'length' must be a single number", fixed = TRUE)
   expect_error(assert_length_less_than_or_equal_to(1:3, 2.5), "'length' must be a whole number", fixed = TRUE)
+  expect_error(assert_length_less_than_or_equal_to(1:3, NA_real_), "'length' must not be missing", fixed = TRUE)
+  expect_error(assert_length_less_than_or_equal_to(1:3, NaN), "'length' must not be missing", fixed = TRUE)
   expect_error(assert_length_less_than_or_equal_to(1:3, -1), "'length' must be non-negative", fixed = TRUE)
 })
