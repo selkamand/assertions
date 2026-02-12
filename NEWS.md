@@ -16,7 +16,7 @@
 
 * Improved missing-value errors for numeric comparison assertions (e.g., `assert_greater_than()` with `NaN`)
 
-* Improved threshold validation so missing `length`, `minimum`, and `maximum` arguments now return informative assertion errors instead of base R missing-value failures
+* Improved threshold validation so missing `length`, `minimum`, and `maximum` arguments now return informative error messages
 
 * Improved `assert_numeric()` error messaging for non-numeric matrices/arrays
 
