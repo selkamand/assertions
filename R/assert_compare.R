@@ -1,3 +1,36 @@
+# Comparison threshold checks ---------------------------------------------
+
+validate_minimum <- assert_create(function(x, minimum){
+  if(!is.numeric(minimum)) return("'minimum' must be numeric")
+  if(length(minimum) != 1) return("'minimum' must be a single number")
+  if(is.na(minimum) || is.nan(minimum)) return("'minimum' must not be missing")
+  TRUE
+})
+
+validate_maximum <- assert_create(function(x, maximum){
+  if(!is.numeric(maximum)) return("'maximum' must be numeric")
+  if(length(maximum) != 1) return("'maximum' must be a single number")
+  if(is.na(maximum) || is.nan(maximum)) return("'maximum' must not be missing")
+  TRUE
+})
+
+validate_between_thresholds <- assert_create(function(x, minimum, maximum, inclusive = TRUE){
+  if(!is.numeric(minimum)) return("'minimum' must be numeric")
+  if(length(minimum) != 1) return("'minimum' must be a single number")
+  if(is.na(minimum) || is.nan(minimum)) return("'minimum' must not be missing")
+
+  if(!is.numeric(maximum)) return("'maximum' must be numeric")
+  if(length(maximum) != 1) return("'maximum' must be a single number")
+  if(is.na(maximum) || is.nan(maximum)) return("'maximum' must not be missing")
+
+  if(!is.logical(inclusive)) return("'inclusive' must be logical")
+  if(length(inclusive) != 1) return("'inclusive' must be a single logical value")
+  if(is.na(inclusive)) return("'inclusive' must not be missing")
+
+  TRUE
+})
+
+
 #' Assert input is greater than a specified minimum value
 #'
 #' Assert all elements in a numeric vector/matrix are above some minimum value.
@@ -28,6 +61,7 @@
 assert_all_greater_than <- assert_create_chain(
   assert_numeric,
   assert_no_missing,
+  validate_minimum,
   assert_create(
     is_greater_than,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than} `{.strong {minimum}}`."
@@ -87,6 +121,7 @@ assert_greater_than <- assert_create_chain(
 assert_all_greater_than_or_equal_to <- assert_create_chain(
   assert_numeric,
   assert_no_missing,
+  validate_minimum,
   assert_create(
     is_greater_than_or_equal_to,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong greater than or equal to} `{.strong {minimum}}`."
@@ -205,6 +240,7 @@ assert_equal <- assert_create(is_equal, default_error_msg = "{.strong {arg_name}
 assert_all_less_than <- assert_create_chain(
   assert_numeric,
   assert_no_missing,
+  validate_maximum,
   assert_create(
     is_less_than,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than} `{.strong {maximum}}`."
@@ -264,6 +300,7 @@ assert_less_than <- assert_create_chain(
 assert_all_less_than_or_equal_to <- assert_create_chain(
   assert_numeric,
   assert_no_missing,
+  validate_maximum,
   assert_create(
     is_less_than_or_equal_to,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong less than or equal to} `{.strong {maximum}}`."
@@ -321,6 +358,7 @@ assert_less_than_or_equal_to <- assert_create_chain(
 assert_all_between <- assert_create_chain(
   assert_numeric,
   assert_no_missing,
+  validate_between_thresholds,
   assert_create(
     is_between,
     default_error_msg = "{.strong {arg_name}} must {ifelse(length(arg_value) > 1, 'all ', '')}be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."
@@ -353,6 +391,7 @@ assert_all_between <- assert_create_chain(
 assert_between <- assert_create_chain(
   assert_number,
   assert_no_missing,
+  validate_between_thresholds,
   assert_create(
     is_between,
     default_error_msg = "{.strong {arg_name}} must be {.strong between} {.strong {minimum}} and {.strong {maximum}} {ifelse(inclusive, '(inclusive)', '(exclusive)')}."

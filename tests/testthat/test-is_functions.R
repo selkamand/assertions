@@ -113,6 +113,10 @@ test_that("is_whole_number works as expected", {
   expect_false(is_whole_number(2.5))
   expect_true(is_whole_number(0))
   expect_true(is_whole_number(-3))
+  expect_false(is_whole_number(NA_real_))
+  expect_false(is_whole_number(NaN))
+  expect_false(is_whole_number(Inf))
+  expect_false(is_whole_number(c(1, 2)))
 })
 
 # Test `is_connection` (requires DBI)

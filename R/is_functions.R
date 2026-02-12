@@ -161,7 +161,7 @@ is_reactive <- function(x){
 }
 
 is_whole_number <- function(x){
-  return(x%%1==0)
+  is.numeric(x) && length(x) == 1 && !is.na(x) && is.finite(x) && x%%1 == 0
 }
 
 is_all_finite <- function(x){

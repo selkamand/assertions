@@ -213,6 +213,26 @@ cli::test_that_cli("numeric comparison assertions reject NaN with a missing-valu
   expect_error(assert_all_between(c(1, NaN), 0, 2), "must have no missing values", fixed = FALSE)
 })
 
+
+cli::test_that_cli("numeric comparison assertions validate missing threshold values", config = "plain", {
+  expect_error(assert_greater_than(5, NA_real_), "'minimum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_greater_than(c(5, 6), NaN), "'minimum' must not be missing", fixed = TRUE)
+
+  expect_error(assert_greater_than_or_equal_to(5, NA_real_), "'minimum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_greater_than_or_equal_to(c(5, 6), NaN), "'minimum' must not be missing", fixed = TRUE)
+
+  expect_error(assert_less_than(5, NA_real_), "'maximum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_less_than(c(5, 6), NaN), "'maximum' must not be missing", fixed = TRUE)
+
+  expect_error(assert_less_than_or_equal_to(5, NA_real_), "'maximum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_less_than_or_equal_to(c(5, 6), NaN), "'maximum' must not be missing", fixed = TRUE)
+
+  expect_error(assert_between(5, NA_real_, 6), "'minimum' must not be missing", fixed = TRUE)
+  expect_error(assert_between(5, 1, NaN), "'maximum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_between(c(2, 3), NA_real_, 4), "'minimum' must not be missing", fixed = TRUE)
+  expect_error(assert_all_between(c(2, 3), 1, NaN), "'maximum' must not be missing", fixed = TRUE)
+})
+
 cli::test_that_cli("assert_identical() works", config = "plain", {
 
   # Passes
