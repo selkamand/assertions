@@ -1,3 +1,5 @@
+# assertions 0.3.0
+
 # assertions 0.2.0.9000 (dev version)
 
 * Added `assert_function_expects()` for checking argument names in functions
