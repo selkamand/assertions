@@ -35,8 +35,7 @@
   `NaN`)
 
 - Improved threshold validation so missing `length`, `minimum`, and
-  `maximum` arguments now return informative assertion errors instead of
-  base R missing-value failures
+  `maximum` arguments now return informative error messages
 
 - Improved [`assert_numeric()`](../reference/assert_numeric.md) error
   messaging for non-numeric matrices/arrays
