@@ -34,6 +34,10 @@
   [`assert_greater_than()`](../reference/assert_greater_than.md) with
   `NaN`)
 
+- Improved threshold validation so missing `length`, `minimum`, and
+  `maximum` arguments now return informative assertion errors instead of
+  base R missing-value failures
+
 - Improved [`assert_numeric()`](../reference/assert_numeric.md) error
   messaging for non-numeric matrices/arrays
 
