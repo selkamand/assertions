@@ -1,5 +1,9 @@
 # Changelog
 
+## assertions 0.3.0
+
+CRAN release: 2026-02-13
+
 ## assertions 0.2.0.9000 (dev version)
 
 - Added
