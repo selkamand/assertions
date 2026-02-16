@@ -1,5 +1,7 @@
 # Changelog
 
+## assertions (development version)
+
 ## assertions 0.3.0
 
 CRAN release: 2026-02-13

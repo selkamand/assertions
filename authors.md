@@ -11,13 +11,13 @@ Source:
 [`DESCRIPTION`](https://github.com/selkamand/assertions/blob/main/DESCRIPTION)
 
 El-Kamand S (2026). *assertions: Simple Assertions for Beautiful and
-Customisable Error Messages*. R package version 0.3.0,
+Customisable Error Messages*. R package version 0.3.0.9000,
 <https://github.com/selkamand/assertions>.
 
     @Manual{,
       title = {assertions: Simple Assertions for Beautiful and Customisable Error Messages},
       author = {Sam El-Kamand},
       year = {2026},
-      note = {R package version 0.3.0},
+      note = {R package version 0.3.0.9000},
       url = {https://github.com/selkamand/assertions},
     }
