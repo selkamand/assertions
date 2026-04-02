@@ -1,5 +1,7 @@
 # assertions (development version)
 
+* Added `assert_program_exists_in_path()` and `assert_all_programs_exist_in_path()` for checking executable availability on PATH
+
 # assertions 0.3.0
 
 # assertions 0.2.0.9000 (dev version)
