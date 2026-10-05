@@ -40,6 +40,7 @@ message specified by `msg`.
 ## Examples
 
 ``` r
+
 # Passes for non-NULL
 assert_non_null(1)
 

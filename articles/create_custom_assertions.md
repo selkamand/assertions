@@ -11,6 +11,7 @@ Lets start by recreating the
 [`assert_create()`](../reference/assert_create.md):
 
 ``` r
+
 # Load library
 library(assertions)
 
@@ -74,6 +75,7 @@ asserting that
 2.  Input length is 1
 
 ``` r
+
 assert_string <- assert_create_chain(
   assert_create(is.character, '{arg_name} must be a character, not {class(arg_value)}'),
   assert_create(function(s){ length(s)==1 }, '{arg_name} must be length 1, not {arg_value}')
@@ -109,6 +111,7 @@ Here’s a recreation of the example above, using a `func` that supplies
 strings to indicate assertion failure
 
 ``` r
+
 # Define Function
 is_a_string <- function(object){
  if(!is.character(object))

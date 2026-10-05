@@ -24,6 +24,7 @@ The goals with assertions are to provide
 ## Installation
 
 ``` r
+
 install.packages("assertions")
 ```
 
@@ -33,6 +34,7 @@ You can install the development version of assertions from GitHub by
 running:
 
 ``` r
+
 if (!require("remotes", quietly = TRUE))
     install.packages("remotes")
 
@@ -63,6 +65,7 @@ assert(1000 % 2 == 0, 6/2 == 3)
 ## Customizing Error Messages
 
 ``` r
+
 # Customise any error messages using the `msg` argument
 assert_number("A", msg = "Please supply a number!")
 
@@ -93,6 +96,7 @@ to supply:
 **How about an example?**
 
 ``` r
+
 # Create a function that asserts input is lowercase 
 assert_lowercase <- assert_create(
   func = function(x) {x == tolower(x)}, 

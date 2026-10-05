@@ -42,6 +42,7 @@ message specified by `msg`
 ## Examples
 
 ``` r
+
 # Pass when value is scalar
 assert_scalar(5) # Passes
 assert_scalar("single string") # Passes
