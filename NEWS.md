@@ -1,8 +1,8 @@
 # assertions (development version)
 
-# assertions 0.3.0
+* Fixed bug where parameter names with triple dot prefix (e.g. `...name`) were misclassified as  `assert_function_variadic` ([#15](https://github.com/selkamand/assertions/issues/157))
 
-# assertions 0.2.0.9000 (dev version)
+# assertions 0.3.0
 
 * Added `assert_function_expects()` for checking argument names in functions
 

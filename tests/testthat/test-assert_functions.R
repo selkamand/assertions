@@ -10,6 +10,25 @@ fn_with_required_args <- function(x, y, z = 1, ...) {}
 fn_with_defaults <- function(x = 1, y = 2) {}
 fn_with_no_required <- function(...) {}
 fn_no_dots <- function(x, y) x + y
+fn_with_dots_in_name <- function(x, ...name) {}
+fn_with_embedded_dots <- function(x...y) {}
+fn_with_dots_and_dots_name <- function(x, ...name, ...) {}
+
+test_that("func_supports_variable_arguments matches only the dots formal", {
+  expect_false(func_supports_variable_arguments(fn_with_dots_in_name))
+  expect_false(func_supports_variable_arguments(fn_with_embedded_dots))
+  expect_false(func_supports_variable_arguments(fn_no_dots))
+  expect_true(func_supports_variable_arguments(fn_1_arg_with_dots))
+  expect_true(func_supports_variable_arguments(fn_with_dots_and_dots_name))
+})
+
+test_that("func_arg_count does NOT confuse `...paramname` for `...`", {
+  expect_equal(func_arg_count(fn_with_dots_in_name), 2)
+  expect_equal(func_arg_count(fn_with_dots_in_name, dots = "count_as_0"), 2)
+  expect_equal(func_arg_count(fn_with_dots_in_name, dots = "count_as_1"), 2)
+  expect_equal(func_arg_count(fn_with_dots_in_name, dots = "count_as_inf"), 2)
+  expect_equal(func_arg_count(fn_with_embedded_dots), 1)
+})
 
 # Unit tests for `function_expects_n_arguments_advanced`
 test_that("function_expects_n_arguments_advanced behaves correctly for exact argument count", {
